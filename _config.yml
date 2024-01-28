@@ -8,7 +8,10 @@ subtitle: ''
 description: ''
 keywords:
 author: Amd794
-language: zh-cn
+language:
+- zh-CN
+- zh-TW
+- en
 timezone: 'Asia/Shanghai'
 
 # URL
