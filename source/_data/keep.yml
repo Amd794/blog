@@ -93,7 +93,7 @@ cdn:
 
 footer:
   since: 2023           # The starting year of your website, Can be null
-  word_count: true     # Option values: true | false
+  word_count: false     # Option values: true | false
 
   icp:
     enable: true                    # Option values: true | false
