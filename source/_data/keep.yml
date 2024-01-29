@@ -9,6 +9,9 @@ base_info:
 menu:
   Home: /                         # 首页
   Archives: /archives             # 归档
+  工具箱: https://amd794.com
+  影视: https://movie.amd794.com:2083
+  漫画: https://comic.amd794.com:2087
   #  Tags: /tags                   # 标签
   #  Categories: /categories       # 分类
   #  Links: /links                 # 链接
@@ -35,13 +38,13 @@ scroll:
   hide_header: true
 
 home:
-  announcement: 我们非常重视您的反馈和建议，欢迎您扫描上方的二维码加入我们的群组，让平台变得更加完善和优秀！
+  announcement: 我们非常重视您的反馈和建议，欢迎您扫描首页的QQ二维码加入我们的群组，让平台变得更加完善和优秀！
 
 post:
   author_badge:
     enable: true
     level_badge: false
-    custom_badge: [ "炼气", "筑基", "结丹", "元婴", "化神" ]
+    custom_badge: [ "炼气", "筑基", "结丹", "元婴", "化神","破虚","渡劫","大乘","散仙","真仙","金仙","玄仙","洞虚","大罗金仙","天仙","圣人" ]
 
   word_count:
     wordcount: true     # Word count, one article. Option values: true | false

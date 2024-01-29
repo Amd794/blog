@@ -43,7 +43,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
@@ -119,4 +119,4 @@ search:
 feed:
   type: atom
   path: atom.xml
-  limit: 20
+  limit: 100
