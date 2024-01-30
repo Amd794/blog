@@ -50,7 +50,7 @@ post:
     wordcount: true     # Word count, one article. Option values: true | false
     min2read: true      # Time to read, one article. Option values: true | false
 
-  datetime_format: "YYYY-MM-DD"  # Datetime format. e.g. "YYYY-MM-DD HH:mm:ss"
+  datetime_format: "YYYY-MM-DD HH:mm:ss"  # Datetime format. e.g. "YYYY-MM-DD HH:mm:ss"
 
   copyright_info: true  # Option values: true | false
 
