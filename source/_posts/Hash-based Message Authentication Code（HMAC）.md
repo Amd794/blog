@@ -1,5 +1,6 @@
 ---
 title: Hash-based Message Authentication Code（HMAC）
+date: 2024/1/30 16:50
 ---
 
 
