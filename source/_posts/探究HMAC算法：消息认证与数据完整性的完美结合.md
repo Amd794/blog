@@ -22,7 +22,7 @@ tags:
 
 
 
-Hash-based Message Authentication Code（基于哈希的消息认证码，简称HMAC）算法作为一种广泛应用的消息认证码（MAC）算法，在现代信息安全领域起着至关重要的作用。本文将从算法原理、优缺点、实际应用等方面，全面介绍和解释HMAC算法。
+> Hash-based Message Authentication Code（基于哈希的消息认证码，简称HMAC）算法作为一种广泛应用的消息认证码（MAC）算法，在现代信息安全领域起着至关重要的作用。本文将从算法原理、优缺点、实际应用等方面，全面介绍和解释HMAC算法。
 
 [HMAC在线加密 | 一个覆盖广泛主题工具的高效在线平台(amd794.com)](https://amd794.com/hmac)
 

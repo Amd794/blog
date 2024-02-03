@@ -1,13 +1,20 @@
 ---
 title: Markdown语法入门与进阶指南
-date: 2024/1/30 16:50
-updated: 2024/1/30 16:50
+date: 2024/1/20 16:50
+updated: 2024/1/20 16:50
+tags:
+- Markdown入门
+- 基本语法
+- 高级用法
+- 标题列表
+- 文本格式
+- 图表插入
+- 数学公式
 ---
 
+<img src="https://static.amd794.com/blog/images/2024_02_03 16_28_53.png@blog" title="2024_02_03 16_28_53.png" alt="2024_02_03 16_28_53.png"/>
 
-![1.jpeg](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8a377e270cdf49a7b4620016b9b2abf1~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1024&h=1024&s=220156&e=jpg&b=cddddf)
-
-一、Markdown简介
+## 一、Markdown简介
 
 Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯（john Gruber）。它允许人们使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML（或者HTML）文档。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。
 
@@ -15,7 +22,7 @@ Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯（john Gr
 
 <https://amd794.com/markdown>
 
-二、Markdown的基本语法
+## 二、Markdown的基本语法
 
 1.  标题：
 
@@ -74,7 +81,7 @@ _下划线_
 ```
 ````
 
-三、Markdown的高级语法
+## 三、Markdown的高级语法
 
 1.  表格：
 
@@ -97,6 +104,6 @@ _下划线_
 使用ProcessOn等在线工具生成
 ```
 
-五、总结
+## 四、总结
 
 Markdown是一种简洁易学的文本格式，无论是程序员还是其他行业的人士，都可以轻松掌握。通过简单的标记符号，我们可以轻松地创建美观且易于阅读的文档。希望这篇介绍能帮助你入门和掌握Markdown语法。
