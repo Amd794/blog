@@ -101,7 +101,7 @@ footer:
     url:    # Your ICP link url, Can be null
 
   site_deploy:
-    enable: true        # Option values: true | false
+    enable: false        # Option values: true | false
     provider: github     # Option values: github | vercel | netlify | gitee | aliyun | tencent_cloud | upyun
     url:                 # Your deployment provider url, Can be null
 
@@ -110,3 +110,9 @@ footer:
     custom:
       - link_url:        # Your link url, Can be null
         img_url:         # Shields image url
+
+
+inject:
+  enable: true
+  js:
+    - /js/footerScript.js
