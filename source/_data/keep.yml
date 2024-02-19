@@ -118,3 +118,4 @@ inject:
   enable: true
   js:
     - /js/footerScript.js
+    - /js/utils.js
