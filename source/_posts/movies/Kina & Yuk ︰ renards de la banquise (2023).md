@@ -1,6 +1,6 @@
 
 ---
-title: Kina & Yuk : renards de la banquise(2023)
+title: Kina & Yuk ︰ renards de la banquise(2023)
 date: 2023-12-27
 updated: 2023-12-27
 categories: 电影推荐

@@ -1,6 +1,6 @@
 
 ---
-title: Becoming Nawalny - Putins Staatsfeind Nr. 1(2024)
+title: Becoming Nawalny - Putins Staatsfeind Nr 1(2024)
 date: 2024-02-17
 updated: 2024-02-17
 categories: 电影推荐

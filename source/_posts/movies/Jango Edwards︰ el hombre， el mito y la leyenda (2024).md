@@ -1,6 +1,6 @@
 
 ---
-title: Jango Edwards: el hombre, el mito y la leyenda(2024)
+title: Jango Edwards︰ el hombre， el mito y la leyenda(2024)
 date: 2024-02-09
 updated: 2024-02-09
 categories: 电影推荐

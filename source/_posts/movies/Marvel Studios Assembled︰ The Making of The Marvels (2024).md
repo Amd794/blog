@@ -1,6 +1,6 @@
 
 ---
-title: Marvel Studios Assembled: The Making of The Marvels(2024)
+title: Marvel Studios Assembled︰ The Making of The Marvels(2024)
 date: 2024-02-07
 updated: 2024-02-07
 categories: 电影推荐

@@ -1,6 +1,6 @@
 
 ---
-title: Betty's Bad Luck In Love(2024)
+title: Betty＇s Bad Luck In Love(2024)
 date: 2024-01-20
 updated: 2024-01-20
 categories: 电影推荐

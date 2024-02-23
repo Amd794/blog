@@ -1,6 +1,6 @@
 
 ---
-title: Sexo, drogas, rock 'n' roll y política. Instituto Santamarca, 1975–1985(2024)
+title: Sexo， drogas， rock ＇n＇ roll y política Instituto Santamarca， 1975–1985(2024)
 date: 2024-02-14
 updated: 2024-02-14
 categories: 电影推荐

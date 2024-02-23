@@ -1,6 +1,6 @@
 
 ---
-title: La sociedad de la nieve: ¿Quiénes fuimos en la montaña?(2024)
+title: La sociedad de la nieve︰ ¿Quiénes fuimos en la montaña﹖(2024)
 date: 2024-01-23
 updated: 2024-01-23
 categories: 电影推荐

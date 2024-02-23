@@ -1,6 +1,6 @@
 
 ---
-title: नवरदेव Bsc.Agri(2024)
+title: नवरदेव BscAgri(2024)
 date: 2024-01-26
 updated: 2024-01-26
 categories: 电影推荐

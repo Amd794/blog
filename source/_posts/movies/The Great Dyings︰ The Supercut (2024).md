@@ -1,6 +1,6 @@
 
 ---
-title: The Great Dyings: The Supercut(2024)
+title: The Great Dyings︰ The Supercut(2024)
 date: 2024-02-18
 updated: 2024-02-18
 categories: 电影推荐

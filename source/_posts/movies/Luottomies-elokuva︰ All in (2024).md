@@ -1,6 +1,6 @@
 
 ---
-title: Luottomies-elokuva: All in(2024)
+title: Luottomies-elokuva︰ All in(2024)
 date: 2024-02-16
 updated: 2024-02-16
 categories: 电影推荐

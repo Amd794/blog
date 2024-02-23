@@ -1,6 +1,6 @@
 
 ---
-title: Nin Kamashitshet: Celui qui se bat(2024)
+title: Nin Kamashitshet︰ Celui qui se bat(2024)
 date: 2024-02-23
 updated: 2024-02-23
 categories: 电影推荐

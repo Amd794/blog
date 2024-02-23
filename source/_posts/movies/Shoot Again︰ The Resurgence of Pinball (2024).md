@@ -1,6 +1,6 @@
 
 ---
-title: Shoot Again: The Resurgence of Pinball(2024)
+title: Shoot Again︰ The Resurgence of Pinball(2024)
 date: 2024-02-13
 updated: 2024-02-13
 categories: 电影推荐

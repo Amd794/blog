@@ -1,6 +1,6 @@
 
 ---
-title: Turma da Mônica Jovem: Reflexos do Medo(2024)
+title: Turma da Mônica Jovem︰ Reflexos do Medo(2024)
 date: 2024-01-18
 updated: 2024-01-18
 categories: 电影推荐

@@ -1,6 +1,6 @@
 
 ---
-title: I Just Don't Like You... A Love Story(2024)
+title: I Just Don＇t Like You A Love Story(2024)
 date: 2024-02-21
 updated: 2024-02-21
 categories: 电影推荐

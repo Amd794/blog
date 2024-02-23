@@ -1,6 +1,6 @@
 
 ---
-title: MET Opera: La Forza del Destino 2023/24(2024)
+title: MET Opera︰ La Forza del Destino 2023／24(2024)
 date: 2024-02-26
 updated: 2024-02-26
 categories: 电影推荐

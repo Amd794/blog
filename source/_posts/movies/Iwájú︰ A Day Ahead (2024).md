@@ -1,6 +1,6 @@
 
 ---
-title: Iwájú: A Day Ahead(2024)
+title: Iwájú︰ A Day Ahead(2024)
 date: 2024-02-28
 updated: 2024-02-28
 categories: 电影推荐

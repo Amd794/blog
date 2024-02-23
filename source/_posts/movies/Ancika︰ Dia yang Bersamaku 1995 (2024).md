@@ -1,6 +1,6 @@
 
 ---
-title: Ancika: Dia yang Bersamaku 1995(2024)
+title: Ancika︰ Dia yang Bersamaku 1995(2024)
 date: 2024-01-11
 updated: 2024-01-11
 categories: 电影推荐

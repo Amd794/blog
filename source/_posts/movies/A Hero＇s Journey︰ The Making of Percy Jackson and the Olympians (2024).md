@@ -1,6 +1,6 @@
 
 ---
-title: A Hero's Journey: The Making of Percy Jackson and the Olympians(2024)
+title: A Hero＇s Journey︰ The Making of Percy Jackson and the Olympians(2024)
 date: 2024-01-30
 updated: 2024-01-30
 categories: 电影推荐

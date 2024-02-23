@@ -1,6 +1,6 @@
 
 ---
-title: Grounded II: Making The Last of Us Part II(2024)
+title: Grounded II︰ Making The Last of Us Part II(2024)
 date: 2024-02-02
 updated: 2024-02-02
 categories: 电影推荐

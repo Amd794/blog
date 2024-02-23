@@ -1,6 +1,6 @@
 
 ---
-title: Super/Man: The Christopher Reeve Story(2024)
+title: Super／Man︰ The Christopher Reeve Story(2024)
 date: 2024-01-21
 updated: 2024-01-21
 categories: 电影推荐

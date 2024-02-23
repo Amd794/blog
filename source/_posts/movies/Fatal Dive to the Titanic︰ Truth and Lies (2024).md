@@ -1,6 +1,6 @@
 
 ---
-title: Fatal Dive to the Titanic: Truth and Lies(2024)
+title: Fatal Dive to the Titanic︰ Truth and Lies(2024)
 date: 2024-02-08
 updated: 2024-02-08
 categories: 电影推荐

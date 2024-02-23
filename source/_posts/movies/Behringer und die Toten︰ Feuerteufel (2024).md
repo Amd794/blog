@@ -1,6 +1,6 @@
 
 ---
-title: Behringer und die Toten: Feuerteufel(2024)
+title: Behringer und die Toten︰ Feuerteufel(2024)
 date: 2024-02-27
 updated: 2024-02-27
 categories: 电影推荐

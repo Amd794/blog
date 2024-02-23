@@ -1,6 +1,6 @@
 
 ---
-title: KSW 91: Mircea vs. Brichta(2024)
+title: KSW 91︰ Mircea vs Brichta(2024)
 date: 2024-02-17
 updated: 2024-02-17
 categories: 电影推荐

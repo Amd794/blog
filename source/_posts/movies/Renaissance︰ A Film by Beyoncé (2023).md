@@ -1,6 +1,6 @@
 
 ---
-title: Renaissance: A Film by Beyoncé(2023)
+title: Renaissance︰ A Film by Beyoncé(2023)
 date: 2023-12-01
 updated: 2023-12-01
 categories: 电影推荐

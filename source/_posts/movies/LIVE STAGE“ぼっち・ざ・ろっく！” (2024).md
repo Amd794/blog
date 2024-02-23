@@ -1,6 +1,6 @@
 
 ---
-title: LIVE STAGE「ぼっち・ざ・ろっく！」(2024)
+title: LIVE STAGE“ぼっち・ざ・ろっく！”(2024)
 date: 2024-02-28
 updated: 2024-02-28
 categories: 电影推荐

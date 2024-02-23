@@ -1,6 +1,6 @@
 
 ---
-title: Rapunzel, El Perro y El Brujo(2024)
+title: Rapunzel， El Perro y El Brujo(2024)
 date: 2024-02-22
 updated: 2024-02-22
 categories: 电影推荐

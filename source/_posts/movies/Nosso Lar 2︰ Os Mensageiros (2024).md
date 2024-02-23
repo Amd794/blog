@@ -1,6 +1,6 @@
 
 ---
-title: Nosso Lar 2: Os Mensageiros(2024)
+title: Nosso Lar 2︰ Os Mensageiros(2024)
 date: 2024-01-25
 updated: 2024-01-25
 categories: 电影推荐

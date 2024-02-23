@@ -1,6 +1,6 @@
 
 ---
-title: Avatar: The Last Airbender - Premiere(2024)
+title: Avatar︰ The Last Airbender - Premiere(2024)
 date: 2024-02-15
 updated: 2024-02-15
 categories: 电影推荐

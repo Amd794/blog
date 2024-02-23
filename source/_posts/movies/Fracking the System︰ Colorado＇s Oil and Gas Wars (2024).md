@@ -1,6 +1,6 @@
 
 ---
-title: Fracking the System: Colorado's Oil and Gas Wars(2024)
+title: Fracking the System︰ Colorado＇s Oil and Gas Wars(2024)
 date: 2024-02-25
 updated: 2024-02-25
 categories: 电影推荐

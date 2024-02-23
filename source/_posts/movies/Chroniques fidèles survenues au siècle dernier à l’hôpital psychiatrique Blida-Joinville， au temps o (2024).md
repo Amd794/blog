@@ -1,6 +1,6 @@
 
 ---
-title: Chroniques fidèles survenues au siècle dernier à l’hôpital psychiatrique Blida-Joinville, au temps où le Docteur Frantz Fanon était chef de la cinquième division entre 1953 et 1956(2024)
+title: Chroniques fidèles survenues au siècle dernier à l’hôpital psychiatrique Blida-Joinville， au temps o(2024)
 date: 2024-02-18
 updated: 2024-02-18
 categories: 电影推荐

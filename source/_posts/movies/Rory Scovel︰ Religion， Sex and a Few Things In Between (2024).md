@@ -1,6 +1,6 @@
 
 ---
-title: Rory Scovel: Religion, Sex and a Few Things In Between(2024)
+title: Rory Scovel︰ Religion， Sex and a Few Things In Between(2024)
 date: 2024-02-22
 updated: 2024-02-22
 categories: 电影推荐
