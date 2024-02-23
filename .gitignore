@@ -8,3 +8,4 @@ public/
 _multiconfig.yml
 .idea/
 pnpm-lock.yaml
+test.py

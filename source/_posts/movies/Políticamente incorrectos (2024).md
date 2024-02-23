@@ -1,0 +1,32 @@
+
+---
+title: Políticamente incorrectos(2024)
+date: 2024-02-23
+updated: 2024-02-23
+categories: 电影推荐
+tags:
+
+- 喜剧
+
+- Spanish (Español)
+- es
+---
+
+<img src="https://image.tmdb.org/t/p/original/jlElnurAe4aGedAuy4zDQGMEff3.jpg" alt="/jlElnurAe4aGedAuy4zDQGMEff3.jpg" title="/jlElnurAe4aGedAuy4zDQGMEff3.jpg">
+
+**电影封面**：<img src="https://image.tmdb.org/t/p/w200/6THcSXF7glxgdYZB5cgI2gC2DFh.jpg" alt="/6THcSXF7glxgdYZB5cgI2gC2DFh.jpg" title="/6THcSXF7glxgdYZB5cgI2gC2DFh.jpg">
+**电影名称**：Políticamente incorrectos
+**原产地片名**：Políticamente incorrectos
+**原产地语言**：es
+**包含成人内容**：False
+**电影评分**：7.5
+**评分人数**：1
+**热门程度**：29.582
+**电影时长**：
+**电影导演**：
+**电影主演**：
+**电影简介**：
+**电影上映时间**：2024-02-23
+**电影上映国家**：Spanish (Español)
+**传送门**：[Políticamente incorrectos |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=Pol%C3%ADticamente%20incorrectos&ordering=&mode=match_phrase&page_size=10&page=1)
+
