@@ -24,8 +24,9 @@ tags:
 **电影上映国家**：German (Deutsch)
 **原产地语言**：de
 **包含成人内容**：False
-**电影评分**：6.86
-**评分人数**：396
+**是否纪录片**：False
+**电影评分**：6.87
+**评分人数**：395
 **热门程度**：792.798
 **电影时长**：
 **电影导演**：
@@ -33,6 +34,8 @@ tags:
 **电影简介**：一名综合格斗选手急切地想保住女儿的监护权，为此他放弃重大比赛，争分夺秒地穿过柏林去参加女儿的生日派对。
 
 ## **下载地址**：
+[60 Minuten |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=60%20Minuten&ordering=&mode=match_phrase&page_size=10&page=1)
+
 [60 Minuten |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=60%20Minuten&ordering=&mode=match_phrase&page_size=10&page=1)
  
 
