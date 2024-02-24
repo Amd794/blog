@@ -5,7 +5,6 @@ date: 2024-01-19
 updated: 2024-01-19
 categories: 电影推荐
 tags:
-
 - 动作
 - 剧情
 
@@ -13,21 +12,35 @@ tags:
 - de
 ---
 
-<img src="https://image.tmdb.org/t/p/original/unvtbkgxh47BewQ8pENvdOdme0r.jpg" alt="/unvtbkgxh47BewQ8pENvdOdme0r.jpg" title="/unvtbkgxh47BewQ8pENvdOdme0r.jpg">
+
+> 一名综合格斗选手急切地想保住女儿的监护权，为此他放弃重大比赛，争分夺秒地穿过柏林去参加女儿的生日派对。
+
+## **电影详情**：
 
 **电影封面**：<img src="https://image.tmdb.org/t/p/w200/aD666IiuBDU57KvpujqzduLgWDe.jpg" alt="/aD666IiuBDU57KvpujqzduLgWDe.jpg" title="/aD666IiuBDU57KvpujqzduLgWDe.jpg">
 **电影名称**：60 Minuten
 **原产地片名**：60 Minuten
+**电影上映时间**：2024-01-19
+**电影上映国家**：German (Deutsch)
 **原产地语言**：de
 **包含成人内容**：False
-**电影评分**：6.862
-**评分人数**：394
-**热门程度**：785.005
+**电影评分**：6.86
+**评分人数**：396
+**热门程度**：792.798
 **电影时长**：
 **电影导演**：
 **电影主演**：
 **电影简介**：一名综合格斗选手急切地想保住女儿的监护权，为此他放弃重大比赛，争分夺秒地穿过柏林去参加女儿的生日派对。
-**电影上映时间**：2024-01-19
-**电影上映国家**：German (Deutsch)
-**传送门**：[60 Minuten |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=60%20Minuten&ordering=&mode=match_phrase&page_size=10&page=1)
 
+## **下载地址**：
+[60 Minuten |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=60%20Minuten&ordering=&mode=match_phrase&page_size=10&page=1)
+ 
+
+## **电影剧照**：
+<img src="https://image.tmdb.org/t/p/original/unvtbkgxh47BewQ8pENvdOdme0r.jpg" alt="/unvtbkgxh47BewQ8pENvdOdme0r.jpg" title="/unvtbkgxh47BewQ8pENvdOdme0r.jpg"><img src="https://image.tmdb.org/t/p/original/adNMDatnEnIEo4LUo1KyhouP6VA.jpg" alt="/adNMDatnEnIEo4LUo1KyhouP6VA.jpg" title="/adNMDatnEnIEo4LUo1KyhouP6VA.jpg"><img src="https://image.tmdb.org/t/p/original/5BI0ibF996FQ6PYX3W8RQxcJWJt.jpg" alt="/5BI0ibF996FQ6PYX3W8RQxcJWJt.jpg" title="/5BI0ibF996FQ6PYX3W8RQxcJWJt.jpg"><img src="https://image.tmdb.org/t/p/original/5MlSvmYbzISv9T6hdDEManE6mlq.jpg" alt="/5MlSvmYbzISv9T6hdDEManE6mlq.jpg" title="/5MlSvmYbzISv9T6hdDEManE6mlq.jpg"><img src="https://image.tmdb.org/t/p/original/l0gcK6e6JUDBttY2aI7U9osKQZs.jpg" alt="/l0gcK6e6JUDBttY2aI7U9osKQZs.jpg" title="/l0gcK6e6JUDBttY2aI7U9osKQZs.jpg"><img src="https://image.tmdb.org/t/p/original/oDLOngegI7hb7P11k3NHJvwG1EW.jpg" alt="/oDLOngegI7hb7P11k3NHJvwG1EW.jpg" title="/oDLOngegI7hb7P11k3NHJvwG1EW.jpg"><img src="https://image.tmdb.org/t/p/original/y15jeOxf2s4n6Nslk1rJksIl5mq.jpg" alt="/y15jeOxf2s4n6Nslk1rJksIl5mq.jpg" title="/y15jeOxf2s4n6Nslk1rJksIl5mq.jpg"><img src="https://image.tmdb.org/t/p/original/pVugsbmPJJxLppX8E3qkJqVyNmd.jpg" alt="/pVugsbmPJJxLppX8E3qkJqVyNmd.jpg" title="/pVugsbmPJJxLppX8E3qkJqVyNmd.jpg"><img src="https://image.tmdb.org/t/p/original/cWZn6x9HGwQF6wCD76dxH9tV1QN.jpg" alt="/cWZn6x9HGwQF6wCD76dxH9tV1QN.jpg" title="/cWZn6x9HGwQF6wCD76dxH9tV1QN.jpg"><img src="https://image.tmdb.org/t/p/original/2bng7ul8gXvv9q8tbMg0IDgKmR.jpg" alt="/2bng7ul8gXvv9q8tbMg0IDgKmR.jpg" title="/2bng7ul8gXvv9q8tbMg0IDgKmR.jpg"><img src="https://image.tmdb.org/t/p/original/dIk2HYavtRpJLvRcV6LMDtX3tpZ.jpg" alt="/dIk2HYavtRpJLvRcV6LMDtX3tpZ.jpg" title="/dIk2HYavtRpJLvRcV6LMDtX3tpZ.jpg"><img src="https://image.tmdb.org/t/p/original/Aqw7WNn3OXOsz9FlhaToypnDGUp.jpg" alt="/Aqw7WNn3OXOsz9FlhaToypnDGUp.jpg" title="/Aqw7WNn3OXOsz9FlhaToypnDGUp.jpg">
+
+## **电影海报**：
+<img src="https://image.tmdb.org/t/p/original/cND79ZWPFINDtkA8uwmQo1gnPPE.jpg" alt="/cND79ZWPFINDtkA8uwmQo1gnPPE.jpg" title="/cND79ZWPFINDtkA8uwmQo1gnPPE.jpg"><img src="https://image.tmdb.org/t/p/original/n5wjsuYh954HLagCnqrLpPT8xi7.jpg" alt="/n5wjsuYh954HLagCnqrLpPT8xi7.jpg" title="/n5wjsuYh954HLagCnqrLpPT8xi7.jpg"><img src="https://image.tmdb.org/t/p/original/hl8MH4xAc6OBKaKggKBcR3azcpt.jpg" alt="/hl8MH4xAc6OBKaKggKBcR3azcpt.jpg" title="/hl8MH4xAc6OBKaKggKBcR3azcpt.jpg"><img src="https://image.tmdb.org/t/p/original/xrb6lzCC8Ge12Xb7TdjXI3AvSlZ.jpg" alt="/xrb6lzCC8Ge12Xb7TdjXI3AvSlZ.jpg" title="/xrb6lzCC8Ge12Xb7TdjXI3AvSlZ.jpg"><img src="https://image.tmdb.org/t/p/original/aajCqg315CoJPu1NmgPCkbRjnl6.jpg" alt="/aajCqg315CoJPu1NmgPCkbRjnl6.jpg" title="/aajCqg315CoJPu1NmgPCkbRjnl6.jpg"><img src="https://image.tmdb.org/t/p/original/jojfbnIHGsRpodIood3OQoqA45Y.jpg" alt="/jojfbnIHGsRpodIood3OQoqA45Y.jpg" title="/jojfbnIHGsRpodIood3OQoqA45Y.jpg"><img src="https://image.tmdb.org/t/p/original/gZXcQLNLg8jAiOKhM97TOdByiVA.jpg" alt="/gZXcQLNLg8jAiOKhM97TOdByiVA.jpg" title="/gZXcQLNLg8jAiOKhM97TOdByiVA.jpg"><img src="https://image.tmdb.org/t/p/original/9vjU3K3g95s2Ik0TB4sUARBwSvw.jpg" alt="/9vjU3K3g95s2Ik0TB4sUARBwSvw.jpg" title="/9vjU3K3g95s2Ik0TB4sUARBwSvw.jpg"><img src="https://image.tmdb.org/t/p/original/vP7GkEjJfeFwOcSvcxsdPZi7zys.jpg" alt="/vP7GkEjJfeFwOcSvcxsdPZi7zys.jpg" title="/vP7GkEjJfeFwOcSvcxsdPZi7zys.jpg"><img src="https://image.tmdb.org/t/p/original/meiysDOKYlKmj1xEZeibynMHXqo.jpg" alt="/meiysDOKYlKmj1xEZeibynMHXqo.jpg" title="/meiysDOKYlKmj1xEZeibynMHXqo.jpg"><img src="https://image.tmdb.org/t/p/original/rqkWWQsXq6zk3QDB9VgL0okywj2.jpg" alt="/rqkWWQsXq6zk3QDB9VgL0okywj2.jpg" title="/rqkWWQsXq6zk3QDB9VgL0okywj2.jpg"><img src="https://image.tmdb.org/t/p/original/aD666IiuBDU57KvpujqzduLgWDe.jpg" alt="/aD666IiuBDU57KvpujqzduLgWDe.jpg" title="/aD666IiuBDU57KvpujqzduLgWDe.jpg"><img src="https://image.tmdb.org/t/p/original/xAm1wRGTxairBVff56Bphn4akpx.jpg" alt="/xAm1wRGTxairBVff56Bphn4akpx.jpg" title="/xAm1wRGTxairBVff56Bphn4akpx.jpg"><img src="https://image.tmdb.org/t/p/original/rtM7VzUbXDRODXB4cH4saqgY0wQ.jpg" alt="/rtM7VzUbXDRODXB4cH4saqgY0wQ.jpg" title="/rtM7VzUbXDRODXB4cH4saqgY0wQ.jpg">
+
+## **电影图标**：
+<img src="https://image.tmdb.org/t/p/original/13WVrNJbAKElvTgHpOML6Yn1rrL.png" alt="/13WVrNJbAKElvTgHpOML6Yn1rrL.png" title="/13WVrNJbAKElvTgHpOML6Yn1rrL.png"><img src="https://image.tmdb.org/t/p/original/xKF3IiQ8OnTgCd6U8QMPIEwY0hY.png" alt="/xKF3IiQ8OnTgCd6U8QMPIEwY0hY.png" title="/xKF3IiQ8OnTgCd6U8QMPIEwY0hY.png"><img src="https://image.tmdb.org/t/p/original/aLBI92h3s45UgT5FrOzpNLrP1kI.png" alt="/aLBI92h3s45UgT5FrOzpNLrP1kI.png" title="/aLBI92h3s45UgT5FrOzpNLrP1kI.png"><img src="https://image.tmdb.org/t/p/original/mo25KVndfqhbO4OayQTgw8DRXnx.png" alt="/mo25KVndfqhbO4OayQTgw8DRXnx.png" title="/mo25KVndfqhbO4OayQTgw8DRXnx.png"><img src="https://image.tmdb.org/t/p/original/k8WrPK6MD2kvjmnmv5zmUvqbLiH.png" alt="/k8WrPK6MD2kvjmnmv5zmUvqbLiH.png" title="/k8WrPK6MD2kvjmnmv5zmUvqbLiH.png"><img src="https://image.tmdb.org/t/p/original/ywye1GTgRajml9LsxVA9Vh2RJEr.png" alt="/ywye1GTgRajml9LsxVA9Vh2RJEr.png" title="/ywye1GTgRajml9LsxVA9Vh2RJEr.png"><img src="https://image.tmdb.org/t/p/original/46D0kDqZnasCYCxzaXWR3aaPTZP.png" alt="/46D0kDqZnasCYCxzaXWR3aaPTZP.png" title="/46D0kDqZnasCYCxzaXWR3aaPTZP.png"><img src="https://image.tmdb.org/t/p/original/t9lrTsxtUYQZaHPoWEG8kDsnlqb.png" alt="/t9lrTsxtUYQZaHPoWEG8kDsnlqb.png" title="/t9lrTsxtUYQZaHPoWEG8kDsnlqb.png"><img src="https://image.tmdb.org/t/p/original/HyCNR4BjB1Ublfdt17oPBBzQ3R.png" alt="/HyCNR4BjB1Ublfdt17oPBBzQ3R.png" title="/HyCNR4BjB1Ublfdt17oPBBzQ3R.png"><img src="https://image.tmdb.org/t/p/original/pl8qwdeURcUIPUUdQdpbs4v5RQC.png" alt="/pl8qwdeURcUIPUUdQdpbs4v5RQC.png" title="/pl8qwdeURcUIPUUdQdpbs4v5RQC.png"><img src="https://image.tmdb.org/t/p/original/1UyutQTj0dCZwmTWfyixpkepPE1.png" alt="/1UyutQTj0dCZwmTWfyixpkepPE1.png" title="/1UyutQTj0dCZwmTWfyixpkepPE1.png"><img src="https://image.tmdb.org/t/p/original/8c9e0ZMhcTO5DRcS6nLkHBaqXkP.png" alt="/8c9e0ZMhcTO5DRcS6nLkHBaqXkP.png" title="/8c9e0ZMhcTO5DRcS6nLkHBaqXkP.png"><img src="https://image.tmdb.org/t/p/original/bi19ydoaVljIuN0vfGc2qZ04r7o.png" alt="/bi19ydoaVljIuN0vfGc2qZ04r7o.png" title="/bi19ydoaVljIuN0vfGc2qZ04r7o.png"><img src="https://image.tmdb.org/t/p/original/wVSznA8PaUobNmsMuacPHzGQlxk.png" alt="/wVSznA8PaUobNmsMuacPHzGQlxk.png" title="/wVSznA8PaUobNmsMuacPHzGQlxk.png"><img src="https://image.tmdb.org/t/p/original/k9VZr5TcE6YxZMR6lKq9eFiAPQN.png" alt="/k9VZr5TcE6YxZMR6lKq9eFiAPQN.png" title="/k9VZr5TcE6YxZMR6lKq9eFiAPQN.png"><img src="https://image.tmdb.org/t/p/original/cj19E6cekPFw3xzb4BLveCpWQmU.png" alt="/cj19E6cekPFw3xzb4BLveCpWQmU.png" title="/cj19E6cekPFw3xzb4BLveCpWQmU.png"><img src="https://image.tmdb.org/t/p/original/5xdc0HGl4fzk4CBYAlqgWKhp6NE.png" alt="/5xdc0HGl4fzk4CBYAlqgWKhp6NE.png" title="/5xdc0HGl4fzk4CBYAlqgWKhp6NE.png"><img src="https://image.tmdb.org/t/p/original/wtkoxBhWK0ghXCSzcwoe1EBJZMx.png" alt="/wtkoxBhWK0ghXCSzcwoe1EBJZMx.png" title="/wtkoxBhWK0ghXCSzcwoe1EBJZMx.png"><img src="https://image.tmdb.org/t/p/original/bR8SpS2X7uQUOCEK2FrglWyLRS.png" alt="/bR8SpS2X7uQUOCEK2FrglWyLRS.png" title="/bR8SpS2X7uQUOCEK2FrglWyLRS.png"><img src="https://image.tmdb.org/t/p/original/p5UFIi6SfDJaH4Qvle3WdSf1TVa.png" alt="/p5UFIi6SfDJaH4Qvle3WdSf1TVa.png" title="/p5UFIi6SfDJaH4Qvle3WdSf1TVa.png"><img src="https://image.tmdb.org/t/p/original/8ztXtEjJx7B0BvveQfDfT1RWs7g.png" alt="/8ztXtEjJx7B0BvveQfDfT1RWs7g.png" title="/8ztXtEjJx7B0BvveQfDfT1RWs7g.png"><img src="https://image.tmdb.org/t/p/original/1CWHzqWszy709QjAPeimbcDJItt.png" alt="/1CWHzqWszy709QjAPeimbcDJItt.png" title="/1CWHzqWszy709QjAPeimbcDJItt.png"><img src="https://image.tmdb.org/t/p/original/nrz5ldDF2J9kddimdobk6GGZOXh.png" alt="/nrz5ldDF2J9kddimdobk6GGZOXh.png" title="/nrz5ldDF2J9kddimdobk6GGZOXh.png"><img src="https://image.tmdb.org/t/p/original/5MUB8EZBCr7R701lEAVKMl0l94o.png" alt="/5MUB8EZBCr7R701lEAVKMl0l94o.png" title="/5MUB8EZBCr7R701lEAVKMl0l94o.png"><img src="https://image.tmdb.org/t/p/original/ce42UqlS7ggFxBlmPuyFTEUvTjX.png" alt="/ce42UqlS7ggFxBlmPuyFTEUvTjX.png" title="/ce42UqlS7ggFxBlmPuyFTEUvTjX.png"><img src="https://image.tmdb.org/t/p/original/sv8WPwzTIJdOesqnGSmd4zrg2ZC.png" alt="/sv8WPwzTIJdOesqnGSmd4zrg2ZC.png" title="/sv8WPwzTIJdOesqnGSmd4zrg2ZC.png"><img src="https://image.tmdb.org/t/p/original/9DVd8KiJIAXZuD4brUQ4IjVNyOZ.png" alt="/9DVd8KiJIAXZuD4brUQ4IjVNyOZ.png" title="/9DVd8KiJIAXZuD4brUQ4IjVNyOZ.png">

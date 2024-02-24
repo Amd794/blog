@@ -87,7 +87,7 @@ rss:
   enable: true   # Option values: true | false
 
 lazyload:
-  enable: false  # Option values: true | false
+  enable: true  # Option values: true | false
 
 cdn:
   enable: true       # Option values: true | false
