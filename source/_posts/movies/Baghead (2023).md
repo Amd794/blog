@@ -23,6 +23,7 @@ tags:
 **电影上映国家**：English (English)
 **原产地语言**：en
 **包含成人内容**：False
+**是否纪录片**：False
 **电影评分**：7.385
 **评分人数**：13
 **热门程度**：81.712
@@ -32,6 +33,8 @@ tags:
 **电影简介**：
 
 ## **下载地址**：
+[Baghead |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=Baghead&ordering=&mode=match_phrase&page_size=10&page=1)
+
 [Baghead |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=Baghead&ordering=&mode=match_phrase&page_size=10&page=1)
  
 

@@ -24,6 +24,7 @@ tags:
 **电影上映国家**：English (English)
 **原产地语言**：en
 **包含成人内容**：False
+**是否纪录片**：False
 **电影评分**：8.154
 **评分人数**：13
 **热门程度**：277.768
@@ -33,6 +34,8 @@ tags:
 **电影简介**：《花生漫画》中最受喜爱的角色之一富兰克林的起源故事，讲述了他如何努力结交新朋友。富兰克林的家庭总是在搬来搬去，因为他爸爸从事军职，而每到一个新地方，富兰克林都会在一本记满祖父关于友谊建议的笔记本里找到支持。但当富兰克林尝试用自己惯用的方法与花生班成员相处时，却发现很难融入进去。直到他得知附近有个肥皂盒车大赛——根据祖父所说，人人都喜欢胜利者。他确信赢得比赛也意味着能赢得一些新朋友。他唯一需要的就是一个伙伴，在查理·布朗身上找到了这个伙伴。富兰克林和查理·布朗合作制造汽车，并在此过程中成为好朋友。但随着比赛临近，压力不断增加——他们的车辆和新结缘的友谊能否顺利达到终点线呢？
 
 ## **下载地址**：
+[Snoopy Presents: Welcome Home, Franklin |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=Snoopy%20Presents%3A%20Welcome%20Home%2C%20Franklin&ordering=&mode=match_phrase&page_size=10&page=1)
+
 [Snoopy Presents: Welcome Home, Franklin |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=Snoopy%20Presents%3A%20Welcome%20Home%2C%20Franklin&ordering=&mode=match_phrase&page_size=10&page=1)
  
 

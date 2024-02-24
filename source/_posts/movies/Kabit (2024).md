@@ -13,7 +13,7 @@ tags:
 ---
 
 
-> 
+> 劳拉（Laura ）接受了这个反抗她妈妈的角色。导演逼她展现出自己脆弱和愤怒，希望她能在舞台上展示这些情绪。
 
 ## **电影详情**：
 
@@ -24,15 +24,18 @@ tags:
 **电影上映国家**：Tagalog ()
 **原产地语言**：tl
 **包含成人内容**：False
+**是否纪录片**：False
 **电影评分**：0.0
 **评分人数**：0
 **热门程度**：113.751
 **电影时长**：
 **电影导演**：
 **电影主演**：
-**电影简介**：
+**电影简介**：劳拉（Laura ）接受了这个反抗她妈妈的角色。导演逼她展现出自己脆弱和愤怒，希望她能在舞台上展示这些情绪。
 
 ## **下载地址**：
+[Kabit |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=Kabit&ordering=&mode=match_phrase&page_size=10&page=1)
+
 [Kabit |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=Kabit&ordering=&mode=match_phrase&page_size=10&page=1)
  
 

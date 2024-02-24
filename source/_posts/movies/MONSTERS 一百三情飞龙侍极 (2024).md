@@ -26,6 +26,7 @@ tags:
 **电影上映国家**：Japanese (日本語)
 **原产地语言**：ja
 **包含成人内容**：False
+**是否纪录片**：False
 **电影评分**：7.2
 **评分人数**：64
 **热门程度**：190.179
@@ -35,7 +36,9 @@ tags:
 **电影简介**：和平年代，在天空中舞动的“恐怖”，扰乱了时间的流动。“恐怖”的出现也意味着某一片土地的彻底毁灭。“恐怖”的化身就是那条龙……
 
 ## **下载地址**：
-[MONSTERS 一百三情飞龙侍极 |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=MONSTERS%20%E4%B8%80%E7%99%BE%E4%B8%89%E6%83%85%E9%A3%9B%E9%BE%8D%E4%BE%8D%E6%A5%B5&ordering=&mode=match_phrase&page_size=10&page=1)
+[MONSTERS 一百三情飛龍侍極 |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=MONSTERS%20%E4%B8%80%E7%99%BE%E4%B8%89%E6%83%85%E9%A3%9B%E9%BE%8D%E4%BE%8D%E6%A5%B5&ordering=&mode=match_phrase&page_size=10&page=1)
+
+[MONSTERS 一百三情飞龙侍极 |专业的种子搜索、磁力链接搜索引擎](https://movie.amd794.com:2083/?search=MONSTERS%20%E4%B8%80%E7%99%BE%E4%B8%89%E6%83%85%E9%A3%9E%E9%BE%99%E4%BE%8D%E6%9E%81&ordering=&mode=match_phrase&page_size=10&page=1)
  
 
 ## **电影剧照**：
