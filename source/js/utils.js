@@ -1,3 +1,5 @@
+/* global KEEP */
+
 KEEP.initUtils = () => {
   KEEP.utils = {
     rootHtmlDom: document.querySelector('html'),
