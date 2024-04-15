@@ -45,7 +45,7 @@ home:
 
 post:
   author_badge:
-    enable: true
+    enable: false
     level_badge: false
     custom_badge: [ "炼气", "筑基", "结丹", "元婴", "化神","破虚","渡劫","大乘","散仙","真仙","金仙","玄仙","洞虚","大罗金仙","天仙","圣人" ]
 
