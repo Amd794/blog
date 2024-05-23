@@ -1001,7 +1001,7 @@ class UserForm(forms.Form):
 模板继承允许在子模板中覆盖父模板中的块，以实现更好的代码重用。主要有三个关键字：`{% block %}`、`{% blocktrans %}`
 和`{% extends %}`。
 
-1. **{% block %}** ：在父模板中定义一个或多个块，子模板可以覆盖这些块。
+1. **`{% block %}`** ：在父模板中定义一个或多个块，子模板可以覆盖这些块。
 
     ```html
     <!-- 父模板 -->
@@ -1017,7 +1017,7 @@ class UserForm(forms.Form):
     
     ```
 
-2. **{% blocktrans %}** ：用于翻译模板中的文本，并支持参数化。
+2. **`{% blocktrans %}`** ：用于翻译模板中的文本，并支持参数化。
 
     ```html
     <!-- 父模板 -->
@@ -1027,7 +1027,7 @@ class UserForm(forms.Form):
     
     ```
 
-3. **{% extends %}** ：在子模板中使用`{% extends "base.html" %}`语句来继承父模板。
+3. **`{% extends %}`** ：在子模板中使用`{% extends "base.html" %}`语句来继承父模板。
 
     ```html
     <!-- 子模板 -->

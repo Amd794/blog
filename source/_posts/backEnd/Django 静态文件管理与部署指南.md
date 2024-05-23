@@ -95,7 +95,7 @@ static 目录中，可以按照需要创建子目录，以更好地组织静态�
 
 例如，一个应用的静态文件结构可能如下所示：
 
-```
+```darcs
 myapp/
     static/
         css/
@@ -112,12 +112,12 @@ myapp/
 
 静态文件的版本控制是一种重要的实践，可以帮助解决静态文件缓存的问题。通过为静态文件添加版本号或哈希值，可以确保客户端在静态文件更新时能够及时获取到最新版本，而不会因为缓存而导致显示旧版本的静态文件。
 
-在 Django 中，可以使用 django.contrib.staticfiles 中的 static template tag 来处理静态文件的版本控制。通过在模板中使用 {%
-static %} 模板标签引用静态文件，Django 会自动为静态文件添加版本号或哈希值，从而实现静态文件的版本控制。
+在 Django 中，可以使用 django.contrib.staticfiles 中的 static template tag 来处理静态文件的版本控制。通过在模板中使用 `{%
+static %}` 模板标签引用静态文件，Django 会自动为静态文件添加版本号或哈希值，从而实现静态文件的版本控制。
 
 **总结**
 
-在 Django 中，通过 collectstatic 命令可以方便地收集项目中的静态文件到一个目录中。静态文件通常被组织在每个应用的 static
+在 Django 中，通过 collectstatic 命令可以方便地收集项目中的静态文件到一个目录中。静态文件通常被组织在每个应用的static
 目录中，以便于管理和维护。静态文件的版本控制是一种重要的实践，可以通过静态文件的哈希值或版本号来确保客户端获取到最新版本的静态文件，避免缓存问题。理解这些概念和实践，可以帮助开发人员更好地管理和服务静态文件。
 
 ## **第四章：静态文件处理**
@@ -135,7 +135,7 @@ static %} 模板标签引用静态文件，Django 会自动为静态文件添加
 在 Django 中，可以使用 Django Compressor 这个工具来实现 CSS 和 JavaScript 的压缩和合并。Django Compressor 可以将多个 CSS 和
 JavaScript 文件合并为一个文件，并且可以对文件进行压缩。
 
-要使用 Django Compressor，需要在项目中安装它，并在 settings.py 中进行配置。在模板中，可以使用 {% compress %} 模板标签来包裹
+要使用 Django Compressor，需要在项目中安装它，并在 settings.py 中进行配置。在模板中，可以使用` {% compress %}` 模板标签来包裹
 CSS 和 JavaScript 标签，从而让 Django Compressor 对它们进行压缩和合并。
 
 另外，可以使用 Webpack 等工具来处理 JavaScript 文件。Webpack 是一个 JavaScript 模块打包工具，可以将多个 JavaScript
@@ -189,7 +189,7 @@ server_name yourdomain.com;
 
 location /static/ {
 alias /path/to/your/static/files/;
-try_files $uri $uri/ =404;
+try_files $uri $uri/ = 404;
 }
 }
 ```
