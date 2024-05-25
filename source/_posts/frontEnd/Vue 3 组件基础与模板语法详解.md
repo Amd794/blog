@@ -89,6 +89,7 @@ app.mount('#app')
 
 **1. 组件的概念**
 
+AD：[首页 | 一个覆盖广泛主题工具的高效在线平台](https://amd794.com/)
 在Vue中，组件是构成应用程序的基本单位。组件是独立的、可复用的Vue实例，具有自己的属性、事件、生命周期钩子等。组件可以看作是页面的最小单位，通过组合这些组件，我们可以构建出复杂的页面。
 
 **2. 组件的创建与注册**
@@ -154,6 +155,7 @@ template: '
 ```
 
 **Emits**：用于子组件向父组件传递数据。子组件可以通过`emit`方法触发事件，并传递数据。
+AD：[专业搜索引擎](https://movie.amd794.com:2083/)
 
 ```vue
 const MyComponent = defineComponent({
@@ -250,6 +252,8 @@ Vue组件的样式可以通过几种方式来定义：
 **2. 指令基础**
 
 Vue的指令是HTML元素上可以附加的行为。常见的指令有`v-bind`,`v-model`, 和`v-on`。
+
+AD：[漫画首页](https://comic.amd794.com:2087/)
 
 - `v-bind`：用于数据绑定，等同于`v-bind:attr="expression"`，如`v-bind:class="{ active: isActive }"`.
 - `v-model`：用于双向数据绑定，主要用于表单输入，如`<input v-model="username">`.
