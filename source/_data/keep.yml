@@ -98,25 +98,23 @@ footer:
   since: 2023           # The starting year of your website, Can be null
   word_count: false     # Option values: true | false
 
-  icp:
-    enable: true                    # Option values: true | false
-    record_code: 粤ICP备2024258322号-1                     # ICP record code of your website
-    url:   https://beian.miit.gov.cn/ # Your ICP link url, Can be null
+  record:
+    enable: true
+    list:
+      - code: 粤ICP备2024258322号-1
+        link: https://beian.miit.gov.cn
+
+      - code: 粤公网安备 0001
+        link: https://beian.mps.gov.cn
 
   site_deploy:
-    enable: false        # Option values: true | false
+    enable: true        # Option values: true | false
     provider: github     # Option values: github | vercel | netlify | gitee | aliyun | tencent_cloud | upyun
     url: https://github.com/Amd794                # Your deployment provider url, Can be null
 
-  shields_style:
-    enable: false        # Option values: true | false
-    custom:
-      - link_url:        # Your link url, Can be null
-        img_url:         # Shields image url
 
-#
-#inject:
-#  enable: true
-#  js:
-#    - /js/footerScript.js
-#    - /js/utils.js
+inject:
+  enable: true
+  js:
+    - /js/footerScript.js
+    - /js/utils.js
