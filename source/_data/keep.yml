@@ -104,8 +104,6 @@ footer:
       - code: 粤ICP备2024258322号-1
         link: https://beian.miit.gov.cn
 
-      - code: Copyright©2023 amd794.com All Rights Reserved
-        link:
 
   site_deploy:
     enable: true        # Option values: true | false
@@ -116,5 +114,5 @@ footer:
 inject:
   enable: true
   js:
-    - /js/footerScript.js
+#    - /js/footerScript.js
     - /js/utils.js
