@@ -1,4 +1,3 @@
-
 if (!window.runningTime) {
     window.runningTime = () => {
         const infoBox = document.querySelector('.footer .website-info-box')
@@ -23,4 +22,3 @@ if (!window.runningTime) {
     }
 }
 window.runningTime()
-

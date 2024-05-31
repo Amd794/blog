@@ -47,7 +47,7 @@ post:
   author_badge:
     enable: false
     level_badge: false
-    custom_badge: [ "炼气", "筑基", "结丹", "元婴", "化神","破虚","渡劫","大乘","散仙","真仙","金仙","玄仙","洞虚","大罗金仙","天仙","圣人" ]
+    custom_badge: [ "炼气", "筑基", "结丹", "元婴", "化神","破虚","渡劫","大乘","散仙","真仙","金仙","玄仙","天仙","圣人" ]
 
   word_count:
     wordcount: true     # Word count, one article. Option values: true | false
@@ -62,7 +62,7 @@ post:
   reward:
     enable: true        # Option values: true | false
     img_link: /images/payment.jpg           # Image link for the payment QR code
-    text: 打赏作者辣条！               # Custom reward text, Can be null
+    text: 打赏作者一包辣条！               # Custom reward text, Can be null
 
 code_block:
   tools:
@@ -104,8 +104,8 @@ footer:
       - code: 粤ICP备2024258322号-1
         link: https://beian.miit.gov.cn
 
-      - code: 粤公网安备 0001
-        link: https://beian.mps.gov.cn
+      - code: Copyright©2023 amd794.com All Rights Reserved
+        link:
 
   site_deploy:
     enable: true        # Option values: true | false
