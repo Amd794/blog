@@ -45,7 +45,7 @@ home:
 
 post:
   author_badge:
-    enable: false
+    enable: true
     level_badge: false
     custom_badge: [ "炼气", "筑基", "结丹", "元婴", "化神","破虚","渡劫","大乘","散仙","真仙","金仙","玄仙","天仙","圣人" ]
 
@@ -60,7 +60,7 @@ post:
   share: true           # Option values: true | false
 
   reward:
-    enable: true        # Option values: true | false
+    enable: false        # Option values: true | false
     img_link: /images/payment.jpg           # Image link for the payment QR code
     text: 打赏作者一包辣条！               # Custom reward text, Can be null
 
