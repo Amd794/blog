@@ -9,3 +9,4 @@ _multiconfig.yml
 .idea/
 pnpm-lock.yaml
 test.py
+package-lock.json
