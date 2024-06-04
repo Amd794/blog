@@ -10,7 +10,6 @@
     <link rel="alternate" type="application/rss+xml" href="https://blog.cmdragon.cn/sitemap.xml">
 
 
-
     <meta property="og:url" content="<%= url %>">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<%= __(page.title) || 'Welcome' %> - cmdragon’s Blog">
@@ -90,6 +89,26 @@
           }</style>
     </noscript>
 
+
+    <meta name="sogou_site_verification" content="qZfnE3dzeO"/>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () {
+          (c[a].q = c[a].q || []).push(arguments)
+        };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "mmt9qkvlod");
+    </script>
+
+
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "3IdZIMuyj5mvN0Fz", ck: "3IdZIMuyj5mvN0Fz"})</script>
+
     <%
     let title = page.title;
     if (is_archive()) {
@@ -115,8 +134,6 @@
     </title>
 
 
-
-
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -128,6 +145,12 @@
             ],
             "datePublished": "<%= page.date || '2024-01-05T08:00:00+08:00' %>",
             "dateModified": "<%= page.updated || '2024-01-05T08:00:00+08:00' %>",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 9.5,
+                "bestRating": "10",
+                "ratingCount": 526
+            },
             "publisher":
               {
                     "@type": "Person",
@@ -149,7 +172,19 @@
         }
     </script>
 
-
+    <script>
+      (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
 
     <%- css('css/style') %>
     <% if (theme?.base_info?.favicon) { %>

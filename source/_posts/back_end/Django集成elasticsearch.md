@@ -1,7 +1,7 @@
 ---
 title: Django集成elasticsearch
-date: 2024/5/30 下午9:01:33
-updated: 2024/5/30 下午9:01:33
+date: 2024/5/30 9:01:33
+updated: 2024/5/30 9:01:33
 categories:
   - 后端开发
 
