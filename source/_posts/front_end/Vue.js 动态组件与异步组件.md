@@ -1,7 +1,7 @@
 ---
 title: Vue.js 动态组件与异步组件
-date: 2024/6/2 下午9:08:50
-updated: 2024/6/2 下午9:08:50
+date: 2024/6/2 9:08:50
+updated: 2024/6/2 9:08:50
 categories:
    - 前端开发
 tags:
