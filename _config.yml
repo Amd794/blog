@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Amd794's Blog
-subtitle: ''
-description: ''
-keywords:
-author: Amd794
+title: cmdragon‘s Blog
+subtitle: "cmdragon’s Blog"
+description: 'cmdragon’s Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。在这里，你可以深入了解各种编程语言，探索实用的技术技巧，还能与其他开发者共同交流，助力个人技能提升和职业发展。'
+keywords: 'cmdragon, 个人网站, 编程, 技术分享, 学习资源, 前端开发, 后端开发, 全栈开发, 编程语言, 开发者社区'
+author: cmdragon
 language:
 - zh-CN
 - zh-TW

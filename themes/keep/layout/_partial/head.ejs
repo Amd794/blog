@@ -1,0 +1,168 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords"
+          content="<% page.tags?.forEach(function(item) { %> <%= item.name %>,<% }); %> <%= page?.keywords || config?.keywords || 'cmdragon’s Blog' %>">
+    <meta name="description" content="<%= page?.description || config?.description || 'cmdragon’s Blog' %>">
+    <meta name="author" content="<%= theme?.base_info?.author || config?.author || 'cmdragon' %>">
+
+
+    <meta property="og:url" content="<%= url %>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<%= __(page.title) || 'Welcome' %> - cmdragon’s Blog">
+    <meta property="og:description"
+          content="<%= __(page.title) || 'Welcome' %>, <%= page?.description || config?.description || 'cmdragon’s Blog' %>">
+    <meta property="og:image" content="https://api.btstu.cn/sjbz/api.php">
+
+    <meta name="twitter:card" content="https://api.btstu.cn/sjbz/api.php">
+    <meta property="twitter:domain" content="cmdragon.cn">
+    <meta property="twitter:url" content="<%= url %>">
+    <meta name="twitter:title" content="<%= __(page.title) || 'Welcome' %> - cmdragon’s Blog">
+    <meta name="twitter:description"
+          content="<%= __(page.title) || 'Welcome' %>, <%= page?.description || config?.description || 'cmdragon’s Blog' %>">
+    <meta name="twitter:image" content="https://api.btstu.cn/sjbz/api.php">
+
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <link rel="canonical" href="<%= url %>">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        animation: -amp-start 8s steps(1, end) 0s 1 normal both
+      }
+
+      @-webkit-keyframes -amp-start {
+        from {
+          visibility: hidden
+        }
+        to {
+          visibility: visible
+        }
+      }
+
+      @-moz-keyframes -amp-start {
+        from {
+          visibility: hidden
+        }
+        to {
+          visibility: visible
+        }
+      }
+
+      @-ms-keyframes -amp-start {
+        from {
+          visibility: hidden
+        }
+        to {
+          visibility: visible
+        }
+      }
+
+      @-o-keyframes -amp-start {
+        from {
+          visibility: hidden
+        }
+        to {
+          visibility: visible
+        }
+      }
+
+      @keyframes -amp-start {
+        from {
+          visibility: hidden
+        }
+        to {
+          visibility: visible
+        }
+      }</style>
+    <noscript>
+        <style amp-boilerplate>
+          body {
+            -webkit-animation: none;
+            -moz-animation: none;
+            -ms-animation: none;
+            animation: none
+          }</style>
+    </noscript>
+
+    <%
+    let title = page.title;
+    if (is_archive()) {
+        title = __('archive');
+        if (is_month()) {
+            title += ': ' + page.year + '/' + page.month;
+        } else if (is_year()) {
+            title += ': ' + page.year;
+        }
+    } else if (is_category()) {
+        title = __('category') + ': ' + page.category;
+    } else if (is_tag()) {
+        title = __('tag') + ': ' + page.tag;
+    } else {
+        title = __(page.title);
+    }
+    %>
+    <title>
+        <% if (title) { %>
+            <%= title %> |
+        <% } %>
+        <%= theme?.base_info?.title || config?.title || 'cmdragon’s Blog' %>
+    </title>
+
+
+
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "headline": "<%= __(page.title) || 'Welcome' %> - cmdragon’s Blog",
+            "image": [
+                "https://api.btstu.cn/sjbz/api.php",
+                "https://img.xjh.me/random_img.php"
+            ],
+            "datePublished": "<%= page.date || '2024-01-05T08:00:00+08:00' %>",
+            "dateModified": "<%= page.updated || '2024-01-05T08:00:00+08:00' %>",
+            "publisher":
+              {
+                    "@type": "Person",
+                    "name": "cmdragon",
+                    "url": "https://github.com/Amd794"
+              },
+            "author": [
+                {
+                    "@type": "Person",
+                    "name": "cmdragon",
+                    "url": "https://cmdragon.cn/"
+                },
+                {
+                    "@type": "Person",
+                    "name": "amd794",
+                    "url": "https://github.com/Amd794"
+                }
+            ]
+        }
+    </script>
+
+
+
+    <%- css('css/style') %>
+    <% if (theme?.base_info?.favicon) { %>
+        <%- favicon_tag(theme?.base_info?.favicon) %>
+    <% } %>
+    <%- __css('font/css/fontawesome.min.css') %>
+    <%- __css('font/css/regular.min.css') %>
+    <%- __css('font/css/solid.min.css') %>
+    <%- __css('font/css/brands.min.css') %>
+    <% if (theme?.inject?.enable === true) { %>
+        <% theme?.inject?.css?.forEach((css_path) => { %>
+            <% if (css_path && isCssFile(css_path)) { %>
+                <%- css(css_path) %>
+            <% } %>
+        <% }) %>
+    <% } %>
+    <%- exportThemeConfig() %>
+</head>
+
