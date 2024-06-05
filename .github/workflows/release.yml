@@ -30,13 +30,13 @@ jobs:
         run: npm run build
 
       - name: Create tar.gz
-        run: tar -czvf ./public/build.tar.gz .public/*
+        run: tar -czvf public.tar.gz public/*
 
       - name: Create and upload release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            ./public/build.tar.gz
+            public.tar.gz
           tag_name: ${{ env.VERSION }}
           name: Release ${{ env.VERSION }}
           body: |

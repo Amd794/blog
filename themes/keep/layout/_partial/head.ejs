@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords"
           content="<% page.tags?.forEach(function(item) { %> <%= item.name %>,<% }); %> <%= page?.keywords || config?.keywords || 'cmdragon’s Blog' %>">
-    <meta name="description" content="<%= page?.description || config?.description || 'cmdragon’s Blog' %>">
+    <meta name="description" content="<%= page?.excerpt || config?.description || 'cmdragon’s Blog' %>">
     <meta name="author" content="<%= theme?.base_info?.author || config?.author || 'cmdragon' %>">
 
     <link rel="alternate" type="application/atom+xml" href="https://blog.cmdragon.cn/atom.xml">
@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="<%= __(page.title) || 'Welcome' %> - cmdragon’s Blog">
     <meta property="og:description"
-          content="<%= __(page.title) || 'Welcome' %>, <%= page?.description || config?.description || 'cmdragon’s Blog' %>">
+          content="<%= __(page.title) || 'Welcome' %>, <%= page?.excerpt || config?.description || 'cmdragon’s Blog' %>">
     <meta property="og:image" content="https://api.btstu.cn/sjbz/api.php">
 
     <meta name="twitter:card" content="https://api.btstu.cn/sjbz/api.php">
@@ -22,7 +22,7 @@
     <meta property="twitter:url" content="<%= url %>">
     <meta name="twitter:title" content="<%= __(page.title) || 'Welcome' %> - cmdragon’s Blog">
     <meta name="twitter:description"
-          content="<%= __(page.title) || 'Welcome' %>, <%= page?.description || config?.description || 'cmdragon’s Blog' %>">
+          content="<%= __(page.title) || 'Welcome' %>, <%= page?.excerpt || config?.description || 'cmdragon’s Blog' %>">
     <meta name="twitter:image" content="https://api.btstu.cn/sjbz/api.php">
 
     <script async src="https://cdn.ampproject.org/v0.js"></script>
@@ -140,6 +140,7 @@
             "headline": "<%= __(page.title) || 'Welcome' %> - cmdragon’s Blog",
             "image": [
                 "https://api.btstu.cn/sjbz/api.php",
+                "https://t.alcy.cc/mp/",
                 "https://img.xjh.me/random_img.php"
             ],
             "datePublished": "<%= page.date || '2024-01-05T08:00:00+08:00' %>",
