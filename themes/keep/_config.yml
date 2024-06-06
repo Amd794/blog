@@ -9,13 +9,13 @@ base_info:
 menu:
   Home: /                         # 首页
   Archives: /archives             # 归档
-  #  工具宝盒: https://amd794.com
+  工具箱: https://toolkit.cmdragon.cn
   #  影享天地: https://movie.amd794.com:2083
   #  品影指南: https://movie-guide.amd794.com
   #  漫画宝盒: https://comic.amd794.com:2087
   #  Tags: /tags                   # 标签
   #  Categories: /categories       # 分类
-  #  Links: /links                 # 链接
+  Links: /links                 # 链接
   #  About: /about                 # 关于
   #  Photos: /photos               # 相册
   # ...
@@ -60,7 +60,7 @@ post:
   share: true           # Option values: true | false
 
   reward:
-    enable: false        # Option values: true | false
+    enable: true        # Option values: true | false
     img_link: /images/payment.jpg           # Image link for the payment QR code
     text: 打赏作者一包辣条！               # Custom reward text, Can be null
 
