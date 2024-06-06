@@ -3,7 +3,7 @@ name: project release
 on:
   push:
     branches:
-      - master
+      - tags
 
 
 env:
