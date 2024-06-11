@@ -28,12 +28,12 @@ tags:
 打开命令行工具，运行以下命令来创建一个新的 Nuxt.js 项目：
 
 ```bash
-npx create-nuxt-app my-nuxt-project
+npx nuxi@latest init <project-name>
 ```
 
 在这个过程中，你可以选择服务器框架、UI框架等。按照提示完成项目的基本配置。
 
-### 步骤 3: 安装 Twind
+### 步骤 3: 安装 TwindCSS 和 其它modules
 
 进入你的 Nuxt.js 项目目录：
 
@@ -45,8 +45,10 @@ npm i
 安装 Twind 和相关依赖：
 
 ```bash
-npx nuxi module add @nuxtjs/tailwindcss
+npm install --save-dev @nuxtjs/tailwindcss
 npx tailwindcss init
+
+// https://nuxt.com.cn/modules
 ```
 
 > npm 更偏向于包的长期管理和依赖控制，而 npx 则专注于简化包的临时使用和执行，特别是在需要快速运行或测试一个包的命令行工具时更为方便。

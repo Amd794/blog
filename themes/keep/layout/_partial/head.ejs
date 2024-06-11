@@ -1,5 +1,6 @@
 <head>
     <meta charset="utf-8">
+    <link href="<%= theme?.base_info?.favicon %>>" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords"
           content="<% page.tags?.forEach(function(item) { %> <%= item.name %>,<% }); %> <%= page?.keywords || config?.keywords || 'cmdragon’s Blog' %>">
