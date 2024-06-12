@@ -2,7 +2,7 @@
 title: Tailwind CSS 实战指南：快速构建响应式网页设计
 date: 2024/6/12
 updated: 2024/6/12
-author: [ cmdragon ](https://cmdragon.cn)
+author: cmdragon 
 
 excerpt:
   这篇文章介绍了Tailwind CSS框架的特点与优势，包括其作为实用性的CSS框架如何通过预设的样式类实现快速布局和设计，以及如何在不牺牲响应式和自适应性的同时减少开发时间。此外，还提及了框架的可定制性，允许开发者轻松创建符合项目需求的样式规则，从而提高前端开发效率。
