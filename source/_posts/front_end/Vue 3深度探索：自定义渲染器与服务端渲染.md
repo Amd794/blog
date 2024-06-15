@@ -24,7 +24,7 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
-扫码关注或者微信搜一搜：编程智域 前端至全栈交流与成长
+扫码关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 ### Vue 3基础回顾
 
