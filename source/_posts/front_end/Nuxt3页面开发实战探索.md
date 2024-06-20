@@ -2,7 +2,7 @@
 title: Nuxt3页面开发实战探索
 date: 2024/6/19
 updated: 2024/6/19
-author: [ cmdragon ](https://cmdragon.cn)
+author: cmdragon
 
 excerpt:
   摘要：这篇文章是关于Nuxt3页面开发实战探索的。它介绍了Nuxt3的基础入门，安装与配置，项目结构，内置组件与功能，以及页面与路由的相关内容。Nuxt3是基于Vue 3的服务器端渲染框架，旨在简化Vue应用程序的开发流程，提供最佳的性能和开发
