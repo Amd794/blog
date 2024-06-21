@@ -15,7 +15,7 @@ const is_code_block_unshrink = page?.code_block_shrink === false
                     </div>
                     <img class="post-cover" src="<%- url_for(page.post_cover || page?.home_cover) %>"
                          onerror="this.style.display='none'"
-                    >
+                     alt="<%- url_for(page.post_cover || page?.home_cover) %>">
                 </div>
             <% } %>
 

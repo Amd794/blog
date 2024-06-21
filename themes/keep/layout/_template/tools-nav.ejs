@@ -34,7 +34,7 @@ const tools_nav_data = theme.source_data.tools.filter((t) => t?.category)
                                 <span class="text-color-4"><%= tool?.name.charAt(0).toUpperCase() %></span>
                                 <img src="<%- url_for(tool?.image) %>"
                                      onerror="this.style.display = 'none'"
-                                >
+                                 alt="<%- url_for(tool?.image) %>">
                             </div>
                             <div class="name flex-start border-box text-ellipsis">
                                 <div class="border-box text-color-3 text-ellipsis">
