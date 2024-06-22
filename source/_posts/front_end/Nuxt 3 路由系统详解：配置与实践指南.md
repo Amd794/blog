@@ -683,10 +683,13 @@ const router = new VueRouter({
 在这个示例中，`beforeRouteEnter`生命周期钩子记录了一个名为`beforeRouteEnter`
 的标记，并在路由导航被确认后记录了一个名为`beforeRouteEnter`的度量。这些数据可以在Chrome开发工具中的“性能”面板中查看和分析。
 
+
+
+余下文章内容请点击跳转至 个人博客页面 或者 扫码关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`，阅读完整的文章：
+
 ### 往期文章推荐：
 
 - [Nuxt 3组件开发与管理 | cmdragon's Blog](https://blog.cmdragon.cn/2024/06/19/front_end/nuxt%203%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91%E4%B8%8E%E7%AE%A1%E7%90%86/)
-
 - [Nuxt.js 深入浅出：目录结构与文件组织详解 | cmdragon’s Blog**](https://www.cmdragon.cn/2024/06/17/front_end/nuxt.js%20%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%EF%BC%9A%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%B8%8E%E6%96%87%E4%BB%B6%E7%BB%84%E7%BB%87%E8%AF%A6%E8%A7%A3/)
 - [友情链接 | cmdragon’s Blog**](https://www.cmdragon.cn/links/)
 - [安装 Nuxt.js 的步骤和注意事项 | cmdragon’s Blog**](https://www.cmdragon.cn/2024/06/16/front_end/%E5%AE%89%E8%A3%85%20nuxt.js%20%E7%9A%84%E6%AD%A5%E9%AA%A4%E5%92%8C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/)
@@ -697,3 +700,4 @@ const router = new VueRouter({
 - [Tailwind CSS 实战指南：快速构建响应式网页设计 | cmdragon’s Blog**](https://www.cmdragon.cn/2024/06/11/front_end/tailwind%20css%20%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%EF%BC%9A%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BA%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1/)
 - [Vue 3与ESLint、Prettier：构建规范化的前端开发环境 | cmdragon’s Blog**](https://www.cmdragon.cn/2024/06/10/front_end/vue%203%E4%B8%8Eeslint%E3%80%81prettier%EF%BC%9A%E6%9E%84%E5%BB%BA%E8%A7%84%E8%8C%83%E5%8C%96%E7%9A%84%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/)
 - [Vue TypeScript 实战：掌握静态类型编程 | cmdragon’s Blog**](https://www.cmdragon.cn/2024/06/09/front_end/vue%20typescript%20%E5%AE%9E%E6%88%98%EF%BC%9A%E6%8E%8C%E6%8F%A1%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B%E7%BC%96%E7%A8%8B/)
+- 

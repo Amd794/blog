@@ -16,7 +16,7 @@ for (const key in origin_h_menu_nav_object) {
         <div class="left border-box">
             <% if (bi_logo) { %>
                 <a class="logo-image border-box" href="<%- url_for('/') %>">
-                    <%- image_tag(bi_logo) %>
+                    <img src="<%- bi_logo %>" alt="logo">
                 </a>
             <% } %>
             <a class="site-name border-box" href="<%- url_for('/') %>">

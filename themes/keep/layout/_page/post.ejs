@@ -21,16 +21,16 @@ const is_code_block_unshrink = page?.code_block_shrink === false
 
             <div class="post-content-bottom border-box<%= (page?.post_cover || page?.home_cover) ? ' has-cover' : '' %>">
                 <% if (!page?.post_cover && !page?.home_cover) { %>
-                    <div class="post-title">
+                    <h1 class="post-title">
                         <%= page.title %>
-                    </div>
+                    </h1>
                 <% } %>
 
                 <% if (post_author) { %>
                     <div class="post-header border-box">
                         <% if (post_avatar) { %>
                             <div class="avatar-box border-box">
-                                <%- image_tag(post_avatar) %>
+                                <img src="<%- post_avatar %>" alt="avatar">
                             </div>
                         <% } %>
                         <div class="info-box">
