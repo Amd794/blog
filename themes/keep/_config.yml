@@ -4,7 +4,8 @@ base_info:
   author: cmdragon
   avatar: /images/avatar.jpg
   logo: /images/logo.svg
-  favicon: /images/favicon.svg
+  favicon: /images/favicon.ico
+  apple_touch_icon: /images/apple-touch-icon.ico
 
 menu:
   Home: /                         # 首页
