@@ -5,7 +5,7 @@ base_info:
   avatar: /images/avatar.jpg
   logo: /images/logo.svg
   favicon: /images/favicon.ico
-  apple_touch_icon: /images/apple-touch-icon.ico
+  apple_touch_icon: /images/apple-touch-icon.png
 
 menu:
   Home: /                         # 首页
