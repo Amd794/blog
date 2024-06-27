@@ -15,15 +15,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // print theme base info
-  KEEP.printThemeInfo = () => {
-    console.log(
-      `\n %c ${KEEP.themeInfo.theme} %c ${KEEP.themeInfo.repository} \n`,
-      `color: #fadfa3; background: #333; padding: 6px 0;`,
-      `padding: 6px 0;`
-    )
-  }
-  KEEP.printThemeInfo()
 
   // set version number of footer
   KEEP.setFooterVersion = () => {
