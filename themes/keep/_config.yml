@@ -92,7 +92,7 @@ lazyload:
   enable: true  # Option values: true | false
 
 cdn:
-  enable: true       # Option values: true | false
+  enable: false       # Option values: true | false
   provider: cdnjs     # Option values: cdnjs | jsdelivr | unpkg
 
 footer:
