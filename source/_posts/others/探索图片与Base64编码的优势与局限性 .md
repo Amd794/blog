@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.amd794.com/blog/images/2024_03_03 19_42_35.png@blog" title="2024_03_03 19_42_35.png" alt="2024_03_03 19_42_35.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_03_03 19_42_35.png@blog" title="2024_03_03 19_42_35.png" alt="2024_03_03 19_42_35.png"/>
 
 ## 一、图片和Base64编码的关系：
 

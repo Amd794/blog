@@ -15,7 +15,7 @@ tags:
   - Web组件
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_05_17 18_10_17.png@blog" title="2024_05_17 18_10_17.png" alt="2024_05_17 18_10_17.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_05_17 18_10_17.png@blog" title="2024_05_17 18_10_17.png" alt="2024_05_17 18_10_17.png"/>
 
 ### Django模板系统基础
 

@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.amd794.com/blog/images/2024_02_25 16_03_07.png@blog" title="2024_02_25 16_03_07.png" alt="2024_02_25 16_03_07.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_02_25 16_03_07.png@blog" title="2024_02_25 16_03_07.png" alt="2024_02_25 16_03_07.png"/>
 
 ## 一、ASCII编码的起源
 

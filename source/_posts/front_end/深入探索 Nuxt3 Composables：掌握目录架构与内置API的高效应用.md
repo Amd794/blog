@@ -20,9 +20,9 @@ tags:
    - 学习
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_06_23 15_00_16.png@blog" title="2024_06_23 15_00_16.png" alt="2024_06_23 15_00_16.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_06_23 15_00_16.png@blog" title="2024_06_23 15_00_16.png" alt="2024_06_23 15_00_16.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 ## Nuxt3 Composables
 

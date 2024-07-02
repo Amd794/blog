@@ -15,7 +15,7 @@ tags:
   - 浏览器缓存
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_05_20 20_18_55.png@blog" title="2024_05_20 20_18_55.png" alt="2024_05_20 20_18_55.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_05_20 20_18_55.png@blog" title="2024_05_20 20_18_55.png" alt="2024_05_20 20_18_55.png"/>
 
 
 ## **第一章：Django性能优化概述**

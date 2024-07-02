@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.amd794.com/blog/images/2024_02_24 14_15_09.png@blog" title="2024_02_24 14_15_09.png" alt="2024_02_24 14_15_09.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_02_24 14_15_09.png@blog" title="2024_02_24 14_15_09.png" alt="2024_02_24 14_15_09.png"/>
 
 > 随着互联网的迅猛发展，图片在网页和移动应用中的使用越来越广泛。而图片的传输和加载往往是网页性能的瓶颈之一。
 > 为了解决这一问题，图片Base64编码与解码技术应运而生。本文将介绍图片Base64相互转换的优缺点，

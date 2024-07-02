@@ -12,7 +12,7 @@ tags:
 - 加密技术发展
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_02_03 18_37_29.png@blog" title="2024_02_03 18_37_29.png" alt="2024_02_03 18_37_29.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_02_03 18_37_29.png@blog" title="2024_02_03 18_37_29.png" alt="2024_02_03 18_37_29.png"/>
 
 
 

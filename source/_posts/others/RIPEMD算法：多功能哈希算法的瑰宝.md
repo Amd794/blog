@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.amd794.com/blog/images/2024_03_10 17_32_45.png@blog" title="2024_03_10 17_32_45.png" alt="2024_03_10 17_32_45.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_03_10 17_32_45.png@blog" title="2024_03_10 17_32_45.png" alt="2024_03_10 17_32_45.png"/>
 
 ## 一、RIPEMD算法的起源与历程
 

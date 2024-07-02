@@ -13,7 +13,7 @@ tags:
 - 信息验证
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_01_31%2013_45_01.png@blog" alt="2024_01_31 13_45_01.png" title="2024_01_31 13_45_01.png">
+<img src="https://static.cmdragon.cn/blog/images/2024_01_31%2013_45_01.png@blog" alt="2024_01_31 13_45_01.png" title="2024_01_31 13_45_01.png">
 
 摘要：在数字世界中，确保数据完整性和安全性至关重要。消息摘要算法就是一种用于实现这一目标的常用技术。其中，Message Digest Algorithm 5（MD5）算法因其高效性和安全性而受到广泛关注。本文将详细介绍MD5算法的优缺点，以及它如何解决数据完整性问题和安全性问题。此外，我们还将提供一个使用Java编写的完整示例，以帮助读者深入了解MD5算法的实际应用。
 

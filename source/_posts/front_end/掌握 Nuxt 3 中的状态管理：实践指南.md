@@ -20,9 +20,9 @@ tags:
   - Web开发
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_06_22 14_22_35.png@blog" title="2024_06_22 14_22_35.png" alt="2024_06_22 14_22_35.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_06_22 14_22_35.png@blog" title="2024_06_22 14_22_35.png" alt="2024_06_22 14_22_35.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 ## **第1章：Nuxt 3 简介**
 

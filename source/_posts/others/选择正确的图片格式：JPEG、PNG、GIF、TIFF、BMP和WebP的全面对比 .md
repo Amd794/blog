@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.amd794.com/blog/images/2024_03_04 18_37_29.png@blog" title="2024_03_04 18_37_29.png" alt="2024_03_04 18_37_29.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_03_04 18_37_29.png@blog" title="2024_03_04 18_37_29.png" alt="2024_03_04 18_37_29.png"/>
 
 
 > 在数字化时代，图片是我们生活和工作中不可或缺的一部分。然而，随着技术的发展，出现了多种图片格式，如JPEG、PNG、GIF、TIFF、BMP和WebP。

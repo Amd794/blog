@@ -12,7 +12,7 @@ tags:
   - 密钥派生
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_04_20 20_41_20.png@blog" title="2024_04_20 20_41_20.png" alt="2024_04_20 20_41_20.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_04_20 20_41_20.png@blog" title="2024_04_20 20_41_20.png" alt="2024_04_20 20_41_20.png"/>
 
 ### 第一章：密码学基础
 

@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.amd794.com/blog/images/2024_04_22 18_56_51.png@blog" title="2024_04_22 18_56_51.png" alt="2024_04_22 18_56_51.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_04_22 18_56_51.png@blog" title="2024_04_22 18_56_51.png" alt="2024_04_22 18_56_51.png"/>
 
 ### 第一章：介绍
 

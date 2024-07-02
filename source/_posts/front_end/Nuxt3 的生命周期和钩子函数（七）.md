@@ -1,7 +1,7 @@
 ---
 title: Nuxt3 的生命周期和钩子函数（七）
 date: 2024/6/30
-updated: 2024/6/30
+updated: 2024/7/1
 author: cmdragon
 
 excerpt:
@@ -20,8 +20,8 @@ tags:
   - 错误处理
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_07_01 19_16_34.png@blog" title="2024_07_01 19_16_34.png" alt="2024_07_01 19_16_34.png"/>
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_07_01 19_16_34.png@blog" title="2024_07_01 19_16_34.png" alt="2024_07_01 19_16_34.png"/>
+<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 扫码关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 

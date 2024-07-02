@@ -15,7 +15,7 @@ tags:
 - 密钥扩展
 ---
 
-<img alt="2024_01_30 16_29_52.png" src="https://static.amd794.com/blog/images/2024_01_30 16_29_52.png@blog" title="2024_01_30 16_29_52.png"/>
+<img alt="2024_01_30 16_29_52.png" src="https://static.cmdragon.cn/blog/images/2024_01_30 16_29_52.png@blog" title="2024_01_30 16_29_52.png"/>
 
 
 摘要：在当今的数字世界中，密码安全是至关重要的。为了保护用户密码免受未经授权的访问和破解，Password-Based Key Derivation Function 2 (PBKDF2)算法成为了一种重要的工具。本文将介绍PBKDF2算法的优缺点，以及它如何解决密码存储和验证中的一些问题。我们还将提供一个使用Java编写的完整示例，以帮助读者深入了解PBKDF2算法的实际应用。

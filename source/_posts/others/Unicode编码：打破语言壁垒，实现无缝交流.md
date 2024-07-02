@@ -12,7 +12,7 @@ tags:
 - 全球交流
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_02_03 17_26_55.png@blog" title="2024_02_03 17_26_55.png" alt="2024_02_03 17_26_55.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_02_03 17_26_55.png@blog" title="2024_02_03 17_26_55.png" alt="2024_02_03 17_26_55.png"/>
 
 > Unicode编码是一种用于表示文本字符的编码系统，它旨在解决不同字符集之间相互兼容的问题，使各种语言和文化得以在数字世界中无缝交流。本文将从多个方面介绍Unicode编码的概念、原理及其在现实中的应用，为您揭示这个神秘编码背后的故事。
 

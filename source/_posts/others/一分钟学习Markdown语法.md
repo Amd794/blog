@@ -12,7 +12,7 @@ tags:
   - 链接问题
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_03_24 19_35_27.png@blog" title="2024_03_24 19_35_27.png" alt="2024_03_24 19_35_27.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_03_24 19_35_27.png@blog" title="2024_03_24 19_35_27.png" alt="2024_03_24 19_35_27.png"/>
 
 欢迎来到Markdown语法的世界！Markdown是一种简单而直观的标记语言，让文本排版变得轻松有趣。接下来，我们将带你逐步学习Markdown的基本语法。
 

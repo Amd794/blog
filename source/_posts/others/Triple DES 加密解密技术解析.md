@@ -12,7 +12,7 @@ tags:
 - 对称加
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_02_03 17_21_44.png@blog" title="2024_02_03 17_21_44.png" alt="2024_02_03 17_21_44.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_02_03 17_21_44.png@blog" title="2024_02_03 17_21_44.png" alt="2024_02_03 17_21_44.png"/>
 
 > 摘要：本文介绍了Triple DES加密解密技术，通过实例演示了加密和解密过程，并对算法原理进行了简要分析。同时，探讨了Triple DES在现代信息安全领域的应用和局限性。
 

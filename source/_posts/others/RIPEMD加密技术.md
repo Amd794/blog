@@ -12,7 +12,7 @@ tags:
 - 未来发展
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_02_03 16_55_56.png@blog" title="2024_02_03 16_55_56.png" alt="2024_02_03 16_55_56.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_02_03 16_55_56.png@blog" title="2024_02_03 16_55_56.png" alt="2024_02_03 16_55_56.png"/>
 
 摘要：RIPEMD（RACE Integrity Primitives Evaluation Message Digest）是一种密码散列函数，广泛应用于网络安全领域。本文首先介绍RIPEMD的起源和基本原理，然后分析其算法流程和优化策略，最后讨论RIPEMD在实际应用中的优势与局限。
 

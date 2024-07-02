@@ -12,7 +12,7 @@ tags:
 - 未来展望
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_02_03 17_43_21.png@blog" title="2024_02_03 17_43_21.png" alt="2024_02_03 17_43_21.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_02_03 17_43_21.png@blog" title="2024_02_03 17_43_21.png" alt="2024_02_03 17_43_21.png"/>
 
 > 在数字时代，我们需要一种能够唯一标识各种实体的方法。通用唯一标识符（UUID）正是为满足这一需求而诞生的。本文将从多个方面介绍UUID，探讨它为何成为通用唯一标识符，以及为什么说UUID是唯一的。
 

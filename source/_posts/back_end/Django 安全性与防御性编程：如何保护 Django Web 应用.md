@@ -15,7 +15,7 @@ tags:
   - Session
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_05_13 20_31_47.png@blog" title="2024_05_13 20_31_47.png" alt="2024_05_13 20_31_47.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_05_13 20_31_47.png@blog" title="2024_05_13 20_31_47.png" alt="2024_05_13 20_31_47.png"/>
 
 ## 跨站请求伪造（CSRF）
 

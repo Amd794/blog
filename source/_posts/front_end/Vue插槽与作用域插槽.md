@@ -14,7 +14,7 @@ tags:
   - 插槽优化
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_06_01 21_11_56.png@blog" title="2024_06_01 21_11_56.png" alt="2024_06_01 21_11_56.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_06_01 21_11_56.png@blog" title="2024_06_01 21_11_56.png" alt="2024_06_01 21_11_56.png"/>
 
 
 ## 第1章：插槽的概念与原理

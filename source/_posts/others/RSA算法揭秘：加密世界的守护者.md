@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.amd794.com/blog/images/2024_03_20 17_02_25.png@blog" title="2024_03_20 17_02_25.png" alt="2024_03_20 17_02_25.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_03_20 17_02_25.png@blog" title="2024_03_20 17_02_25.png" alt="2024_03_20 17_02_25.png"/>
 
 ### RSA算法起源：
 

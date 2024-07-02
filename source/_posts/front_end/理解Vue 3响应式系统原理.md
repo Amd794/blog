@@ -15,7 +15,7 @@ tags:
    - 响应式原理
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_05_28 15_46_34.png@blog" title="2024_05_28 15_46_34.png" alt="2024_05_28 15_46_34.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_05_28 15_46_34.png@blog" title="2024_05_28 15_46_34.png" alt="2024_05_28 15_46_34.png"/>
 
 ## 第一章：Vue 3简介
 

@@ -15,7 +15,7 @@ tags:
   - Optimization
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_05_02 18_33_49.png@blog" title="2024_05_02 18_33_49.png" alt="2024_05_02 18_33_49.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_05_02 18_33_49.png@blog" title="2024_05_02 18_33_49.png" alt="2024_05_02 18_33_49.png"/>
 
 ## **Django简介：**
 

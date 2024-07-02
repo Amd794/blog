@@ -12,7 +12,7 @@ tags:
 - 对称加密
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_02_03 17_52_11.png@blog" title="2024_02_03 17_52_11.png" alt="2024_02_03 17_52_11.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_02_03 17_52_11.png@blog" title="2024_02_03 17_52_11.png" alt="2024_02_03 17_52_11.png"/>
 
 ## 一、引言
 

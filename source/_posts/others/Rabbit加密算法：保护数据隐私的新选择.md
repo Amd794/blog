@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.amd794.com/blog/images/2024_01_29 14_38_34.png@blog" alt="2024_01_29 14_38_34.png" title="2024_01_29 14_38_34.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_01_29 14_38_34.png@blog" alt="2024_01_29 14_38_34.png" title="2024_01_29 14_38_34.png"/>
 
 摘要：数据安全是当今信息时代的关键问题之一。为了保护敏感数据免受未经授权的访问和窃取，加密算法起到了至关重要的作用。本文将介绍Rabbit加密算法的优缺点，以及它如何解决现代加密中的一些问题。本文还将提供一个使用Java编写的完整示例，以帮助读者深入了解Rabbit加密算法的实际应用。
 

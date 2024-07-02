@@ -12,7 +12,7 @@ tags:
 - 用户体验
 ---
 
-<img src="https://static.amd794.com/blog/images/2024_02_03 17_58_43.png@blog" title="2024_02_03 17_58_43.png" alt="2024_02_03 17_58_43.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_02_03 17_58_43.png@blog" title="2024_02_03 17_58_43.png" alt="2024_02_03 17_58_43.png"/>
 
 ## 一、引言
 
