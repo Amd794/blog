@@ -50,30 +50,35 @@ KEEP.initModeToggle = () => {
     initModeToggleButton() {
       this.themeModeToggleBtn.addEventListener('click', (event) => {
         const isDark = document.documentElement.classList.contains('dark-mode')
-        const transition = document.startViewTransition(() => {
-          isDark ? this.enableLightMode() : this.enableDarkMode()
-        })
-        const clientX = event.clientX
-        const clientY = event.clientY
-        const circleRadius = Math.hypot(
-          Math.max(clientX, window.innerWidth - clientX),
-          Math.max(clientY, window.innerHeight - clientY)
-        )
-        transition.ready.then(() => {
-          // 自定义动画
-          document.documentElement.animate(
-            {
-              clipPath: [
-                `circle(0% at ${clientX}px ${clientY}px)`,
-                `circle(${circleRadius}px at ${clientX}px ${clientY}px)`
-              ]
-            },
-            {
-              duration: 800,
-              pseudoElement: "::view-transition-new(root)"
-            }
+        if (document.startViewTransition !== undefined) {
+          const transition = document.startViewTransition(() => {
+            isDark ? this.enableLightMode() : this.enableDarkMode()
+          })
+          const clientX = event.clientX
+          const clientY = event.clientY
+          const circleRadius = Math.hypot(
+            Math.max(clientX, window.innerWidth - clientX),
+            Math.max(clientY, window.innerHeight - clientY)
           )
-        })
+          transition.ready.then(() => {
+            // 自定义动画
+            document.documentElement.animate(
+              {
+                clipPath: [
+                  `circle(0% at ${clientX}px ${clientY}px)`,
+                  `circle(${circleRadius}px at ${clientX}px ${clientY}px)`
+                ]
+              },
+              {
+                duration: 800,
+                pseudoElement: "::view-transition-new(root)"
+              }
+            )
+          })
+        } else {
+          isDark ? this.enableLightMode() : this.enableDarkMode()
+        }
+
       })
     },
 
