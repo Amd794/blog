@@ -1,7 +1,7 @@
 ---
 title: Nuxt3 的生命周期和钩子函数（十）
-date: 2024/6/30
-updated: 2024/6/30
+date: 2024/7/4
+updated: 2024/7/4
 author: cmdragon
 
 excerpt:
