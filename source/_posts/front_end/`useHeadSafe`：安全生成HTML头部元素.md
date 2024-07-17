@@ -1,5 +1,5 @@
 ---
-title: `useHeadSafe`：安全生成HTML头部元素
+title: useHeadSafe：安全生成HTML头部元素
 date: 2024/7/17
 updated: 2024/7/17
 author: cmdragon 
