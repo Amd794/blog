@@ -5,7 +5,7 @@ updated: 2024/8/19
 author: cmdragon
 
 excerpt:
-  `preloadRouteComponents` 是提升 Nuxt 应用性能的一个简单而有效的工具。通过在适当的时候预加载路由组件，你可以为用户提供更快速、更流畅的导航体验。
+  preloadRouteComponents 是提升 Nuxt 应用性能的一个简单而有效的工具。通过在适当的时候预加载路由组件，你可以为用户提供更快速、更流畅的导航体验。
 
 
 categories:
