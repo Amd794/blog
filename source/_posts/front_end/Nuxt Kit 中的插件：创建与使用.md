@@ -2,7 +2,7 @@
 title: Nuxt Kit 中的插件：创建与使用
 date: 2024/9/19
 updated: 2024/9/19
-author: [ cmdragon ](https://cmdragon.cn)
+author: cmdragon
 
 excerpt:
   摘要：本文介绍了在 Nuxt 3 框架中使用 Nuxt Kit 创建和管理插件的方法，包括使用addPlugin注册插件、创建插件文件、在Vue组件中使用插件，以及使用addPluginTemplate创建插件模板和动态生成插件代码。
