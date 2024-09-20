@@ -14,6 +14,10 @@ date: 2024/6/6
 在线地址1：https://movie.cmdragon.cn
 在线地址2：https://movie.amd794.com:2083
 
+在线地址1：https://hot1-movie.cmdragon.cn
+在线地址2：https://hot2-movie.cmdragon.cn
+在线地址3：https://hot3-movie.cmdragon.cn
+
 ### 漫画宝盒：
 纯净世界，漫画海洋 —— 享受无干扰的沉浸式阅读之旅
 在线地址3: https://comic.cmdragon.online
