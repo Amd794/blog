@@ -175,6 +175,7 @@ export default defineNuxtPlugin({
 
 ## 往期文章归档：
 
+- [Nuxt.js 应用中的 app：mounted 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a07f12bddf8c/)
 - [Nuxt.js 应用中的 app：beforeMount 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/bbdca1e3d9a5/)
 - [Nuxt.js 应用中的 app：redirected 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c83b294c7a07/)
 - [Nuxt.js 应用中的 app：rendered 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/26479872ffdc/)
