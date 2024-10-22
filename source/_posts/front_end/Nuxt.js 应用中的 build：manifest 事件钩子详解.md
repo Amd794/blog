@@ -2,7 +2,7 @@
 title: Nuxt.js 应用中的 build：manifest 事件钩子详解
 date: 2024/10/22
 updated: 2024/10/22
-author: [ cmdragon ](https://cmdragon.cn)
+author: cmdragon
 
 excerpt:
    build:manifest 是 Nuxt.js 中的一个生命周期钩子，它在 Vite 和 Webpack 构建清单期间被调用。利用这个钩子，开发者可以自定义 Nitro 渲染在最终 HTML 中的 <script> 和 <link> 标签所使用的清单。这为对构建输出的深入控制提供了可能，开发者可以根据实际需要调整脚本和样式的引入方式。
