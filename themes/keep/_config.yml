@@ -100,7 +100,7 @@ footer:
   word_count: false     # Option values: true | false
 
   record:
-    enable: true
+    enable: false
     list:
       - code: 粤ICP备2024258322号-2
         link: https://beian.miit.gov.cn
