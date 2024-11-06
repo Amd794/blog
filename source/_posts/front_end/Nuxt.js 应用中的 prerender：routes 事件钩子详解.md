@@ -2,7 +2,7 @@
 title: Nuxt.js 应用中的 prerender：routes 事件钩子详解
 date: 2024/11/6
 updated: 2024/11/6
-author: [ cmdragon ](https://cmdragon.cn)
+author: cmdragon
 
 excerpt:
    prerender:routes 是 Nuxt.js 中的一个钩子，允许开发者在预渲染过程中扩展要预渲染的路由列表。这对于静态站点生成（SSG）尤为重要，开发者可以根据需求添加额外的动态路由或者其他需要预渲染的页面。
