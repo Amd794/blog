@@ -1,26 +1,26 @@
 ---
-title: Nuxt.js 应用中的 vite：compiled 事件钩子
-date: 2024/11/19
-updated: 2024/11/19
+title: Nuxt.js 应用中的 webpackConfigs 事件钩子
+date: 2024/11/20
+updated: 2024/11/20
 author: cmdragon
 
 excerpt:
-   在 Nuxt 3 中，vite:compiled 钩子允许开发者在 Vite 编译完成后执行自定义逻辑。通过这个钩子，开发者可以在代码编译完成后进行一些必要的处理，比如输出编译状态、更新 UI 或触发其他事件。
+   在 Nuxt.js 项目中，webpack:config 钩子允许运行时对 Webpack 配置进行修改。此钩子在配置 Webpack 编译器之前被调用，使得开发者能根据需要定制和扩展 Webpack 的默认配置。
 
 categories:
    - 前端开发
 
 tags:
-   - Nuxt
-   - Vite
+   - Nuxt.js
+   - Webpack
    - 钩子
-   - 编译
-   - 自定义
-   - 热更新
-   - 性能
+   - 配置
+   - 插件
+   - 模块
+   - 输出
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_11_19 15_00_51.png@blog" title="2024_11_19 15_00_51.png" alt="2024_11_19 15_00_51.png"/>
+<img src="https://static.cmdragon.cn/blog/images/2024_11_20 14_55_42.png@blog" title="2024_11_20 14_55_42.png" alt="2024_11_20 14_55_42.png"/>
 
 <img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
@@ -29,128 +29,119 @@ tags:
 
 
 
-在 Nuxt 3 中，`vite:compiled` 钩子允许开发者在 Vite 编译完成后执行自定义逻辑。通过这个钩子，开发者可以在代码编译完成后进行一些必要的处理，比如输出编译状态、更新 UI 或触发其他事件。
+在 Nuxt.js 项目中，`webpack:config` 钩子允许运行时对 Webpack 配置进行修改。此钩子在配置 Webpack 编译器之前被调用，使得开发者能根据需要定制和扩展 Webpack 的默认配置。
 
 ## 文章大纲
 
 1. [定义与作用](#1-定义与作用)
 2. [调用时机](#2-调用时机)
-3. [示例用法](#4-示例用法)
-4. [应用场景](#5-应用场景)
-    - [5.1 执行自定义逻辑](#51-执行自定义逻辑)
-    - [5.2 生成编译信息](#52-生成编译信息)
-    - [5.3 触发热更新](#53-触发热更新)
-5. [注意事项](#6-注意事项)
-    - [6.1 性能考虑](#61-性能考虑)
-    - [6.2 异步处理](#62-异步处理)
-    - [6.3 开发环境与生产环境的差异](#63-开发环境与生产环境的差异)
-6. [总结](#7-总结)
+3. [参数说明](#3-参数说明)
+4. [示例用法](#4-示例用法)
+5. [应用场景](#5-应用场景)
+    - [5.1 添加插件](#51-添加插件)
+    - [5.2 修改模块规则](#52-修改模块规则)
+    - [5.3 自定义输出设置](#53-自定义输出设置)
+6. [注意事项](#6-注意事项)
+7. [总结](#7-总结)
 
 ## 1. 定义与作用
 
-- **`vite:compiled`** 是 Vite 的一个钩子，允许开发者在 Vite 编译完成后立即执行某些操作。
-- 通过这个钩子，开发者可以在代码编译完成后进行状态记录、触发通知或其他自定义逻辑。
+- **`webpack:config`** 是一个钩子，允许在 Webpack 编译器配置之前自定义 Webpack 的配置选项。
+- 通过这个钩子，开发者可以轻松对默认配置进行扩展和修改，以满足特定的项目需求。
 
 ## 2. 调用时机
 
-`vite:compiled` 钩子在 Vite 编译文件后的即时阶段触发，此时可以确保编译好的资源是最新的。
+`webpack:config` 钩子在 Webpack 编译器的配置生成之前被调用。这意味着您可以在项目开始构建之前进行任何必要的更改。
 
-## 3. 示例用法
+## 3. 参数说明
 
-以下是如何使用 `vite:compiled` 钩子的基本示例，展示了如何在 Vite 编译完成后添加自定义逻辑。
+这个钩子接收一个参数：
 
-### 在 `plugins/viteCompiled.js` 文件中的实现
+- **`webpackConfigs`**: 一个对象数组，包含了当前使用的 Webpack 配置。可以根据需要对其进行修改。
+
+## 4. 示例用法
+
+以下是如何使用 `webpack:config` 钩子的基本示例，展示如何自定义 Webpack 配置。
+
+### 在 `plugins/webpackConfig.js` 中的实现
 
 ```javascript
-// plugins/viteCompiled.js
+// plugins/webpackConfig.js
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.hooks('vite:compiled', () => {
-    console.log('Vite 编译完成');
+  nuxtApp.hooks('webpack:config', (webpackConfigs) => {
+    // 例如，将一个新插件添加到配置中
+    webpackConfigs.forEach((config) => {
+      config.plugins.push(new MyWebpackPlugin());
+    });
 
-    // 可以在这里执行其他自定义逻辑
-    // 例如，发送一个通知或者更新某个状态
+    // 打印修改后的配置
+    console.log('修改后的 Webpack 配置:', webpackConfigs);
   });
 });
 ```
 
 ## 5. 应用场景
 
-### 5.1 执行自定义逻辑
+### 5.1 添加插件
 
-您可以在编译完成后执行一些自定义逻辑，例如发送请求到一个 API 以通知外部服务编译成功。
+您可以通过 `webpack:config` 钩子向 Webpack 配置中添加自定义插件，从而扩展它的功能。例如，您可能需要集成一些新的构建工具或优化插件。
 
 ```javascript
-nuxtApp.hooks('vite:compiled', () => {
-  const notifyCompletion = async () => {
-    try {
-      const response = await fetch('/api/notifyCompilationComplete', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+nuxtApp.hooks('webpack:config', (webpackConfigs) => {
+  webpackConfigs.forEach((config) => {
+    config.plugins.push(new MyCustomPlugin()); // 添加自定义插件
+  });
+});
+```
+
+### 5.2 修改模块规则
+
+您可以修改现有的模块规则，比如添加对特定文件类型的处理。
+
+```javascript
+nuxtApp.hooks('webpack:config', (webpackConfigs) => {
+  webpackConfigs.forEach((config) => {
+    // 修改现有规则
+    const rule = config.module.rules.find(rule => rule.test && rule.test.test('.vue'));
+    if (rule) {
+      rule.use.push({
+        loader: 'my-custom-loader', // 添加自定义 loader
+        options: { /* loader options */ }
       });
-      const data = await response.json();
-      console.log('通知结果:', data);
-    } catch (error) {
-      console.error('通知请求失败:', error);
     }
-  };
-
-  notifyCompletion();
+  });
 });
 ```
 
-### 5.2 生成编译信息
+### 5.3 自定义输出设置
 
-在开发过程中，记录编译信息可能会很有用。在钩子中，您可以输出编译的状态。
-
-```javascript
-nuxtApp.hooks('vite:compiled', () => {
-  const timestamp = new Date().toISOString();
-  console.log(`[${timestamp}] 编译完成`);
-});
-```
-
-### 5.3 触发热更新
-
-您可以在编译完成后触发热更新，以确保开发者看到最新的变化。
+您可以自定义 Webpack 的输出设置，例如更改输出路径或文件名。
 
 ```javascript
-nuxtApp.hooks('vite:compiled', () => {
-  console.log('触发热更新以更新编译后的模块...');
-  // 这里可以通过触发某个自定义事件来实现热更新
+nuxtApp.hooks('webpack:config', (webpackConfigs) => {
+  webpackConfigs.forEach((config) => {
+    config.output.filename = '[name].[contenthash].js'; // 修改输出文件名
+    config.output.path = path.resolve(__dirname, 'dist'); // 修改输出路径
+  });
 });
 ```
 
 ## 6. 注意事项
 
-### 6.1 性能考虑
-
-在 `vite:compiled` 钩子中加入自定义逻辑时，注意可能对性能的影响。尽量避免执行阻塞性操作，特别是长时间运行的任务。
-
-### 6.2 异步处理
-
-如果在钩子中执行异步操作（如 API 请求），确保正确处理 Promise。可以使用 `async/await` 或 `.then()` 来管理异步流程。
-
-### 6.3 开发环境与生产环境的差异
-
-在不同环境中，执行的逻辑可能需要有所不同。您可以根据 `process.env.NODE_ENV` 的值，决定是否执行某些操作。
-
-```javascript
-nuxtApp.hooks('vite:compiled', () => {
-  if (process.env.NODE_ENV === 'development') {
-    console.log('在开发模式下执行附加逻辑');
-  }
-});
-```
+- **保持可维护性**: 修改 Webpack 配置可能会导致不兼容的情况，确保对修改进行文档记录，以便后续维护。
+- **测试修改逻辑**: 在每次修改配置后，建议进行全面的测试，以确保没有引入新的问题。
+- **性能考量**: 某些配置的更改可能会影响构建性能，应适时评估效果。
 
 ## 7. 总结
 
-通过使用 `vite:compiled` 钩子，开发者能够在 Vite 编译完成时执行自定义操作，进一步提升开发效率和用户体验。如
+通过使用 `webpack:config` 钩子，开发者能够在 Webpack 编译器配置之前进行自定义修改。这使得项目能够灵活地适应不同的需求和环境。
 
 余下文章内容请点击跳转至 个人博客页面 或者 扫码关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`，阅读完整的文章：
 
 ## 往期文章归档：
 
+- [Nuxt.js 应用中的 vite：compiled 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/973541933f38/)
 - [Nuxt.js 应用中的 vite：serverCreated 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ab7710befd8e/)
 - [Nuxt.js 应用中的 vite：configResolved 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1266785cead8/)
 - [Nuxt.js 应用中的 vite：extendConfig 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/e1ea2c9a1566/)
@@ -181,6 +172,5 @@ nuxtApp.hooks('vite:compiled', () => {
 - [Nuxt.js 应用中的 build：manifest 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/523de9001247/)
 - [Nuxt.js 应用中的 build：done 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/41dece9c782c/)
 - [Nuxt.js 应用中的 build：before 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/eb2bd3bbfab8/)
-- [Nuxt.js 应用中的 app：templatesGenerated 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b76b5d553a8b/)
 -
 
