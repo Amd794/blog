@@ -21,12 +21,12 @@ tags:
    - 用户体验
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_10_08 11_48_29.png@blog" title="2024_10_08 11_48_29.png" alt="2024_10_08 11_48_29.png"/>
+<img src="https://static.amd794.com/blog/images/2024_10_08 11_48_29.png@blog" title="2024_10_08 11_48_29.png" alt="2024_10_08 11_48_29.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `page:start` 是一个在 Nuxt.js 中用于处理页面开始加载事件的钩子，特别是在 Suspense 机制下。这一钩子允许开发者在页面加载的起始点执行自定义逻辑，从而提升应用的性能和用户体验。
 

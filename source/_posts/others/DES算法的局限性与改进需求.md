@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 16_23_22.png@blog" title="2024_02_03 16_23_22.png" alt="2024_02_03 16_23_22.png"/>
+<img src="https://static.amd794.com/blog/images/2024_02_03 16_23_22.png@blog" title="2024_02_03 16_23_22.png" alt="2024_02_03 16_23_22.png"/>
 
 ## 1. DES算法的局限性与改进需求
 DES算法是一种对称加密算法，具有高度的安全性和可靠性。然而，随着计算机技术的发展，DES算法的密钥长度逐渐被攻击者攻破，安全性受到威胁。因此，对DES算法进行改进以提高安全性是必要的。

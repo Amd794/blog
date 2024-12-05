@@ -15,7 +15,7 @@ tags:
   - 实战项目
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_05_14 15_39_32.png@blog" title="2024_05_14 15_39_32.png" alt="2024_05_14 15_39_32.png"/>
+<img src="https://static.amd794.com/blog/images/2024_05_14 15_39_32.png@blog" title="2024_05_14 15_39_32.png" alt="2024_05_14 15_39_32.png"/>
 
 ## **第1章：Django基础知识**
 

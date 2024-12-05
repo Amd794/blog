@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_06 18_56_39.png@blog" title="2024_02_06 18_56_39.png" alt="2024_02_06 18_56_39.png"/>
+<img src="https://static.amd794.com/blog/images/2024_02_06 18_56_39.png@blog" title="2024_02_06 18_56_39.png" alt="2024_02_06 18_56_39.png"/>
 
 > Web API SpeechSynthesis是一项强大的浏览器功能，它允许开发者将文本转换为语音，并通过浏览器播放出来。本文将深入探讨SpeechSynthesis的控制接口，包括其功能、用法和一个完整的JavaScript示例。
 

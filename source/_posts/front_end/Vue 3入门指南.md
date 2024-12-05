@@ -15,7 +15,7 @@ tags:
   - 路由配置
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_05_23 19_46_00.png@blog" title="2024_05_23 19_46_00.png" alt="2024_05_23 19_46_00.png"/>
+<img src="https://static.amd794.com/blog/images/2024_05_23 19_46_00.png@blog" title="2024_05_23 19_46_00.png" alt="2024_05_23 19_46_00.png"/>
 
 ## **第1章：Vue 3简介**
 

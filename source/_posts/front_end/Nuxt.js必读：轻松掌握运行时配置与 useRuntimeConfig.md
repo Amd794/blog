@@ -20,13 +20,13 @@ tags:
   - useRuntimeConfig
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_07_29 17_49_17.png@blog" title="2024_07_29 17_49_17.png" alt="2024_07_29 17_49_17.png"/>
+<img src="https://static.amd794.com/blog/images/2024_07_29 17_49_17.png@blog" title="2024_07_29 17_49_17.png" alt="2024_07_29 17_49_17.png"/>
 
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 Nuxt.js 是一个基于 Vue.js 的框架，它极大地简化了服务端渲染（SSR）和静态站点生成的开发过程。在 Nuxt.js 中，运行时配置是一个强大的功能，允许开发者根据不同的环境（如开发、生产等）动态地调整配置。
 

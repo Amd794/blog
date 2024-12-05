@@ -21,12 +21,12 @@ tags:
   - 命令
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_09_01 11_15_36.png@blog" title="2024_09_01 11_15_36.png" alt="2024_09_01 11_15_36.png"/>
+<img src="https://static.amd794.com/blog/images/2024_09_01 11_15_36.png@blog" title="2024_09_01 11_15_36.png" alt="2024_09_01 11_15_36.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在 Nuxt 项目的开发过程中，可能会遇到由于缓存或生成文件导致的各种问题。`nuxi clean`
 命令是一个有用的工具，它可以帮助你快速清理项目中的生成文件和缓存，确保你的开发环境干净整洁。

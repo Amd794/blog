@@ -12,7 +12,7 @@ tags:
 - 文本合并
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 17_23_59.png@blog" title="2024_02_03 17_23_59.png" alt="2024_02_03 17_23_59.png"/>
+<img src="https://static.amd794.com/blog/images/2024_02_03 17_23_59.png@blog" title="2024_02_03 17_23_59.png" alt="2024_02_03 17_23_59.png"/>
 
 ## 一、Unicode概述
 

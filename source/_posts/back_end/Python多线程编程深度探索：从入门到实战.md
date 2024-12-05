@@ -16,7 +16,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_28 19_06_58.png@blog" title="2024_04_28 19_06_58.png" alt="2024_04_28 19_06_58.png"/>
+<img src="https://static.amd794.com/blog/images/2024_04_28 19_06_58.png@blog" title="2024_04_28 19_06_58.png" alt="2024_04_28 19_06_58.png"/>
 
 ## **第1章：Python基础知识与多线程概念**
 

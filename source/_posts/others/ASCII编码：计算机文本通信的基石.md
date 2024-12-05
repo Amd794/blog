@@ -14,7 +14,7 @@ tags:
 
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 16_03_21.png@blog" title="2024_02_03 16_03_21.png" alt="2024_02_03 16_03_21.png"/>
+<img src="https://static.amd794.com/blog/images/2024_02_03 16_03_21.png@blog" title="2024_02_03 16_03_21.png" alt="2024_02_03 16_03_21.png"/>
 
 ASCII（美国信息交换标准代码）编码是一种将字符与数字相互映射的编码系统，它为现代计算机文本通信奠定了基础。本文将从多个方面介绍ASCII编码的原理、发展历程、应用及其在现实场景中的优势，帮助您深入了解这一重要的编码技术。
 

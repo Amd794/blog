@@ -15,7 +15,7 @@ tags:
   - 性能优化
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_05_26 20_22_57.png@blog" title="2024_05_26 20_22_57.png" alt="2024_05_26 20_22_57.png"/>
+<img src="https://static.amd794.com/blog/images/2024_05_26 20_22_57.png@blog" title="2024_05_26 20_22_57.png" alt="2024_05_26 20_22_57.png"/>
 
 ## **第1章：Vue.js基础与环境设置**
 

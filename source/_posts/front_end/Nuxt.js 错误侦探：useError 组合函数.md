@@ -20,12 +20,12 @@ tags:
   - useError函数
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_07_14 17_05_22.png@blog" title="2024_07_14 17_05_22.png" alt="2024_07_14 17_05_22.png"/>
+<img src="https://static.amd794.com/blog/images/2024_07_14 17_05_22.png@blog" title="2024_07_14 17_05_22.png" alt="2024_07_14 17_05_22.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在构建动态网站时，错误处理是一个关键的环节，它不仅关乎用户体验，也影响着网站的稳定性和可靠性。Nuxt.js 是一个用于构建 Vue.js
 应用的框架，它提供了丰富的工具和功能来简化开发过程。在 Nuxt.js 中，`useError`是一个非常有用的可组合函数，它允许开发者在客户端和服务器端都捕获和处理错误。

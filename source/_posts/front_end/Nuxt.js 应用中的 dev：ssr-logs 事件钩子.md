@@ -20,13 +20,13 @@ tags:
   - 监控
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_11_28 16_36_47.png@blog" title="2024_11_28 16_36_47.png" alt="2024_11_28 16_36_47.png"/>
+<img src="https://static.amd794.com/blog/images/2024_11_28 16_36_47.png@blog" title="2024_11_28 16_36_47.png" alt="2024_11_28 16_36_47.png"/>
 
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `dev:ssr-logs` 是一个用在服务器端渲染（SSR）中，用于输出日志的事件钩子。这个钩子会在请求周期结束时被调用，产生的参数包括日志路径与日志内容。这对于调试和监控服务器端的行为非常有用，特别是在开发环境下。
 

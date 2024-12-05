@@ -20,12 +20,12 @@ tags:
   - UI
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_11_27 14_14_09.png@blog" title="2024_11_27 14_14_09.png" alt="2024_11_27 14_14_09.png"/>
+<img src="https://static.amd794.com/blog/images/2024_11_27 14_14_09.png@blog" title="2024_11_27 14_14_09.png" alt="2024_11_27 14_14_09.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `webpack:progress` 钩子用于监听 Webpack 在构建过程中的进度更新。这是一个非常有用的特性，特别是在构建大型应用时，可以给开发者实时反馈，以便他们知道构建的进展情况。
 

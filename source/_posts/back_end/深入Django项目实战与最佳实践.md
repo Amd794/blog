@@ -16,7 +16,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_05_19 21_55_37.png@blog" title="2024_05_19 21_55_37.png" alt="2024_05_19 21_55_37.png"/>
+<img src="https://static.amd794.com/blog/images/2024_05_19 21_55_37.png@blog" title="2024_05_19 21_55_37.png" alt="2024_05_19 21_55_37.png"/>
 
 ## 第一章：Django项目架构与设计原则
 

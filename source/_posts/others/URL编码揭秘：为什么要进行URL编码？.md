@@ -12,7 +12,7 @@ tags:
 - 安全提升
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 17_28_56.png@blog" title="2024_02_03 17_28_56.png" alt="2024_02_03 17_28_56.png"/>
+<img src="https://static.amd794.com/blog/images/2024_02_03 17_28_56.png@blog" title="2024_02_03 17_28_56.png" alt="2024_02_03 17_28_56.png"/>
 
 > URL（Uniform Resource Locator，统一资源定位符）是互联网上资源地址的唯一标识符。在网络请求和数据传输过程中，URL编码起着至关重要的作用。
 

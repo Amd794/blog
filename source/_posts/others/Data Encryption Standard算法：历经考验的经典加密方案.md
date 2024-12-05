@@ -12,7 +12,7 @@ tags:
 - 安全性考量
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_02 16_27_51.png@blog" alt="2024_02_02 16_27_51.png" title="2024_02_02 16_27_51.png">
+<img src="https://static.amd794.com/blog/images/2024_02_02 16_27_51.png@blog" alt="2024_02_02 16_27_51.png" title="2024_02_02 16_27_51.png">
 
 
 在当今数字化时代，数据安全是一个至关重要的问题。为了保护敏感数据的机密性和完整性，加密算法成为了数据保护的关键技术。其中，DES（Data Encryption Standard）算法作为一种经典的对称密钥加密算法，具有广泛的应用。本文将对DES算法的优点、缺点以及解决了哪些问题进行详细分析。

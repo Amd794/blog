@@ -12,7 +12,7 @@ tags:
 - 物联网安全
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03%2015_34_34.png@blog" alt="2024_02_03 15_34_34.png" title="2024_02_03 15_34_34.png">
+<img src="https://static.amd794.com/blog/images/2024_02_03%2015_34_34.png@blog" alt="2024_02_03 15_34_34.png" title="2024_02_03 15_34_34.png">
 
 
 

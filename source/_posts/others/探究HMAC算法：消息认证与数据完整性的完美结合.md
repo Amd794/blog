@@ -15,7 +15,7 @@ tags:
 - 安全协议
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_01 15_55_17.png@blog" alt="2024_02_01 15_55_17.png@blog" title="2024_02_01 15_55_17.png">
+<img src="https://static.amd794.com/blog/images/2024_02_01 15_55_17.png@blog" alt="2024_02_01 15_55_17.png@blog" title="2024_02_01 15_55_17.png">
 
 
 

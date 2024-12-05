@@ -20,12 +20,12 @@ tags:
   - 多环境部署
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_07_25 15_23_16.png@blog" title="2024_07_25 15_23_16.png" alt="2024_07_25 15_23_16.png"/>
+<img src="https://static.amd794.com/blog/images/2024_07_25 15_23_16.png@blog" title="2024_07_25 15_23_16.png" alt="2024_07_25 15_23_16.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 环境变量是配置应用程序的一种常见方式，特别是在不同的环境（如开发、测试、生产）中管理不同的配置值时。在 Nuxt.js
 中，环境变量可以通过`.env`文件来设置，并在应用程序中读取。以下是对您提供信息的总结和解释：

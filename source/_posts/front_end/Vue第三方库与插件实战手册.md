@@ -19,7 +19,7 @@ tags:
   - PWA
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_06_08 21_35_14.png@blog" title="2024_06_08 21_35_14.png" alt="2024_06_08 21_35_14.png"/>
+<img src="https://static.amd794.com/blog/images/2024_06_08 21_35_14.png@blog" title="2024_06_08 21_35_14.png" alt="2024_06_08 21_35_14.png"/>
 
 
 ## 第1章 Vue简介与安装

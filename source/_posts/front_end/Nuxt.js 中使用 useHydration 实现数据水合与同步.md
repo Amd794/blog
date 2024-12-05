@@ -20,12 +20,12 @@ tags:
   - 插件
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_07_18 14_24_25.png@blog" title="2024_07_18 14_24_25.png" alt="2024_07_18 14_24_25.png"/>
+<img src="https://static.amd794.com/blog/images/2024_07_18 14_24_25.png@blog" title="2024_07_18 14_24_25.png" alt="2024_07_18 14_24_25.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `useHydration` 是一个在 Nuxt.js 框架中使用的可组合函数（composable function），它允许开发者控制客户端和服务器端之间的数据同步过程，这个过程通常被称为“水合”（hydration）。在 Nuxt.js 中，水合是指将服务器端渲染（SSR）生成的数据传输到客户端，并在客户端激活这些数据，使其成为可交互的。
 

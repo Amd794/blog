@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_15 18_37_13.png@blog" title="2024_04_15 18_37_13.png" alt="2024_04_15 18_37_13.png"/>
+<img src="https://static.amd794.com/blog/images/2024_04_15 18_37_13.png@blog" title="2024_04_15 18_37_13.png" alt="2024_04_15 18_37_13.png"/>
 
 ## 密码学中的哈希函数
 

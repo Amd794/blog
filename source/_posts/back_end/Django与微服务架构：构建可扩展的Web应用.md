@@ -15,7 +15,7 @@ tags:
   - 监控安全
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_05_21 20_18_51.png@blog" title="2024_05_21 20_18_51.png" alt="2024_05_21 20_18_51.png"/>
+<img src="https://static.amd794.com/blog/images/2024_05_21 20_18_51.png@blog" title="2024_05_21 20_18_51.png" alt="2024_05_21 20_18_51.png"/>
 
 ## 前言
 

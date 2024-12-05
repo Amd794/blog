@@ -20,12 +20,12 @@ tags:
   - 定制逻辑
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_08_10 09_54_50.png@blog" title="2024_08_10 09_54_50.png" alt="2024_08_10 09_54_50.png"/>
+<img src="https://static.amd794.com/blog/images/2024_08_10 09_54_50.png@blog" title="2024_08_10 09_54_50.png" alt="2024_08_10 09_54_50.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 # 使用 defineNuxtRouteMiddleware 创建路由中间件
 在 Nuxt.js 中，路由中间件是一种强大的机制，可以在路由进入之前处理特定的逻辑。例如，你可以根据用户的身份验证状态来重定向用户，或者在某些条件不满足时显示错误页面。

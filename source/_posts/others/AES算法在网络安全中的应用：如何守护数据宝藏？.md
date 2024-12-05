@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03%2015_52_40.png@blog"/>
+<img src="https://static.amd794.com/blog/images/2024_02_03%2015_52_40.png@blog"/>
 
 摘要：高级加密标准（AES）是美国国家标准与技术研究所（NIST）用于加密电子数据的规范。本文从历史、算法原理、性能优势和应用等方面全面介绍了AES算法，旨在帮助读者更好地理解这一广泛应用的对称加密算法。
 

@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_03_30 18_32_08.png@blog" title="2024_03_30 18_32_08.png" alt="2024_03_30 18_32_08.png"/>
+<img src="https://static.amd794.com/blog/images/2024_03_30 18_32_08.png@blog" title="2024_03_30 18_32_08.png" alt="2024_03_30 18_32_08.png"/>
 
 #### 1. Unicode的起源和发展
 

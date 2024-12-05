@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img alt="2024_02_03 15_59_28.png" title="2024_02_03 15_59_28.png" src="https://static.cmdragon.cn/blog/images/2024_02_03%2015_59_28.png@blog">
+<img alt="2024_02_03 15_59_28.png" title="2024_02_03 15_59_28.png" src="https://static.amd794.com/blog/images/2024_02_03%2015_59_28.png@blog">
 
 ## 一、ASCII编码简介
 

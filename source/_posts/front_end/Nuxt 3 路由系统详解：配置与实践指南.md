@@ -20,9 +20,9 @@ tags:
   - 配置
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_06_21 16_02_00.png@blog" title="2024_06_21 16_02_00.png" alt="2024_06_21 16_02_00.png"/>
+<img src="https://static.amd794.com/blog/images/2024_06_21 16_02_00.png@blog" title="2024_06_21 16_02_00.png" alt="2024_06_21 16_02_00.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 ### 扫码关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 

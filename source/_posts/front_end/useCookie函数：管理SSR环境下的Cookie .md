@@ -20,12 +20,12 @@ tags:
   - 前端
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_07_13 16_23_21.png@blog" title="2024_07_13 16_23_21.png" alt="2024_07_13 16_23_21.png"/>
+<img src="https://static.amd794.com/blog/images/2024_07_13 16_23_21.png@blog" title="2024_07_13 16_23_21.png" alt="2024_07_13 16_23_21.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `useCookie` 是一个在服务器端渲染（SSR）环境中管理 Cookie 的工具函数。它允许开发者在页面、组件或插件中读取和写入 Cookie。这个函数通过创建一个响应式引用（ref）来管理 Cookie 的值，并自动将 Cookie 的值序列化和反序列化为 JSON 格式，以确保在不同环境（如浏览器和服务器）之间的一致性。
 

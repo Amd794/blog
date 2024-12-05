@@ -12,7 +12,7 @@ tags:
 - 优势分析
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 18_05_08.png@blog" title="2024_02_03 18_05_08.png" alt="2024_02_03 18_05_08.png"/>
+<img src="https://static.amd794.com/blog/images/2024_02_03 18_05_08.png@blog" title="2024_02_03 18_05_08.png" alt="2024_02_03 18_05_08.png"/>
 
 > 在Web开发中，图片与Base64编码的相互转换是一个非常实用的技能。图片 Base64编码是将图片文件转换为字符串格式，以便于在网络上传输和存储。本文将详细介绍图片与Base64编码的转换方法，以及图片Base64编码的优势。
 

@@ -12,7 +12,7 @@ tags:
   - 安全分析
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_16 16_56_41.png@blog" title="2024_04_16 16_56_41.png" alt="2024_04_16 16_56_41.png"/>
+<img src="https://static.amd794.com/blog/images/2024_04_16 16_56_41.png@blog" title="2024_04_16 16_56_41.png" alt="2024_04_16 16_56_41.png"/>
 
 ## 前言
 

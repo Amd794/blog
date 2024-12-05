@@ -18,7 +18,7 @@ tags:
   - 测试策略
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_06_03 18_48_23.png@blog" title="2024_06_03 18_48_23.png" alt="2024_06_03 18_48_23.png"/>
+<img src="https://static.amd794.com/blog/images/2024_06_03 18_48_23.png@blog" title="2024_06_03 18_48_23.png" alt="2024_06_03 18_48_23.png"/>
 
 
 ## 第1章：Vue.js入门

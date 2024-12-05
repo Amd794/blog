@@ -20,12 +20,12 @@ tags:
   - 示例
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_10_03 00_26_35.png@blog" title="2024_10_03 00_26_35.png" alt="2024_10_03 00_26_35.png"/>
+<img src="https://static.amd794.com/blog/images/2024_10_03 00_26_35.png@blog" title="2024_10_03 00_26_35.png" alt="2024_10_03 00_26_35.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `app:redirected` 是 Nuxt.js 中的一个钩子，主要用于处理服务器端渲染（SSR）过程中发生的重定向。该钩子在重定向被执行之前被调用，允许开发者在重定向发生前进行一些操作，比如执行条件检查、日志记录等。
 

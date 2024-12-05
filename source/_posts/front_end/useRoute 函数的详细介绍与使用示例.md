@@ -20,12 +20,12 @@ tags:
   - 动态
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_07_27 15_55_51.png@blog" title="2024_07_27 15_55_51.png" alt="2024_07_27 15_55_51.png"/>
+<img src="https://static.amd794.com/blog/images/2024_07_27 15_55_51.png@blog" title="2024_07_27 15_55_51.png" alt="2024_07_27 15_55_51.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在nuxt.js开发中，`useRoute`是一个非常实用的组合函数，它能够帮助我们获取当前路由的各种信息，从而实现更加灵活和动态的页面交互。
 

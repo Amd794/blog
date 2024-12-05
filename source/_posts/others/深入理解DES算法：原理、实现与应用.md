@@ -12,7 +12,7 @@ tags:
   - 替代算法
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_14 21_36_33.png@blog" title="2024_04_14 21_36_33.png" alt="2024_04_14 21_36_33.png"/>
+<img src="https://static.amd794.com/blog/images/2024_04_14 21_36_33.png@blog" title="2024_04_14 21_36_33.png" alt="2024_04_14 21_36_33.png"/>
 
 ### DES算法简介
 

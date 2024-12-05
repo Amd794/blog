@@ -20,12 +20,12 @@ tags:
   - 导航
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_08_03 09_44_06.png@blog" title="2024_08_03 09_44_06.png" alt="2024_08_03 09_44_06.png"/>
+<img src="https://static.amd794.com/blog/images/2024_08_03 09_44_06.png@blog" title="2024_08_03 09_44_06.png" alt="2024_08_03 09_44_06.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在 Nuxt3 中，`abortNavigation` 是一个辅助函数，用于在路由中间件中阻止导航。如果某个条件不满足，您可以使用 `abortNavigation`
 来防止用户访问某些页面，并可以选择性地抛出一个错误以提示用户或记录错误。

@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_03_29 18_33_35.png@blog" title="2024_03_29 18_33_35.png" alt="2024_03_29 18_33_35.png"/>
+<img src="https://static.amd794.com/blog/images/2024_03_29 18_33_35.png@blog" title="2024_03_29 18_33_35.png" alt="2024_03_29 18_33_35.png"/>
 
 
 

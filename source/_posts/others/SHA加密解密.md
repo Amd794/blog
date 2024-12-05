@@ -12,7 +12,7 @@ tags:
 - 安全评估
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 17_18_16.png@blog" title="2024_02_03 17_18_16.png" alt="2024_02_03 17_18_16.png"/>
+<img src="https://static.amd794.com/blog/images/2024_02_03 17_18_16.png@blog" title="2024_02_03 17_18_16.png" alt="2024_02_03 17_18_16.png"/>
 
 ## 一、概述
 

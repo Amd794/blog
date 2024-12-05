@@ -20,12 +20,12 @@ tags:
   - 实验特性
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_07_09 19_20_48.png@blog" title="2024_07_09 19_20_48.png" alt="2024_07_09 19_20_48.png"/>
+<img src="https://static.amd794.com/blog/images/2024_07_09 19_20_48.png@blog" title="2024_07_09 19_20_48.png" alt="2024_07_09 19_20_48.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-## 扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+## 扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 

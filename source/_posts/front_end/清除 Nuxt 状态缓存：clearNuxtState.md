@@ -20,12 +20,12 @@ tags:
   - 示例
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_08_07 10_29_03.png@blog" title="2024_08_07 10_29_03.png" alt="2024_08_07 10_29_03.png"/>
+<img src="https://static.amd794.com/blog/images/2024_08_07 10_29_03.png@blog" title="2024_08_07 10_29_03.png" alt="2024_08_07 10_29_03.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 

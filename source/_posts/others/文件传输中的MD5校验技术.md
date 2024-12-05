@@ -12,7 +12,7 @@ tags:
 - 更安全的替代算法
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 18_22_12.png@blog" title="2024_02_03 18_22_12.png" alt="2024_02_03 18_22_12.png"/>
+<img src="https://static.amd794.com/blog/images/2024_02_03 18_22_12.png@blog" title="2024_02_03 18_22_12.png" alt="2024_02_03 18_22_12.png"/>
 
 ## 1. 文件的MD5校验简介
 

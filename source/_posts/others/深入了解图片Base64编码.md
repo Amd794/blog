@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_08 10_05_35.png@blog" title="2024_04_08 10_05_35.png" alt="2024_04_08 10_05_35.png"/>
+<img src="https://static.amd794.com/blog/images/2024_04_08 10_05_35.png@blog" title="2024_04_08 10_05_35.png" alt="2024_04_08 10_05_35.png"/>
 
 ### 1. 什么是Base64编码
 

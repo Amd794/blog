@@ -20,13 +20,13 @@ tags:
   - 用户体验
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_09_27 10_37_45.png@blog" title="2024_09_27 10_37_45.png" alt="2024_09_27 10_37_45.png"/>
+<img src="https://static.amd794.com/blog/images/2024_09_27 10_37_45.png@blog" title="2024_09_27 10_37_45.png" alt="2024_09_27 10_37_45.png"/>
 
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在开发复杂的 web 应用时，处理错误至关重要。Nuxt.js 提供了多种钩子来处理不同的场景，其中 `app:error` 钩子在发生致命错误时被调用。
 

@@ -13,7 +13,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_03_28 17_34_56.png@blog" title="2024_03_28 17_34_56.png" alt="2024_03_28 17_34_56.png"/>
+<img src="https://static.amd794.com/blog/images/2024_03_28 17_34_56.png@blog" title="2024_03_28 17_34_56.png" alt="2024_03_28 17_34_56.png"/>
 
 #### 1. 数据格式介绍
 

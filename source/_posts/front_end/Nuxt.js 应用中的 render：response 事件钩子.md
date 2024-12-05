@@ -20,12 +20,12 @@ tags:
   - 处理
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_11_29 17_13_46.png@blog" title="2024_11_29 17_13_46.png" alt="2024_11_29 17_13_46.png"/>
+<img src="https://static.amd794.com/blog/images/2024_11_29 17_13_46.png@blog" title="2024_11_29 17_13_46.png" alt="2024_11_29 17_13_46.png"/>
 
-<img src="https://static.cmdragon.cn/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.cmdragon.cn/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `render:response` 是一个在 Nuxt.js 中与服务器端渲染（SSR）相关的钩子，它会在请求的响应发送之前被调用。这个钩子的目的是让开发者可以在响应发送之前对响应进行修改或处理。此钩子接收两个参数：`response` 和 `event`。
 
