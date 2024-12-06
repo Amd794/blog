@@ -20,7 +20,7 @@ tags:
   - 用户
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_12_05 14_50_43.png@blog" title="2024_12_05 14_50_43.png" alt="2024_12_05 14_50_43.png"/>
+<img src="https://static.amd794.com/blog/images/2024_12_05 14_50_43.png@blog" title="2024_12_05 14_50_43.png" alt="2024_12_05 14_50_43.png"/>
 
 <img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
