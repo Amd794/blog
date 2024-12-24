@@ -20,6 +20,7 @@ tags:
   - 并发控制
 ---
 
+<img src="https://static.amd794.com/blog/images/2024_12_24 09_41_56.png@blog" title="2024_12_24 09_41_56.png" alt="2024_12_24 09_41_56.png"/>
 
 <img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
