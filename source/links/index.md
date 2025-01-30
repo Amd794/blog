@@ -6,6 +6,8 @@ date: 2024/6/6
 
 ### 工具包
 一个涵盖各种工具的在线平台，覆盖广泛主题，助力你高效完成各种任务，提升工作效率：
+在线地址：https://tools.cmdragon.cn（推荐）
+
 在线地址：https://toolkit.cmdragon.cn
 
 ### 影享天地
