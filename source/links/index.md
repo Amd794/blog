@@ -6,9 +6,9 @@ date: 2024/6/6
 
 ### 工具包
 一个涵盖各种工具的在线平台，覆盖广泛主题，助力你高效完成各种任务，提升工作效率：
-在线地址：https://tools.cmdragon.cn（推荐）
+新版在线地址：https://tools.cmdragon.cn
 
-在线地址：https://toolkit.cmdragon.cn
+旧版在线地址：https://toolkit.cmdragon.cn
 
 ### 影享天地
 专业的种子搜索、磁力链接搜索引擎，这里有海量的电影、剧集、人物、音乐和游戏等你来发现。快来探索吧！：
