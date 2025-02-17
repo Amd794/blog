@@ -38,6 +38,21 @@
         <% if (theme?.post?.share === true) { %>
             <%- __js('js/post/share.js') %>
         <% } %>
+
+        <!-- Mermaid -->
+        <% if (theme?.mermaid?.enable !== false && is_post()) { %>
+            <script defer src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    if (typeof mermaid !== 'undefined') {
+                        mermaid.initialize({
+                            startOnLoad: true,
+                            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+                        });
+                    }
+                });
+            </script>
+        <% } %>
     <% } %>
 
     <!-- categories page -->

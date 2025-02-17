@@ -110,3 +110,8 @@ footer:
     enable: true        # Option values: true | false
     provider: github     # Option values: github | vercel | netlify | gitee | aliyun | tencent_cloud | upyun
     url: https://github.com/Amd794                # Your deployment provider url, Can be null
+
+# Mermaid 图表支持
+mermaid:
+  enable: true     # 是否启用 mermaid
+  version: latest  # mermaid 版本号

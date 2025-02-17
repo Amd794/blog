@@ -773,4 +773,25 @@ KEEP.initUtils = () => {
   KEEP.utils.closeWebsiteAnnouncement()
   KEEP.utils.wrapTableWithBox()
   KEEP.utils.aAnchorJump()
+
+  /**
+   * 处理 Mermaid 主题切换
+   */
+  const handleMermaidThemeChange = () => {
+    if (typeof mermaid !== 'undefined') {
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+      mermaid.initialize({ 
+        startOnLoad: true,
+        theme: theme
+      })
+    }
+  }
+
+  // 在主题切换时同时切换 Mermaid 主题
+  const handleThemeChange = () => {
+    // ... existing theme change code ...
+    
+    // 处理 Mermaid 主题
+    handleMermaidThemeChange()
+  }
 }

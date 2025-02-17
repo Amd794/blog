@@ -63,6 +63,20 @@ const is_code_block_unshrink = page?.code_block_shrink === false
 
                     <%- page.content %>
                 </div>
+
+                <!-- 添加 Mermaid 支持 -->
+                <% if (theme?.mermaid?.enable !== false) { %>
+                    <script>
+                        if (typeof Prism !== 'undefined' && typeof mermaid !== 'undefined') {
+                            // 初始化所有 mermaid 图表
+                            mermaid.initialize({
+                                startOnLoad: true,
+                                theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+                            });
+                        }
+                    </script>
+                <% } %>
+
                 <% if (
                         (
                           theme?.post?.copyright_info === true
