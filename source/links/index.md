@@ -25,5 +25,4 @@ date: 2024/6/6
 在线地址3: https://comic.cmdragon.online
 在线地址1: https://comic.cmdragon.cn
 在线地址2: https://comic.amd794.com:2087
-漫画离线工具：https://github.com/Amd794/kanleying
 
