@@ -108,7 +108,7 @@ footer:
   site_deploy:
     enable: true        # Option values: true | false
     provider: github     # Option values: github | vercel | netlify | gitee | aliyun | tencent_cloud | upyun
-    url: https://github.com/Amd794                # Your deployment provider url, Can be null
+    url: https://tools.cmdragon.cn/               # Your deployment provider url, Can be null
 
 # Mermaid 图表支持
 mermaid:
