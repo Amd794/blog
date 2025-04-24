@@ -13,7 +13,7 @@ categories:
 
 tags:
   - Pydantic字段校验
-  - @validator高级应用
+  - validator高级应用
   - 数据验证模式
   - 防御式编程
   - 校验器组合
