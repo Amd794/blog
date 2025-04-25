@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_25 23_40_41.png@blog" title="2025_01_25 23_40_41.png" alt="2025_01_25 23_40_41.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 数据库索引是优化查询性能和提高数据检索效率的关键机制。在众多索引类型中，B-tree、Hash、GIN（Generalized Inverted Index）和GiST（Generalized Search Tree）是最为常用的几种结构。

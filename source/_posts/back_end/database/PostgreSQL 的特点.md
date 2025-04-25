@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_12_24 09_41_56.png@blog" title="2024_12_24 09_41_56.png" alt="2024_12_24 09_41_56.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 PostgreSQL 是一款功能强大、广受好评的开源关系型数据库管理系统。在过去几十年的发展过程中，PostgreSQL 积累了众多独特的特点和优势。其优秀的可扩展性、丰富的数据类型支持、出色的安全性、强大的并发控制机制以及灵活的编程接口。通过分析这些特点，读者将能够全面认识到 PostgreSQL 在当今数据库市场上的独特地位和竞争优势。

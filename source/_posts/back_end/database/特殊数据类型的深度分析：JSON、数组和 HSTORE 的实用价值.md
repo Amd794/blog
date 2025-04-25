@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_04 14_02_33.png@blog" title="2025_01_04 14_02_33.png" alt="2025_01_04 14_02_33.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 随着数据管理需求的多样化，许多现代数据库系统开始支持特殊数据类型，以满足更多复杂应用场景的需求。在 PostgreSQL 中，JSON、数组和 HSTORE 类型为开发者提供了灵活的数据存储和操作方式，使得结构化和非结构化数据的处理愈加高效。智的选择。

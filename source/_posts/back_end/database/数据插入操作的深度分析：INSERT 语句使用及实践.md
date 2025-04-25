@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_05 14_25_11.png@blog" title="2025_01_05 14_25_11.png" alt="2025_01_05 14_25_11.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 在数据库管理系统中，数据插入（INSERT）操作是数据持久化的基础，也是应用程序与用户交互的核心功能之一。它不仅影响数据的完整性与一致性，还在数据建模、查询性能与业务逻辑实现中起着至关重要的作用。本文将深入探讨 PostgreSQL 中的插入数据操作，包括基本的 INSERT 语法、批量插入技巧、事务处理以及错误处理机制。同时，将通过具体示例和实际应用场景，分析如何在 INSERT 操作中实现最佳实践，以确保数据插入过程的高效性、安全性和可靠性。

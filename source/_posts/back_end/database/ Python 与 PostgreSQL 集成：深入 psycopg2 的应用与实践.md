@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_02_04 14_38_00.png@blog" title="2025_02_04 14_38_00.png" alt="2025_02_04 14_38_00.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 PostgreSQL 作为开源关系型数据库的佼佼者，因其强大的功能与性能被广泛应用于各种项目中。而 Python 则因其简洁易用的语法、丰富的库和强大的数据处理能力，成为数据科学与Web开发领域的重要语言。在这两者的结合中，psycopg2 作为 PostgreSQL 数据库与 Python 之间的桥梁，实现了高效的数据交互。

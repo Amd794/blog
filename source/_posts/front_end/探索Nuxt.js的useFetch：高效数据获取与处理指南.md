@@ -21,10 +21,10 @@ tags:
 ---
 
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在构建现代Web应用时，数据获取是关键的一环。Nuxt.js，作为Vue.js的服务器渲染框架，提供了一系列强大的工具来简化数据获取流程。其中，`useFetch`
 可组合函数是用于从API端点获取数据的高级封装，旨在与Nuxt的服务器端渲染（SSR）兼容。这个可组合函数提供了一个方便的封装，包装了[`useAsyncData`]()

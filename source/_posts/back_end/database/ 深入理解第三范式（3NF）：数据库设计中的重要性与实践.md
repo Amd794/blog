@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_17 16_53_55.png@blog" title="2025_01_17 16_53_55.png" alt="2025_01_17 16_53_55.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 在数据库设计中，规范化是确保数据完整性、减少冗余和提高查询效率的关键过程。第三范式（3NF）作为关系数据库设计的高级规范，建立在前两范式（1NF和2NF）的基础上，重点关注消除传递依赖，以确保表中的每个非主属性都直接依赖于主键并且不依赖于其他非主属性。

@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_08_01 11_50_52.png@blog" title="2024_08_01 11_50_52.png" alt="2024_08_01 11_50_52.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在 Nuxt3 框架中，`useState`
 是一个功能强大的工具，用于创建响应式状态并支持服务器端渲染（SSR）。它允许您在组件中管理状态，并在客户端和服务器端之间共享这些状态。以下是详细的教程，帮助小白用户理解如何使用 `useState`。

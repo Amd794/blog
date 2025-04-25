@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_10_12 13_44_23.png@blog" title="2024_10_12 13_44_23.png" alt="2024_10_12 13_44_23.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `ready` 钩子是 Nuxt.js 中一个重要的生命周期事件，它在 Nuxt 实例初始化完成后被调用。当 Nuxt
 已经准备好并准备开始处理请求或渲染页面时，这一钩子会被触发。通过使用 `ready` 钩子，开发者可以在应用初始化后执行一些必要的操作。

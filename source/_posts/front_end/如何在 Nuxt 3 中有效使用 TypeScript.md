@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_09_09 14_02_44.png@blog" title="2024_09_09 14_02_44.png" alt="2024_09_09 14_02_44.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 TypeScript 是 JavaScript 的一个超集，它为代码添加了静态类型，可以在开发时提供更准确的类型信息和更好的代码补全体验。Nuxt 3
 完全支持 TypeScript，本文将逐步指导你如何在 Nuxt 3 项目中启用和使用 TypeScript，包括如何进行类型检查、自动生成类型和一些高级选项的配置。

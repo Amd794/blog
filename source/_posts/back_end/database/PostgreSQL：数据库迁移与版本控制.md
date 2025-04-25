@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_02_05 23_58_04.png@blog" title="2025_02_05 23_58_04.png" alt="2025_02_05 23_58_04.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 在现代软件开发中，数据库作为应用程序的核心组件之一，数据的结构和内容必须能够随着业务需求的变化而调整。因此，数据库迁移和版本控制成为了确保数据一致性、完整性，及在多环境下部署的关键环节。尤其在使用 PostgreSQL 这样的关系型数据库时，正确地管理数据库的版本和迁移过程，不仅能够提高开发效率，也能够降低潜在的风险。

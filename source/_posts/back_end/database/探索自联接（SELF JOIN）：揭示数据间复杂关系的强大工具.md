@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_11 00_26_54.png@blog" title="2025_01_11 00_26_54.png" alt="2025_01_11 00_26_54.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 自联接（SELF JOIN）是一种特殊的联接操作，在同一表中多次引用自己，从而允许开发者获取更复杂的数据关系。通过自联接，可以有效处理层级、映射和关联数据的查找，极大丰富了 SQL 查询的灵活性和表达能力。

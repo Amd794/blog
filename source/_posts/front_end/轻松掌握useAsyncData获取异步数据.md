@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_07_12 15_51_07.png@blog" title="2024_07_12 15_51_07.png" alt="2024_07_12 15_51_07.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在Nuxt.js中，`useAsyncData`是一个非常有用的组合式函数，它允许我们在服务端渲染（SSR）的过程中异步获取数据，同时确保这些数据能够在客户端正确地水合（hydrate），避免了不必要的重复请求。
 

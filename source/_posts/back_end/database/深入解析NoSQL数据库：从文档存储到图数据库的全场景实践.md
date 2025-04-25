@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_02_19 16_02_39.png@blog" title="2025_02_19 16_02_39.png" alt="2025_02_19 16_02_39.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 通过电商、社交网络、物联网等12个行业场景，结合MongoDB聚合管道、Redis Stream实时处理、Cassandra SSTable存储引擎、Neo4j路径遍历算法等42个生产级示例，揭示NoSQL数据库的架构设计与最佳实践。

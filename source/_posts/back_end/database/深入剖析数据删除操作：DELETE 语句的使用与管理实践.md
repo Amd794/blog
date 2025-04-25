@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_08 15_37_36.png@blog" title="2025_01_08 15_37_36.png" alt="2025_01_08 15_37_36.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 数据删除（DELETE）是关系型数据库管理系统中不可或缺的重要操作之一，它允许用户从数据库表中删除不再需要或者错误的数据。对于数据的有效管理，了解 DELETE 语句的正确使用、潜在的风险、性能优化以及安全措施至关重要。

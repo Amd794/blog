@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_16 11_04_51.png@blog" title="2025_01_16 11_04_51.png" alt="2025_01_16 11_04_51.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 数据库的规范化是确保数据完整性和消除数据冗余的关键过程。第二范式（2NF）是关系数据库设计中的重要概念，进一步建立在第一范式的基础之上。通过消除部分依赖关系，2NF 确保每个非主属性完全依赖于主键，降低了数据冗余和更新异常的风险。

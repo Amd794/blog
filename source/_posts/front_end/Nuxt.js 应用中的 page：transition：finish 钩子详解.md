@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_10_10 15_55_36.png@blog" title="2024_10_10 15_55_36.png" alt="2024_10_10 15_55_36.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `page:transition:finish` 是 Nuxt.js
 中的一个事件钩子，专门用于处理页面过渡效果结束后的逻辑。这一钩子在页面过渡的 `onAfterLeave` 事件之后被调用，允许开发者在过渡完成后执行一些后续操作。

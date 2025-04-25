@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_28 12_45_52.png@blog" title="2025_01_28 12_45_52.png" alt="2025_01_28 12_45_52.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 在数据库管理中，备份与恢复是确保数据安全和业务连续性的关键措施。PostgreSQL 提供了一系列工具，以便于数据库管理员对数据进行备份和恢复，其中 `pg_dump` 和 `pg_restore` 是最常用且功能强大的工具。

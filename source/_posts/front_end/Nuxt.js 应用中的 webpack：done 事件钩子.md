@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_11_26 14_35_18.png@blog" title="2024_11_26 14_35_18.png" alt="2024_11_26 14_35_18.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `webpack:done` 钩子用于处理 Webpack 编译完成后的逻辑。在 Webpack 编译的所有任务完成后，这个钩子会被调用，通常用于通知开发者编译的状态、执行清理工作或作为开发工具的提示。
 

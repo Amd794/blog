@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_07_21 14_12_43.png@blog" title="2024_07_21 14_12_43.png" alt="2024_07_21 14_12_43.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 在 Nuxt 应用的开发过程中，`useNuxtApp` 是一个极其关键的内置可组合函数，它为开发者提供了访问 Nuxt 共享运行时上下文的重要途径。无论是在客户端还是服务器端，`useNuxtApp` 都发挥着不可或缺的作用。  

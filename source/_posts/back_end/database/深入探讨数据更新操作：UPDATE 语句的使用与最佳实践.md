@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_06 14_55_03.png@blog" title="2025_01_06 14_55_03.png" alt="2025_01_06 14_55_03.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 数据更新（UPDATE）是关系型数据库管理系统中的关键操作之一，它允许开发者和管理员修改已有数据，以满足业务需求和数据维护的需要。掌握 UPDATE 语句的正确使用不仅提高了数据管理的效率，还确保了数据的一致性和完整性。

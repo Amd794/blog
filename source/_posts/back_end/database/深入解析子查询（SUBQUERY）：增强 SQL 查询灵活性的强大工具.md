@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_12 15_50_05.png@blog" title="2025_01_12 15_50_05.png" alt="2025_01_12 15_50_05.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 子查询（SUBQUERY）是一种在 SQL 查询中嵌套使用另一个 SELECT 查询的技术，它允许开发者在执行主查询的过程中动态地引入、过滤和操控数据。子查询具有提高查询灵活性、简化复杂逻辑和提升可读性的优势。

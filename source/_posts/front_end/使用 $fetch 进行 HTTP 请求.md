@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_08_02 09_15_07.png@blog" title="2024_08_02 09_15_07.png" alt="2024_08_02 09_15_07.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在 Nuxt3 中，`$fetch` 是一个强大的工具，用于在 Vue 应用程序和 API 路由中进行 HTTP 请求。它基于 `ofetch` 库，并在 Nuxt
 中提供了一些增强功能，如支持服务器端渲染（SSR）和自动缓存。

@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_09_07 13_53_21.png@blog" title="2024_09_07 13_53_21.png" alt="2024_09_07 13_53_21.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在开发基于 Nuxt.js 的应用时，有时你需要准备项目环境，以便进行构建和部署。`nuxi prepare`
 命令正是为此而设计的，它将创建 `.nuxt` 目录并生成类型信息，方便后续操作。

@@ -23,10 +23,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_08_29 13_39_30.png@blog" title="2024_08_29 13_39_30.png" alt="2024_08_29 13_39_30.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在 Nuxt.js 开发过程中，优化生产环境的构建是一个重要的步骤。`nuxi analyze` 命令提供了一种工具，可以帮助你分析生产包的大小和结构，从而识别潜在的性能瓶颈和优化点。
 

@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_07_30 17_59_07.png@blog" title="2024_07_30 17_59_07.png" alt="2024_07_30 17_59_07.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 在创建现代网站时，搜索引擎优化（SEO）是不可忽视的一个环节。良好的 SEO 配置不仅能提升你的网站在搜索引擎中的排名，还能在社交媒体上更好地展示你的内容。Nuxt3
 提供了一个强大的工具 `useSeoMeta` 来帮助你实现这一目标。

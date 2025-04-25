@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_12_26 16_20_10.png@blog" title="2024_12_26 16_20_10.png" alt="2024_12_26 16_20_10.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 PostgreSQL 是一种广泛使用的开源关系数据库管理系统，具有高度的灵活性和强大的功能，适用于多种操作系统。在不同的操作系统上安装 PostgreSQL 时，各自的环境特点和配置要求各不相同。在主要操作系统—包括 Linux、Windows 和 macOS—上安装 PostgreSQL 的步骤及注意事项。通过对这些安装过程的深入分析，读者将能够掌握在不同平台上成功安装和配置 PostgreSQL 的最佳实践，从而实现高效、安全的数据库管理。

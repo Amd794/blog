@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_14 16_14_15.png@blog" title="2025_01_14 16_14_15.png" alt="2025_01_14 16_14_15.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 在 SQL 查询中，`GROUP BY` 和 `HAVING` 子句是进行数据汇总和分析的重要工具。通过对数据进行分组，这些子句使得开发人员能够生成多维度的数据报告并应用聚合函数，从而更好地理解和展现数据。

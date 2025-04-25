@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_12_26 23_49_29.png@blog" title="2024_12_26 23_49_29.png" alt="2024_12_26 23_49_29.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 PostgreSQL是一款功能强大的开源关系数据库管理系统，其性能优化和安全性设置对于创建高效的数据库环境至关重要。在安装完成后，合理配置初始设置能够显著提升数据库的运行效率与安全性。PostgreSQL的初始配置设置，包括数据目录的设置、用户权限管理、连接设置、安全性配置、内存参数的调整以及日志管理等方面。这些设置将为数据库的长期稳定运行打下坚实的基础。

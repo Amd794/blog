@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_02_05 15_14_55.png@blog" title="2025_02_05 15_14_55.png" alt="2025_02_05 15_14_55.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 随着 JavaScript 在服务器端编程中的兴起，Node.js 已成为构建高性能网络应用程序的重要平台。PostgreSQL 则以其强大的特性以及对复杂数据结构的支持，被广泛用作数据库解决方案。在 Node.js 中，pg 模块是实现与 PostgreSQL 连接的主要工具，提供了灵活而高效的数据库操作方式。

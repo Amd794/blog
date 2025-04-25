@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2025_01_15 15_27_57.png@blog" title="2025_01_15 15_27_57.png" alt="2025_01_15 15_27_57.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 在关系型数据库设计中，规范化是确保数据一致性和减少冗余的重要步骤。第一范式（1NF）作为规范化的基础，要求每个表都应遵循数据的原子性及唯一性原则。通过将数据拆分为更小的、原子的单元，1NF 能有效降低数据冗余以及更新异常，提高数据查询的效率。

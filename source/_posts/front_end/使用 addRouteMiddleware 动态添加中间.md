@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_08_04 10_01_31.png@blog" title="2024_08_04 10_01_31.png" alt="2024_08_04 10_01_31.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 在 Nuxt3 中，`addRouteMiddleware` 允许开发者在应用程序中动态添加路由中间件。这为你提供了灵活性，可以在不同情况下执行导航守卫，例如处理权限、重定向，以及在路由变化时执行特定操作。

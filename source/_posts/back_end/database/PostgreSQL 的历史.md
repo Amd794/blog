@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_12_23 11_55_30.png@blog" title="2024_12_23 11_55_30.png" alt="2024_12_23 11_55_30.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 PostgreSQL 是一款功能强大且广泛使用的开源关系型数据库管理系统。其历史可以追溯到1986年，当时由加州大学伯克利分校的一个研究团队开发。文章将深入探讨 PostgreSQL 的起源、发展历程、关键版本更新以及它如何在数据库技术的演变中占据重要地位。通过分析 PostgreSQL 的设计哲学、社区支持和市场应用。

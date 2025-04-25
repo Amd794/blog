@@ -23,10 +23,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_10_13 13_28_33.png@blog" title="2024_10_13 13_28_33.png" alt="2024_10_13 13_28_33.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `close` 钩子是 Nuxt.js 中一个重要的生命周期事件，它在 Nuxt 实例正常关闭时被调用。当 Nuxt
 应用的生命周期即将结束时，这一钩子会被触发，让开发者能够执行一些必要的清理操作或保存状态。

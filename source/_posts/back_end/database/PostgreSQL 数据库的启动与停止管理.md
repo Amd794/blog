@@ -22,10 +22,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_12_27 23_57_24.png@blog" title="2024_12_27 23_57_24.png" alt="2024_12_27 23_57_24.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 
 作为一个强大的开源关系数据库管理系统，PostgreSQL在众多应用场景中发挥着关键作用。在实际使用过程中，对于数据库的启动和停止操作至关重要。这不仅关系到数据库的正常运行，也直接影响到数据的安全性和可用性。

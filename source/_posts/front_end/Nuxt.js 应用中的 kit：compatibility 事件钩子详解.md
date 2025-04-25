@@ -23,10 +23,10 @@ tags:
 
 <img src="https://static.amd794.com/blog/images/2024_10_11 12_07_06.png@blog" title="2024_10_11 12_07_06.png" alt="2024_10_11 12_07_06.png"/>
 
-<img src="https://static.amd794.com/blog/images/cmdragon_cn.png" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://static.amd794.com/blog/images/cmdragon_cn.png)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
 `kit:compatibility` 是 Nuxt.js 中一个重要的事件钩子，旨在帮助开发者处理与应用兼容性相关的问题。通过这个钩子，开发者可以检查不同浏览器或设备的兼容性，优化用户的访问体验。
 
