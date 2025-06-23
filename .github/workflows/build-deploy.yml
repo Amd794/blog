@@ -1,0 +1,49 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+# 设置权限
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 检出代码
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # 获取完整历史记录以支持分支操作
+      
+      # 设置Node.js环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      
+      # 安装依赖
+      - name: Install Dependencies
+        run: npm install
+      
+      # 构建项目
+      - name: Build
+        run: npm run build
+      
+      # 部署到public分支
+      - name: Deploy to public branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public  # Hexo生成的静态文件目录
+          branch: public   # 目标部署分支
+          clean: true     # 自动删除目标分支上的旧文件
+          token: ${{ secrets.GITHUB_TOKEN }}  # 使用GitHub提供的token
+
+
+
