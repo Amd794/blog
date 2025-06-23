@@ -2,7 +2,7 @@
 title: ✨ CMDragon Tools：您的全能数字工具箱
 date: 2025/6/1
 updated: 2025/6/1
-author: [ cmdragon ](https://cmdragon.cn)
+author: cmdragon
 
 excerpt:
    - CMDragon Tools 是一个综合型数字工具平台，集成了开发、设计、办公、安全等领域的专业工具，致力于通过一站式在线解决方案，彻底消除多软件切换的繁琐体验。它不仅是工具集合，更是效率革命的智能引擎！
