@@ -1,0 +1,461 @@
+/**
+ * 现代化代码块样式
+ */
+
+/* 基础代码块容器 */
+.article-content pre,
+pre {
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  background-color: #282c34;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 顶部代码块标题栏 */
+.article-content pre::before,
+pre::before {
+  content: "";
+  display: block;
+  height: 30px;
+  width: 100%;
+  background: #1e2127;
+  border-bottom: 1px solid #3e4451;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+/* 标题栏伪窗口按钮 */
+.article-content pre::after,
+pre::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5f56;
+  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+  z-index: 10;
+}
+
+/* 代码内容区域 */
+.article-content pre code,
+pre code {
+  display: block;
+  padding: 40px 16px 16px;
+  overflow-x: auto;
+  font-family: "JetBrains Mono", "Fira Code", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  tab-size: 2;
+  -moz-tab-size: 2;
+  color: #abb2bf;
+}
+
+/* 代码语言显示和复制按钮的共同容器 */
+.code-actions-container {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* 控制两个元素之间的间距 */
+}
+
+/* 语言标签 - 现在使用独立元素而非伪元素 */
+.code-lang-label {
+  font-size: 0.7rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #abb2bf;
+  background: #3e4451;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  height: fit-content;
+}
+
+/* 隐藏旧的伪元素语言标签 */
+.article-content pre[data-lang]::before,
+pre[data-lang]::before {
+  content: none !important;
+}
+
+/* 复制按钮 */
+.code-copy-btn {
+  padding: 4px 8px !important;
+  background: #3e4451 !important;
+  border: none !important;
+  border-radius: 4px !important;
+  color: #abb2bf !important;
+  font-size: 0.7rem !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+  height: fit-content;
+}
+
+.code-copy-btn:hover {
+  background: #4b5363 !important;
+  color: #fff !important;
+}
+
+.code-copy-btn:active {
+  transform: scale(0.95) !important;
+}
+
+/* 内联代码 */
+.article-content :not(pre) > code,
+:not(pre) > code {
+  font-family: "JetBrains Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875em;
+  background-color: #f3f4f6;
+  color: #3b82f6;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+}
+
+.dark .article-content :not(pre) > code,
+.dark :not(pre) > code {
+  background-color: #21252b;
+  color: #3b82f6;
+}
+
+/* 代码块内的滚动条 */
+.article-content pre code::-webkit-scrollbar,
+pre code::-webkit-scrollbar {
+  height: 8px;
+}
+
+.article-content pre code::-webkit-scrollbar-track,
+pre code::-webkit-scrollbar-track {
+  background-color: #282c34;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.article-content pre code::-webkit-scrollbar-thumb,
+pre code::-webkit-scrollbar-thumb {
+  background-color: #3e4451;
+  border-radius: 9999px;
+}
+
+.article-content pre code::-webkit-scrollbar-thumb:hover,
+pre code::-webkit-scrollbar-thumb:hover {
+  background-color: #4b5363;
+}
+
+/* 彻底禁用行号显示 */
+.article-content pre .line-numbers-rows,
+.article-content pre .hljs-ln-numbers,
+.article-content pre td.hljs-ln-numbers,
+.article-content pre .gutter,
+.article-content pre .code-line-numbers,
+pre .line-numbers-rows,
+pre .hljs-ln-numbers,
+pre td.hljs-ln-numbers,
+pre .gutter,
+pre .code-line-numbers {
+  display: none !important;
+}
+
+/* 确保没有额外的左侧padding */
+.article-content pre code.hljs,
+pre code.hljs {
+  padding-left: 16px !important;
+}
+
+/* 语法高亮主题 - 增强高亮效果 */
+
+/* 关键字 */
+.hljs-keyword,
+.hljs-selector-tag,
+.token.keyword,
+.language-python .token.def,
+.language-python .def {
+  color: #c678dd !important;
+}
+
+/* 字符串 */
+.hljs-string,
+.hljs-doctag,
+.hljs-regexp,
+.token.string,
+.token.char,
+.token.attr-value {
+  color: #98c379 !important;
+}
+
+/* 数字 */
+.hljs-number,
+.hljs-literal,
+.token.number,
+.token.constant {
+  color: #d19a66 !important;
+}
+
+/* 注释 */
+.hljs-comment,
+.hljs-quote,
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #5c6370 !important;
+  font-style: italic !important;
+}
+
+/* 变量名 */
+.hljs-variable,
+.hljs-template-variable,
+.token.variable {
+  color: #e06c75 !important;
+}
+
+/* 函数名 */
+.hljs-title,
+.hljs-function .hljs-title,
+.hljs-attr,
+.token.function,
+.language-python .async,
+.language-python .await {
+  color: #61afef !important;
+}
+
+/* 类名 */
+.hljs-class .hljs-title,
+.hljs-type,
+.token.class-name,
+.language-python .class {
+  color: #e5c07b !important;
+}
+
+/* 标签名 */
+.hljs-tag,
+.hljs-name,
+.token.tag {
+  color: #e06c75 !important;
+}
+
+/* 属性 */
+.hljs-attribute,
+.token.attr-name {
+  color: #98c379 !important;
+}
+
+/* 符号、运算符 */
+.hljs-symbol,
+.hljs-bullet,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-meta,
+.token.operator,
+.token.entity,
+.token.url,
+.language-python .not,
+.language-python .in,
+.language-python .raise {
+  color: #56b6c2 !important;
+}
+
+/* Python特定高亮 */
+.language-python .self,
+.language-python .cls {
+  color: #e06c75 !important;
+  font-style: italic !important;
+}
+
+.language-python .return {
+  color: #c678dd !important;
+  font-weight: bold !important;
+}
+
+.language-python .import,
+.language-python .from {
+  color: #c678dd !important;
+}
+
+/* 确保Python代码高亮 */
+.language-python {
+  display: block;
+}
+
+.language-python .def {
+  color: #c678dd !important;
+}
+
+.language-python .params {
+  color: #e06c75 !important;
+}
+
+/* 突出高亮的行 */
+.article-content pre .highlighted-line,
+pre .highlighted-line {
+  background-color: rgba(115, 138, 148, 0.15);
+  display: block;
+  margin: 0 -16px;
+  padding: 0 16px;
+  border-left: 2px solid #61afef;
+}
+
+/* 特殊高亮标记 */
+.article-content pre .token.deleted,
+pre .token.deleted {
+  background-color: rgba(224, 108, 117, 0.15);
+  color: #e06c75;
+}
+
+.article-content pre .token.inserted,
+pre .token.inserted {
+  background-color: rgba(152, 195, 121, 0.15);
+  color: #98c379;
+}
+
+.article-content pre .token.important,
+.article-content pre .token.bold,
+pre .token.important,
+pre .token.bold {
+  font-weight: bold;
+}
+
+.article-content pre .token.italic,
+pre .token.italic {
+  font-style: italic;
+}
+
+/* 交互效果 - 悬停高亮 */
+.article-content pre.hover-line .line:hover,
+pre.hover-line .line:hover {
+  background-color: rgba(115, 138, 148, 0.1);
+}
+
+/* 代码块标题 */
+.code-block-title {
+  font-family: "JetBrains Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.8rem;
+  color: #abb2bf;
+  background-color: #21252b;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: -1.5rem;
+  border: 1px solid #3e4451;
+  border-bottom: none;
+  display: inline-block;
+}
+
+/* 代码块分组 */
+.code-group {
+  margin: 1.5rem 0;
+}
+
+.code-group .tabs {
+  display: flex;
+  background-color: #21252b;
+  border-radius: 0.5rem 0.5rem 0 0;
+  border: 1px solid #3e4451;
+  border-bottom: none;
+  overflow: hidden;
+}
+
+.code-group .tab {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  color: #abb2bf;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-right: 1px solid #3e4451;
+}
+
+.code-group .tab.active {
+  background-color: #282c34;
+  color: #61afef;
+  font-weight: 600;
+}
+
+.code-group pre {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* 适配暗色主题 */
+.dark .article-content pre,
+.dark pre {
+  background-color: #282c34;
+}
+
+.dark .article-content pre::before,
+.dark pre::before {
+  background: #1e2127;
+  border-bottom: 1px solid #3e4451;
+}
+
+.dark .article-content pre code,
+.dark pre code {
+  color: #abb2bf;
+}
+
+.dark .code-copy-btn {
+  background: #3e4451 !important;
+  color: #abb2bf !important;
+}
+
+.dark .code-copy-btn:hover {
+  background: #4b5363 !important;
+  color: #fff !important;
+}
+
+/* Bash/Shell特定高亮 */
+.language-bash .hljs-variable,
+.language-sh .hljs-variable,
+.bash .hljs-variable,
+.sh .hljs-variable {
+  color: #e06c75 !important;
+}
+
+.language-bash .hljs-built_in,
+.language-sh .hljs-built_in,
+.bash .hljs-built_in,
+.sh .hljs-built_in {
+  color: #56b6c2 !important;
+}
+
+.language-bash .hljs-keyword,
+.language-sh .hljs-keyword,
+.bash .hljs-keyword,
+.sh .hljs-keyword {
+  color: #c678dd !important;
+}
+
+/* 对命令行前缀的特殊处理 */
+.language-bash .hljs-meta,
+.language-sh .hljs-meta,
+.bash .hljs-meta,
+.sh .hljs-meta {
+  color: #98c379 !important;
+}
+
+/* 补充其他语言的高亮 */
+.hljs-comment,
+.bash .hljs-comment,
+.sh .hljs-comment {
+  color: #5c6370 !important;
+  font-style: italic !important;
+}
+
+/* 确保Bash/Shell命令高亮 */
+.language-bash .hljs-title,
+.language-sh .hljs-title,
+.bash .hljs-title,
+.sh .hljs-title,
+.bash .hljs-name,
+.sh .hljs-name {
+  color: #61afef !important;
+} 
