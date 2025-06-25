@@ -31,7 +31,7 @@ jobs:
       
       # 构建Hugo项目
       - name: Build with Hugo
-        run: hugo --minify
+        run: hugo
       
       # 部署到public分支
       - name: Deploy to public branch
