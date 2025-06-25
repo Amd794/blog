@@ -1,0 +1,146 @@
+baseURL = 'https://blog.cmdragon.cn/'
+languageCode = 'zh-cn'
+title = "cmdragon's Blog"
+hasCJKLanguage = true
+enableRobotsTXT = true
+disablePathToLower = true
+enableEmoji = true
+
+# SEO相关配置
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+# 分页配置
+[pagination]
+  pagerSize = 5
+
+# 输出格式配置
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+  page = ["HTML"]
+
+[outputFormats]
+  [outputFormats.JSON]
+    mediaType = "application/json"
+    baseName = "index"
+    isPlainText = true
+  [outputFormats.RSS]
+    mediaType = "application/rss+xml"
+    baseName = "index"
+
+[params]
+  author = "cmdragon"
+  description = "cmdragon's Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。"
+  mainSections = ["posts"]
+  
+  # SEO优化配置
+  [params.seo]
+    # 默认图像(用于社交媒体分享)
+    defaultImage = "/images/logo/social-card.png"
+    # Twitter用户名(不含@)
+    twitterHandle = "cmdragon"  # 如果有推特账号请填写
+    
+  # 社交链接
+  [params.social]
+    github = "https://github.com/amd794"
+    email = "support@cmdragon.cn"
+    
+  # 评论系统
+  [params.comments]
+    enable = false
+    [params.comments.giscus]
+      repo = "username/repo-name"
+      repoId = "填写你的仓库ID"
+      category = "Announcements"
+      categoryId = "填写你的分类ID"
+  
+  # 搜索设置
+  [params.search]
+    enable = true
+    
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "首页"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/archives/"
+    weight = 2
+  [[menu.main]]
+    identifier = "categories"
+    name = "分类"
+    url = "/categories/"
+    weight = 3
+  [[menu.main]]
+    identifier = "tags"
+    name = "标签"
+    url = "/tags/"
+    weight = 4
+  [[menu.main]]
+    identifier = "friends"
+    name = "友链"
+    url = "/friends/"
+    weight = 5
+    
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  
+# Markdown渲染和代码高亮配置
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    
+    [markup.goldmark.parser]
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+      
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true  # 允许在Markdown中使用HTML
+      xhtml = false
+      
+    [markup.goldmark.parser.attribute]
+      block = true  # 允许块级元素的属性
+      title = true  # 允许标题属性
+      
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNoStart = 1
+    lineNos = false   # 禁用行号显示
+    lineNumbersInTable = false  # 禁用表格中的行号
+    noClasses = false
+    style = "dracula"
+    tabWidth = 4
+  
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = false
+    startLevel = 2
+    
+  # 配置自定义渲染钩子
+  [markup.render-hooks]
+    [markup.render-hooks.codeblock]
+      # 这里不需要特别配置，我们将使用自定义HTML模板覆盖处理
+
+# 启用功能
+[security.funcs]
+  getenv = ["^HUGO_"]
+  getJSON = ['^https?://']
+  getCSV = ['^https?://']

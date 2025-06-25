@@ -1,0 +1,141 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 sm:px-6 relative">
+    <!-- 添加面包屑导航 -->
+    {{ partial "breadcrumbs.html" . }}
+    
+    <header class="mb-8">
+        <h1 class="text-3xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">{{ .Title }}</h1>
+        {{ with .Description }}
+            <div class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl">{{ . }}</div>
+        {{ end }}
+    </header>
+    
+    <div class="space-y-8">
+        {{ range .Paginator.Pages }}
+            <article class="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-3">
+                        <a href="{{ .Permalink }}" class="text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors duration-200 hover:underline decoration-blue-500 decoration-2 underline-offset-2">
+                            {{ .Title }}
+                        </a>
+                    </h2>
+                    
+                    <div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 mb-4 gap-3">
+                        <span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full">
+                            <iconify-icon icon="mdi:calendar" class="mr-1" width="16" height="16"></iconify-icon>
+                            {{ .Date.Format "2006-01-02" }}
+                        </span>
+                        
+                        {{ with .Params.categories }}
+                            <span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full">
+                                <iconify-icon icon="mdi:folder" class="mr-1" width="16" height="16"></iconify-icon>
+                                {{ range $index, $category := . }}
+                                    {{ if $index }}, {{ end }}
+                                    <a href="{{ "/categories/" | relLangURL }}{{ $category | urlize }}" class="hover:text-primary transition-colors">
+                                        {{ $category }}
+                                    </a>
+                                {{ end }}
+                            </span>
+                        {{ end }}
+                        
+                        <!-- 添加阅读时间估计 -->
+                        <span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full">
+                            <iconify-icon icon="mdi:clock-outline" class="mr-1" width="16" height="16"></iconify-icon>
+                            {{ math.Round (div (countwords .Content) 200.0) }} 分钟阅读
+                        </span>
+                    </div>
+                    
+                    <!-- 文章封面图 - 响应式优化 -->
+                    {{ with .Params.cover }}
+                    <div class="flex justify-center mb-4">
+                        <div class="rounded-lg overflow-hidden w-full max-h-[180px] sm:max-h-[200px] md:max-h-[240px] border border-gray-100 dark:border-gray-700 shadow-sm">
+                            <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </div>
+                    {{ end }}
+                    
+                    {{ with .Summary }}
+                        <div class="text-gray-700 dark:text-gray-300 mb-4 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-600">
+                            {{ . | safeHTML }}
+                        </div>
+                    {{ else }}
+                        <div class="text-gray-700 dark:text-gray-300 mb-4 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-600">
+                            {{ .Content | truncate 280 }}
+                        </div>
+                    {{ end }}
+                    
+                    <div class="flex flex-wrap justify-between items-center gap-4">
+                        <a href="{{ .Permalink }}" class="inline-flex items-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300 transform hover:translate-y-[-2px]">
+                            阅读更多
+                            <iconify-icon icon="mdi:arrow-right" class="ml-1" width="16" height="16"></iconify-icon>
+                        </a>
+                        
+                        <!-- 文章标签 -->
+                        {{ with .Params.tags }}
+                        <div class="flex flex-wrap gap-2">
+                            {{ range first 3 . }}
+                                <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" 
+                                class="text-xs px-2 py-1 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors duration-200">
+                                    #{{ . }}
+                                </a>
+                            {{ end }}
+                            
+                            {{ if gt (len .) 3 }}
+                                <span class="text-xs px-2 py-1 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                                    +{{ sub (len .) 3 }}
+                                </span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </article>
+        {{ else }}
+            <div class="text-center py-12 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+                <div class="inline-flex items-center justify-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-full mb-4">
+                    <iconify-icon icon="mdi:information" class="text-blue-500" width="32" height="32"></iconify-icon>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">暂无内容</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                    该分类下暂时没有文章。
+                </p>
+            </div>
+        {{ end }}
+    </div>
+    
+    <!-- 分页 -->
+    <div class="mt-8">
+        {{ if or .Paginator.HasPrev .Paginator.HasNext }}
+            <nav class="flex justify-between items-center">
+                {{ if .Paginator.HasPrev }}
+                    <a href="{{ .Paginator.Prev.URL }}" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300 flex items-center">
+                        <iconify-icon icon="mdi:chevron-left" class="mr-1" width="20" height="20"></iconify-icon>
+                        上一页
+                    </a>
+                {{ else }}
+                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed">
+                        <iconify-icon icon="mdi:chevron-left" class="mr-1" width="20" height="20"></iconify-icon>
+                        上一页
+                    </span>
+                {{ end }}
+                
+                <span class="text-gray-700 dark:text-gray-300">
+                    {{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}
+                </span>
+                
+                {{ if .Paginator.HasNext }}
+                    <a href="{{ .Paginator.Next.URL }}" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300 flex items-center">
+                        下一页
+                        <iconify-icon icon="mdi:chevron-right" class="ml-1" width="20" height="20"></iconify-icon>
+                    </a>
+                {{ else }}
+                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed">
+                        下一页
+                        <iconify-icon icon="mdi:chevron-right" class="ml-1" width="20" height="20"></iconify-icon>
+                    </span>
+                {{ end }}
+            </nav>
+        {{ end }}
+    </div>
+</div>
+{{ end }} 

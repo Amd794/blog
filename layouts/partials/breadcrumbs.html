@@ -1,0 +1,97 @@
+<nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label="面包屑导航">
+    <ol class="flex flex-wrap items-center" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ .Site.BaseURL }}" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="首页">
+                <span itemprop="name">首页</span>
+            </a>
+            <meta itemprop="position" content="1" />
+        </li>
+        
+        <!-- 动态生成面包屑 -->
+        {{ if eq .Kind "taxonomy" }}
+            <li class="mx-2">/</li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                {{ if eq .Data.Singular "category" }}
+                    <a href="/categories/" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="分类">
+                        <span itemprop="name">分类</span>
+                    </a>
+                {{ else if eq .Data.Singular "tag" }}
+                    <a href="/tags/" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="标签">
+                        <span itemprop="name">标签</span>
+                    </a>
+                {{ end }}
+                <meta itemprop="position" content="2" />
+            </li>
+            <li class="mx-2">/</li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span class="text-gray-800 dark:text-gray-200" itemprop="name">
+                    {{- if .Title -}}{{ .Title }}{{- else -}}未命名{{- end -}}
+                </span>
+                <meta itemprop="position" content="3" />
+            </li>
+        {{ else if eq .Kind "term" }}
+            <li class="mx-2">/</li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                {{ if eq .Data.Singular "category" }}
+                    <a href="/categories/" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="分类">
+                        <span itemprop="name">分类</span>
+                    </a>
+                {{ else if eq .Data.Singular "tag" }}
+                    <a href="/tags/" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="标签">
+                        <span itemprop="name">标签</span>
+                    </a>
+                {{ end }}
+                <meta itemprop="position" content="2" />
+            </li>
+            <li class="mx-2">/</li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span class="text-gray-800 dark:text-gray-200" itemprop="name">
+                    {{- if .Title -}}{{ .Title }}{{- else -}}未命名{{- end -}}
+                </span>
+                <meta itemprop="position" content="3" />
+            </li>
+        {{ else if eq .Kind "section" }}
+            <li class="mx-2">/</li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span class="text-gray-800 dark:text-gray-200" itemprop="name">
+                    {{- if .Section -}}{{ .Section | humanize }}{{- else -}}未分类{{- end -}}
+                </span>
+                <meta itemprop="position" content="2" />
+            </li>
+        {{ else if eq .Kind "page" }}
+            {{ if .Section }}
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="{{ .Section | absURL }}" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="{{ .Section | humanize }}">
+                        <span itemprop="name">{{ .Section | humanize }}</span>
+                    </a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span class="text-gray-800 dark:text-gray-200" itemprop="name" title="{{ if .Title }}{{ .Title }}{{ else }}未命名页面{{ end }}">
+                        {{- if .Title -}}
+                            {{- $titleLength := len .Title -}}
+                            {{- if gt $titleLength 30 -}}
+                                {{ substr .Title 0 30 }}...
+                            {{- else -}}
+                                {{- .Title -}}
+                            {{- end -}}
+                        {{- else -}}
+                            未命名页面
+                        {{- end -}}
+                    </span>
+                    <meta itemprop="position" content="3" />
+                </li>
+            {{ else }}
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span class="text-gray-800 dark:text-gray-200" itemprop="name">
+                        {{- if .Title -}}{{ .Title }}{{- else -}}未命名页面{{- end -}}
+                    </span>
+                    <meta itemprop="position" content="2" />
+                </li>
+            {{ end }}
+        {{ end }}
+    </ol>
+</nav> 

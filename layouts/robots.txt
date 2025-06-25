@@ -1,0 +1,33 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /draft/
+
+# 允许所有机器人访问站点地图
+Allow: /sitemap.xml
+Allow: /index.xml
+
+# 特定爬虫配置
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+User-agent: Sogou inst spider
+Allow: /
+
+User-agent: 360Spider
+Allow: /
+
+# 设置爬行延迟时间
+Crawl-delay: 5
+
+# 站点地图位置
+Sitemap: {{ .Site.BaseURL }}sitemap.xml 

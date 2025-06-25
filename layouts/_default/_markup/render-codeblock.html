@@ -1,0 +1,165 @@
+{{/* 代码块渲染模板 - 改进后的版本 */}}
+{{ $language := .Attributes.language }}
+{{ $content := .Inner }}
+{{ $isMermaid := false }}
+{{ $mermaidType := "" }}
+
+{{/* 检查是否为Mermaid语法 */}}
+{{ if eq $language "mermaid" }}
+  {{ $isMermaid = true }}
+{{ else }}
+  {{/* 检测未标记但包含Mermaid语法的内容 */}}
+  {{ $trimmedContent := trim $content " \n\r\t" }}
+  {{ if or 
+       (hasPrefix $trimmedContent "sequenceDiagram") 
+       (hasPrefix $trimmedContent "graph ") 
+       (hasPrefix $trimmedContent "flowchart ") 
+       (hasPrefix $trimmedContent "gantt") 
+       (hasPrefix $trimmedContent "classDiagram") 
+       (hasPrefix $trimmedContent "stateDiagram") 
+       (hasPrefix $trimmedContent "pie") 
+       (hasPrefix $trimmedContent "journey") }}
+    {{ $isMermaid = true }}
+    {{ if not $language }}
+      {{ $language = "mermaid" }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Mermaid处理 */}}
+{{ if $isMermaid }}
+  {{ $trimmedContent := trim $content " \n\r\t" }}
+  
+  {{ if hasPrefix $trimmedContent "sequenceDiagram" }}
+    {{ $mermaidType = "sequence" }}
+  {{ else if hasPrefix $trimmedContent "classDiagram" }}
+    {{ $mermaidType = "class" }}
+  {{ else if hasPrefix $trimmedContent "stateDiagram" }}
+    {{ $mermaidType = "state" }}
+  {{ else if or (hasPrefix $trimmedContent "graph ") (hasPrefix $trimmedContent "flowchart ") }}
+    {{ $mermaidType = "flowchart" }}
+  {{ else if hasPrefix $trimmedContent "gantt" }}
+    {{ $mermaidType = "gantt" }}
+  {{ else if hasPrefix $trimmedContent "pie" }}
+    {{ $mermaidType = "pie" }}
+  {{ else if hasPrefix $trimmedContent "journey" }}
+    {{ $mermaidType = "journey" }}
+  {{ end }}
+  
+  <div class="mermaid-container">
+    <div class="mermaid {{ $mermaidType }}">{{ $content }}</div>
+  </div>
+  
+  <style>
+    .mermaid-container {
+      width: 100%;
+      overflow: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .mermaid-container .mermaid {
+      min-width: fit-content;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .mermaid-container {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+    }
+  </style>
+{{ else }}
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-{{ $language }}" data-lang="{{ $language }}">{{ $content }}</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name">{{ $language }}</span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          // 成功复制
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          // 显示成功图标
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          // 2秒后恢复
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          // 复制失败
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+{{ end }} 

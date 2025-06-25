@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col">
+    <div class="flex-grow flex flex-col">
+        {{ partial "header.html" . }}
+        
+        <main class="container mx-auto px-4 py-8 flex-grow">
+            {{ block "main" . }}{{ end }}
+        </main>
+        
+        {{ partial "footer.html" . }}
+    </div>
+    
+    <!-- 深色模式切换脚本 -->
+    <script>
+        // 检查用户偏好
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    <!-- 代码高亮脚本 -->
+    <script src="/js/code-highlight.js"></script>
+    
+    <!-- 高级渲染脚本（Mermaid和KaTeX） -->
+    <script src="/js/advanced-render.js"></script>
+    
+    {{ partial "site-search.html" . }}
+</body>
+</html> 

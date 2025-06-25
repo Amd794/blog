@@ -1,0 +1,90 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 sm:px-6 relative py-8">
+    <div class="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 overflow-hidden">
+        <!-- 页面内容 -->
+        <div class="flex flex-col lg:flex-row">
+            <!-- 左侧内容区 -->
+            <div class="w-full lg:w-2/3 p-6 lg:p-12">
+                <div class="flex items-center mb-6">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-2 rounded-lg text-white mr-3 shadow-md">
+                        <iconify-icon icon="mdi:alert-circle" width="24" height="24"></iconify-icon>
+                    </div>
+                    <h2 class="text-xl font-medium text-gray-800 dark:text-gray-200">页面未找到</h2>
+                </div>
+                
+                <h1 class="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-transparent bg-clip-text">404</h1>
+                
+                <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg">
+                    您请求的页面不存在或已被移动到其他位置。请检查URL是否正确，或通过下面的按钮返回首页。
+                </p>
+                
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <a href="{{ .Site.BaseURL }}" 
+                       class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-lg hover:shadow-md transition-all duration-300 transform hover:translate-y-[-2px] flex items-center"
+                       aria-label="返回首页"
+                       tabindex="0">
+                        <iconify-icon icon="mdi:home" class="mr-2" width="20" height="20"></iconify-icon>
+                        返回首页
+                    </a>
+                    
+                    <button onclick="window.history.back()" 
+                            class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-lg hover:shadow-md transition-all duration-300 transform hover:translate-y-[-2px] flex items-center"
+                            aria-label="返回上一页"
+                            tabindex="0">
+                        <iconify-icon icon="mdi:arrow-left" class="mr-2" width="20" height="20"></iconify-icon>
+                        返回上一页
+                    </button>
+                </div>
+                
+                <!-- 搜索框 -->
+                <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        您还可以尝试搜索查找所需内容：
+                    </p>
+                    <form action="/search" method="get" class="flex">
+                        <input type="text" name="q" placeholder="搜索..." 
+                               class="flex-1 px-4 py-2 rounded-l-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" 
+                                class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-r-lg hover:shadow-md transition-all duration-300 flex items-center justify-center">
+                            <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- 右侧图像区 -->
+            <div class="w-full lg:w-1/3 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 lg:p-12 flex items-center justify-center relative overflow-hidden">
+                <div class="relative z-10">
+                    <div class="animate-pulse">
+                        <iconify-icon icon="mdi:file-search" width="180" height="180" class="text-blue-500/50 dark:text-blue-400/50"></iconify-icon>
+                    </div>
+                </div>
+                <!-- 装饰元素 -->
+                <div class="absolute top-1/4 right-1/4 opacity-10 dark:opacity-5 pointer-events-none">
+                    <iconify-icon icon="mdi:map-marker-question" width="120" height="120"></iconify-icon>
+                </div>
+                <div class="absolute bottom-1/4 left-1/4 opacity-10 dark:opacity-5 pointer-events-none">
+                    <iconify-icon icon="mdi:alert-circle-outline" width="80" height="80"></iconify-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.animate-pulse {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
+}
+</style>
+{{ end }} 

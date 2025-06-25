@@ -22,26 +22,23 @@ jobs:
         with:
           fetch-depth: 0  # 获取完整历史记录以支持分支操作
       
-      # 设置Node.js环境
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      # 设置Hugo环境
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
         with:
-          node-version: '22'
+          hugo-version: 'latest'
+          extended: true  # 使用Hugo Extended版本以支持SASS/SCSS
       
-      # 安装依赖
-      - name: Install Dependencies
-        run: npm install
-      
-      # 构建项目
-      - name: Build
-        run: npm run build
+      # 构建Hugo项目
+      - name: Build with Hugo
+        run: hugo --minify
       
       # 部署到public分支
       - name: Deploy to public branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: public  # Hexo生成的静态文件目录
-          branch: public   # 目标部署分支
+          folder: public  # Hugo默认输出目录
+          branch: public  # 目标部署分支
           clean: true     # 自动删除目标分支上的旧文件
           token: ${{ secrets.GITHUB_TOKEN }}  # 使用GitHub提供的token
 

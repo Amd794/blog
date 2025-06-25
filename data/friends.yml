@@ -1,0 +1,14 @@
+- name: "AI驱动在线工具"
+  url: "https://tools.cmdragon.cn/"
+  avatar: "/images/logo/small.png"
+  description: "1000+免费专业在线工具，包含AI文本生成、代码转换、图像处理、开发者工具等。高效便捷，无需安装，秒速解决您的日常任务与开发难题。"
+
+- name: "Hugo"
+  url: "https://gohugo.io/"
+  avatar: "https://gohugo.io/apple-touch-icon.png"
+  description: "世界上最快的网站构建框架"
+
+- name: "Tailwind CSS"
+  url: "https://tailwindcss.com/"
+  avatar: "https://tailwindcss.com/favicons/apple-touch-icon.png?v=4"
+  description: "实用优先的CSS框架" 
