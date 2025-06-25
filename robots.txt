@@ -30,4 +30,4 @@ Allow: /
 Crawl-delay: 5
 
 # 站点地图位置
-Sitemap: https://blog.cmdragon.cn/sitemap.xml 
+Sitemap: /sitemap.xml 

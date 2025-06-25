@@ -1,26 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>安全实践 on cmdragon&#39;s Blog</title>
-    <link>https://blog.cmdragon.cn/tags/%E5%AE%89%E5%85%A8%E5%AE%9E%E8%B7%B5/</link>
-    <description>Recent content in 安全实践 on cmdragon&#39;s Blog</description>
-    <generator>Hugo</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Thu, 13 Mar 2025 00:18:53 +0800</lastBuildDate>
-    <atom:link href="https://blog.cmdragon.cn/tags/%E5%AE%89%E5%85%A8%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>FastAPI 核心机制：分页参数的实现与最佳实践</title>
-      <link>https://blog.cmdragon.cn/posts/8821ab1186b05252feda20836609463e/</link>
-      <pubDate>Thu, 13 Mar 2025 00:18:53 +0800</pubDate>
-      <guid>https://blog.cmdragon.cn/posts/8821ab1186b05252feda20836609463e/</guid>
-      <description>在构建现代Web应用程序时，分页是一个不可或缺的功能。无论是处理大量数据还是优化用户体验，分页都起到了至关重要的作用。本文将深入探讨如何在FastAPI中实现分页参数（如page、page_size以及总页数计算），并涵盖相关的核心机制、最佳实践、常见问题及解决方案。</description>
-    </item>
-    <item>
-      <title>Django性能之道：缓存应用与优化实战</title>
-      <link>https://blog.cmdragon.cn/posts/887a0a7da3a77358a6c56b53de583bfd/</link>
-      <pubDate>Sat, 11 May 2024 18:34:22 +0800</pubDate>
-      <guid>https://blog.cmdragon.cn/posts/887a0a7da3a77358a6c56b53de583bfd/</guid>
-      <description>&lt;img src=&#34;https://static.cmdragon.cn/blog/images/2024_05_11 18_37_29.png@blog&#34; title=&#34;2024_05_11 18_37_29.png&#34; alt=&#34;2024_05_11 18_37_29.png&#34;/&gt;&#xA;&lt;p&gt;&lt;strong&gt;引言&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;在当今的互联网时代，用户对网站和应用程序的性能要求越来越高。一个响应迅速、加载快速的网站不仅能提升用户体验，还能在搜索引擎排名中占据优势。Django，作为一个高级Python&#xA;Web框架，以其快速开发和干净、实用的设计而闻名。然而，即使是最优化的Django应用，也可能因为频繁的数据库查询、复杂的计算或外部API调用而变得缓慢。这就是缓存发挥作用的地方。&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>安全实践 on cmdragon's Blog</title><link>/tags/%E5%AE%89%E5%85%A8%E5%AE%9E%E8%B7%B5/</link><description>Recent content in 安全实践 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 13 Mar 2025 00:18:53 +0800</lastBuildDate><atom:link href="/tags/%E5%AE%89%E5%85%A8%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml"/><item><title>FastAPI 核心机制：分页参数的实现与最佳实践</title><link>/posts/8821ab1186b05252feda20836609463e/</link><pubDate>Thu, 13 Mar 2025 00:18:53 +0800</pubDate><guid>/posts/8821ab1186b05252feda20836609463e/</guid><description>在构建现代Web应用程序时，分页是一个不可或缺的功能。无论是处理大量数据还是优化用户体验，分页都起到了至关重要的作用。本文将深入探讨如何在FastAPI中实现分页参数（如page、page_size以及总页数计算），并涵盖相关的核心机制、最佳实践、常见问题及解决方案。</description></item><item><title>Django性能之道：缓存应用与优化实战</title><link>/posts/887a0a7da3a77358a6c56b53de583bfd/</link><pubDate>Sat, 11 May 2024 18:34:22 +0800</pubDate><guid>/posts/887a0a7da3a77358a6c56b53de583bfd/</guid><description>&lt;img src="https://static.cmdragon.cn/blog/images/2024_05_11 18_37_29.png@blog" title="2024_05_11 18_37_29.png" alt="2024_05_11 18_37_29.png"/>
+&lt;p>&lt;strong>引言&lt;/strong>&lt;/p>
+&lt;p>在当今的互联网时代，用户对网站和应用程序的性能要求越来越高。一个响应迅速、加载快速的网站不仅能提升用户体验，还能在搜索引擎排名中占据优势。Django，作为一个高级Python
+Web框架，以其快速开发和干净、实用的设计而闻名。然而，即使是最优化的Django应用，也可能因为频繁的数据库查询、复杂的计算或外部API调用而变得缓慢。这就是缓存发挥作用的地方。&lt;/p></description></item></channel></rss>
