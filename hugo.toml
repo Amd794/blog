@@ -1,14 +1,14 @@
-baseURL = 'https://blog.cmdragon.cn/'
 languageCode = 'zh-cn'
 title = "cmdragon's Blog"
 hasCJKLanguage = true
 enableRobotsTXT = true
 disablePathToLower = true
 enableEmoji = true
+relativeURLs = true
 
 # SEO相关配置
 [sitemap]
-  changefreq = "weekly"
+  changefreq = "daily"
   priority = 0.5
   filename = "sitemap.xml"
 
