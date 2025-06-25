@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>分析 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%88%86%E6%9E%90/</link><description>Recent content in 分析 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 16 Aug 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 onNuxtReady 进行异步初始化</title><link>https://blog.cmdragon.cn/posts/838b6733c038fcb291025b2c777b3e8b/</link><pubDate>Fri, 16 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/838b6733c038fcb291025b2c777b3e8b/</guid><description>摘要：本文详细介绍了Nuxt.js框架中的onNuxtReady函数用途、使用场景及其实现步骤，并通过集成分析库的示例代码，指导开发者如何在应用初始化完成后执行异步操作，以优化用户体验。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>分析 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%88%86%E6%9E%90/</link>
+    <description>Recent content in 分析 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 16 Aug 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 onNuxtReady 进行异步初始化</title>
+      <link>https://blog.cmdragon.cn/posts/838b6733c038fcb291025b2c777b3e8b/</link>
+      <pubDate>Fri, 16 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/838b6733c038fcb291025b2c777b3e8b/</guid>
+      <description>摘要：本文详细介绍了Nuxt.js框架中的onNuxtReady函数用途、使用场景及其实现步骤，并通过集成分析库的示例代码，指导开发者如何在应用初始化完成后执行异步操作，以优化用户体验。</description>
+    </item>
+  </channel>
+</rss>

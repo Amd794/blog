@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据级权限 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E7%BA%A7%E6%9D%83%E9%99%90/</link><description>Recent content in 数据级权限 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 18 Jun 2025 17:24:12 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E7%BA%A7%E6%9D%83%E9%99%90/index.xml" rel="self" type="application/rss+xml"/><item><title>如何在FastAPI中实现权限隔离并让用户乖乖听话？</title><link>https://blog.cmdragon.cn/posts/74777546a240b16b32196e5eb29ec8f7/</link><pubDate>Wed, 18 Jun 2025 17:24:12 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/74777546a240b16b32196e5eb29ec8f7/</guid><description>权限隔离通过用户身份验证和角色判定限制系统资源访问。FastAPI实现步骤包括用户认证、角色识别和访问控制。认证机制采用OAuth2密码授权流程结合JWT令牌，通过创建角色校验依赖项实现授权系统。进阶权限控制模式包括数据级权限隔离，确保用户只能访问自己的数据。测试与验证使用TestClient进行权限测试，常见报错如401 Unauthorized、403 Forbidden和422 Validation Error均有相应解决方案。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据级权限 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E7%BA%A7%E6%9D%83%E9%99%90/</link>
+    <description>Recent content in 数据级权限 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 18 Jun 2025 17:24:12 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E7%BA%A7%E6%9D%83%E9%99%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何在FastAPI中实现权限隔离并让用户乖乖听话？</title>
+      <link>https://blog.cmdragon.cn/posts/74777546a240b16b32196e5eb29ec8f7/</link>
+      <pubDate>Wed, 18 Jun 2025 17:24:12 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/74777546a240b16b32196e5eb29ec8f7/</guid>
+      <description>权限隔离通过用户身份验证和角色判定限制系统资源访问。FastAPI实现步骤包括用户认证、角色识别和访问控制。认证机制采用OAuth2密码授权流程结合JWT令牌，通过创建角色校验依赖项实现授权系统。进阶权限控制模式包括数据级权限隔离，确保用户只能访问自己的数据。测试与验证使用TestClient进行权限测试，常见报错如401 Unauthorized、403 Forbidden和422 Validation Error均有相应解决方案。</description>
+    </item>
+  </channel>
+</rss>

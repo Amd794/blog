@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>注册 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%B3%A8%E5%86%8C/</link><description>Recent content in 注册 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 15 Sep 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%B3%A8%E5%86%8C/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt Kit 组件管理：注册与自动导入</title><link>https://blog.cmdragon.cn/posts/c5f0133bf1d896616b703a00c560fb9b/</link><pubDate>Sun, 15 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/c5f0133bf1d896616b703a00c560fb9b/</guid><description>Nuxt Kit 为组件的注册和导入提供了灵活高效的解决方案。无论你是要批量导入组件，还是单独处理特定组件，这些工具都能够满足你的需求。使用这些方法可以显著提升开发效率、减少管理复杂性。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>注册 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%B3%A8%E5%86%8C/</link>
+    <description>Recent content in 注册 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 15 Sep 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%B3%A8%E5%86%8C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt Kit 组件管理：注册与自动导入</title>
+      <link>https://blog.cmdragon.cn/posts/c5f0133bf1d896616b703a00c560fb9b/</link>
+      <pubDate>Sun, 15 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/c5f0133bf1d896616b703a00c560fb9b/</guid>
+      <description>Nuxt Kit 为组件的注册和导入提供了灵活高效的解决方案。无论你是要批量导入组件，还是单独处理特定组件，这些工具都能够满足你的需求。使用这些方法可以显著提升开发效率、减少管理复杂性。</description>
+    </item>
+  </channel>
+</rss>

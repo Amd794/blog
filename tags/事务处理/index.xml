@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>事务处理 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/</link><description>Recent content in 事务处理 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 23 Apr 2025 12:07:08 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml"/><item><title>深入解析事务基础与原子操作原理</title><link>https://blog.cmdragon.cn/posts/6f4ae59a09bfa05596ed8632ca772076/</link><pubDate>Wed, 23 Apr 2025 12:07:08 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/6f4ae59a09bfa05596ed8632ca772076/</guid><description>事务是数据库操作的核心，需满足ACID特性：原子性、一致性、隔离性和持久性。事务隔离级别包括读未提交、读已提交、可重复读和串行化，适用于不同场景。嵌套事务通过上下文管理实现，支持回滚点以部分回滚。实战案例展示了订单系统中的事务处理，包括余额检查和支付失败回滚。常见错误如TransactionManagementError和死锁，需通过正确使用事务装饰器和重试机制解决。课后Quiz探讨了事务隔离和嵌套事务回滚的处理方法。运行环境配置包括依赖安装和FastAPI启动设置。</description></item><item><title>深入探讨数据更新操作：UPDATE 语句的使用与最佳实践</title><link>https://blog.cmdragon.cn/posts/6fb8b0b4fee8525705afcdd3b08e1c60/</link><pubDate>Tue, 07 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/6fb8b0b4fee8525705afcdd3b08e1c60/</guid><description>数据更新（UPDATE）是关系型数据库管理系统中的关键操作之一，它允许开发者和管理员修改已有数据，以满足业务需求和数据维护的需要。掌握 UPDATE 语句的正确使用不仅提高了数据管理的效率，还确保了数据的一致性和完整性。</description></item><item><title>数据插入操作的深度分析：INSERT 语句使用及实践</title><link>https://blog.cmdragon.cn/posts/5d109d3a35a537bbf4da5b2319658c54/</link><pubDate>Sun, 05 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/5d109d3a35a537bbf4da5b2319658c54/</guid><description>在数据库管理系统中，数据插入（INSERT）操作是数据持久化的基础，也是应用程序与用户交互的核心功能之一。它不仅影响数据的完整性与一致性，还在数据建模、查询性能与业务逻辑实现中起着至关重要的作用。本文将深入探讨 PostgreSQL 中的插入数据操作，包括基本的 INSERT 语法、批量插入技巧、事务处理以及错误处理机制。同时，将通过具体示例和实际应用场景，分析如何在 INSERT 操作中实现最佳实践，以确保数据插入过程的高效性、安全性和可靠性。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>事务处理 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/</link>
+    <description>Recent content in 事务处理 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 23 Apr 2025 12:07:08 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入解析事务基础与原子操作原理</title>
+      <link>https://blog.cmdragon.cn/posts/6f4ae59a09bfa05596ed8632ca772076/</link>
+      <pubDate>Wed, 23 Apr 2025 12:07:08 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/6f4ae59a09bfa05596ed8632ca772076/</guid>
+      <description>事务是数据库操作的核心，需满足ACID特性：原子性、一致性、隔离性和持久性。事务隔离级别包括读未提交、读已提交、可重复读和串行化，适用于不同场景。嵌套事务通过上下文管理实现，支持回滚点以部分回滚。实战案例展示了订单系统中的事务处理，包括余额检查和支付失败回滚。常见错误如TransactionManagementError和死锁，需通过正确使用事务装饰器和重试机制解决。课后Quiz探讨了事务隔离和嵌套事务回滚的处理方法。运行环境配置包括依赖安装和FastAPI启动设置。</description>
+    </item>
+    <item>
+      <title>深入探讨数据更新操作：UPDATE 语句的使用与最佳实践</title>
+      <link>https://blog.cmdragon.cn/posts/6fb8b0b4fee8525705afcdd3b08e1c60/</link>
+      <pubDate>Tue, 07 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/6fb8b0b4fee8525705afcdd3b08e1c60/</guid>
+      <description>数据更新（UPDATE）是关系型数据库管理系统中的关键操作之一，它允许开发者和管理员修改已有数据，以满足业务需求和数据维护的需要。掌握 UPDATE 语句的正确使用不仅提高了数据管理的效率，还确保了数据的一致性和完整性。</description>
+    </item>
+    <item>
+      <title>数据插入操作的深度分析：INSERT 语句使用及实践</title>
+      <link>https://blog.cmdragon.cn/posts/5d109d3a35a537bbf4da5b2319658c54/</link>
+      <pubDate>Sun, 05 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/5d109d3a35a537bbf4da5b2319658c54/</guid>
+      <description>在数据库管理系统中，数据插入（INSERT）操作是数据持久化的基础，也是应用程序与用户交互的核心功能之一。它不仅影响数据的完整性与一致性，还在数据建模、查询性能与业务逻辑实现中起着至关重要的作用。本文将深入探讨 PostgreSQL 中的插入数据操作，包括基本的 INSERT 语法、批量插入技巧、事务处理以及错误处理机制。同时，将通过具体示例和实际应用场景，分析如何在 INSERT 操作中实现最佳实践，以确保数据插入过程的高效性、安全性和可靠性。</description>
+    </item>
+  </channel>
+</rss>

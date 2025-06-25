@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>页面动画 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E9%A1%B5%E9%9D%A2%E5%8A%A8%E7%94%BB/</link><description>Recent content in 页面动画 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 10 Oct 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E9%A1%B5%E9%9D%A2%E5%8A%A8%E7%94%BB/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 page：transition：finish 钩子详解</title><link>https://blog.cmdragon.cn/posts/b19fb081d695b4867066656e73740093/</link><pubDate>Thu, 10 Oct 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/b19fb081d695b4867066656e73740093/</guid><description>page:transition:finish 是 Nuxt.js 中的一个事件钩子，专门用于处理页面过渡效果结束后的逻辑。这一钩子在页面过渡的 onAfterLeave 事件之后被调用，允许开发者在过渡完成后执行一些后续操作。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>页面动画 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E9%A1%B5%E9%9D%A2%E5%8A%A8%E7%94%BB/</link>
+    <description>Recent content in 页面动画 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 10 Oct 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E9%A1%B5%E9%9D%A2%E5%8A%A8%E7%94%BB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 page：transition：finish 钩子详解</title>
+      <link>https://blog.cmdragon.cn/posts/b19fb081d695b4867066656e73740093/</link>
+      <pubDate>Thu, 10 Oct 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/b19fb081d695b4867066656e73740093/</guid>
+      <description>page:transition:finish 是 Nuxt.js 中的一个事件钩子，专门用于处理页面过渡效果结束后的逻辑。这一钩子在页面过渡的 onAfterLeave 事件之后被调用，允许开发者在过渡完成后执行一些后续操作。</description>
+    </item>
+  </channel>
+</rss>

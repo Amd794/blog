@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>生产 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E7%94%9F%E4%BA%A7/</link><description>Recent content in 生产 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 30 Aug 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E7%94%9F%E4%BA%A7/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 nuxi build 命令构建你的 Nuxt 应用程序</title><link>https://blog.cmdragon.cn/posts/bc2bfb4e25c5fe348c22bcd59db71579/</link><pubDate>Fri, 30 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/bc2bfb4e25c5fe348c22bcd59db71579/</guid><description>nuxi build 命令是构建 Nuxt 应用程序的核心工具，它将你的应用程序打包成适合生产环境的格式。通过理解和使用不同的选项，如 &amp;ndash;prerender、&amp;ndash;dotenv 和 &amp;ndash;log-level，你可以更好地控制构建过程，并为生产环境做好充分准备。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>生产 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E7%94%9F%E4%BA%A7/</link>
+    <description>Recent content in 生产 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 30 Aug 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E7%94%9F%E4%BA%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 nuxi build 命令构建你的 Nuxt 应用程序</title>
+      <link>https://blog.cmdragon.cn/posts/bc2bfb4e25c5fe348c22bcd59db71579/</link>
+      <pubDate>Fri, 30 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/bc2bfb4e25c5fe348c22bcd59db71579/</guid>
+      <description>nuxi build 命令是构建 Nuxt 应用程序的核心工具，它将你的应用程序打包成适合生产环境的格式。通过理解和使用不同的选项，如 &amp;ndash;prerender、&amp;ndash;dotenv 和 &amp;ndash;log-level，你可以更好地控制构建过程，并为生产环境做好充分准备。</description>
+    </item>
+  </channel>
+</rss>

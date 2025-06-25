@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>多环境部署 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</link><description>Recent content in 多环境部署 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 25 Jul 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 环境变量配置与使用</title><link>https://blog.cmdragon.cn/posts/53eb62f578931146081c71537fd0c013/</link><pubDate>Thu, 25 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/53eb62f578931146081c71537fd0c013/</guid><description>摘要：“该文探讨了Nuxt.js框架下环境变量配置的详细过程，涉及.env文件配置、运行时访问、安全性考量、在不同场景下的实践（如Vue应用、插件、服务器路由）及多环境配置下的最佳实践。”</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>多环境部署 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</link>
+    <description>Recent content in 多环境部署 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 25 Jul 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 环境变量配置与使用</title>
+      <link>https://blog.cmdragon.cn/posts/53eb62f578931146081c71537fd0c013/</link>
+      <pubDate>Thu, 25 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/53eb62f578931146081c71537fd0c013/</guid>
+      <description>摘要：“该文探讨了Nuxt.js框架下环境变量配置的详细过程，涉及.env文件配置、运行时访问、安全性考量、在不同场景下的实践（如Vue应用、插件、服务器路由）及多环境配置下的最佳实践。”</description>
+    </item>
+  </channel>
+</rss>

@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>UPDATE 语句 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/UPDATE-%E8%AF%AD%E5%8F%A5/</link><description>Recent content in UPDATE 语句 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 07 Jan 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/UPDATE-%E8%AF%AD%E5%8F%A5/index.xml" rel="self" type="application/rss+xml"/><item><title>深入探讨数据更新操作：UPDATE 语句的使用与最佳实践</title><link>https://blog.cmdragon.cn/posts/6fb8b0b4fee8525705afcdd3b08e1c60/</link><pubDate>Tue, 07 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/6fb8b0b4fee8525705afcdd3b08e1c60/</guid><description>数据更新（UPDATE）是关系型数据库管理系统中的关键操作之一，它允许开发者和管理员修改已有数据，以满足业务需求和数据维护的需要。掌握 UPDATE 语句的正确使用不仅提高了数据管理的效率，还确保了数据的一致性和完整性。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UPDATE 语句 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/UPDATE-%E8%AF%AD%E5%8F%A5/</link>
+    <description>Recent content in UPDATE 语句 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 07 Jan 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/UPDATE-%E8%AF%AD%E5%8F%A5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入探讨数据更新操作：UPDATE 语句的使用与最佳实践</title>
+      <link>https://blog.cmdragon.cn/posts/6fb8b0b4fee8525705afcdd3b08e1c60/</link>
+      <pubDate>Tue, 07 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/6fb8b0b4fee8525705afcdd3b08e1c60/</guid>
+      <description>数据更新（UPDATE）是关系型数据库管理系统中的关键操作之一，它允许开发者和管理员修改已有数据，以满足业务需求和数据维护的需要。掌握 UPDATE 语句的正确使用不仅提高了数据管理的效率，还确保了数据的一致性和完整性。</description>
+    </item>
+  </channel>
+</rss>

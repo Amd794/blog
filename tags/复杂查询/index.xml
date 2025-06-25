@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>复杂查询 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2/</link><description>Recent content in 复杂查询 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 02 May 2025 20:33:32 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2/index.xml" rel="self" type="application/rss+xml"/><item><title>FastAPI中的复杂查询与原子更新指南</title><link>https://blog.cmdragon.cn/posts/f8a2c5f2662532fe5dca3a3e1f7e0b20/</link><pubDate>Fri, 02 May 2025 20:33:32 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/f8a2c5f2662532fe5dca3a3e1f7e0b20/</guid><description>FastAPI 结合 Tortoise-ORM 实现复杂查询与原子更新。通过 Q 对象构建多条件查询，支持 AND、OR、NOT 逻辑运算符，动态组合查询条件。使用 F 表达式进行原子更新，避免竞态条件，确保数据一致性。示例包括订单状态与金额的复杂查询、库存扣减的原子操作，以及商品促销的价格更新。常见错误包括字段拼写错误、类型不匹配和空结果集，需通过模型检查和异常处理解决。</description></item><item><title>掌握Tortoise-ORM高级异步查询技巧</title><link>https://blog.cmdragon.cn/posts/8a980d4fc84da8b38dfc6da3b16a9818/</link><pubDate>Tue, 22 Apr 2025 12:05:33 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/8a980d4fc84da8b38dfc6da3b16a9818/</guid><description>Tortoise-ORM 提供了强大的异步查询功能，支持通过 Q 对象构建复杂查询条件，如逻辑运算符组合和动态条件构建。F 表达式用于字段级别的原子操作，避免竞争条件，适用于库存扣减和价格调整等场景。组合查询可通过注解和过滤实现复杂业务需求。常见错误包括字段不一致、未知字段和事务管理问题，需通过数据库迁移和异步上下文管理解决。</description></item><item><title>深入掌握 SQL 深度应用：复杂查询的艺术与技巧</title><link>https://blog.cmdragon.cn/posts/0f0a929119a4799c8ea1e087e592c545/</link><pubDate>Mon, 10 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/0f0a929119a4799c8ea1e087e592c545/</guid><description>SQL（结构化查询语言）是与数据库交互的关键工具，而复杂查询则是实现数据分析与获取深入见解的重要手段</description></item><item><title>深入解析内联接（INNER JOIN）：复杂查询的重要工具</title><link>https://blog.cmdragon.cn/posts/b9150bc4eb158f610149f53d6622fe13/</link><pubDate>Thu, 09 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/b9150bc4eb158f610149f53d6622fe13/</guid><description>内联接（INNER JOIN）是关系型数据库中重要的查询工具，用于结合来自两个或多个表的数据。通过内联接，用户可以提取满足特定条件的记录，这在复杂查询和数据分析中是不可或缺的。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>复杂查询 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2/</link>
+    <description>Recent content in 复杂查询 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 02 May 2025 20:33:32 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastAPI中的复杂查询与原子更新指南</title>
+      <link>https://blog.cmdragon.cn/posts/f8a2c5f2662532fe5dca3a3e1f7e0b20/</link>
+      <pubDate>Fri, 02 May 2025 20:33:32 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/f8a2c5f2662532fe5dca3a3e1f7e0b20/</guid>
+      <description>FastAPI 结合 Tortoise-ORM 实现复杂查询与原子更新。通过 Q 对象构建多条件查询，支持 AND、OR、NOT 逻辑运算符，动态组合查询条件。使用 F 表达式进行原子更新，避免竞态条件，确保数据一致性。示例包括订单状态与金额的复杂查询、库存扣减的原子操作，以及商品促销的价格更新。常见错误包括字段拼写错误、类型不匹配和空结果集，需通过模型检查和异常处理解决。</description>
+    </item>
+    <item>
+      <title>掌握Tortoise-ORM高级异步查询技巧</title>
+      <link>https://blog.cmdragon.cn/posts/8a980d4fc84da8b38dfc6da3b16a9818/</link>
+      <pubDate>Tue, 22 Apr 2025 12:05:33 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/8a980d4fc84da8b38dfc6da3b16a9818/</guid>
+      <description>Tortoise-ORM 提供了强大的异步查询功能，支持通过 Q 对象构建复杂查询条件，如逻辑运算符组合和动态条件构建。F 表达式用于字段级别的原子操作，避免竞争条件，适用于库存扣减和价格调整等场景。组合查询可通过注解和过滤实现复杂业务需求。常见错误包括字段不一致、未知字段和事务管理问题，需通过数据库迁移和异步上下文管理解决。</description>
+    </item>
+    <item>
+      <title>深入掌握 SQL 深度应用：复杂查询的艺术与技巧</title>
+      <link>https://blog.cmdragon.cn/posts/0f0a929119a4799c8ea1e087e592c545/</link>
+      <pubDate>Mon, 10 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/0f0a929119a4799c8ea1e087e592c545/</guid>
+      <description>SQL（结构化查询语言）是与数据库交互的关键工具，而复杂查询则是实现数据分析与获取深入见解的重要手段</description>
+    </item>
+    <item>
+      <title>深入解析内联接（INNER JOIN）：复杂查询的重要工具</title>
+      <link>https://blog.cmdragon.cn/posts/b9150bc4eb158f610149f53d6622fe13/</link>
+      <pubDate>Thu, 09 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/b9150bc4eb158f610149f53d6622fe13/</guid>
+      <description>内联接（INNER JOIN）是关系型数据库中重要的查询工具，用于结合来自两个或多个表的数据。通过内联接，用户可以提取满足特定条件的记录，这在复杂查询和数据分析中是不可或缺的。</description>
+    </item>
+  </channel>
+</rss>

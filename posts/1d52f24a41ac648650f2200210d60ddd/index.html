@@ -1,4 +1,264 @@
-<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Markdown高级功能：数学公式与图表展示 - cmdragon's Blog</title><meta name=description content="本文介绍如何在博客中使用KaTeX渲染数学公式和Mermaid绘制流程图、时序图等图表，丰富您的技术文章表现力。"><meta name=author content="cmdragon"><meta name=robots content="index, follow"><link rel=canonical href=https://blog.cmdragon.cn/posts/1d52f24a41ac648650f2200210d60ddd/><meta property="og:title" content="Markdown高级功能：数学公式与图表展示 - cmdragon's Blog"><meta property="og:description" content="本文介绍如何在博客中使用KaTeX渲染数学公式和Mermaid绘制流程图、时序图等图表，丰富您的技术文章表现力。"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.cmdragon.cn/posts/1d52f24a41ac648650f2200210d60ddd/"><meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png"><meta property="og:site_name" content="cmdragon's Blog"><meta property="article:published_time" content="2023-08-10T14:30:00+08:00"><meta property="article:modified_time" content="2023-08-10T14:30:00+08:00"><meta property="article:section" content="教程"><meta property="article:tag" content="Markdown"><meta property="article:tag" content="KaTeX"><meta property="article:tag" content="Mermaid"><meta property="article:tag" content="图表"><meta property="article:tag" content="数学公式"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Markdown高级功能：数学公式与图表展示 - cmdragon's Blog"><meta name=twitter:description content="本文介绍如何在博客中使用KaTeX渲染数学公式和Mermaid绘制流程图、时序图等图表，丰富您的技术文章表现力。"><meta name=twitter:image content="https://blog.cmdragon.cn/images/logo/social-card.png"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Markdown高级功能：数学公式与图表展示","datePublished":"2023-08-10T14:30:00\u002b08:00","dateModified":"2023-08-10T14:30:00\u002b08:00","author":{"@type":"Person","name":"cmdragon"},"description":"本文介绍如何在博客中使用KaTeX渲染数学公式和Mermaid绘制流程图、时序图等图表，丰富您的技术文章表现力。","image":"https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png","url":"https:\/\/blog.cmdragon.cn\/posts\/1d52f24a41ac648650f2200210d60ddd\/","publisher":{"@type":"Organization","name":"cmdragon\u0027s Blog","logo":{"@type":"ImageObject","url":"https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/blog.cmdragon.cn\/posts\/1d52f24a41ac648650f2200210d60ddd\/"},"keywords":"教程","keywords":"Markdown, KaTeX, Mermaid, 图表, 数学公式","wordCount":"1277"}</script><link rel=preconnect href=https://cdnjs.cloudflare.com><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js as=script><link rel=icon href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon href=/images/logo/small.png><link rel=icon type=image/png sizes=32x32 href=/images/logo/small.png><link rel=icon type=image/svg+xml href=/images/logo/scalable.svg><meta name=theme-color content="#3B82F6"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js></script><script>(function(){if(typeof mermaid!="undefined"){window.mermaid=mermaid;const e=document.documentElement.classList.contains("dark")||window.matchMedia("(prefers-color-scheme: dark)").matches;window.mermaid.initialize({startOnLoad:!0,theme:e?"dark":"default",securityLevel:"loose",flowchart:{curve:"basis",htmlLabels:!0},sequence:{mirrorActors:!1,wrap:!0},themeVariables:{primaryColor:"#3b82f6",primaryTextColor:"#ffffff",primaryBorderColor:e?"#60a5fa":"#2563eb",lineColor:e?"#94a3b8":"#4b5563",secondaryColor:e?"#1e293b":"#f0f9ff",tertiaryColor:e?"#334155":"#f3f4f6"}}),document.addEventListener("DOMContentLoaded",function(){try{typeof window.mermaid.init=="function"&&window.mermaid.init(0[0],document.querySelectorAll(".mermaid"))}catch{}})}})()</script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js></script><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js></script><script src=https://cdn.tailwindcss.com/3.4.16></script><script>tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#3B82F6","primary-light":"#60a5fa","primary-dark":"#2563eb"},typography:e=>({DEFAULT:{css:{color:e("colors.gray.800"),a:{color:e("colors.primary"),"&:hover":{color:e("colors.primary-dark")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.900")},pre:{backgroundColor:e("colors.gray.800"),color:e("colors.gray.100")},code:{color:e("colors.primary"),backgroundColor:e("colors.gray.100"),padding:"0.25rem",borderRadius:"0.25rem",fontWeight:"400"},"code::before":{content:'""'},"code::after":{content:'""'}}},dark:{css:{color:e("colors.gray.200"),a:{color:e("colors.primary-light"),"&:hover":{color:e("colors.primary")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.100")},pre:{backgroundColor:e("colors.gray.900")},code:{color:e("colors.primary-light"),backgroundColor:e("colors.gray.800")}}}})}}}</script><script src=/js/iconify-icon.min.js></script><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"><link rel=stylesheet href=/css/code-highlight.css><link rel=stylesheet href=/css/markdown.css><style type=text/tailwindcss>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown高级功能：数学公式与图表展示 - cmdragon&#39;s Blog</title>
+<meta name="description" content="本文介绍如何在博客中使用KaTeX渲染数学公式和Mermaid绘制流程图、时序图等图表，丰富您的技术文章表现力。">
+
+
+<meta name="author" content="cmdragon">
+<meta name="robots" content="index, follow">
+
+
+<link rel="canonical" href="https://blog.cmdragon.cn/posts/1d52f24a41ac648650f2200210d60ddd/">
+
+
+
+
+
+<meta property="og:title" content="Markdown高级功能：数学公式与图表展示 - cmdragon&#39;s Blog">
+<meta property="og:description" content="本文介绍如何在博客中使用KaTeX渲染数学公式和Mermaid绘制流程图、时序图等图表，丰富您的技术文章表现力。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cmdragon.cn/posts/1d52f24a41ac648650f2200210d60ddd/">
+
+<meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+<meta property="og:site_name" content="cmdragon&#39;s Blog">
+
+<meta property="article:published_time" content="2023-08-10T14:30:00&#43;08:00">
+
+<meta property="article:modified_time" content="2023-08-10T14:30:00&#43;08:00">
+
+
+
+<meta property="article:section" content="教程">
+
+
+
+
+<meta property="article:tag" content="Markdown">
+
+<meta property="article:tag" content="KaTeX">
+
+<meta property="article:tag" content="Mermaid">
+
+<meta property="article:tag" content="图表">
+
+<meta property="article:tag" content="数学公式">
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Markdown高级功能：数学公式与图表展示 - cmdragon&#39;s Blog">
+<meta name="twitter:description" content="本文介绍如何在博客中使用KaTeX渲染数学公式和Mermaid绘制流程图、时序图等图表，丰富您的技术文章表现力。">
+
+<meta name="twitter:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Markdown高级功能：数学公式与图表展示",
+  "datePublished": "2023-08-10T14:30:00\u002b08:00",
+  "dateModified": "2023-08-10T14:30:00\u002b08:00",
+  "author": {
+    "@type": "Person",
+    "name": "cmdragon"
+  },
+  "description": "本文介绍如何在博客中使用KaTeX渲染数学公式和Mermaid绘制流程图、时序图等图表，丰富您的技术文章表现力。",
+  
+  "image": "https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png",
+  
+  "url": "https:\/\/blog.cmdragon.cn\/posts\/1d52f24a41ac648650f2200210d60ddd\/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "cmdragon\u0027s Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/blog.cmdragon.cn\/posts\/1d52f24a41ac648650f2200210d60ddd\/"
+  },
+  
+  "keywords": "教程",
+  
+  
+  "keywords": "Markdown, KaTeX, Mermaid, 图表, 数学公式",
+  
+  "wordCount": "1277"
+}
+</script>
+
+
+
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js" as="script">
+
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/images/logo/small.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo/small.png">
+<link rel="icon" type="image/svg+xml" href="/images/logo/scalable.svg">
+<meta name="theme-color" content="#3B82F6">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135"
+     crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js"></script>
+<script>
+  
+  (function() {
+    if (typeof mermaid !== 'undefined') {
+      
+      window.mermaid = mermaid;
+      
+      
+      const isDarkMode = document.documentElement.classList.contains('dark') || 
+                        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      
+      window.mermaid.initialize({
+        startOnLoad: true,  
+        theme: isDarkMode ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: {
+          curve: 'basis',
+          htmlLabels: true
+        },
+        sequence: {
+          mirrorActors: false,
+          wrap: true
+        },
+        themeVariables: {
+          primaryColor: '#3b82f6',
+          primaryTextColor: '#ffffff',
+          primaryBorderColor: isDarkMode ? '#60a5fa' : '#2563eb',
+          lineColor: isDarkMode ? '#94a3b8' : '#4b5563',
+          secondaryColor: isDarkMode ? '#1e293b' : '#f0f9ff',
+          tertiaryColor: isDarkMode ? '#334155' : '#f3f4f6'
+        }
+      });
+      
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          
+          if (typeof window.mermaid.init === 'function') {
+            window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+          }
+        } catch (e) {
+          
+        }
+      });
+    }
+  })();
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#3B82F6',
+                    'primary-light': '#60a5fa',
+                    'primary-dark': '#2563eb',
+                },
+                typography: (theme) => ({
+                    DEFAULT: {
+                        css: {
+                            color: theme('colors.gray.800'),
+                            a: {
+                                color: theme('colors.primary'),
+                                '&:hover': {
+                                    color: theme('colors.primary-dark'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.900'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.800'),
+                                color: theme('colors.gray.100'),
+                            },
+                            code: {
+                                color: theme('colors.primary'),
+                                backgroundColor: theme('colors.gray.100'),
+                                padding: '0.25rem',
+                                borderRadius: '0.25rem',
+                                fontWeight: '400',
+                            },
+                            'code::before': {
+                                content: '""',
+                            },
+                            'code::after': {
+                                content: '""',
+                            },
+                        },
+                    },
+                    dark: {
+                        css: {
+                            color: theme('colors.gray.200'),
+                            a: {
+                                color: theme('colors.primary-light'),
+                                '&:hover': {
+                                    color: theme('colors.primary'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.100'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.900'),
+                            },
+                            code: {
+                                color: theme('colors.primary-light'),
+                                backgroundColor: theme('colors.gray.800'),
+                            },
+                        },
+                    },
+                }),
+            },
+        },
+    }
+</script>
+
+
+<script src="/js/iconify-icon.min.js"></script>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+
+<link rel="stylesheet" href="/css/code-highlight.css">
+<link rel="stylesheet" href="/css/markdown.css">
+
+
+<style type="text/tailwindcss">
     @layer components {
         body {
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -19,165 +279,1827 @@
             @apply bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white;
         }
     }
-</style><style>.mermaid{margin:2rem auto;text-align:center;overflow:visible;width:auto;max-width:100%;background-color:#f9fafb;padding:1.5rem .5rem;border-radius:.5rem;box-shadow:0 2px 4px rgba(0,0,0,5%);display:block}.dark .mermaid{background-color:#1e293b;box-shadow:0 2px 4px rgba(0,0,0,.15)}.mermaid svg{display:block !important;max-width:100%;width:auto !important;height:auto !important;font-size:14px;margin:0 auto}.mermaid .node rect,.mermaid .node circle,.mermaid .node ellipse,.mermaid .node polygon,.mermaid .node path{stroke-width:1px}.mermaid .edgePath .path{stroke-width:1.5px}.mermaid .edgeLabel{font-size:.85em;background-color:inherit !important}.mermaid .label text,.mermaid text.label{fill:#374151;font-weight:400}.dark .mermaid .label text,.dark .mermaid text.label{fill:#e5e7eb}@media(max-width:768px){.mermaid{max-width:98%;padding:.8rem .3rem;margin:1.2rem auto}.mermaid svg{font-size:12px}}</style></head><body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col"><div class="flex-grow flex flex-col"><header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700"><div class="container mx-auto px-4"><div class="flex justify-between items-center h-16"><div class="flex items-center"><a href=https://blog.cmdragon.cn/ class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300"><div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105"><img src=/images/logo/small.png alt="cmdragon's Blog Logo" class="h-full w-auto"></div><span class="group-hover:text-primary transition-colors duration-300">cmdragon's Blog</span></a></div><nav class="hidden md:flex space-x-1"><a href=/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=首页 tabindex=0><span class="relative z-10">首页</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/archives/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=归档 tabindex=0><span class="relative z-10">归档</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/categories/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=分类 tabindex=0><span class="relative z-10">分类</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/tags/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=标签 tabindex=0><span class="relative z-10">标签</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/friends/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=友链 tabindex=0><span class="relative z-10">友链</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span></a></nav><div class="flex items-center space-x-3"><button class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=搜索 tabindex=0 onclick=openSiteSearch()>
-<iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></button>
-<button id=theme-toggle class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=切换深色模式 tabindex=0>
-<iconify-icon icon=mdi:weather-sunny class=dark:hidden width=20 height=20></iconify-icon><iconify-icon icon=mdi:weather-night class="hidden dark:block" width=20 height=20></iconify-icon></button>
-<button id=mobile-menu-button class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=打开菜单 tabindex=0>
-<iconify-icon icon=mdi:menu width=20 height=20></iconify-icon></button></div></div><div id=mobile-menu class="md:hidden hidden pb-3"><div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner"><a href=/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=首页 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>首页</div></a><a href=/archives/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=归档 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>归档</div></a><a href=/categories/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=分类 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>分类</div></a><a href=/tags/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=标签 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>标签</div></a><a href=/friends/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=友链 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>友链</div></a></div></div></div></header><script>document.getElementById("mobile-menu-button").addEventListener("click",function(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden")}),document.getElementById("theme-toggle").addEventListener("click",function(){document.documentElement.classList.contains("dark")?(document.documentElement.classList.remove("dark"),localStorage.setItem("color-theme","light")):(document.documentElement.classList.add("dark"),localStorage.setItem("color-theme","dark"))}),window.addEventListener("scroll",function(){const e=document.querySelector("header");window.scrollY>10?e.classList.add("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95"):e.classList.remove("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95")})</script><main class="container mx-auto px-4 py-8 flex-grow"><div class="container mx-auto px-4 sm:px-6 relative"><div class="flex flex-col lg:flex-row lg:gap-8"><article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700"><nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label=面包屑导航><ol class="flex flex-wrap items-center" itemscope itemtype=https://schema.org/BreadcrumbList><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/ class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=首页><span itemprop=name>首页</span>
-</a><meta itemprop=position content="1"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/posts class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=Posts><span itemprop=name>Posts</span>
-</a><meta itemprop=position content="2"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><span class="text-gray-800 dark:text-gray-200" itemprop=name title=Markdown高级功能：数学公式与图表展示>Markdown高级功能：数学公式与图表展示...</span>
-<meta itemprop=position content="3"></li></ol></nav><header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6"><h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">Markdown高级功能：数学公式与图表展示</h1><div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3"><span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:calendar class=mr-1 width=16 height=16></iconify-icon>2023-08-10
-</span><span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:folder class=mr-1 width=16 height=16></iconify-icon><a href=/categories/%E6%95%99%E7%A8%8B class="hover:text-primary transition-colors">教程
-</a></span><span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:clock-outline class=mr-1 width=16 height=16></iconify-icon>6 分钟阅读
-</span><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed target=_blank rel="noopener noreferrer" class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors" aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" tabindex=0><iconify-icon icon=simple-icons:creativecommons width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsbysa width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsnc width=16 height=16 class=mr-1></iconify-icon><span>BY-NC-SA 4.0</span></a></div></header><div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed"><h2 id=前言>前言</h2><p>在技术博客写作中，我们经常需要展示数学公式、流程图、时序图等内容，以更直观地表达复杂概念。本文将介绍如何在博客中使用 <strong>KaTeX</strong> 和 <strong>Mermaid</strong> 这两个强大的工具，让您的技术文章更加生动、专业。</p><h2 id=katex-数学公式>KaTeX 数学公式</h2><p>KaTeX 是一个快速、易用的数学公式渲染库，可以在网页中漂亮地显示 LaTeX 数学公式。</p><h3 id=行内公式>行内公式</h3><p>要插入行内公式，使用单个美元符号包裹公式：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>爱因斯坦的质能方程 $E=mc^2$ 表明质量与能量之间的等价关系。</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>效果如下：爱因斯坦的质能方程 $E=mc^2$ 表明质量与能量之间的等价关系。</p><h3 id=块级公式>块级公式</h3><p>要插入独立的块级公式，使用两个美元符号包裹公式：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>$$
+</style>
+
+
+<style>
+   
+  .mermaid {
+    margin: 2rem auto;
+    text-align: center;
+    overflow: visible;
+    width: auto;
+    max-width: 100%;
+    background-color: #f9fafb;
+    padding: 1.5rem 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: block;
+  }
+  
+  .dark .mermaid {
+    background-color: #1e293b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+   
+  .mermaid svg {
+    display: block !important;
+    max-width: 100%;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px;
+    margin: 0 auto;
+  }
+  
+   
+  .mermaid .node rect,
+  .mermaid .node circle,
+  .mermaid .node ellipse,
+  .mermaid .node polygon,
+  .mermaid .node path {
+    stroke-width: 1px;
+  }
+  
+  .mermaid .edgePath .path {
+    stroke-width: 1.5px;
+  }
+  
+  .mermaid .edgeLabel {
+    font-size: 0.85em;
+    background-color: inherit !important;
+  }
+  
+   
+  .mermaid .label text,
+  .mermaid text.label {
+    fill: #374151;
+    font-weight: normal;
+  }
+  
+  .dark .mermaid .label text,
+  .dark .mermaid text.label {
+    fill: #e5e7eb;
+  }
+  
+   
+  @media (max-width: 768px) {
+    .mermaid {
+      max-width: 98%;
+      padding: 0.8rem 0.3rem;
+      margin: 1.2rem auto;
+    }
+    
+    .mermaid svg {
+      font-size: 12px;
+    }
+  }
+</style> 
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col">
+    <div class="flex-grow flex flex-col">
+        <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            
+            <div class="flex items-center">
+                <a href="https://blog.cmdragon.cn/" class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300">
+                    <div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105">
+                        <img src="/images/logo/small.png" alt="cmdragon&#39;s Blog Logo" class="h-full w-auto" />
+                    </div>
+                    <span class="group-hover:text-primary transition-colors duration-300">cmdragon&#39;s Blog</span>
+                </a>
+            </div>
+            
+            
+            <nav class="hidden md:flex space-x-1">
+                
+                
+                    <a href="/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="首页"
+                       tabindex="0">
+                        <span class="relative z-10">首页</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="归档"
+                       tabindex="0">
+                        <span class="relative z-10">归档</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="分类"
+                       tabindex="0">
+                        <span class="relative z-10">分类</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="标签"
+                       tabindex="0">
+                        <span class="relative z-10">标签</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="友链"
+                       tabindex="0">
+                        <span class="relative z-10">友链</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+            </nav>
+            
+            
+            <div class="flex items-center space-x-3">
+                
+                <button 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="搜索"
+                    tabindex="0"
+                    onclick="openSiteSearch()">
+                    <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="theme-toggle" 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="切换深色模式"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:weather-sunny" class="dark:hidden" width="20" height="20"></iconify-icon>
+                    <iconify-icon icon="mdi:weather-night" class="hidden dark:block" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="mobile-menu-button" 
+                    class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="打开菜单"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:menu" width="20" height="20"></iconify-icon>
+                </button>
+            </div>
+        </div>
+        
+        
+        <div id="mobile-menu" class="md:hidden hidden pb-3">
+            <div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner">
+                
+                    <a href="/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="首页"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            首页
+                        </div>
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="归档"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            归档
+                        </div>
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="分类"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            分类
+                        </div>
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="标签"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            标签
+                        </div>
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="友链"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            友链
+                        </div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+    });
+    
+    
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        } else {
+            header.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        }
+    });
+</script> 
+        
+        <main class="container mx-auto px-4 py-8 flex-grow">
+            
+<div class="container mx-auto px-4 sm:px-6 relative">
+    <div class="flex flex-col lg:flex-row lg:gap-8">
+        
+        <article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700">
+            
+            <nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label="面包屑导航">
+    <ol class="flex flex-wrap items-center" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="https://blog.cmdragon.cn/" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="首页">
+                <span itemprop="name">首页</span>
+            </a>
+            <meta itemprop="position" content="1" />
+        </li>
+        
+        
+        
+            
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="https://blog.cmdragon.cn/posts" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="Posts">
+                        <span itemprop="name">Posts</span>
+                    </a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span class="text-gray-800 dark:text-gray-200" itemprop="name" title="Markdown高级功能：数学公式与图表展示">Markdown高级功能：数学公式与图表展示...</span>
+                    <meta itemprop="position" content="3" />
+                </li>
+            
+        
+    </ol>
+</nav> 
+            
+            <header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">Markdown高级功能：数学公式与图表展示</h1>
+                
+                <div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3">
+                    <span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:calendar" class="mr-1" width="16" height="16"></iconify-icon>
+                        2023-08-10
+                    </span>
+                    
+                    
+                        <span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full">
+                            <iconify-icon icon="mdi:folder" class="mr-1" width="16" height="16"></iconify-icon>
+                            
+                                
+                                <a href="/categories/%E6%95%99%E7%A8%8B" class="hover:text-primary transition-colors">
+                                    教程
+                                </a>
+                            
+                        </span>
+                    
+                    
+                    
+                    <span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:clock-outline" class="mr-1" width="16" height="16"></iconify-icon>
+                        6 分钟阅读
+                    </span>
+                    
+                    
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank" rel="noopener noreferrer" 
+                       class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors"
+                       aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" 
+                       tabindex="0">
+                        <iconify-icon icon="simple-icons:creativecommons" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsbysa" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsnc" width="16" height="16" class="mr-1"></iconify-icon>
+                        <span>BY-NC-SA 4.0</span>
+                    </a>
+                </div>
+            </header>
+            
+            
+            <div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed">
+                <h2 id="前言">前言</h2>
+<p>在技术博客写作中，我们经常需要展示数学公式、流程图、时序图等内容，以更直观地表达复杂概念。本文将介绍如何在博客中使用 <strong>KaTeX</strong> 和 <strong>Mermaid</strong> 这两个强大的工具，让您的技术文章更加生动、专业。</p>
+<h2 id="katex-数学公式">KaTeX 数学公式</h2>
+<p>KaTeX 是一个快速、易用的数学公式渲染库，可以在网页中漂亮地显示 LaTeX 数学公式。</p>
+<h3 id="行内公式">行内公式</h3>
+<p>要插入行内公式，使用单个美元符号包裹公式：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">爱因斯坦的质能方程 $E=mc^2$ 表明质量与能量之间的等价关系。</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>效果如下：爱因斯坦的质能方程 $E=mc^2$ 表明质量与能量之间的等价关系。</p>
+<h3 id="块级公式">块级公式</h3>
+<p>要插入独立的块级公式，使用两个美元符号包裹公式：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">$$
 \frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x&#43;h) - f(x)}{h}
-$$</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>效果如下：</p><p>$$
+$$</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>效果如下：</p>
+<p>$$
 \frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}
-$$</p><h3 id=复杂公式示例>复杂公式示例</h3><p>KaTeX 支持大量的数学符号和表达式：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>$$
+$$</p>
+<h3 id="复杂公式示例">复杂公式示例</h3>
+<p>KaTeX 支持大量的数学符号和表达式：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">$$
 \begin{align}
 \nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp; = \frac{4\pi}{c}\vec{\mathbf{j}} \\
 \nabla \cdot \vec{\mathbf{E}} &amp; = 4 \pi \rho \\
 \nabla \times \vec{\mathbf{E}}\, &#43;\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; = \vec{\mathbf{0}} \\
 \nabla \cdot \vec{\mathbf{B}} &amp; = 0
 \end{align}
-$$</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>效果如下：</p><p>$$
+$$</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>效果如下：</p>
+<p>$$
 \begin{align}
-\nabla \times \vec{\mathbf{B}} -, \frac1c, \frac{\partial\vec{\mathbf{E}}}{\partial t} & = \frac{4\pi}{c}\vec{\mathbf{j}} \
-\nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \
-\nabla \times \vec{\mathbf{E}}, +, \frac1c, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \
-\nabla \cdot \vec{\mathbf{B}} & = 0
+\nabla \times \vec{\mathbf{B}} -, \frac1c, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp; = \frac{4\pi}{c}\vec{\mathbf{j}} \
+\nabla \cdot \vec{\mathbf{E}} &amp; = 4 \pi \rho \
+\nabla \times \vec{\mathbf{E}}, +, \frac1c, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; = \vec{\mathbf{0}} \
+\nabla \cdot \vec{\mathbf{B}} &amp; = 0
 \end{align}
-$$</p><h3 id=矩阵示例>矩阵示例</h3><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>$$
+$$</p>
+<h3 id="矩阵示例">矩阵示例</h3>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">$$
 \begin{pmatrix}
 a &amp; b &amp; c \\
 d &amp; e &amp; f \\
 g &amp; h &amp; i
 \end{pmatrix}
-$$</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>效果如下：</p><p>$$
+$$</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>效果如下：</p>
+<p>$$
 \begin{pmatrix}
-a & b & c \
-d & e & f \
-g & h & i
+a &amp; b &amp; c \
+d &amp; e &amp; f \
+g &amp; h &amp; i
 \end{pmatrix}
-$$</p><h2 id=mermaid-图表>Mermaid 图表</h2><p>Mermaid 是一个基于 JavaScript 的图表工具，能让您使用类似 Markdown 的语法创建图表、流程图、时序图等。</p><h3 id=流程图>流程图</h3><p>要创建流程图，使用 <code>mermaid</code> 代码块：</p><div class=mermaid-container><div class="mermaid flowchart">graph TD
-A[开始] --> B{是否已登录?}
-B -->|是| C[显示主页]
-B -->|否| D[显示登录页]
-C --> E[用户操作]
-D --> F[登录处理]
-F --> B
-E --> G[结束]</div></div><style>.mermaid-container{width:100%;overflow:auto;margin:1.5rem 0}.mermaid-container .mermaid{min-width:fit-content}@media screen and (max-width:768px){.mermaid-container{max-width:100%;overflow-x:auto}}</style><h3 id=时序图>时序图</h3><p>时序图展示了对象之间的交互：</p><div class=mermaid-container><div class="mermaid sequence">sequenceDiagram
-participant 浏览器
-participant 服务器
-participant 数据库
-浏览器->>+服务器: GET /api/data
-服务器->>+数据库: SELECT * FROM users
-数据库-->>-服务器: 返回用户数据
-服务器-->>-浏览器: 返回JSON数据</div></div><style>.mermaid-container{width:100%;overflow:auto;margin:1.5rem 0}.mermaid-container .mermaid{min-width:fit-content}@media screen and (max-width:768px){.mermaid-container{max-width:100%;overflow-x:auto}}</style><h3 id=类图>类图</h3><p>类图用于展示类之间的关系：</p><div class=mermaid-container><div class="mermaid class">classDiagram
-class Animal {
-+String name
-+feed()
-+move()
-}
-class Dog {
-+String breed
-+bark()
-}
-class Cat {
-+String color
-+meow()
-}
-Animal &lt;|-- Dog
-Animal &lt;|-- Cat</div></div><style>.mermaid-container{width:100%;overflow:auto;margin:1.5rem 0}.mermaid-container .mermaid{min-width:fit-content}@media screen and (max-width:768px){.mermaid-container{max-width:100%;overflow-x:auto}}</style><h3 id=甘特图>甘特图</h3><p>甘特图用于项目规划和进度跟踪：</p><div class=mermaid-container><div class="mermaid gantt">gantt
-title 项目开发计划
-dateFormat YYYY-MM-DD
-section 计划阶段
-需求分析 :a1, 2023-08-01, 7d
-系统设计 :a2, after a1, 10d
-section 开发阶段
-编码实现 :a3, after a2, 15d
-单元测试 :a4, after a3, 5d
-section 测试阶段
-集成测试 :a5, after a4, 10d
-验收测试 :a6, after a5, 5d</div></div><style>.mermaid-container{width:100%;overflow:auto;margin:1.5rem 0}.mermaid-container .mermaid{min-width:fit-content}@media screen and (max-width:768px){.mermaid-container{max-width:100%;overflow-x:auto}}</style><h3 id=状态图>状态图</h3><p>状态图展示对象状态的变化：</p><div class=mermaid-container><div class="mermaid state">stateDiagram-v2
-[*] --> 待处理
-待处理 --> 处理中: 开始处理
-处理中 --> 已完成: 处理完成
-处理中 --> 失败: 处理出错
-失败 --> 待处理: 重试
-已完成 --> [*]</div></div><style>.mermaid-container{width:100%;overflow:auto;margin:1.5rem 0}.mermaid-container .mermaid{min-width:fit-content}@media screen and (max-width:768px){.mermaid-container{max-width:100%;overflow-x:auto}}</style><h2 id=结合使用示例>结合使用示例</h2><p>有时候，我们需要在同一篇文章中结合使用数学公式和图表，例如解释算法时：</p><h3 id=二分查找算法>二分查找算法</h3><div class=mermaid-container><div class="mermaid flowchart">graph TD
-A[开始] --> B[left = 0, right = n-1]
-B --> C{left &lt;= right?}
-C -->|是| D[mid = left + (right-left)/2]
-C -->|否| E[未找到]
-D --> F{arr[mid] == target?}
-F -->|是| G[找到，返回mid]
-F -->|否| H{arr[mid] &lt; target?}
-H -->|是| I[left = mid + 1]
-H -->|否| J[right = mid - 1]
-I --> C
-J --> C
-E --> K[结束]
-G --> K</div></div><style>.mermaid-container{width:100%;overflow:auto;margin:1.5rem 0}.mermaid-container .mermaid{min-width:fit-content}@media screen and (max-width:768px){.mermaid-container{max-width:100%;overflow-x:auto}}</style><p>二分查找的时间复杂度为 $O(\log n)$，因为每次比较后，搜索范围会减少一半。</p><p>算法的核心是不断将中间元素 $mid$ 与目标值进行比较：</p><p>$$
+$$</p>
+<h2 id="mermaid-图表">Mermaid 图表</h2>
+<p>Mermaid 是一个基于 JavaScript 的图表工具，能让您使用类似 Markdown 的语法创建图表、流程图、时序图等。</p>
+<h3 id="流程图">流程图</h3>
+<p>要创建流程图，使用 <code>mermaid</code> 代码块：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+    
+      
+    
+  
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="mermaid-container">
+    <div class="mermaid flowchart">graph TD
+    A[开始] --&gt; B{是否已登录?}
+    B --&gt;|是| C[显示主页]
+    B --&gt;|否| D[显示登录页]
+    C --&gt; E[用户操作]
+    D --&gt; F[登录处理]
+    F --&gt; B
+    E --&gt; G[结束]</div>
+  </div>
+  
+  <style>
+    .mermaid-container {
+      width: 100%;
+      overflow: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .mermaid-container .mermaid {
+      min-width: fit-content;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .mermaid-container {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+    }
+  </style>
+ <h3 id="时序图">时序图</h3>
+<p>时序图展示了对象之间的交互：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+    
+      
+    
+  
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="mermaid-container">
+    <div class="mermaid sequence">sequenceDiagram
+    participant 浏览器
+    participant 服务器
+    participant 数据库
+    
+    浏览器-&gt;&gt;&#43;服务器: GET /api/data
+    服务器-&gt;&gt;&#43;数据库: SELECT * FROM users
+    数据库--&gt;&gt;-服务器: 返回用户数据
+    服务器--&gt;&gt;-浏览器: 返回JSON数据</div>
+  </div>
+  
+  <style>
+    .mermaid-container {
+      width: 100%;
+      overflow: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .mermaid-container .mermaid {
+      min-width: fit-content;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .mermaid-container {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+    }
+  </style>
+ <h3 id="类图">类图</h3>
+<p>类图用于展示类之间的关系：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+    
+      
+    
+  
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="mermaid-container">
+    <div class="mermaid class">classDiagram
+    class Animal {
+        &#43;String name
+        &#43;feed()
+        &#43;move()
+    }
+    
+    class Dog {
+        &#43;String breed
+        &#43;bark()
+    }
+    
+    class Cat {
+        &#43;String color
+        &#43;meow()
+    }
+    
+    Animal &lt;|-- Dog
+    Animal &lt;|-- Cat</div>
+  </div>
+  
+  <style>
+    .mermaid-container {
+      width: 100%;
+      overflow: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .mermaid-container .mermaid {
+      min-width: fit-content;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .mermaid-container {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+    }
+  </style>
+ <h3 id="甘特图">甘特图</h3>
+<p>甘特图用于项目规划和进度跟踪：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+    
+      
+    
+  
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="mermaid-container">
+    <div class="mermaid gantt">gantt
+    title 项目开发计划
+    dateFormat  YYYY-MM-DD
+    section 计划阶段
+    需求分析       :a1, 2023-08-01, 7d
+    系统设计       :a2, after a1, 10d
+    section 开发阶段
+    编码实现       :a3, after a2, 15d
+    单元测试       :a4, after a3, 5d
+    section 测试阶段
+    集成测试       :a5, after a4, 10d
+    验收测试       :a6, after a5, 5d</div>
+  </div>
+  
+  <style>
+    .mermaid-container {
+      width: 100%;
+      overflow: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .mermaid-container .mermaid {
+      min-width: fit-content;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .mermaid-container {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+    }
+  </style>
+ <h3 id="状态图">状态图</h3>
+<p>状态图展示对象状态的变化：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+    
+      
+    
+  
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="mermaid-container">
+    <div class="mermaid state">stateDiagram-v2
+    [*] --&gt; 待处理
+    待处理 --&gt; 处理中: 开始处理
+    处理中 --&gt; 已完成: 处理完成
+    处理中 --&gt; 失败: 处理出错
+    失败 --&gt; 待处理: 重试
+    已完成 --&gt; [*]</div>
+  </div>
+  
+  <style>
+    .mermaid-container {
+      width: 100%;
+      overflow: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .mermaid-container .mermaid {
+      min-width: fit-content;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .mermaid-container {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+    }
+  </style>
+ <h2 id="结合使用示例">结合使用示例</h2>
+<p>有时候，我们需要在同一篇文章中结合使用数学公式和图表，例如解释算法时：</p>
+<h3 id="二分查找算法">二分查找算法</h3>
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+    
+      
+    
+  
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="mermaid-container">
+    <div class="mermaid flowchart">graph TD
+    A[开始] --&gt; B[left = 0, right = n-1]
+    B --&gt; C{left &lt;= right?}
+    C --&gt;|是| D[mid = left &#43; (right-left)/2]
+    C --&gt;|否| E[未找到]
+    D --&gt; F{arr[mid] == target?}
+    F --&gt;|是| G[找到，返回mid]
+    F --&gt;|否| H{arr[mid] &lt; target?}
+    H --&gt;|是| I[left = mid &#43; 1]
+    H --&gt;|否| J[right = mid - 1]
+    I --&gt; C
+    J --&gt; C
+    E --&gt; K[结束]
+    G --&gt; K</div>
+  </div>
+  
+  <style>
+    .mermaid-container {
+      width: 100%;
+      overflow: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .mermaid-container .mermaid {
+      min-width: fit-content;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .mermaid-container {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+    }
+  </style>
+ <p>二分查找的时间复杂度为 $O(\log n)$，因为每次比较后，搜索范围会减少一半。</p>
+<p>算法的核心是不断将中间元素 $mid$ 与目标值进行比较：</p>
+<p>$$
 mid = left + \frac{right - left}{2}
-$$</p><p>注意我们用 <code>left + (right - left) / 2</code> 而不是 <code>(left + right) / 2</code> 来避免整数溢出问题。</p><h2 id=结语>结语</h2><p>通过使用 KaTeX 和 Mermaid，我们可以在 Markdown 中优雅地展示数学公式和各种图表，使技术文章更加生动、直观。这些工具大大提升了博客的表现力，使读者能更轻松地理解复杂概念。</p><p>希望本文对您在博客中使用这些高级功能有所帮助！</p></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>标签</h3><div class="flex flex-wrap gap-2"><a href=/tags/Markdown class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: Markdown" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>Markdown
-</a><a href=/tags/KaTeX class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: KaTeX" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>KaTeX
-</a><a href=/tags/Mermaid class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: Mermaid" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>Mermaid
-</a><a href=/tags/%E5%9B%BE%E8%A1%A8 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 图表" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>图表
-</a><a href=/tags/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 数学公式" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>数学公式</a></div></div><nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6"><div></div><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">下一篇<iconify-icon icon=mdi:arrow-right class=ml-2 width=16 height=16></iconify-icon>
-</span><a href=https://blog.cmdragon.cn/posts/899682b6ebdcae2ab79584e327379829/ class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: 中文电码在历史关键时刻的作用" tabindex=0>中文电码在历史关键时刻的作用</a></div></nav><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:share-variant width=16 height=16></iconify-icon></div>分享</h3><div class="flex flex-wrap gap-3"><a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f1d52f24a41ac648650f2200210d60ddd%2f&text=Markdown%e9%ab%98%e7%ba%a7%e5%8a%9f%e8%83%bd%ef%bc%9a%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e4%b8%8e%e5%9b%be%e8%a1%a8%e5%b1%95%e7%a4%ba" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Twitter" tabindex=0><iconify-icon icon=mdi:twitter width=20 height=20></iconify-icon></a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f1d52f24a41ac648650f2200210d60ddd%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Facebook" tabindex=0><iconify-icon icon=mdi:facebook width=20 height=20></iconify-icon></a><a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f1d52f24a41ac648650f2200210d60ddd%2f&title=Markdown%e9%ab%98%e7%ba%a7%e5%8a%9f%e8%83%bd%ef%bc%9a%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e4%b8%8e%e5%9b%be%e8%a1%a8%e5%b1%95%e7%a4%ba" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label=分享到微博 tabindex=0><iconify-icon icon=mdi:sina-weibo width=20 height=20></iconify-icon></a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f1d52f24a41ac648650f2200210d60ddd%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 LinkedIn" tabindex=0><iconify-icon icon=mdi:linkedin width=20 height=20></iconify-icon></a></div></div></article><aside class="w-full lg:w-1/4"><button id=mobile-toc-toggle class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-<iconify-icon icon=mdi:table-of-contents width=24 height=24></iconify-icon></button><div id=toc-container class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
-fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
-lg:overflow-visible flex flex-col"><div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4"><h2 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:table-of-contents width=16 height=16></iconify-icon></div>目录</h2><div class="flex items-center"><button id=toc-toggle class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label=折叠目录>
-<iconify-icon id=toc-icon icon=mdi:chevron-up width=20 height=20></iconify-icon></button>
-<button id=toc-close class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div></div><div id=toc-content class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto"><nav id=TableOfContents><ul><li><a href=#前言>前言</a></li><li><a href=#katex-数学公式>KaTeX 数学公式</a><ul><li><a href=#行内公式>行内公式</a></li><li><a href=#块级公式>块级公式</a></li><li><a href=#复杂公式示例>复杂公式示例</a></li><li><a href=#矩阵示例>矩阵示例</a></li></ul></li><li><a href=#mermaid-图表>Mermaid 图表</a><ul><li><a href=#流程图>流程图</a></li><li><a href=#时序图>时序图</a></li><li><a href=#类图>类图</a></li><li><a href=#甘特图>甘特图</a></li><li><a href=#状态图>状态图</a></li></ul></li><li><a href=#结合使用示例>结合使用示例</a><ul><li><a href=#二分查找算法>二分查找算法</a></li></ul></li><li><a href=#结语>结语</a></li></ul></nav></div></div><div id=toc-overlay class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div></aside></div></div><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js></script><link rel=stylesheet href=/css/markdown.css><link rel=stylesheet href=/css/code-highlight.css><script src=/js/code-highlight.js></script><script src=/js/toc.js></script><script>document.addEventListener("DOMContentLoaded",function(){console.log("初始化代码高亮..."),window.hljs?(console.log("highlight.js 已加载"),document.querySelectorAll("pre code").forEach(function(e){console.log("应用高亮到代码块"),hljs.highlightElement(e)})):console.error("highlight.js 未加载!")})</script><style>#toc-content{max-height:none}@media(min-width:1024px){#toc-content{max-height:none;overflow:visible}#toc-container{max-height:calc(100vh - 120px);overflow-y:auto}nav#TableOfContents{overflow:visible}}@media(max-width:1023px){#toc-container{padding-bottom:env(safe-area-inset-bottom,20px);display:flex;flex-direction:column}#toc-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:20px}}</style></main><footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700"><div class="container mx-auto px-4"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:information width=16 height=16></iconify-icon></div>关于本站</h3><p class="text-sm text-gray-600 dark:text-gray-400 mb-4">cmdragon's Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。</p><div class="flex space-x-3"><a href=https://github.com/amd794 class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=GitHub tabindex=0 target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:github width=18 height=18></iconify-icon></a><button id=wechat-btn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=微信 tabindex=0>
-<iconify-icon icon=mdi:wechat width=18 height=18></iconify-icon></button>
-<a href=mailto:support@cmdragon.cn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=Email tabindex=0><iconify-icon icon=mdi:email width=18 height=18></iconify-icon></a><a href=/index.xml class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=RSS tabindex=0><iconify-icon icon=mdi:rss width=18 height=18></iconify-icon></a></div></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:link-variant width=16 height=16></iconify-icon></div>快速链接</h3><ul class=space-y-2><li><a href=https://movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>高清影视库</a></li><li><a href=https://comic.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>精选漫画阅读</a></li><li><a href=https://tools.cmdragon.cn/zh class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>实用在线工具</a></li><li><a href=https://hot-movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>热映影视推荐</a></li></ul></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>热门标签</h3><div class="flex flex-wrap gap-2"><a href=https://blog.cmdragon.cn/tags/FastAPI/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#FastAPI <span class="text-xs opacity-70">(85)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt <span class="text-xs opacity-70">(68)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#钩子 <span class="text-xs opacity-70">(62)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#性能优化 <span class="text-xs opacity-70">(47)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt.js/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt.js <span class="text-xs opacity-70">(43)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#生命周期 <span class="text-xs opacity-70">(38)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt3/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt3 <span class="text-xs opacity-70">(37)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#错误处理 <span class="text-xs opacity-70">(32)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#组件 <span class="text-xs opacity-70">(29)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#数据库管理 <span class="text-xs opacity-70">(27)</span></a></div></div></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6"><div class="flex flex-col md:flex-row justify-between items-center"><div class="text-center md:text-left mb-4 md:mb-0"><p class="text-sm text-gray-600 dark:text-gray-400">&copy; 2023 cmdragon's Blog. 保留所有权利.</p><p class="text-xs text-gray-500 dark:text-gray-500 mt-1">由 <a href=https://gohugo.io/ class="hover:text-primary transition-colors duration-300" target=_blank rel="noopener noreferrer">Hugo</a> 强力驱动</p></div><button id=back-to-top class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
-<iconify-icon icon=mdi:arrow-up class=mr-1 width=16 height=16></iconify-icon>返回顶部</button></div></div></div><div id=wechat-modal class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick='this.classList.add("hidden")'><div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick=event.stopPropagation()><button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick='document.getElementById("wechat-modal").classList.add("hidden")'>
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button><h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4><div class="flex justify-center"><img src=/images/wechat_qrcode.webp alt=微信二维码 class="w-64 h-64 object-contain"></div></div></div></footer><script>const backToTopButton=document.getElementById("back-to-top");window.addEventListener("scroll",function(){window.scrollY>300?(backToTopButton.classList.remove("opacity-0","invisible"),backToTopButton.classList.add("opacity-100","visible")):(backToTopButton.classList.add("opacity-0","invisible"),backToTopButton.classList.remove("opacity-100","visible"))}),backToTopButton.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})}),document.getElementById("wechat-btn").addEventListener("click",function(){document.getElementById("wechat-modal").classList.remove("hidden")}),document.getElementById("wechat-btn").addEventListener("keydown",function(e){(e.key==="Enter"||e.key===" ")&&(e.preventDefault(),document.getElementById("wechat-modal").classList.remove("hidden"))})</script></div><script>localStorage.getItem("color-theme")==="dark"||!("color-theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark")</script><script src=/js/code-highlight.js></script><script src=/js/advanced-render.js></script><div id=site-search-modal class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300"><div id=site-search-backdrop class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div><div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700"><div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700"><h3 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm"><iconify-icon icon=mdi:magnify width=16 height=16></iconify-icon></div><span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span></h3><button id=site-search-close class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div><div class=p-6><form id=site-search-form action=/search/ method=get><div class=relative><div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md"><span class="pl-4 text-gray-400"><iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></span><input type=text id=site-search-input name=q placeholder=输入关键词搜索... class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200" aria-label=搜索内容 tabindex=0>
-<button type=submit class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center" aria-label=搜索 tabindex=0>
-<span class="mr-1 hidden sm:inline">搜索</span>
-<iconify-icon icon=mdi:arrow-right width=18 height=18></iconify-icon></button></div></div></form><div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start"><div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5"><iconify-icon icon=mdi:information width=16 height=16 class="text-blue-500 dark:text-blue-300"></iconify-icon></div><div><p class=mb-1>快捷键提示:</p><ul class=space-y-1><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
-<span>打开搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
-<span>关闭搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
-<span>提交搜索</span></li></ul></div></div><div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"><div class="flex flex-wrap gap-2"><a href=/tags/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:tag-multiple class=mr-1 width=16 height=16></iconify-icon>标签
-</a><a href=/categories/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:folder-multiple class=mr-1 width=16 height=16></iconify-icon>分类
-</a><a href=/archives/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:archive class=mr-1 width=16 height=16></iconify-icon>归档</a></div></div></div></div></div><script>document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("site-search-modal"),t=e.querySelector('div[class*="rounded-xl"]'),s=document.getElementById("site-search-backdrop"),o=document.getElementById("site-search-close"),a=document.getElementById("site-search-form"),i=document.getElementById("site-search-input");window.openSiteSearch=function(){e.classList.remove("hidden"),document.body.classList.add("overflow-hidden"),setTimeout(()=>{e.classList.add("opacity-100"),t.classList.remove("scale-95","opacity-0"),t.classList.add("scale-100","opacity-100"),i.focus()},10)};function n(){e.classList.remove("opacity-100"),t.classList.remove("scale-100","opacity-100"),t.classList.add("scale-95","opacity-0"),setTimeout(()=>{e.classList.add("hidden"),document.body.classList.remove("overflow-hidden")},300)}s&&s.addEventListener("click",n),o&&o.addEventListener("click",n),document.addEventListener("keydown",t=>{t.key==="Escape"&&!e.classList.contains("hidden")&&n(),t.key==="/"&&e.classList.contains("hidden")&&document.activeElement.tagName!=="INPUT"&&(t.preventDefault(),openSiteSearch())}),t.addEventListener("click",e=>{e.stopPropagation()})})</script></body></html>
+$$</p>
+<p>注意我们用 <code>left + (right - left) / 2</code> 而不是 <code>(left + right) / 2</code> 来避免整数溢出问题。</p>
+<h2 id="结语">结语</h2>
+<p>通过使用 KaTeX 和 Mermaid，我们可以在 Markdown 中优雅地展示数学公式和各种图表，使技术文章更加生动、直观。这些工具大大提升了博客的表现力，使读者能更轻松地理解复杂概念。</p>
+<p>希望本文对您在博客中使用这些高级功能有所帮助！</p>
+
+            </div>
+            
+            
+            
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                    <h3 class="text-lg font-medium mb-4 flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                        </div>
+                        标签
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        
+                            <a href="/tags/Markdown" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: Markdown"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>Markdown
+                            </a>
+                        
+                            <a href="/tags/KaTeX" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: KaTeX"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>KaTeX
+                            </a>
+                        
+                            <a href="/tags/Mermaid" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: Mermaid"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>Mermaid
+                            </a>
+                        
+                            <a href="/tags/%E5%9B%BE%E8%A1%A8" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 图表"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>图表
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 数学公式"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>数学公式
+                            </a>
+                        
+                    </div>
+                </div>
+            
+            
+            
+            <nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                    <div></div>
+                
+                
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">
+                            下一篇<iconify-icon icon="mdi:arrow-right" class="ml-2" width="16" height="16"></iconify-icon>
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/899682b6ebdcae2ab79584e327379829/" class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: 中文电码在历史关键时刻的作用" tabindex="0">
+                            中文电码在历史关键时刻的作用
+                        </a>
+                    </div>
+                
+            </nav>
+            
+            
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                <h3 class="text-lg font-medium mb-4 flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:share-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    分享
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f1d52f24a41ac648650f2200210d60ddd%2f&text=Markdown%e9%ab%98%e7%ba%a7%e5%8a%9f%e8%83%bd%ef%bc%9a%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e4%b8%8e%e5%9b%be%e8%a1%a8%e5%b1%95%e7%a4%ba" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Twitter" tabindex="0">
+                        <iconify-icon icon="mdi:twitter" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f1d52f24a41ac648650f2200210d60ddd%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Facebook" tabindex="0">
+                        <iconify-icon icon="mdi:facebook" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f1d52f24a41ac648650f2200210d60ddd%2f&title=Markdown%e9%ab%98%e7%ba%a7%e5%8a%9f%e8%83%bd%ef%bc%9a%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e4%b8%8e%e5%9b%be%e8%a1%a8%e5%b1%95%e7%a4%ba" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到微博" tabindex="0">
+                        <iconify-icon icon="mdi:sina-weibo" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f1d52f24a41ac648650f2200210d60ddd%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 LinkedIn" tabindex="0">
+                        <iconify-icon icon="mdi:linkedin" width="20" height="20"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            
+        </article>
+        
+        
+        
+        <aside class="w-full lg:w-1/4">
+            
+            <button id="mobile-toc-toggle" class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <iconify-icon icon="mdi:table-of-contents" width="24" height="24"></iconify-icon>
+            </button>
+            
+            
+            <div id="toc-container" class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
+                 fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
+                 lg:overflow-visible flex flex-col">
+                <div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4">
+                    <h2 class="text-lg font-medium flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:table-of-contents" width="16" height="16"></iconify-icon>
+                        </div>
+                        目录
+                    </h2>
+                    <div class="flex items-center">
+                        <button id="toc-toggle" class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label="折叠目录">
+                            <iconify-icon id="toc-icon" icon="mdi:chevron-up" width="20" height="20"></iconify-icon>
+                        </button>
+                        
+                        <button id="toc-close" class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                            <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                <div id="toc-content" class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#katex-数学公式">KaTeX 数学公式</a>
+      <ul>
+        <li><a href="#行内公式">行内公式</a></li>
+        <li><a href="#块级公式">块级公式</a></li>
+        <li><a href="#复杂公式示例">复杂公式示例</a></li>
+        <li><a href="#矩阵示例">矩阵示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#mermaid-图表">Mermaid 图表</a>
+      <ul>
+        <li><a href="#流程图">流程图</a></li>
+        <li><a href="#时序图">时序图</a></li>
+        <li><a href="#类图">类图</a></li>
+        <li><a href="#甘特图">甘特图</a></li>
+        <li><a href="#状态图">状态图</a></li>
+      </ul>
+    </li>
+    <li><a href="#结合使用示例">结合使用示例</a>
+      <ul>
+        <li><a href="#二分查找算法">二分查找算法</a></li>
+      </ul>
+    </li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+            
+            
+            <div id="toc-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div>
+        </aside>
+        
+    </div>
+</div>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+
+<link rel="stylesheet" href="/css/markdown.css">
+<link rel="stylesheet" href="/css/code-highlight.css">
+<script src="/js/code-highlight.js"></script>
+
+<script src="/js/toc.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('初始化代码高亮...');
+    if (window.hljs) {
+      console.log('highlight.js 已加载');
+      document.querySelectorAll('pre code').forEach(function(block) {
+        console.log('应用高亮到代码块');
+        hljs.highlightElement(block);
+      });
+    } else {
+      console.error('highlight.js 未加载!');
+    }
+  });
+</script>
+
+
+<style>
+ 
+#toc-content {
+  max-height: none;
+}
+
+@media (min-width: 1024px) {
+  #toc-content {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  #toc-container {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+  
+  nav#TableOfContents {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1023px) {
+  #toc-container {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #toc-content {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+}
+</style>
+
+        </main>
+        
+        <footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:information" width="16" height="16"></iconify-icon>
+                    </div>
+                    关于本站
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    cmdragon&#39;s Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。
+                </p>
+                <div class="flex space-x-3">
+                    
+                    <a href="https://github.com/amd794" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="GitHub" tabindex="0" target="_blank" rel="noopener noreferrer">
+                        <iconify-icon icon="mdi:github" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    
+                    <button id="wechat-btn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="微信" tabindex="0">
+                        <iconify-icon icon="mdi:wechat" width="18" height="18"></iconify-icon>
+                    </button>
+                    
+                    <a href="mailto:support@cmdragon.cn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="Email" tabindex="0">
+                        <iconify-icon icon="mdi:email" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    <a href="/index.xml" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="RSS" tabindex="0">
+                        <iconify-icon icon="mdi:rss" width="18" height="18"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:link-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    快速链接
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="https://movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            高清影视库
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://comic.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            精选漫画阅读
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://tools.cmdragon.cn/zh" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            实用在线工具
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://hot-movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            热映影视推荐
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                    </div>
+                    热门标签
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    
+                    <a href="https://blog.cmdragon.cn/tags/FastAPI/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #FastAPI <span class="text-xs opacity-70">(85)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt <span class="text-xs opacity-70">(68)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #钩子 <span class="text-xs opacity-70">(62)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #性能优化 <span class="text-xs opacity-70">(47)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt.js/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt.js <span class="text-xs opacity-70">(43)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #生命周期 <span class="text-xs opacity-70">(38)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt3/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt3 <span class="text-xs opacity-70">(37)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #错误处理 <span class="text-xs opacity-70">(32)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #组件 <span class="text-xs opacity-70">(29)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #数据库管理 <span class="text-xs opacity-70">(27)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        &copy; 2023 cmdragon&#39;s Blog. 保留所有权利.
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                        由 <a href="https://gohugo.io/" class="hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer">Hugo</a> 强力驱动
+                    </p>
+                </div>
+                
+                
+                <button id="back-to-top" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
+                    <iconify-icon icon="mdi:arrow-up" class="mr-1" width="16" height="16"></iconify-icon>
+                    返回顶部
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick="this.classList.add('hidden')">
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick="event.stopPropagation()">
+            <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick="document.getElementById('wechat-modal').classList.add('hidden')">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+            <h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4>
+            <div class="flex justify-center">
+                <img src="/images/wechat_qrcode.webp" alt="微信二维码" class="w-64 h-64 object-contain">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+    
+    
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('click', function() {
+        document.getElementById('wechat-modal').classList.remove('hidden');
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            document.getElementById('wechat-modal').classList.remove('hidden');
+        }
+    });
+</script> 
+    </div>
+    
+    
+    <script>
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    
+    <script src="/js/code-highlight.js"></script>
+    
+    
+    <script src="/js/advanced-render.js"></script>
+    
+    <div id="site-search-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    
+    <div id="site-search-backdrop" class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+    
+    
+    <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-medium flex items-center">
+                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm">
+                    <iconify-icon icon="mdi:magnify" width="16" height="16"></iconify-icon>
+                </div>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span>
+            </h3>
+            <button id="site-search-close" class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+        </div>
+        
+        <div class="p-6">
+            <form id="site-search-form" action="/search/" method="get">
+                <div class="relative">
+                    <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md">
+                        <span class="pl-4 text-gray-400">
+                            <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                        </span>
+                        <input 
+                            type="text" 
+                            id="site-search-input" 
+                            name="q" 
+                            placeholder="输入关键词搜索..."
+                            class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200"
+                            aria-label="搜索内容"
+                            tabindex="0"
+                        >
+                        <button 
+                            type="submit"
+                            class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center"
+                            aria-label="搜索"
+                            tabindex="0">
+                            <span class="mr-1 hidden sm:inline">搜索</span>
+                            <iconify-icon icon="mdi:arrow-right" width="18" height="18"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start">
+                <div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5">
+                    <iconify-icon icon="mdi:information" width="16" height="16" class="text-blue-500 dark:text-blue-300"></iconify-icon>
+                </div>
+                <div>
+                    <p class="mb-1">快捷键提示:</p>
+                    <ul class="space-y-1">
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
+                            <span>打开搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
+                            <span>关闭搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
+                            <span>提交搜索</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap gap-2">
+                    <a href="/tags/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:tag-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        标签
+                    </a>
+                    <a href="/categories/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:folder-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        分类
+                    </a>
+                    <a href="/archives/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:archive" class="mr-1" width="16" height="16"></iconify-icon>
+                        归档
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('site-search-modal');
+        const modalContent = modal.querySelector('div[class*="rounded-xl"]');
+        const backdrop = document.getElementById('site-search-backdrop');
+        const closeButton = document.getElementById('site-search-close');
+        const searchForm = document.getElementById('site-search-form');
+        const searchInput = document.getElementById('site-search-input');
+        
+        
+        window.openSiteSearch = function() {
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            
+            
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+                searchInput.focus();
+            }, 10);
+        };
+        
+        
+        function closeSiteSearch() {
+            
+            modal.classList.remove('opacity-100');
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        }
+        
+        
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        if (closeButton) {
+            closeButton.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeSiteSearch();
+            }
+            
+            
+            if (e.key === '/' && modal.classList.contains('hidden') && document.activeElement.tagName !== 'INPUT') {
+                e.preventDefault();
+                openSiteSearch();
+            }
+        });
+        
+        
+        modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    });
+</script> 
+</body>
+</html> 

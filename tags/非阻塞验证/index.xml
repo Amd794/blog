@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>非阻塞验证 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E9%9D%9E%E9%98%BB%E5%A1%9E%E9%AA%8C%E8%AF%81/</link><description>Recent content in 非阻塞验证 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 25 Mar 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E9%9D%9E%E9%98%BB%E5%A1%9E%E9%AA%8C%E8%AF%81/index.xml" rel="self" type="application/rss+xml"/><item><title>Pydantic异步校验器深：构建高并发验证系统</title><link>https://blog.cmdragon.cn/posts/38a93fe6312bbee008f3c11d9ecbb557/</link><pubDate>Tue, 25 Mar 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/38a93fe6312bbee008f3c11d9ecbb557/</guid><description>Pydantic异步校验器基于async/await实现非阻塞验证，支持DNS查询等网络操作。高并发场景下运用批量API验证与异步数据库查询，通过asyncio.gather提升吞吐效率。企业级方案集成分布式锁确保订单唯一性，策略模式动态加载验证规则。流式数据处理采用aiostream进行转换与限流，动态依赖验证实现余额实时获取。错误处理机制包含异步超时控制与批量错误聚合，推荐asyncio.timeout管理响应时限。架构设计遵循非阻塞原则，采用星形拓扑与Semaphore控制并发，需注意事件循环管理及await正确使用，避免异步生成器处理错误。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>非阻塞验证 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E9%9D%9E%E9%98%BB%E5%A1%9E%E9%AA%8C%E8%AF%81/</link>
+    <description>Recent content in 非阻塞验证 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 25 Mar 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E9%9D%9E%E9%98%BB%E5%A1%9E%E9%AA%8C%E8%AF%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pydantic异步校验器深：构建高并发验证系统</title>
+      <link>https://blog.cmdragon.cn/posts/38a93fe6312bbee008f3c11d9ecbb557/</link>
+      <pubDate>Tue, 25 Mar 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/38a93fe6312bbee008f3c11d9ecbb557/</guid>
+      <description>Pydantic异步校验器基于async/await实现非阻塞验证，支持DNS查询等网络操作。高并发场景下运用批量API验证与异步数据库查询，通过asyncio.gather提升吞吐效率。企业级方案集成分布式锁确保订单唯一性，策略模式动态加载验证规则。流式数据处理采用aiostream进行转换与限流，动态依赖验证实现余额实时获取。错误处理机制包含异步超时控制与批量错误聚合，推荐asyncio.timeout管理响应时限。架构设计遵循非阻塞原则，采用星形拓扑与Semaphore控制并发，需注意事件循环管理及await正确使用，避免异步生成器处理错误。</description>
+    </item>
+  </channel>
+</rss>

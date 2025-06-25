@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>编程 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E7%BC%96%E7%A8%8B/</link><description>Recent content in 编程 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 13 Aug 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 navigateTo 实现灵活的路由导航</title><link>https://blog.cmdragon.cn/posts/f68163dee0a38a46b874f4885c661f48/</link><pubDate>Tue, 13 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/f68163dee0a38a46b874f4885c661f48/</guid><description>摘要：本文详细介绍 Nuxt.js 中的 navigateTo 函数，包括基本用法、在路由中间件中使用、导航到外部 URL 和新标签页打开链接的方法，以及参数详解和注意事项，展示了该函数在程序化导航中的灵活性和强大功能。</description></item><item><title>使用 useLazyFetch 进行异步数据获取</title><link>https://blog.cmdragon.cn/posts/382133fd6ac27845d845a7fa96e5ba43/</link><pubDate>Sat, 20 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/382133fd6ac27845d845a7fa96e5ba43/</guid><description>摘要：“使用 useLazyFetch 进行异步数据获取”介绍了在Nuxt开发中利用useLazyFetch进行异步数据加载的方法，强调其立即触发导航特性，与useFetch相似的使用方式，以及如何处理数据状态和错误，通过示例展示如何在模板中根据数据加载状态显示不同内容。</description></item><item><title>useHeadSafe：安全生成HTML头部元素</title><link>https://blog.cmdragon.cn/posts/95d33c5603e4f6e6897102ed1a6cc433/</link><pubDate>Wed, 17 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/95d33c5603e4f6e6897102ed1a6cc433/</guid><description>摘要：“useHeadSafe”是Vue.js组合函数，用于安全生成HTML头部元素，通过限制输入值格式避免XSS等安全风险，提供了安全值白名单确保只有安全属性被添加。</description></item><item><title>useCookie函数：管理SSR环境下的Cookie</title><link>https://blog.cmdragon.cn/posts/ddb1976c3f6b7b52a03dd0c383e9a790/</link><pubDate>Sat, 13 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/ddb1976c3f6b7b52a03dd0c383e9a790/</guid><description>摘要：本文详述了useCookie函数在服务器端渲染(SSR)中的应用，包括读写Cookie、配置选项如maxAge、expires、httpOnly、secure、domain、path及SameSite，并提供了encode、decode、default、watch等高级用法示例，以及如何在API路由中操作Cookie。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编程 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E7%BC%96%E7%A8%8B/</link>
+    <description>Recent content in 编程 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 13 Aug 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 navigateTo 实现灵活的路由导航</title>
+      <link>https://blog.cmdragon.cn/posts/f68163dee0a38a46b874f4885c661f48/</link>
+      <pubDate>Tue, 13 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/f68163dee0a38a46b874f4885c661f48/</guid>
+      <description>摘要：本文详细介绍 Nuxt.js 中的 navigateTo 函数，包括基本用法、在路由中间件中使用、导航到外部 URL 和新标签页打开链接的方法，以及参数详解和注意事项，展示了该函数在程序化导航中的灵活性和强大功能。</description>
+    </item>
+    <item>
+      <title>使用 useLazyFetch 进行异步数据获取</title>
+      <link>https://blog.cmdragon.cn/posts/382133fd6ac27845d845a7fa96e5ba43/</link>
+      <pubDate>Sat, 20 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/382133fd6ac27845d845a7fa96e5ba43/</guid>
+      <description>摘要：“使用 useLazyFetch 进行异步数据获取”介绍了在Nuxt开发中利用useLazyFetch进行异步数据加载的方法，强调其立即触发导航特性，与useFetch相似的使用方式，以及如何处理数据状态和错误，通过示例展示如何在模板中根据数据加载状态显示不同内容。</description>
+    </item>
+    <item>
+      <title>useHeadSafe：安全生成HTML头部元素</title>
+      <link>https://blog.cmdragon.cn/posts/95d33c5603e4f6e6897102ed1a6cc433/</link>
+      <pubDate>Wed, 17 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/95d33c5603e4f6e6897102ed1a6cc433/</guid>
+      <description>摘要：“useHeadSafe”是Vue.js组合函数，用于安全生成HTML头部元素，通过限制输入值格式避免XSS等安全风险，提供了安全值白名单确保只有安全属性被添加。</description>
+    </item>
+    <item>
+      <title>useCookie函数：管理SSR环境下的Cookie</title>
+      <link>https://blog.cmdragon.cn/posts/ddb1976c3f6b7b52a03dd0c383e9a790/</link>
+      <pubDate>Sat, 13 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/ddb1976c3f6b7b52a03dd0c383e9a790/</guid>
+      <description>摘要：本文详述了useCookie函数在服务器端渲染(SSR)中的应用，包括读写Cookie、配置选项如maxAge、expires、httpOnly、secure、domain、path及SameSite，并提供了encode、decode、default、watch等高级用法示例，以及如何在API路由中操作Cookie。</description>
+    </item>
+  </channel>
+</rss>

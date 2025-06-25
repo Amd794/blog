@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>插件定制 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%8F%92%E4%BB%B6%E5%AE%9A%E5%88%B6/</link><description>Recent content in 插件定制 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 04 Jul 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%8F%92%E4%BB%B6%E5%AE%9A%E5%88%B6/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt3 的生命周期和钩子函数（十）</title><link>https://blog.cmdragon.cn/posts/d5c00a7775a1fc1b83ecfb6dd7136fa7/</link><pubDate>Thu, 04 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/d5c00a7775a1fc1b83ecfb6dd7136fa7/</guid><description>摘要：本文详细介绍了Nuxt3框架中的五个webpack钩子函数：webpack:configResolved用于在webpack配置解析后读取和修改配置；webpack:compile在编译开始前调用，可修改编译选项；webpack:compiled在编译完成后调用，可处理编译结果；webpack:change在开发模式下文件变化时触发，监控文件更改；webpack:error在编译出错时捕获错误信息，以便于错误处理。并通过示例代码展示了各钩子的使用方法。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>插件定制 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%8F%92%E4%BB%B6%E5%AE%9A%E5%88%B6/</link>
+    <description>Recent content in 插件定制 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 04 Jul 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%8F%92%E4%BB%B6%E5%AE%9A%E5%88%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt3 的生命周期和钩子函数（十）</title>
+      <link>https://blog.cmdragon.cn/posts/d5c00a7775a1fc1b83ecfb6dd7136fa7/</link>
+      <pubDate>Thu, 04 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/d5c00a7775a1fc1b83ecfb6dd7136fa7/</guid>
+      <description>摘要：本文详细介绍了Nuxt3框架中的五个webpack钩子函数：webpack:configResolved用于在webpack配置解析后读取和修改配置；webpack:compile在编译开始前调用，可修改编译选项；webpack:compiled在编译完成后调用，可处理编译结果；webpack:change在开发模式下文件变化时触发，监控文件更改；webpack:error在编译出错时捕获错误信息，以便于错误处理。并通过示例代码展示了各钩子的使用方法。</description>
+    </item>
+  </channel>
+</rss>

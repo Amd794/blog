@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>自定义错误 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%94%99%E8%AF%AF/</link><description>Recent content in 自定义错误 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 08 Aug 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%94%99%E8%AF%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 createError 创建错误对象的详细指南</title><link>https://blog.cmdragon.cn/posts/58c4afd983d5e7a26462c4830ef807b5/</link><pubDate>Thu, 08 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/58c4afd983d5e7a26462c4830ef807b5/</guid><description>摘要：本文介绍了createError函数在Nuxt应用开发中的使用方法，用于创建带有附加元数据的错误对象，以提升错误处理的灵活性和用户体验。内容包括函数参数说明、在Vue组件和API路由中的应用实例、自定义错误页面的创建、错误的捕获与处理技巧，以及如何触发致命错误展示全屏错误提示。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>自定义错误 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%94%99%E8%AF%AF/</link>
+    <description>Recent content in 自定义错误 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 08 Aug 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%94%99%E8%AF%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 createError 创建错误对象的详细指南</title>
+      <link>https://blog.cmdragon.cn/posts/58c4afd983d5e7a26462c4830ef807b5/</link>
+      <pubDate>Thu, 08 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/58c4afd983d5e7a26462c4830ef807b5/</guid>
+      <description>摘要：本文介绍了createError函数在Nuxt应用开发中的使用方法，用于创建带有附加元数据的错误对象，以提升错误处理的灵活性和用户体验。内容包括函数参数说明、在Vue组件和API路由中的应用实例、自定义错误页面的创建、错误的捕获与处理技巧，以及如何触发致命错误展示全屏错误提示。</description>
+    </item>
+  </channel>
+</rss>

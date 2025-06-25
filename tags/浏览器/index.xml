@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>浏览器 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/</link><description>Recent content in 浏览器 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 11 Oct 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 kit：compatibility 事件钩子详解</title><link>https://blog.cmdragon.cn/posts/5892994c55ef47a9af4acfc446d8e923/</link><pubDate>Fri, 11 Oct 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/5892994c55ef47a9af4acfc446d8e923/</guid><description>kit:compatibility 是处理浏览器兼容性问题的有效工具。正如本篇文章中所述，合理地利用这一钩子可以提升用户体验，并确保应用在不同环境中都能稳定运行。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>浏览器 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/</link>
+    <description>Recent content in 浏览器 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 11 Oct 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 kit：compatibility 事件钩子详解</title>
+      <link>https://blog.cmdragon.cn/posts/5892994c55ef47a9af4acfc446d8e923/</link>
+      <pubDate>Fri, 11 Oct 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/5892994c55ef47a9af4acfc446d8e923/</guid>
+      <description>kit:compatibility 是处理浏览器兼容性问题的有效工具。正如本篇文章中所述，合理地利用这一钩子可以提升用户体验，并确保应用在不同环境中都能稳定运行。</description>
+    </item>
+  </channel>
+</rss>

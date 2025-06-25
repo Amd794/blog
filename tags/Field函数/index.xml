@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Field函数 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/Field%E5%87%BD%E6%95%B0/</link><description>Recent content in Field函数 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 11 Mar 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/Field%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>FastAPI 自定义参数验证器完全指南：从基础到高级实战</title><link>https://blog.cmdragon.cn/posts/9d0a403c8be2b1dc31f54f2a32e4af6d/</link><pubDate>Tue, 11 Mar 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/9d0a403c8be2b1dc31f54f2a32e4af6d/</guid><description>本教程深入探讨 FastAPI 中自定义参数验证器的使用，特别是通过 Field 函数进行数据校验。从基础概念到高级用法，通过详细的代码示例、课后测验和常见错误解决方案，帮助初学者快速掌握 FastAPI 中自定义参数验证器的核心知识。您将学习到如何通过自定义验证器优化 API 接口的数据校验、提升代码的可维护性，从而构建高效、安全的 Web 应用。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Field函数 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/Field%E5%87%BD%E6%95%B0/</link>
+    <description>Recent content in Field函数 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 11 Mar 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/Field%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastAPI 自定义参数验证器完全指南：从基础到高级实战</title>
+      <link>https://blog.cmdragon.cn/posts/9d0a403c8be2b1dc31f54f2a32e4af6d/</link>
+      <pubDate>Tue, 11 Mar 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/9d0a403c8be2b1dc31f54f2a32e4af6d/</guid>
+      <description>本教程深入探讨 FastAPI 中自定义参数验证器的使用，特别是通过 Field 函数进行数据校验。从基础概念到高级用法，通过详细的代码示例、课后测验和常见错误解决方案，帮助初学者快速掌握 FastAPI 中自定义参数验证器的核心知识。您将学习到如何通过自定义验证器优化 API 接口的数据校验、提升代码的可维护性，从而构建高效、安全的 Web 应用。</description>
+    </item>
+  </channel>
+</rss>

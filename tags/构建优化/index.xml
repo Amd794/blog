@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>构建优化 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%9E%84%E5%BB%BA%E4%BC%98%E5%8C%96/</link><description>Recent content in 构建优化 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 01 Jul 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%9E%84%E5%BB%BA%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt3 的生命周期和钩子函数（七）</title><link>https://blog.cmdragon.cn/posts/a65c336a08214aa264f38f893fd9fe64/</link><pubDate>Mon, 01 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/a65c336a08214aa264f38f893fd9fe64/</guid><description>摘要：文章阐述了Nuxt3中Nitro生命周期钩子的使用，如nitro:config自定义配置、nitro:init注册构建钩子、nitro:build:before/after调整构建设置及处理公共资产、prerender:routes扩展预渲染路由、build:error捕获构建错误，通过示例代码指导开发者优化项目构建与部署流程。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>构建优化 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%9E%84%E5%BB%BA%E4%BC%98%E5%8C%96/</link>
+    <description>Recent content in 构建优化 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 01 Jul 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%9E%84%E5%BB%BA%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt3 的生命周期和钩子函数（七）</title>
+      <link>https://blog.cmdragon.cn/posts/a65c336a08214aa264f38f893fd9fe64/</link>
+      <pubDate>Mon, 01 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/a65c336a08214aa264f38f893fd9fe64/</guid>
+      <description>摘要：文章阐述了Nuxt3中Nitro生命周期钩子的使用，如nitro:config自定义配置、nitro:init注册构建钩子、nitro:build:before/after调整构建设置及处理公共资产、prerender:routes扩展预渲染路由、build:error捕获构建错误，通过示例代码指导开发者优化项目构建与部署流程。</description>
+    </item>
+  </channel>
+</rss>

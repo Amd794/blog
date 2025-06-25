@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>命令行工具 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</link><description>Recent content in 命令行工具 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 30 Dec 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml"/><item><title>掌握 PostgreSQL 的 psql 命令行工具</title><link>https://blog.cmdragon.cn/posts/c1c0929a62f7d7facd3e0f59d74977bb/</link><pubDate>Mon, 30 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/c1c0929a62f7d7facd3e0f59d74977bb/</guid><description>psql 是 PostgreSQL 关系数据库管理系统的交互式命令行工具，是数据库管理员和开发人员进行数据库管理和操作的主要接口。熟练使用 psql 工具，不仅能够提高对 PostgreSQL 的管理效率，还能增强对 SQL 命令及其执行过程的深刻理解。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>命令行工具 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 命令行工具 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>掌握 PostgreSQL 的 psql 命令行工具</title>
+      <link>https://blog.cmdragon.cn/posts/c1c0929a62f7d7facd3e0f59d74977bb/</link>
+      <pubDate>Mon, 30 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/c1c0929a62f7d7facd3e0f59d74977bb/</guid>
+      <description>psql 是 PostgreSQL 关系数据库管理系统的交互式命令行工具，是数据库管理员和开发人员进行数据库管理和操作的主要接口。熟练使用 psql 工具，不仅能够提高对 PostgreSQL 的管理效率，还能增强对 SQL 命令及其执行过程的深刻理解。</description>
+    </item>
+  </channel>
+</rss>

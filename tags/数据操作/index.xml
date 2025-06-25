@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据操作 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/</link><description>Recent content in 数据操作 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 11 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>数据操作与事务：确保数据一致性的关键</title><link>https://blog.cmdragon.cn/posts/aff107a909f04dc52a887b45e9bd2484/</link><pubDate>Tue, 11 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/aff107a909f04dc52a887b45e9bd2484/</guid><description>在现代数据管理中，事务处理是确保数据完整性和一致性的重要机制。本文将深入探讨事务的ACID特性、锁机制及其种类（行级锁与表级锁）以及事务隔离级别（READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ、SERIALIZABLE）。</description></item><item><title>ORM框架与数据库交互</title><link>https://blog.cmdragon.cn/posts/4748dacd8cb1ebab02a32f43d1d026f6/</link><pubDate>Sun, 22 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/4748dacd8cb1ebab02a32f43d1d026f6/</guid><description>对象关系映射（Object-Relational Mapping，ORM）框架是简化数据库与编程语言之间交互的强大工具。通过使用ORM，开发者可以避免直接编写SQL代码，便捷地执行CRUD操作，从而提高开发效率，减少错误。</description></item><item><title>查询与操作</title><link>https://blog.cmdragon.cn/posts/b60d658ecf76bd9c3f3d3a7b5a158e73/</link><pubDate>Wed, 11 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/b60d658ecf76bd9c3f3d3a7b5a158e73/</guid><description>查询与操作是数据库管理中的核心任务，使用SQL语句能够有效地从数据库中获取、修改、删除和管理数据。本节将介绍常用的SQL查询语句和数据操作，包括基本的选择、过滤、排序、分组与聚合操作，以帮助读者掌握如何在数据库中进行高效的数据查询和操作。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据操作 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/</link>
+    <description>Recent content in 数据操作 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 11 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据操作与事务：确保数据一致性的关键</title>
+      <link>https://blog.cmdragon.cn/posts/aff107a909f04dc52a887b45e9bd2484/</link>
+      <pubDate>Tue, 11 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/aff107a909f04dc52a887b45e9bd2484/</guid>
+      <description>在现代数据管理中，事务处理是确保数据完整性和一致性的重要机制。本文将深入探讨事务的ACID特性、锁机制及其种类（行级锁与表级锁）以及事务隔离级别（READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ、SERIALIZABLE）。</description>
+    </item>
+    <item>
+      <title>ORM框架与数据库交互</title>
+      <link>https://blog.cmdragon.cn/posts/4748dacd8cb1ebab02a32f43d1d026f6/</link>
+      <pubDate>Sun, 22 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/4748dacd8cb1ebab02a32f43d1d026f6/</guid>
+      <description>对象关系映射（Object-Relational Mapping，ORM）框架是简化数据库与编程语言之间交互的强大工具。通过使用ORM，开发者可以避免直接编写SQL代码，便捷地执行CRUD操作，从而提高开发效率，减少错误。</description>
+    </item>
+    <item>
+      <title>查询与操作</title>
+      <link>https://blog.cmdragon.cn/posts/b60d658ecf76bd9c3f3d3a7b5a158e73/</link>
+      <pubDate>Wed, 11 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/b60d658ecf76bd9c3f3d3a7b5a158e73/</guid>
+      <description>查询与操作是数据库管理中的核心任务，使用SQL语句能够有效地从数据库中获取、修改、删除和管理数据。本节将介绍常用的SQL查询语句和数据操作，包括基本的选择、过滤、排序、分组与聚合操作，以帮助读者掌握如何在数据库中进行高效的数据查询和操作。</description>
+    </item>
+  </channel>
+</rss>

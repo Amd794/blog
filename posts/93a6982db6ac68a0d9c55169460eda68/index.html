@@ -1,4 +1,268 @@
-<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>FastAPI中实现动态条件必填字段的实践 - cmdragon's Blog</title><meta name=description content="在 FastAPI 中，使用 Pydantic 模型实现动态条件必填字段时，需结合 Field 的 depends 参数、@model_validator(mode='before') 装饰器和条件判断逻辑。例如，用户注册接口根据 register_type 动态决定 email 或 mobile 字段是否必填，并在 accept_promotion=True 时要求至少填写一种联系方式。通过 @model_validator 在类型转换前验证字段值，确保数据符合条件。测试用例和常见报错解决方案帮助调试和优化验证逻辑。"><meta name=author content="cmdragon"><meta name=robots content="index, follow"><link rel=canonical href=https://blog.cmdragon.cn/posts/93a6982db6ac68a0d9c55169460eda68/><meta property="og:title" content="FastAPI中实现动态条件必填字段的实践 - cmdragon's Blog"><meta property="og:description" content="在 FastAPI 中，使用 Pydantic 模型实现动态条件必填字段时，需结合 Field 的 depends 参数、@model_validator(mode='before') 装饰器和条件判断逻辑。例如，用户注册接口根据 register_type 动态决定 email 或 mobile 字段是否必填，并在 accept_promotion=True 时要求至少填写一种联系方式。通过 @model_validator 在类型转换前验证字段值，确保数据符合条件。测试用例和常见报错解决方案帮助调试和优化验证逻辑。"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.cmdragon.cn/posts/93a6982db6ac68a0d9c55169460eda68/"><meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png"><meta property="og:site_name" content="cmdragon's Blog"><meta property="article:published_time" content="2025-04-03T00:06:20+08:00"><meta property="article:modified_time" content="2025-04-03T00:06:20+08:00"><meta property="article:section" content="FastAPI"><meta property="article:tag" content="Pydantic"><meta property="article:tag" content="FastAPI"><meta property="article:tag" content="动态必填字段"><meta property="article:tag" content="数据验证"><meta property="article:tag" content="用户注册"><meta property="article:tag" content="模型验证器"><meta property="article:tag" content="422错误处理"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="FastAPI中实现动态条件必填字段的实践 - cmdragon's Blog"><meta name=twitter:description content="在 FastAPI 中，使用 Pydantic 模型实现动态条件必填字段时，需结合 Field 的 depends 参数、@model_validator(mode='before') 装饰器和条件判断逻辑。例如，用户注册接口根据 register_type 动态决定 email 或 mobile 字段是否必填，并在 accept_promotion=True 时要求至少填写一种联系方式。通过 @model_validator 在类型转换前验证字段值，确保数据符合条件。测试用例和常见报错解决方案帮助调试和优化验证逻辑。"><meta name=twitter:image content="https://blog.cmdragon.cn/images/logo/social-card.png"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"FastAPI中实现动态条件必填字段的实践","datePublished":"2025-04-03T00:06:20\u002b08:00","dateModified":"2025-04-03T00:06:20\u002b08:00","author":{"@type":"Person","name":"cmdragon"},"description":"在 FastAPI 中，使用 Pydantic 模型实现动态条件必填字段时，需结合 Field 的 depends 参数、@model_validator(mode=\u0027before\u0027) 装饰器和条件判断逻辑。例如，用户注册接口根据 register_type 动态决定 email 或 mobile 字段是否必填，并在 accept_promotion=True 时要求至少填写一种联系方式。通过 @model_validator 在类型转换前验证字段值，确保数据符合条件。测试用例和常见报错解决方案帮助调试和优化验证逻辑。","image":"https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png","url":"https:\/\/blog.cmdragon.cn\/posts\/93a6982db6ac68a0d9c55169460eda68\/","publisher":{"@type":"Organization","name":"cmdragon\u0027s Blog","logo":{"@type":"ImageObject","url":"https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/blog.cmdragon.cn\/posts\/93a6982db6ac68a0d9c55169460eda68\/"},"keywords":"FastAPI","keywords":"Pydantic, FastAPI, 动态必填字段, 数据验证, 用户注册, 模型验证器, 422错误处理","wordCount":"2570"}</script><link rel=preconnect href=https://cdnjs.cloudflare.com><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js as=script><link rel=icon href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon href=/images/logo/small.png><link rel=icon type=image/png sizes=32x32 href=/images/logo/small.png><link rel=icon type=image/svg+xml href=/images/logo/scalable.svg><meta name=theme-color content="#3B82F6"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js></script><script>(function(){if(typeof mermaid!="undefined"){window.mermaid=mermaid;const e=document.documentElement.classList.contains("dark")||window.matchMedia("(prefers-color-scheme: dark)").matches;window.mermaid.initialize({startOnLoad:!0,theme:e?"dark":"default",securityLevel:"loose",flowchart:{curve:"basis",htmlLabels:!0},sequence:{mirrorActors:!1,wrap:!0},themeVariables:{primaryColor:"#3b82f6",primaryTextColor:"#ffffff",primaryBorderColor:e?"#60a5fa":"#2563eb",lineColor:e?"#94a3b8":"#4b5563",secondaryColor:e?"#1e293b":"#f0f9ff",tertiaryColor:e?"#334155":"#f3f4f6"}}),document.addEventListener("DOMContentLoaded",function(){try{typeof window.mermaid.init=="function"&&window.mermaid.init(0[0],document.querySelectorAll(".mermaid"))}catch{}})}})()</script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js></script><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js></script><script src=https://cdn.tailwindcss.com/3.4.16></script><script>tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#3B82F6","primary-light":"#60a5fa","primary-dark":"#2563eb"},typography:e=>({DEFAULT:{css:{color:e("colors.gray.800"),a:{color:e("colors.primary"),"&:hover":{color:e("colors.primary-dark")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.900")},pre:{backgroundColor:e("colors.gray.800"),color:e("colors.gray.100")},code:{color:e("colors.primary"),backgroundColor:e("colors.gray.100"),padding:"0.25rem",borderRadius:"0.25rem",fontWeight:"400"},"code::before":{content:'""'},"code::after":{content:'""'}}},dark:{css:{color:e("colors.gray.200"),a:{color:e("colors.primary-light"),"&:hover":{color:e("colors.primary")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.100")},pre:{backgroundColor:e("colors.gray.900")},code:{color:e("colors.primary-light"),backgroundColor:e("colors.gray.800")}}}})}}}</script><script src=/js/iconify-icon.min.js></script><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"><link rel=stylesheet href=/css/code-highlight.css><link rel=stylesheet href=/css/markdown.css><style type=text/tailwindcss>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FastAPI中实现动态条件必填字段的实践 - cmdragon&#39;s Blog</title>
+<meta name="description" content="在 FastAPI 中，使用 Pydantic 模型实现动态条件必填字段时，需结合 Field 的 depends 参数、@model_validator(mode=&#39;before&#39;) 装饰器和条件判断逻辑。例如，用户注册接口根据 register_type 动态决定 email 或 mobile 字段是否必填，并在 accept_promotion=True 时要求至少填写一种联系方式。通过 @model_validator 在类型转换前验证字段值，确保数据符合条件。测试用例和常见报错解决方案帮助调试和优化验证逻辑。">
+
+
+<meta name="author" content="cmdragon">
+<meta name="robots" content="index, follow">
+
+
+<link rel="canonical" href="https://blog.cmdragon.cn/posts/93a6982db6ac68a0d9c55169460eda68/">
+
+
+
+
+
+<meta property="og:title" content="FastAPI中实现动态条件必填字段的实践 - cmdragon&#39;s Blog">
+<meta property="og:description" content="在 FastAPI 中，使用 Pydantic 模型实现动态条件必填字段时，需结合 Field 的 depends 参数、@model_validator(mode=&#39;before&#39;) 装饰器和条件判断逻辑。例如，用户注册接口根据 register_type 动态决定 email 或 mobile 字段是否必填，并在 accept_promotion=True 时要求至少填写一种联系方式。通过 @model_validator 在类型转换前验证字段值，确保数据符合条件。测试用例和常见报错解决方案帮助调试和优化验证逻辑。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cmdragon.cn/posts/93a6982db6ac68a0d9c55169460eda68/">
+
+<meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+<meta property="og:site_name" content="cmdragon&#39;s Blog">
+
+<meta property="article:published_time" content="2025-04-03T00:06:20&#43;08:00">
+
+<meta property="article:modified_time" content="2025-04-03T00:06:20&#43;08:00">
+
+
+
+<meta property="article:section" content="FastAPI">
+
+
+
+
+<meta property="article:tag" content="Pydantic">
+
+<meta property="article:tag" content="FastAPI">
+
+<meta property="article:tag" content="动态必填字段">
+
+<meta property="article:tag" content="数据验证">
+
+<meta property="article:tag" content="用户注册">
+
+<meta property="article:tag" content="模型验证器">
+
+<meta property="article:tag" content="422错误处理">
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FastAPI中实现动态条件必填字段的实践 - cmdragon&#39;s Blog">
+<meta name="twitter:description" content="在 FastAPI 中，使用 Pydantic 模型实现动态条件必填字段时，需结合 Field 的 depends 参数、@model_validator(mode=&#39;before&#39;) 装饰器和条件判断逻辑。例如，用户注册接口根据 register_type 动态决定 email 或 mobile 字段是否必填，并在 accept_promotion=True 时要求至少填写一种联系方式。通过 @model_validator 在类型转换前验证字段值，确保数据符合条件。测试用例和常见报错解决方案帮助调试和优化验证逻辑。">
+
+<meta name="twitter:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "FastAPI中实现动态条件必填字段的实践",
+  "datePublished": "2025-04-03T00:06:20\u002b08:00",
+  "dateModified": "2025-04-03T00:06:20\u002b08:00",
+  "author": {
+    "@type": "Person",
+    "name": "cmdragon"
+  },
+  "description": "在 FastAPI 中，使用 Pydantic 模型实现动态条件必填字段时，需结合 Field 的 depends 参数、@model_validator(mode=\u0027before\u0027) 装饰器和条件判断逻辑。例如，用户注册接口根据 register_type 动态决定 email 或 mobile 字段是否必填，并在 accept_promotion=True 时要求至少填写一种联系方式。通过 @model_validator 在类型转换前验证字段值，确保数据符合条件。测试用例和常见报错解决方案帮助调试和优化验证逻辑。",
+  
+  "image": "https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png",
+  
+  "url": "https:\/\/blog.cmdragon.cn\/posts\/93a6982db6ac68a0d9c55169460eda68\/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "cmdragon\u0027s Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/blog.cmdragon.cn\/posts\/93a6982db6ac68a0d9c55169460eda68\/"
+  },
+  
+  "keywords": "FastAPI",
+  
+  
+  "keywords": "Pydantic, FastAPI, 动态必填字段, 数据验证, 用户注册, 模型验证器, 422错误处理",
+  
+  "wordCount": "2570"
+}
+</script>
+
+
+
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js" as="script">
+
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/images/logo/small.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo/small.png">
+<link rel="icon" type="image/svg+xml" href="/images/logo/scalable.svg">
+<meta name="theme-color" content="#3B82F6">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135"
+     crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js"></script>
+<script>
+  
+  (function() {
+    if (typeof mermaid !== 'undefined') {
+      
+      window.mermaid = mermaid;
+      
+      
+      const isDarkMode = document.documentElement.classList.contains('dark') || 
+                        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      
+      window.mermaid.initialize({
+        startOnLoad: true,  
+        theme: isDarkMode ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: {
+          curve: 'basis',
+          htmlLabels: true
+        },
+        sequence: {
+          mirrorActors: false,
+          wrap: true
+        },
+        themeVariables: {
+          primaryColor: '#3b82f6',
+          primaryTextColor: '#ffffff',
+          primaryBorderColor: isDarkMode ? '#60a5fa' : '#2563eb',
+          lineColor: isDarkMode ? '#94a3b8' : '#4b5563',
+          secondaryColor: isDarkMode ? '#1e293b' : '#f0f9ff',
+          tertiaryColor: isDarkMode ? '#334155' : '#f3f4f6'
+        }
+      });
+      
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          
+          if (typeof window.mermaid.init === 'function') {
+            window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+          }
+        } catch (e) {
+          
+        }
+      });
+    }
+  })();
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#3B82F6',
+                    'primary-light': '#60a5fa',
+                    'primary-dark': '#2563eb',
+                },
+                typography: (theme) => ({
+                    DEFAULT: {
+                        css: {
+                            color: theme('colors.gray.800'),
+                            a: {
+                                color: theme('colors.primary'),
+                                '&:hover': {
+                                    color: theme('colors.primary-dark'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.900'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.800'),
+                                color: theme('colors.gray.100'),
+                            },
+                            code: {
+                                color: theme('colors.primary'),
+                                backgroundColor: theme('colors.gray.100'),
+                                padding: '0.25rem',
+                                borderRadius: '0.25rem',
+                                fontWeight: '400',
+                            },
+                            'code::before': {
+                                content: '""',
+                            },
+                            'code::after': {
+                                content: '""',
+                            },
+                        },
+                    },
+                    dark: {
+                        css: {
+                            color: theme('colors.gray.200'),
+                            a: {
+                                color: theme('colors.primary-light'),
+                                '&:hover': {
+                                    color: theme('colors.primary'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.100'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.900'),
+                            },
+                            code: {
+                                color: theme('colors.primary-light'),
+                                backgroundColor: theme('colors.gray.800'),
+                            },
+                        },
+                    },
+                }),
+            },
+        },
+    }
+</script>
+
+
+<script src="/js/iconify-icon.min.js"></script>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+
+<link rel="stylesheet" href="/css/code-highlight.css">
+<link rel="stylesheet" href="/css/markdown.css">
+
+
+<style type="text/tailwindcss">
     @layer components {
         body {
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -19,35 +283,396 @@
             @apply bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white;
         }
     }
-</style><style>.mermaid{margin:2rem auto;text-align:center;overflow:visible;width:auto;max-width:100%;background-color:#f9fafb;padding:1.5rem .5rem;border-radius:.5rem;box-shadow:0 2px 4px rgba(0,0,0,5%);display:block}.dark .mermaid{background-color:#1e293b;box-shadow:0 2px 4px rgba(0,0,0,.15)}.mermaid svg{display:block !important;max-width:100%;width:auto !important;height:auto !important;font-size:14px;margin:0 auto}.mermaid .node rect,.mermaid .node circle,.mermaid .node ellipse,.mermaid .node polygon,.mermaid .node path{stroke-width:1px}.mermaid .edgePath .path{stroke-width:1.5px}.mermaid .edgeLabel{font-size:.85em;background-color:inherit !important}.mermaid .label text,.mermaid text.label{fill:#374151;font-weight:400}.dark .mermaid .label text,.dark .mermaid text.label{fill:#e5e7eb}@media(max-width:768px){.mermaid{max-width:98%;padding:.8rem .3rem;margin:1.2rem auto}.mermaid svg{font-size:12px}}</style></head><body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col"><div class="flex-grow flex flex-col"><header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700"><div class="container mx-auto px-4"><div class="flex justify-between items-center h-16"><div class="flex items-center"><a href=https://blog.cmdragon.cn/ class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300"><div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105"><img src=/images/logo/small.png alt="cmdragon's Blog Logo" class="h-full w-auto"></div><span class="group-hover:text-primary transition-colors duration-300">cmdragon's Blog</span></a></div><nav class="hidden md:flex space-x-1"><a href=/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=首页 tabindex=0><span class="relative z-10">首页</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/archives/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=归档 tabindex=0><span class="relative z-10">归档</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/categories/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=分类 tabindex=0><span class="relative z-10">分类</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/tags/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=标签 tabindex=0><span class="relative z-10">标签</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/friends/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=友链 tabindex=0><span class="relative z-10">友链</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span></a></nav><div class="flex items-center space-x-3"><button class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=搜索 tabindex=0 onclick=openSiteSearch()>
-<iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></button>
-<button id=theme-toggle class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=切换深色模式 tabindex=0>
-<iconify-icon icon=mdi:weather-sunny class=dark:hidden width=20 height=20></iconify-icon><iconify-icon icon=mdi:weather-night class="hidden dark:block" width=20 height=20></iconify-icon></button>
-<button id=mobile-menu-button class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=打开菜单 tabindex=0>
-<iconify-icon icon=mdi:menu width=20 height=20></iconify-icon></button></div></div><div id=mobile-menu class="md:hidden hidden pb-3"><div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner"><a href=/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=首页 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>首页</div></a><a href=/archives/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=归档 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>归档</div></a><a href=/categories/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=分类 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>分类</div></a><a href=/tags/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=标签 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>标签</div></a><a href=/friends/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=友链 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>友链</div></a></div></div></div></header><script>document.getElementById("mobile-menu-button").addEventListener("click",function(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden")}),document.getElementById("theme-toggle").addEventListener("click",function(){document.documentElement.classList.contains("dark")?(document.documentElement.classList.remove("dark"),localStorage.setItem("color-theme","light")):(document.documentElement.classList.add("dark"),localStorage.setItem("color-theme","dark"))}),window.addEventListener("scroll",function(){const e=document.querySelector("header");window.scrollY>10?e.classList.add("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95"):e.classList.remove("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95")})</script><main class="container mx-auto px-4 py-8 flex-grow"><div class="container mx-auto px-4 sm:px-6 relative"><div class="flex flex-col lg:flex-row lg:gap-8"><article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700"><nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label=面包屑导航><ol class="flex flex-wrap items-center" itemscope itemtype=https://schema.org/BreadcrumbList><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/ class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=首页><span itemprop=name>首页</span>
-</a><meta itemprop=position content="1"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/posts class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=Posts><span itemprop=name>Posts</span>
-</a><meta itemprop=position content="2"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><span class="text-gray-800 dark:text-gray-200" itemprop=name title=FastAPI中实现动态条件必填字段的实践>FastAPI中实现动态条件必填字段的实践...</span>
-<meta itemprop=position content="3"></li></ol></nav><header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6"><h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">FastAPI中实现动态条件必填字段的实践</h1><div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3"><span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:calendar class=mr-1 width=16 height=16></iconify-icon>2025-04-03
-</span><span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:folder class=mr-1 width=16 height=16></iconify-icon><a href=/categories/FastAPI class="hover:text-primary transition-colors">FastAPI
-</a></span><span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:clock-outline class=mr-1 width=16 height=16></iconify-icon>13 分钟阅读
-</span><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed target=_blank rel="noopener noreferrer" class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors" aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" tabindex=0><iconify-icon icon=simple-icons:creativecommons width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsbysa width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsnc width=16 height=16 class=mr-1></iconify-icon><span>BY-NC-SA 4.0</span></a></div></header><div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed"><img src=https://static.shutu.cn/shutu/jpeg/opened/2025-04-03/c9c2ff6a32833a400b6404e0a64a6112.jpeg title=cmdragon_cn.png alt=cmdragon_cn.png>
-<img src=https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg title=cmdragon_cn.png alt=cmdragon_cn.png><p>扫描<a href=https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg>二维码</a>关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code></p><p><a href="https://tools.cmdragon.cn/zh/apps?category=ai_chat">探索数千个预构建的 AI 应用，开启你的下一个伟大创意</a></p><h2 id=1-pydantic-基础回顾>1. Pydantic 基础回顾</h2><p>在 FastAPI 框架中，Pydantic
+</style>
+
+
+<style>
+   
+  .mermaid {
+    margin: 2rem auto;
+    text-align: center;
+    overflow: visible;
+    width: auto;
+    max-width: 100%;
+    background-color: #f9fafb;
+    padding: 1.5rem 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: block;
+  }
+  
+  .dark .mermaid {
+    background-color: #1e293b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+   
+  .mermaid svg {
+    display: block !important;
+    max-width: 100%;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px;
+    margin: 0 auto;
+  }
+  
+   
+  .mermaid .node rect,
+  .mermaid .node circle,
+  .mermaid .node ellipse,
+  .mermaid .node polygon,
+  .mermaid .node path {
+    stroke-width: 1px;
+  }
+  
+  .mermaid .edgePath .path {
+    stroke-width: 1.5px;
+  }
+  
+  .mermaid .edgeLabel {
+    font-size: 0.85em;
+    background-color: inherit !important;
+  }
+  
+   
+  .mermaid .label text,
+  .mermaid text.label {
+    fill: #374151;
+    font-weight: normal;
+  }
+  
+  .dark .mermaid .label text,
+  .dark .mermaid text.label {
+    fill: #e5e7eb;
+  }
+  
+   
+  @media (max-width: 768px) {
+    .mermaid {
+      max-width: 98%;
+      padding: 0.8rem 0.3rem;
+      margin: 1.2rem auto;
+    }
+    
+    .mermaid svg {
+      font-size: 12px;
+    }
+  }
+</style> 
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col">
+    <div class="flex-grow flex flex-col">
+        <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            
+            <div class="flex items-center">
+                <a href="https://blog.cmdragon.cn/" class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300">
+                    <div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105">
+                        <img src="/images/logo/small.png" alt="cmdragon&#39;s Blog Logo" class="h-full w-auto" />
+                    </div>
+                    <span class="group-hover:text-primary transition-colors duration-300">cmdragon&#39;s Blog</span>
+                </a>
+            </div>
+            
+            
+            <nav class="hidden md:flex space-x-1">
+                
+                
+                    <a href="/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="首页"
+                       tabindex="0">
+                        <span class="relative z-10">首页</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="归档"
+                       tabindex="0">
+                        <span class="relative z-10">归档</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="分类"
+                       tabindex="0">
+                        <span class="relative z-10">分类</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="标签"
+                       tabindex="0">
+                        <span class="relative z-10">标签</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="友链"
+                       tabindex="0">
+                        <span class="relative z-10">友链</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+            </nav>
+            
+            
+            <div class="flex items-center space-x-3">
+                
+                <button 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="搜索"
+                    tabindex="0"
+                    onclick="openSiteSearch()">
+                    <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="theme-toggle" 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="切换深色模式"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:weather-sunny" class="dark:hidden" width="20" height="20"></iconify-icon>
+                    <iconify-icon icon="mdi:weather-night" class="hidden dark:block" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="mobile-menu-button" 
+                    class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="打开菜单"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:menu" width="20" height="20"></iconify-icon>
+                </button>
+            </div>
+        </div>
+        
+        
+        <div id="mobile-menu" class="md:hidden hidden pb-3">
+            <div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner">
+                
+                    <a href="/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="首页"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            首页
+                        </div>
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="归档"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            归档
+                        </div>
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="分类"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            分类
+                        </div>
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="标签"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            标签
+                        </div>
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="友链"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            友链
+                        </div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+    });
+    
+    
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        } else {
+            header.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        }
+    });
+</script> 
+        
+        <main class="container mx-auto px-4 py-8 flex-grow">
+            
+<div class="container mx-auto px-4 sm:px-6 relative">
+    <div class="flex flex-col lg:flex-row lg:gap-8">
+        
+        <article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700">
+            
+            <nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label="面包屑导航">
+    <ol class="flex flex-wrap items-center" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="https://blog.cmdragon.cn/" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="首页">
+                <span itemprop="name">首页</span>
+            </a>
+            <meta itemprop="position" content="1" />
+        </li>
+        
+        
+        
+            
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="https://blog.cmdragon.cn/posts" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="Posts">
+                        <span itemprop="name">Posts</span>
+                    </a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span class="text-gray-800 dark:text-gray-200" itemprop="name" title="FastAPI中实现动态条件必填字段的实践">FastAPI中实现动态条件必填字段的实践...</span>
+                    <meta itemprop="position" content="3" />
+                </li>
+            
+        
+    </ol>
+</nav> 
+            
+            <header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">FastAPI中实现动态条件必填字段的实践</h1>
+                
+                <div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3">
+                    <span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:calendar" class="mr-1" width="16" height="16"></iconify-icon>
+                        2025-04-03
+                    </span>
+                    
+                    
+                        <span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full">
+                            <iconify-icon icon="mdi:folder" class="mr-1" width="16" height="16"></iconify-icon>
+                            
+                                
+                                <a href="/categories/FastAPI" class="hover:text-primary transition-colors">
+                                    FastAPI
+                                </a>
+                            
+                        </span>
+                    
+                    
+                    
+                    <span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:clock-outline" class="mr-1" width="16" height="16"></iconify-icon>
+                        13 分钟阅读
+                    </span>
+                    
+                    
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank" rel="noopener noreferrer" 
+                       class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors"
+                       aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" 
+                       tabindex="0">
+                        <iconify-icon icon="simple-icons:creativecommons" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsbysa" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsnc" width="16" height="16" class="mr-1"></iconify-icon>
+                        <span>BY-NC-SA 4.0</span>
+                    </a>
+                </div>
+            </header>
+            
+            
+            <div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed">
+                <img src="https://static.shutu.cn/shutu/jpeg/opened/2025-04-03/c9c2ff6a32833a400b6404e0a64a6112.jpeg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<p>扫描<a href="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg">二维码</a>关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code></p>
+<p><a href="https://tools.cmdragon.cn/zh/apps?category=ai_chat">探索数千个预构建的 AI 应用，开启你的下一个伟大创意</a></p>
+<h2 id="1-pydantic-基础回顾">1. Pydantic 基础回顾</h2>
+<p>在 FastAPI 框架中，Pydantic
 模型通过类型注解和字段校验器（validators）实现数据验证。当我们需要实现<code>根据某个字段的值动态决定其他字段是否必填</code>
-时，需要组合使用以下特性：</p><ol><li><strong>Field 依赖声明</strong>：使用 <code>Field()</code> 的 <code>depends</code> 参数</li><li><strong>多字段校验器</strong>：<code>@model_validator(mode='before')</code> 装饰器</li><li><strong>条件验证逻辑</strong>：基于 Python 的条件判断表达式</li></ol><h2 id=2-动态必填字段应用场景>2. 动态必填字段应用场景</h2><p>假设我们需要开发一个用户注册接口，根据不同的注册类型（邮箱/手机号）动态调整必填字段：</p><ul><li>当 <code>register_type=email</code> 时，<code>email</code> 字段必填</li><li>当 <code>register_type=mobile</code> 时，<code>mobile</code> 字段必填</li><li>当 <code>accept_promotion=True</code> 时，必须填写至少一种联系方式</li></ul><h2 id=3-最佳实践实现方案>3. 最佳实践实现方案</h2><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>from pydantic import BaseModel, Field, model_validator
+时，需要组合使用以下特性：</p>
+<ol>
+<li><strong>Field 依赖声明</strong>：使用 <code>Field()</code> 的 <code>depends</code> 参数</li>
+<li><strong>多字段校验器</strong>：<code>@model_validator(mode='before')</code> 装饰器</li>
+<li><strong>条件验证逻辑</strong>：基于 Python 的条件判断表达式</li>
+</ol>
+<h2 id="2-动态必填字段应用场景">2. 动态必填字段应用场景</h2>
+<p>假设我们需要开发一个用户注册接口，根据不同的注册类型（邮箱/手机号）动态调整必填字段：</p>
+<ul>
+<li>当 <code>register_type=email</code> 时，<code>email</code> 字段必填</li>
+<li>当 <code>register_type=mobile</code> 时，<code>mobile</code> 字段必填</li>
+<li>当 <code>accept_promotion=True</code> 时，必须填写至少一种联系方式</li>
+</ul>
+<h2 id="3-最佳实践实现方案">3. 最佳实践实现方案</h2>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">from pydantic import BaseModel, Field, model_validator
 from typing import Optional, Literal
 
 
@@ -75,10 +700,116 @@ class UserRegistration(BaseModel):
 
         if errors:
             raise ValueError(&#34;; &#34;.join(errors))
-        return values</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><h2 id=4-代码解析>4. 代码解析</h2><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang># 字段定义部分
+        return values</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <h2 id="4-代码解析">4. 代码解析</h2>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang=""># 字段定义部分
 register_type: Literal[&#34;email&#34;, &#34;mobile&#34;]       → 限制输入值只能是枚举值
 Field(None, pattern=r&#34;正则表达式&#34;)             → 设置默认值并添加格式验证
 
@@ -89,10 +820,116 @@ Field(None, pattern=r&#34;正则表达式&#34;)             → 设置默认值�
 → 在类型转换前执行验证
 values.get(&#39;register_type&#39;)                   → 获取字段原始值（未经过类型转换）
 values.get(&#34;email&#34;)                           → 获取字段原始输入值
-raise ValueError                             → 触发验证错误（FastAPI会自动转换为422响应）</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><h2 id=5-完整接口实现>5. 完整接口实现</h2><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>from fastapi import FastAPI
+raise ValueError                             → 触发验证错误（FastAPI会自动转换为422响应）</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <h2 id="5-完整接口实现">5. 完整接口实现</h2>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">from fastapi import FastAPI
 
 app = FastAPI()
 
@@ -103,10 +940,116 @@ async def user_registration(data: UserRegistration):
     return {
         &#34;message&#34;: &#34;Registration successful&#34;,
         &#34;data&#34;: data.model_dump()
-    }</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><h2 id=6-测试用例说明>6. 测试用例说明</h2><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang># 有效请求1（邮箱注册）
+    }</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <h2 id="6-测试用例说明">6. 测试用例说明</h2>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang=""># 有效请求1（邮箱注册）
 {
     &#34;register_type&#34;: &#34;email&#34;,
     &#34;email&#34;: &#34;user@example.com&#34;
@@ -128,10 +1071,117 @@ async def user_registration(data: UserRegistration):
 {
     &#34;register_type&#34;: &#34;email&#34;,
     &#34;accept_promotion&#34;: true
-} → 返回422错误：&#34;email or mobile required for promotion subscription&#34;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><h2 id=7-常见报错解决方案>7. 常见报错解决方案</h2><p><strong>报错信息</strong>：<code>422 Validation Error</code></p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>{
+} → 返回422错误：&#34;email or mobile required for promotion subscription&#34;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <h2 id="7-常见报错解决方案">7. 常见报错解决方案</h2>
+<p><strong>报错信息</strong>：<code>422 Validation Error</code></p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">{
   &#34;detail&#34;: [
     {
       &#34;type&#34;: &#34;value_error&#34;,
@@ -141,67 +1191,1027 @@ async def user_registration(data: UserRegistration):
       ]
     }
   ]
-}</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p><strong>解决方案</strong>：</p><ol><li>检查请求体是否满足所有必填条件</li><li>验证字段格式是否符合正则表达式要求</li><li>使用 <code>print(data.model_dump_json())</code> 输出模型结构进行调试</li><li>在 Swagger 文档页面测试接口时，注意查看自动生成的请求示例</li></ol><p><strong>预防建议</strong>：</p><ol><li>为每个字段添加明确的 <code>description</code> 参数</li><li>使用 <code>examples</code> 参数提供典型请求示例</li></ol><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>Field(..., description=&#34;用户邮箱地址&#34;, examples=[&#34;user@example.com&#34;])</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><h2 id=课后quiz>课后Quiz</h2><p><strong>Q1：当需要根据两个字段的组合值进行验证时，应该使用哪种验证器？</strong>
-A) @field_validator<br>B) @model_validator(mode=&lsquo;before&rsquo;)<br>C) 直接在路由函数中验证<br>D) 使用多个@field_validator</p><details><summary>答案解析</summary>正确答案：B
-@model_validator(mode='before') 可以访问所有原始输入值，适合处理跨字段的联合验证逻辑。当需要基于多个字段的原始值（尚未经过类型转换）进行判断时，必须使用before模式的模型验证器。</details><p><strong>Q2：如何确保手机号字段在特定条件下同时满足格式要求和必填要求？</strong>
-A) 分别编写格式验证和必填验证<br>B) 在Field中同时指定pattern和validation函数<br>C) 使用多个验证器装饰器<br>D) 以上都是</p><details><summary>答案解析</summary>正确答案：D
-Pydantic的验证机制是叠加式的：
-1. 通过Field的pattern参数进行正则验证
-2. 通过@field_validator进行格式补充验证
-3. 在模型验证器中处理必填逻辑
-这些验证器会按声明顺序依次执行，共同确保数据有效性。</details><p><strong>Q3：当收到422错误但不确定具体验证规则时，最佳调试方式是什么？</strong>
-A) 查看FastAPI自动生成的API文档<br>B) 在验证器中添加print语句<br>C) 使用try-except捕获ValidationError<br>D) 以上都是</p><details><summary>答案解析</summary>正确答案：D
-组合调试方案：
-1. 查阅Swagger文档中的请求示例格式
-2. 在验证器中打印values值观察处理过程
-3. 通过如下代码捕获详细错误信息：<div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>from pydantic import ValidationError
+}</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p><strong>解决方案</strong>：</p>
+<ol>
+<li>检查请求体是否满足所有必填条件</li>
+<li>验证字段格式是否符合正则表达式要求</li>
+<li>使用 <code>print(data.model_dump_json())</code> 输出模型结构进行调试</li>
+<li>在 Swagger 文档页面测试接口时，注意查看自动生成的请求示例</li>
+</ol>
+<p><strong>预防建议</strong>：</p>
+<ol>
+<li>为每个字段添加明确的 <code>description</code> 参数</li>
+<li>使用 <code>examples</code> 参数提供典型请求示例</li>
+</ol>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">Field(..., description=&#34;用户邮箱地址&#34;, examples=[&#34;user@example.com&#34;])</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <h2 id="课后quiz">课后Quiz</h2>
+<p><strong>Q1：当需要根据两个字段的组合值进行验证时，应该使用哪种验证器？</strong>
+A) @field_validator<br>
+B) @model_validator(mode=&lsquo;before&rsquo;)<br>
+C) 直接在路由函数中验证<br>
+D) 使用多个@field_validator</p>
+<details>
+<summary>答案解析</summary>
+正确答案：B  
+@model_validator(mode='before') 可以访问所有原始输入值，适合处理跨字段的联合验证逻辑。当需要基于多个字段的原始值（尚未经过类型转换）进行判断时，必须使用before模式的模型验证器。
+</details>
+<p><strong>Q2：如何确保手机号字段在特定条件下同时满足格式要求和必填要求？</strong>
+A) 分别编写格式验证和必填验证<br>
+B) 在Field中同时指定pattern和validation函数<br>
+C) 使用多个验证器装饰器<br>
+D) 以上都是</p>
+<details>
+<summary>答案解析</summary>
+正确答案：D  
+Pydantic的验证机制是叠加式的：  
+1. 通过Field的pattern参数进行正则验证  
+2. 通过@field_validator进行格式补充验证  
+3. 在模型验证器中处理必填逻辑  
+这些验证器会按声明顺序依次执行，共同确保数据有效性。
+</details>
+<p><strong>Q3：当收到422错误但不确定具体验证规则时，最佳调试方式是什么？</strong>
+A) 查看FastAPI自动生成的API文档<br>
+B) 在验证器中添加print语句<br>
+C) 使用try-except捕获ValidationError<br>
+D) 以上都是</p>
+<details>
+<summary>答案解析</summary>
+正确答案：D  
+组合调试方案：  
+1. 查阅Swagger文档中的请求示例格式  
+2. 在验证器中打印values值观察处理过程  
+3. 通过如下代码捕获详细错误信息：
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">from pydantic import ValidationError
 
 try:
     UserRegistration(**data)
 except ValidationError as e:
-    print(e.errors())</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></details><p>余下文章内容请点击跳转至 个人博客页面 或者 扫码关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code>，阅读完整的文章：</p><h2 id=往期文章归档>往期文章归档：</h2><ul><li><a href=https://blog.cmdragon.cn/posts/cda2eb13bf31/>FastAPI中Pydantic异步分布式唯一性校验 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/18ef84c3b234/>掌握FastAPI与Pydantic的跨字段验证技巧 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/9b9eb7489096/>FastAPI中的Pydantic密码验证机制与实现 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/6e2a1c070e32/>深入掌握FastAPI与OpenAPI规范的高级适配技巧 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/11d2c39a300b/>Pydantic字段元数据指南：从基础到企业级文档增强 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/3bd5ffd5fdcb/>Pydantic Schema生成指南：自定义JSON Schema | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/614488cbbf44/>Pydantic递归模型深度校验36计：从无限嵌套到亿级数据的优化法则 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/6ed5f943c599/>Pydantic异步校验器深：构建高并发验证系统 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/60d359baeb6c/>Pydantic根校验器：构建跨字段验证系统 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/fa86615d7d3a/>Pydantic配置继承抽象基类模式 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/4ab129859b04/>Pydantic多态模型：用鉴别器构建类型安全的API接口 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/a281359d556b/>FastAPI性能优化指南：参数解析与惰性加载 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/3b96477f5460/>FastAPI依赖注入：参数共享与逻辑复用 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/1d6d61c6ff85/>FastAPI安全防护指南：构建坚不可摧的参数处理体系 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/63d68d803116/>FastAPI复杂查询终极指南：告别if-else的现代化过滤架构 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/6a3cba67a72d/>FastAPI 核心机制：分页参数的实现与最佳实践 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/615a966b68d9/>FastAPI 错误处理与自定义错误消息完全指南：构建健壮的 API 应用 🛠️ | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/c08aca091616/>FastAPI 自定义参数验证器完全指南：从基础到高级实战 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/67c76d0b9297/>FastAPI 参数别名与自动文档生成完全指南：从基础到高级实战 🚀 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/143aef8a44f0/>FastAPI Cookie 和 Header 参数完全指南：从基础到高级实战 🚀 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/378acc9ed556/>FastAPI 表单参数与文件上传完全指南：从基础到高级实战 🚀 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/17872b9724be/>FastAPI 请求体参数与 Pydantic 模型完全指南：从基础到嵌套模型实战 🚀 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/361d6ce26859/>FastAPI 查询参数完全指南：从基础到高级用法 🚀 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/14c3a0c58061/>FastAPI 路径参数完全指南：从基础到高级校验实战 🚀 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/11c340ef08d4/>FastAPI路由专家课：微服务架构下的路由艺术与工程实践 🌐 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/8737e29cfe7a/>FastAPI路由与请求处理进阶指南：解锁企业级API开发黑科技 🔥 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/7fa6ec101733/>FastAPI路由与请求处理全解：手把手打造用户管理系统 🔌 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/4e5a7adbcde4/>FastAPI极速入门：15分钟搭建你的首个智能API（附自动文档生成）🚀 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/2d417c3e7cac/>HTTP协议与RESTful API实战手册（终章）：构建企业级API的九大秘籍 🔐 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/074086de21be/>HTTP协议与RESTful API实战手册（二）：用披萨店故事说透API设计奥秘 🍕 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/e5078a4d6fad/>从零构建你的第一个RESTful API：HTTP协议与API设计超图解指南 🌐 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/f49972bd19a6/>Python异步编程进阶指南：破解高并发系统的七重封印 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/b279dbab11eb/>Python异步编程终极指南：用协程与事件循环重构你的高并发系统 | cmdragon&rsquo;s Blog</a></li><li></li></ul></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>标签</h3><div class="flex flex-wrap gap-2"><a href=/tags/Pydantic class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: Pydantic" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>Pydantic
-</a><a href=/tags/FastAPI class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: FastAPI" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>FastAPI
-</a><a href=/tags/%E5%8A%A8%E6%80%81%E5%BF%85%E5%A1%AB%E5%AD%97%E6%AE%B5 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 动态必填字段" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>动态必填字段
-</a><a href=/tags/%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 数据验证" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>数据验证
-</a><a href=/tags/%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 用户注册" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>用户注册
-</a><a href=/tags/%E6%A8%A1%E5%9E%8B%E9%AA%8C%E8%AF%81%E5%99%A8 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 模型验证器" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>模型验证器
-</a><a href=/tags/422%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 422错误处理" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>422错误处理</a></div></div><nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center"><iconify-icon icon=mdi:arrow-left class=mr-2 width=16 height=16></iconify-icon>上一篇
-</span><a href=https://blog.cmdragon.cn/posts/e92a3da8b4e4beaf5a14ef4c79489b42/ class="font-medium text-primary hover:text-primary-dark block" aria-label="上一篇: FastAPI中Pydantic异步分布式唯一性校验" tabindex=0>FastAPI中Pydantic异步分布式唯一性校验</a></div><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">下一篇<iconify-icon icon=mdi:arrow-right class=ml-2 width=16 height=16></iconify-icon>
-</span><a href=https://blog.cmdragon.cn/posts/27a9080982ab01fc46bc583fd794bd24/ class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: FastAPI依赖注入：从基础概念到应用" tabindex=0>FastAPI依赖注入：从基础概念到应用</a></div></nav><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:share-variant width=16 height=16></iconify-icon></div>分享</h3><div class="flex flex-wrap gap-3"><a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f93a6982db6ac68a0d9c55169460eda68%2f&text=FastAPI%e4%b8%ad%e5%ae%9e%e7%8e%b0%e5%8a%a8%e6%80%81%e6%9d%a1%e4%bb%b6%e5%bf%85%e5%a1%ab%e5%ad%97%e6%ae%b5%e7%9a%84%e5%ae%9e%e8%b7%b5" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Twitter" tabindex=0><iconify-icon icon=mdi:twitter width=20 height=20></iconify-icon></a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f93a6982db6ac68a0d9c55169460eda68%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Facebook" tabindex=0><iconify-icon icon=mdi:facebook width=20 height=20></iconify-icon></a><a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f93a6982db6ac68a0d9c55169460eda68%2f&title=FastAPI%e4%b8%ad%e5%ae%9e%e7%8e%b0%e5%8a%a8%e6%80%81%e6%9d%a1%e4%bb%b6%e5%bf%85%e5%a1%ab%e5%ad%97%e6%ae%b5%e7%9a%84%e5%ae%9e%e8%b7%b5" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label=分享到微博 tabindex=0><iconify-icon icon=mdi:sina-weibo width=20 height=20></iconify-icon></a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f93a6982db6ac68a0d9c55169460eda68%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 LinkedIn" tabindex=0><iconify-icon icon=mdi:linkedin width=20 height=20></iconify-icon></a></div></div></article><aside class="w-full lg:w-1/4"><button id=mobile-toc-toggle class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-<iconify-icon icon=mdi:table-of-contents width=24 height=24></iconify-icon></button><div id=toc-container class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
-fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
-lg:overflow-visible flex flex-col"><div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4"><h2 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:table-of-contents width=16 height=16></iconify-icon></div>目录</h2><div class="flex items-center"><button id=toc-toggle class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label=折叠目录>
-<iconify-icon id=toc-icon icon=mdi:chevron-up width=20 height=20></iconify-icon></button>
-<button id=toc-close class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div></div><div id=toc-content class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto"><nav id=TableOfContents><ul><li><a href=#1-pydantic-基础回顾>1. Pydantic 基础回顾</a></li><li><a href=#2-动态必填字段应用场景>2. 动态必填字段应用场景</a></li><li><a href=#3-最佳实践实现方案>3. 最佳实践实现方案</a></li><li><a href=#4-代码解析>4. 代码解析</a></li><li><a href=#5-完整接口实现>5. 完整接口实现</a></li><li><a href=#6-测试用例说明>6. 测试用例说明</a></li><li><a href=#7-常见报错解决方案>7. 常见报错解决方案</a></li><li><a href=#课后quiz>课后Quiz</a></li><li><a href=#往期文章归档>往期文章归档：</a></li></ul></nav></div></div><div id=toc-overlay class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div></aside></div></div><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js></script><link rel=stylesheet href=/css/markdown.css><link rel=stylesheet href=/css/code-highlight.css><script src=/js/code-highlight.js></script><script src=/js/toc.js></script><script>document.addEventListener("DOMContentLoaded",function(){console.log("初始化代码高亮..."),window.hljs?(console.log("highlight.js 已加载"),document.querySelectorAll("pre code").forEach(function(e){console.log("应用高亮到代码块"),hljs.highlightElement(e)})):console.error("highlight.js 未加载!")})</script><style>#toc-content{max-height:none}@media(min-width:1024px){#toc-content{max-height:none;overflow:visible}#toc-container{max-height:calc(100vh - 120px);overflow-y:auto}nav#TableOfContents{overflow:visible}}@media(max-width:1023px){#toc-container{padding-bottom:env(safe-area-inset-bottom,20px);display:flex;flex-direction:column}#toc-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:20px}}</style></main><footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700"><div class="container mx-auto px-4"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:information width=16 height=16></iconify-icon></div>关于本站</h3><p class="text-sm text-gray-600 dark:text-gray-400 mb-4">cmdragon's Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。</p><div class="flex space-x-3"><a href=https://github.com/amd794 class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=GitHub tabindex=0 target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:github width=18 height=18></iconify-icon></a><button id=wechat-btn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=微信 tabindex=0>
-<iconify-icon icon=mdi:wechat width=18 height=18></iconify-icon></button>
-<a href=mailto:support@cmdragon.cn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=Email tabindex=0><iconify-icon icon=mdi:email width=18 height=18></iconify-icon></a><a href=/index.xml class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=RSS tabindex=0><iconify-icon icon=mdi:rss width=18 height=18></iconify-icon></a></div></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:link-variant width=16 height=16></iconify-icon></div>快速链接</h3><ul class=space-y-2><li><a href=https://movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>高清影视库</a></li><li><a href=https://comic.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>精选漫画阅读</a></li><li><a href=https://tools.cmdragon.cn/zh class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>实用在线工具</a></li><li><a href=https://hot-movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>热映影视推荐</a></li></ul></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>热门标签</h3><div class="flex flex-wrap gap-2"><a href=https://blog.cmdragon.cn/tags/FastAPI/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#FastAPI <span class="text-xs opacity-70">(85)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt <span class="text-xs opacity-70">(68)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#钩子 <span class="text-xs opacity-70">(62)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#性能优化 <span class="text-xs opacity-70">(47)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt.js/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt.js <span class="text-xs opacity-70">(43)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#生命周期 <span class="text-xs opacity-70">(38)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt3/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt3 <span class="text-xs opacity-70">(37)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#错误处理 <span class="text-xs opacity-70">(32)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#组件 <span class="text-xs opacity-70">(29)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#数据库管理 <span class="text-xs opacity-70">(27)</span></a></div></div></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6"><div class="flex flex-col md:flex-row justify-between items-center"><div class="text-center md:text-left mb-4 md:mb-0"><p class="text-sm text-gray-600 dark:text-gray-400">&copy; 2023 cmdragon's Blog. 保留所有权利.</p><p class="text-xs text-gray-500 dark:text-gray-500 mt-1">由 <a href=https://gohugo.io/ class="hover:text-primary transition-colors duration-300" target=_blank rel="noopener noreferrer">Hugo</a> 强力驱动</p></div><button id=back-to-top class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
-<iconify-icon icon=mdi:arrow-up class=mr-1 width=16 height=16></iconify-icon>返回顶部</button></div></div></div><div id=wechat-modal class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick='this.classList.add("hidden")'><div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick=event.stopPropagation()><button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick='document.getElementById("wechat-modal").classList.add("hidden")'>
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button><h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4><div class="flex justify-center"><img src=/images/wechat_qrcode.webp alt=微信二维码 class="w-64 h-64 object-contain"></div></div></div></footer><script>const backToTopButton=document.getElementById("back-to-top");window.addEventListener("scroll",function(){window.scrollY>300?(backToTopButton.classList.remove("opacity-0","invisible"),backToTopButton.classList.add("opacity-100","visible")):(backToTopButton.classList.add("opacity-0","invisible"),backToTopButton.classList.remove("opacity-100","visible"))}),backToTopButton.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})}),document.getElementById("wechat-btn").addEventListener("click",function(){document.getElementById("wechat-modal").classList.remove("hidden")}),document.getElementById("wechat-btn").addEventListener("keydown",function(e){(e.key==="Enter"||e.key===" ")&&(e.preventDefault(),document.getElementById("wechat-modal").classList.remove("hidden"))})</script></div><script>localStorage.getItem("color-theme")==="dark"||!("color-theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark")</script><script src=/js/code-highlight.js></script><script src=/js/advanced-render.js></script><div id=site-search-modal class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300"><div id=site-search-backdrop class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div><div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700"><div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700"><h3 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm"><iconify-icon icon=mdi:magnify width=16 height=16></iconify-icon></div><span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span></h3><button id=site-search-close class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div><div class=p-6><form id=site-search-form action=/search/ method=get><div class=relative><div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md"><span class="pl-4 text-gray-400"><iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></span><input type=text id=site-search-input name=q placeholder=输入关键词搜索... class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200" aria-label=搜索内容 tabindex=0>
-<button type=submit class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center" aria-label=搜索 tabindex=0>
-<span class="mr-1 hidden sm:inline">搜索</span>
-<iconify-icon icon=mdi:arrow-right width=18 height=18></iconify-icon></button></div></div></form><div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start"><div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5"><iconify-icon icon=mdi:information width=16 height=16 class="text-blue-500 dark:text-blue-300"></iconify-icon></div><div><p class=mb-1>快捷键提示:</p><ul class=space-y-1><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
-<span>打开搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
-<span>关闭搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
-<span>提交搜索</span></li></ul></div></div><div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"><div class="flex flex-wrap gap-2"><a href=/tags/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:tag-multiple class=mr-1 width=16 height=16></iconify-icon>标签
-</a><a href=/categories/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:folder-multiple class=mr-1 width=16 height=16></iconify-icon>分类
-</a><a href=/archives/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:archive class=mr-1 width=16 height=16></iconify-icon>归档</a></div></div></div></div></div><script>document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("site-search-modal"),t=e.querySelector('div[class*="rounded-xl"]'),s=document.getElementById("site-search-backdrop"),o=document.getElementById("site-search-close"),a=document.getElementById("site-search-form"),i=document.getElementById("site-search-input");window.openSiteSearch=function(){e.classList.remove("hidden"),document.body.classList.add("overflow-hidden"),setTimeout(()=>{e.classList.add("opacity-100"),t.classList.remove("scale-95","opacity-0"),t.classList.add("scale-100","opacity-100"),i.focus()},10)};function n(){e.classList.remove("opacity-100"),t.classList.remove("scale-100","opacity-100"),t.classList.add("scale-95","opacity-0"),setTimeout(()=>{e.classList.add("hidden"),document.body.classList.remove("overflow-hidden")},300)}s&&s.addEventListener("click",n),o&&o.addEventListener("click",n),document.addEventListener("keydown",t=>{t.key==="Escape"&&!e.classList.contains("hidden")&&n(),t.key==="/"&&e.classList.contains("hidden")&&document.activeElement.tagName!=="INPUT"&&(t.preventDefault(),openSiteSearch())}),t.addEventListener("click",e=>{e.stopPropagation()})})</script></body></html>
+    print(e.errors())</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </details>
+<p>余下文章内容请点击跳转至 个人博客页面 或者 扫码关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code>，阅读完整的文章：</p>
+<h2 id="往期文章归档">往期文章归档：</h2>
+<ul>
+<li><a href="https://blog.cmdragon.cn/posts/cda2eb13bf31/">FastAPI中Pydantic异步分布式唯一性校验 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/18ef84c3b234/">掌握FastAPI与Pydantic的跨字段验证技巧 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/9b9eb7489096/">FastAPI中的Pydantic密码验证机制与实现 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/6e2a1c070e32/">深入掌握FastAPI与OpenAPI规范的高级适配技巧 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/11d2c39a300b/">Pydantic字段元数据指南：从基础到企业级文档增强 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/3bd5ffd5fdcb/">Pydantic Schema生成指南：自定义JSON Schema | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/614488cbbf44/">Pydantic递归模型深度校验36计：从无限嵌套到亿级数据的优化法则 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/6ed5f943c599/">Pydantic异步校验器深：构建高并发验证系统 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/60d359baeb6c/">Pydantic根校验器：构建跨字段验证系统 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/fa86615d7d3a/">Pydantic配置继承抽象基类模式 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/4ab129859b04/">Pydantic多态模型：用鉴别器构建类型安全的API接口 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/a281359d556b/">FastAPI性能优化指南：参数解析与惰性加载 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/3b96477f5460/">FastAPI依赖注入：参数共享与逻辑复用 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/1d6d61c6ff85/">FastAPI安全防护指南：构建坚不可摧的参数处理体系 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/63d68d803116/">FastAPI复杂查询终极指南：告别if-else的现代化过滤架构 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/6a3cba67a72d/">FastAPI 核心机制：分页参数的实现与最佳实践 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/615a966b68d9/">FastAPI 错误处理与自定义错误消息完全指南：构建健壮的 API 应用 🛠️ | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/c08aca091616/">FastAPI 自定义参数验证器完全指南：从基础到高级实战 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/67c76d0b9297/">FastAPI 参数别名与自动文档生成完全指南：从基础到高级实战 🚀 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/143aef8a44f0/">FastAPI Cookie 和 Header 参数完全指南：从基础到高级实战 🚀 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/378acc9ed556/">FastAPI 表单参数与文件上传完全指南：从基础到高级实战 🚀 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/17872b9724be/">FastAPI 请求体参数与 Pydantic 模型完全指南：从基础到嵌套模型实战 🚀 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/361d6ce26859/">FastAPI 查询参数完全指南：从基础到高级用法 🚀 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/14c3a0c58061/">FastAPI 路径参数完全指南：从基础到高级校验实战 🚀 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/11c340ef08d4/">FastAPI路由专家课：微服务架构下的路由艺术与工程实践 🌐 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/8737e29cfe7a/">FastAPI路由与请求处理进阶指南：解锁企业级API开发黑科技 🔥 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/7fa6ec101733/">FastAPI路由与请求处理全解：手把手打造用户管理系统 🔌 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/4e5a7adbcde4/">FastAPI极速入门：15分钟搭建你的首个智能API（附自动文档生成）🚀 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/2d417c3e7cac/">HTTP协议与RESTful API实战手册（终章）：构建企业级API的九大秘籍 🔐 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/074086de21be/">HTTP协议与RESTful API实战手册（二）：用披萨店故事说透API设计奥秘 🍕 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/e5078a4d6fad/">从零构建你的第一个RESTful API：HTTP协议与API设计超图解指南 🌐 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/f49972bd19a6/">Python异步编程进阶指南：破解高并发系统的七重封印 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/b279dbab11eb/">Python异步编程终极指南：用协程与事件循环重构你的高并发系统 | cmdragon&rsquo;s Blog</a></li>
+<li></li>
+</ul>
+
+            </div>
+            
+            
+            
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                    <h3 class="text-lg font-medium mb-4 flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                        </div>
+                        标签
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        
+                            <a href="/tags/Pydantic" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: Pydantic"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>Pydantic
+                            </a>
+                        
+                            <a href="/tags/FastAPI" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: FastAPI"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>FastAPI
+                            </a>
+                        
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E5%BF%85%E5%A1%AB%E5%AD%97%E6%AE%B5" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 动态必填字段"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>动态必填字段
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 数据验证"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>数据验证
+                            </a>
+                        
+                            <a href="/tags/%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 用户注册"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>用户注册
+                            </a>
+                        
+                            <a href="/tags/%E6%A8%A1%E5%9E%8B%E9%AA%8C%E8%AF%81%E5%99%A8" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 模型验证器"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>模型验证器
+                            </a>
+                        
+                            <a href="/tags/422%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 422错误处理"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>422错误处理
+                            </a>
+                        
+                    </div>
+                </div>
+            
+            
+            
+            <nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center">
+                            <iconify-icon icon="mdi:arrow-left" class="mr-2" width="16" height="16"></iconify-icon>上一篇
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/e92a3da8b4e4beaf5a14ef4c79489b42/" class="font-medium text-primary hover:text-primary-dark block" aria-label="上一篇: FastAPI中Pydantic异步分布式唯一性校验" tabindex="0">
+                            FastAPI中Pydantic异步分布式唯一性校验
+                        </a>
+                    </div>
+                
+                
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">
+                            下一篇<iconify-icon icon="mdi:arrow-right" class="ml-2" width="16" height="16"></iconify-icon>
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/27a9080982ab01fc46bc583fd794bd24/" class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: FastAPI依赖注入：从基础概念到应用" tabindex="0">
+                            FastAPI依赖注入：从基础概念到应用
+                        </a>
+                    </div>
+                
+            </nav>
+            
+            
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                <h3 class="text-lg font-medium mb-4 flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:share-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    分享
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f93a6982db6ac68a0d9c55169460eda68%2f&text=FastAPI%e4%b8%ad%e5%ae%9e%e7%8e%b0%e5%8a%a8%e6%80%81%e6%9d%a1%e4%bb%b6%e5%bf%85%e5%a1%ab%e5%ad%97%e6%ae%b5%e7%9a%84%e5%ae%9e%e8%b7%b5" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Twitter" tabindex="0">
+                        <iconify-icon icon="mdi:twitter" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f93a6982db6ac68a0d9c55169460eda68%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Facebook" tabindex="0">
+                        <iconify-icon icon="mdi:facebook" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f93a6982db6ac68a0d9c55169460eda68%2f&title=FastAPI%e4%b8%ad%e5%ae%9e%e7%8e%b0%e5%8a%a8%e6%80%81%e6%9d%a1%e4%bb%b6%e5%bf%85%e5%a1%ab%e5%ad%97%e6%ae%b5%e7%9a%84%e5%ae%9e%e8%b7%b5" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到微博" tabindex="0">
+                        <iconify-icon icon="mdi:sina-weibo" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f93a6982db6ac68a0d9c55169460eda68%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 LinkedIn" tabindex="0">
+                        <iconify-icon icon="mdi:linkedin" width="20" height="20"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            
+        </article>
+        
+        
+        
+        <aside class="w-full lg:w-1/4">
+            
+            <button id="mobile-toc-toggle" class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <iconify-icon icon="mdi:table-of-contents" width="24" height="24"></iconify-icon>
+            </button>
+            
+            
+            <div id="toc-container" class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
+                 fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
+                 lg:overflow-visible flex flex-col">
+                <div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4">
+                    <h2 class="text-lg font-medium flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:table-of-contents" width="16" height="16"></iconify-icon>
+                        </div>
+                        目录
+                    </h2>
+                    <div class="flex items-center">
+                        <button id="toc-toggle" class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label="折叠目录">
+                            <iconify-icon id="toc-icon" icon="mdi:chevron-up" width="20" height="20"></iconify-icon>
+                        </button>
+                        
+                        <button id="toc-close" class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                            <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                <div id="toc-content" class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-pydantic-基础回顾">1. Pydantic 基础回顾</a></li>
+    <li><a href="#2-动态必填字段应用场景">2. 动态必填字段应用场景</a></li>
+    <li><a href="#3-最佳实践实现方案">3. 最佳实践实现方案</a></li>
+    <li><a href="#4-代码解析">4. 代码解析</a></li>
+    <li><a href="#5-完整接口实现">5. 完整接口实现</a></li>
+    <li><a href="#6-测试用例说明">6. 测试用例说明</a></li>
+    <li><a href="#7-常见报错解决方案">7. 常见报错解决方案</a></li>
+    <li><a href="#课后quiz">课后Quiz</a></li>
+    <li><a href="#往期文章归档">往期文章归档：</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+            
+            
+            <div id="toc-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div>
+        </aside>
+        
+    </div>
+</div>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+
+<link rel="stylesheet" href="/css/markdown.css">
+<link rel="stylesheet" href="/css/code-highlight.css">
+<script src="/js/code-highlight.js"></script>
+
+<script src="/js/toc.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('初始化代码高亮...');
+    if (window.hljs) {
+      console.log('highlight.js 已加载');
+      document.querySelectorAll('pre code').forEach(function(block) {
+        console.log('应用高亮到代码块');
+        hljs.highlightElement(block);
+      });
+    } else {
+      console.error('highlight.js 未加载!');
+    }
+  });
+</script>
+
+
+<style>
+ 
+#toc-content {
+  max-height: none;
+}
+
+@media (min-width: 1024px) {
+  #toc-content {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  #toc-container {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+  
+  nav#TableOfContents {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1023px) {
+  #toc-container {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #toc-content {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+}
+</style>
+
+        </main>
+        
+        <footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:information" width="16" height="16"></iconify-icon>
+                    </div>
+                    关于本站
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    cmdragon&#39;s Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。
+                </p>
+                <div class="flex space-x-3">
+                    
+                    <a href="https://github.com/amd794" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="GitHub" tabindex="0" target="_blank" rel="noopener noreferrer">
+                        <iconify-icon icon="mdi:github" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    
+                    <button id="wechat-btn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="微信" tabindex="0">
+                        <iconify-icon icon="mdi:wechat" width="18" height="18"></iconify-icon>
+                    </button>
+                    
+                    <a href="mailto:support@cmdragon.cn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="Email" tabindex="0">
+                        <iconify-icon icon="mdi:email" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    <a href="/index.xml" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="RSS" tabindex="0">
+                        <iconify-icon icon="mdi:rss" width="18" height="18"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:link-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    快速链接
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="https://movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            高清影视库
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://comic.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            精选漫画阅读
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://tools.cmdragon.cn/zh" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            实用在线工具
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://hot-movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            热映影视推荐
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                    </div>
+                    热门标签
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    
+                    <a href="https://blog.cmdragon.cn/tags/FastAPI/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #FastAPI <span class="text-xs opacity-70">(85)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt <span class="text-xs opacity-70">(68)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #钩子 <span class="text-xs opacity-70">(62)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #性能优化 <span class="text-xs opacity-70">(47)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt.js/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt.js <span class="text-xs opacity-70">(43)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #生命周期 <span class="text-xs opacity-70">(38)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt3/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt3 <span class="text-xs opacity-70">(37)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #错误处理 <span class="text-xs opacity-70">(32)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #组件 <span class="text-xs opacity-70">(29)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #数据库管理 <span class="text-xs opacity-70">(27)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        &copy; 2023 cmdragon&#39;s Blog. 保留所有权利.
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                        由 <a href="https://gohugo.io/" class="hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer">Hugo</a> 强力驱动
+                    </p>
+                </div>
+                
+                
+                <button id="back-to-top" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
+                    <iconify-icon icon="mdi:arrow-up" class="mr-1" width="16" height="16"></iconify-icon>
+                    返回顶部
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick="this.classList.add('hidden')">
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick="event.stopPropagation()">
+            <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick="document.getElementById('wechat-modal').classList.add('hidden')">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+            <h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4>
+            <div class="flex justify-center">
+                <img src="/images/wechat_qrcode.webp" alt="微信二维码" class="w-64 h-64 object-contain">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+    
+    
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('click', function() {
+        document.getElementById('wechat-modal').classList.remove('hidden');
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            document.getElementById('wechat-modal').classList.remove('hidden');
+        }
+    });
+</script> 
+    </div>
+    
+    
+    <script>
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    
+    <script src="/js/code-highlight.js"></script>
+    
+    
+    <script src="/js/advanced-render.js"></script>
+    
+    <div id="site-search-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    
+    <div id="site-search-backdrop" class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+    
+    
+    <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-medium flex items-center">
+                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm">
+                    <iconify-icon icon="mdi:magnify" width="16" height="16"></iconify-icon>
+                </div>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span>
+            </h3>
+            <button id="site-search-close" class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+        </div>
+        
+        <div class="p-6">
+            <form id="site-search-form" action="/search/" method="get">
+                <div class="relative">
+                    <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md">
+                        <span class="pl-4 text-gray-400">
+                            <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                        </span>
+                        <input 
+                            type="text" 
+                            id="site-search-input" 
+                            name="q" 
+                            placeholder="输入关键词搜索..."
+                            class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200"
+                            aria-label="搜索内容"
+                            tabindex="0"
+                        >
+                        <button 
+                            type="submit"
+                            class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center"
+                            aria-label="搜索"
+                            tabindex="0">
+                            <span class="mr-1 hidden sm:inline">搜索</span>
+                            <iconify-icon icon="mdi:arrow-right" width="18" height="18"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start">
+                <div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5">
+                    <iconify-icon icon="mdi:information" width="16" height="16" class="text-blue-500 dark:text-blue-300"></iconify-icon>
+                </div>
+                <div>
+                    <p class="mb-1">快捷键提示:</p>
+                    <ul class="space-y-1">
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
+                            <span>打开搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
+                            <span>关闭搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
+                            <span>提交搜索</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap gap-2">
+                    <a href="/tags/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:tag-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        标签
+                    </a>
+                    <a href="/categories/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:folder-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        分类
+                    </a>
+                    <a href="/archives/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:archive" class="mr-1" width="16" height="16"></iconify-icon>
+                        归档
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('site-search-modal');
+        const modalContent = modal.querySelector('div[class*="rounded-xl"]');
+        const backdrop = document.getElementById('site-search-backdrop');
+        const closeButton = document.getElementById('site-search-close');
+        const searchForm = document.getElementById('site-search-form');
+        const searchInput = document.getElementById('site-search-input');
+        
+        
+        window.openSiteSearch = function() {
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            
+            
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+                searchInput.focus();
+            }, 10);
+        };
+        
+        
+        function closeSiteSearch() {
+            
+            modal.classList.remove('opacity-100');
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        }
+        
+        
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        if (closeButton) {
+            closeButton.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeSiteSearch();
+            }
+            
+            
+            if (e.key === '/' && modal.classList.contains('hidden') && document.activeElement.tagName !== 'INPUT') {
+                e.preventDefault();
+                openSiteSearch();
+            }
+        });
+        
+        
+        modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    });
+</script> 
+</body>
+</html> 

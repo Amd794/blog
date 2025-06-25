@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>环境变量 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</link><description>Recent content in 环境变量 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 30 Aug 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 nuxi build 命令构建你的 Nuxt 应用程序</title><link>https://blog.cmdragon.cn/posts/bc2bfb4e25c5fe348c22bcd59db71579/</link><pubDate>Fri, 30 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/bc2bfb4e25c5fe348c22bcd59db71579/</guid><description>nuxi build 命令是构建 Nuxt 应用程序的核心工具，它将你的应用程序打包成适合生产环境的格式。通过理解和使用不同的选项，如 &amp;ndash;prerender、&amp;ndash;dotenv 和 &amp;ndash;log-level，你可以更好地控制构建过程，并为生产环境做好充分准备。</description></item><item><title>Nuxt.js必读：轻松掌握运行时配置与 useRuntimeConfig</title><link>https://blog.cmdragon.cn/posts/bbb706a14f541c1932c5a42b4cab92a6/</link><pubDate>Mon, 29 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/bbb706a14f541c1932c5a42b4cab92a6/</guid><description>本文详细介绍了Nuxt.js中的运行时配置功能，包括定义和使用运行时配置的方法，以及如何通过useRuntimeConfig访问配置。同时，讲解了环境变量与.env文件的使用，特别是在不同环境下的配置管理。</description></item><item><title>Nuxt.js 环境变量配置与使用</title><link>https://blog.cmdragon.cn/posts/53eb62f578931146081c71537fd0c013/</link><pubDate>Thu, 25 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/53eb62f578931146081c71537fd0c013/</guid><description>摘要：“该文探讨了Nuxt.js框架下环境变量配置的详细过程，涉及.env文件配置、运行时访问、安全性考量、在不同场景下的实践（如Vue应用、插件、服务器路由）及多环境配置下的最佳实践。”</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>环境变量 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</link>
+    <description>Recent content in 环境变量 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 30 Aug 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 nuxi build 命令构建你的 Nuxt 应用程序</title>
+      <link>https://blog.cmdragon.cn/posts/bc2bfb4e25c5fe348c22bcd59db71579/</link>
+      <pubDate>Fri, 30 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/bc2bfb4e25c5fe348c22bcd59db71579/</guid>
+      <description>nuxi build 命令是构建 Nuxt 应用程序的核心工具，它将你的应用程序打包成适合生产环境的格式。通过理解和使用不同的选项，如 &amp;ndash;prerender、&amp;ndash;dotenv 和 &amp;ndash;log-level，你可以更好地控制构建过程，并为生产环境做好充分准备。</description>
+    </item>
+    <item>
+      <title>Nuxt.js必读：轻松掌握运行时配置与 useRuntimeConfig</title>
+      <link>https://blog.cmdragon.cn/posts/bbb706a14f541c1932c5a42b4cab92a6/</link>
+      <pubDate>Mon, 29 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/bbb706a14f541c1932c5a42b4cab92a6/</guid>
+      <description>本文详细介绍了Nuxt.js中的运行时配置功能，包括定义和使用运行时配置的方法，以及如何通过useRuntimeConfig访问配置。同时，讲解了环境变量与.env文件的使用，特别是在不同环境下的配置管理。</description>
+    </item>
+    <item>
+      <title>Nuxt.js 环境变量配置与使用</title>
+      <link>https://blog.cmdragon.cn/posts/53eb62f578931146081c71537fd0c013/</link>
+      <pubDate>Thu, 25 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/53eb62f578931146081c71537fd0c013/</guid>
+      <description>摘要：“该文探讨了Nuxt.js框架下环境变量配置的详细过程，涉及.env文件配置、运行时访问、安全性考量、在不同场景下的实践（如Vue应用、插件、服务器路由）及多环境配置下的最佳实践。”</description>
+    </item>
+  </channel>
+</rss>

@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>资产 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E8%B5%84%E4%BA%A7/</link><description>Recent content in 资产 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 05 Nov 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E8%B5%84%E4%BA%A7/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 nitro：build：public-assets 事件钩子详解</title><link>https://blog.cmdragon.cn/posts/271508b42bc005f41e4fa31830a84e83/</link><pubDate>Tue, 05 Nov 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/271508b42bc005f41e4fa31830a84e83/</guid><description>nitro:build:public-assets 是 Nuxt 3 中的一个生命周期钩子，在复制公共资产之后调用。该钩子使开发者能够在构建 Nitro 服务器之前，对公共资产进行修改或处理，比如添加、删除或修改文件。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>资产 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E8%B5%84%E4%BA%A7/</link>
+    <description>Recent content in 资产 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 05 Nov 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E8%B5%84%E4%BA%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 nitro：build：public-assets 事件钩子详解</title>
+      <link>https://blog.cmdragon.cn/posts/271508b42bc005f41e4fa31830a84e83/</link>
+      <pubDate>Tue, 05 Nov 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/271508b42bc005f41e4fa31830a84e83/</guid>
+      <description>nitro:build:public-assets 是 Nuxt 3 中的一个生命周期钩子，在复制公共资产之后调用。该钩子使开发者能够在构建 Nitro 服务器之前，对公共资产进行修改或处理，比如添加、删除或修改文件。</description>
+    </item>
+  </channel>
+</rss>

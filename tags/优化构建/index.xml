@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>优化构建 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E4%BC%98%E5%8C%96%E6%9E%84%E5%BB%BA/</link><description>Recent content in 优化构建 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 09 Jun 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E4%BC%98%E5%8C%96%E6%9E%84%E5%BB%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>Vue CLI 4与项目构建实战指南</title><link>https://blog.cmdragon.cn/posts/1bc94247adf6eba156f12ce9810503fa/</link><pubDate>Sun, 09 Jun 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/1bc94247adf6eba156f12ce9810503fa/</guid><description>这篇文章介绍了如何使用Vue CLI优化项目构建配置，提高开发效率，涉及配置管理、项目部署策略、插件系统定制以及Webpack和TypeScript的深度集成技巧。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>优化构建 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E4%BC%98%E5%8C%96%E6%9E%84%E5%BB%BA/</link>
+    <description>Recent content in 优化构建 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 09 Jun 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E4%BC%98%E5%8C%96%E6%9E%84%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue CLI 4与项目构建实战指南</title>
+      <link>https://blog.cmdragon.cn/posts/1bc94247adf6eba156f12ce9810503fa/</link>
+      <pubDate>Sun, 09 Jun 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/1bc94247adf6eba156f12ce9810503fa/</guid>
+      <description>这篇文章介绍了如何使用Vue CLI优化项目构建配置，提高开发效率，涉及配置管理、项目部署策略、插件系统定制以及Webpack和TypeScript的深度集成技巧。</description>
+    </item>
+  </channel>
+</rss>

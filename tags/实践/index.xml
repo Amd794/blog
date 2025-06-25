@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>实践 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%AE%9E%E8%B7%B5/</link><description>Recent content in 实践 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 04 Dec 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 request 事件钩子</title><link>https://blog.cmdragon.cn/posts/d821e2e0d8af1f6e0a02aa2f6cddf24e/</link><pubDate>Wed, 04 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/d821e2e0d8af1f6e0a02aa2f6cddf24e/</guid><description>在构建现代 Web 应用时，处理请求是核心内容之一。无论是从后端获取数据，还是处理用户请求、验证和授权，正确地处理请求能够确保应用的稳定性、可维护性和用户体验。Nuxt.js 提供了 request 钩子，允许开发者在接收到请求时进行自定义处理，这为复杂应用提供了极大的灵活性。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>实践 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%AE%9E%E8%B7%B5/</link>
+    <description>Recent content in 实践 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 04 Dec 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 request 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/d821e2e0d8af1f6e0a02aa2f6cddf24e/</link>
+      <pubDate>Wed, 04 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/d821e2e0d8af1f6e0a02aa2f6cddf24e/</guid>
+      <description>在构建现代 Web 应用时，处理请求是核心内容之一。无论是从后端获取数据，还是处理用户请求、验证和授权，正确地处理请求能够确保应用的稳定性、可维护性和用户体验。Nuxt.js 提供了 request 钩子，允许开发者在接收到请求时进行自定义处理，这为复杂应用提供了极大的灵活性。</description>
+    </item>
+  </channel>
+</rss>

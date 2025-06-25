@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>安全最佳实践 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%AE%89%E5%85%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link><description>Recent content in 安全最佳实践 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 01 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%AE%89%E5%85%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml"/><item><title>数据库安全管理中的用户和角色管理：打造安全高效的数据环境</title><link>https://blog.cmdragon.cn/posts/92d56b1325c898ad3efc89cb2b42d84d/</link><pubDate>Sat, 01 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/92d56b1325c898ad3efc89cb2b42d84d/</guid><description>在数字化时代，数据库作为信息存储和处理的核心，安全管理显得尤为重要。用户和角色管理是保障数据库安全性的重要手段，合理的管理策略不仅能够有效控制访问，还能避免数据泄露和未授权操作。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>安全最佳实践 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%AE%89%E5%85%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
+    <description>Recent content in 安全最佳实践 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 01 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%AE%89%E5%85%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据库安全管理中的用户和角色管理：打造安全高效的数据环境</title>
+      <link>https://blog.cmdragon.cn/posts/92d56b1325c898ad3efc89cb2b42d84d/</link>
+      <pubDate>Sat, 01 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/92d56b1325c898ad3efc89cb2b42d84d/</guid>
+      <description>在数字化时代，数据库作为信息存储和处理的核心，安全管理显得尤为重要。用户和角色管理是保障数据库安全性的重要手段，合理的管理策略不仅能够有效控制访问，还能避免数据泄露和未授权操作。</description>
+    </item>
+  </channel>
+</rss>

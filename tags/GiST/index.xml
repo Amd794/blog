@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GiST on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/GiST/</link><description>Recent content in GiST on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 26 Jan 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/GiST/index.xml" rel="self" type="application/rss+xml"/><item><title>深入探讨数据库索引类型：B-tree、Hash、GIN与GiST的对比与应用</title><link>https://blog.cmdragon.cn/posts/0095ca05c7ea7fbeec5f3a9990bd5264/</link><pubDate>Sun, 26 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/0095ca05c7ea7fbeec5f3a9990bd5264/</guid><description>在现代数据库管理系统中，索引技术是提高查询性能的重要手段。当数据量不断增长时，如何快速、有效地访问这些数据成为了数据库设计的核心问题。索引的使用能够显著减少数据检索的时间，提高应用的响应速度。通过不同的索引类型，数据库管理员能够针对特定的查询模式，选择最合适的结构以优化性能</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GiST on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/GiST/</link>
+    <description>Recent content in GiST on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 26 Jan 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/GiST/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入探讨数据库索引类型：B-tree、Hash、GIN与GiST的对比与应用</title>
+      <link>https://blog.cmdragon.cn/posts/0095ca05c7ea7fbeec5f3a9990bd5264/</link>
+      <pubDate>Sun, 26 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/0095ca05c7ea7fbeec5f3a9990bd5264/</guid>
+      <description>在现代数据库管理系统中，索引技术是提高查询性能的重要手段。当数据量不断增长时，如何快速、有效地访问这些数据成为了数据库设计的核心问题。索引的使用能够显著减少数据检索的时间，提高应用的响应速度。通过不同的索引类型，数据库管理员能够针对特定的查询模式，选择最合适的结构以优化性能</description>
+    </item>
+  </channel>
+</rss>

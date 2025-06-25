@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>命令 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%91%BD%E4%BB%A4/</link><description>Recent content in 命令 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 10 Sep 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%91%BD%E4%BB%A4/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 nuxi upgrade 升级现有nuxt项目版本</title><link>https://blog.cmdragon.cn/posts/0e0c114dbed4df069069c50bc4b57510/</link><pubDate>Tue, 10 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/0e0c114dbed4df069069c50bc4b57510/</guid><description>摘要：本文介绍了如何使用nuxi upgrade命令升级Nuxt 3项目，包括打开终端、运行升级命令、使用选项、测试项目等步骤，以及升级前的注意事项，如备份代码、检查文档和依赖问题处理，帮助开发者轻松完成项目升级。</description></item><item><title>使用 nuxi preview 命令预览 Nuxt 应用</title><link>https://blog.cmdragon.cn/posts/5b05eb48f0dc0e960be86be0f59de2fa/</link><pubDate>Sun, 08 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/5b05eb48f0dc0e960be86be0f59de2fa/</guid><description>摘要：本文介绍了如何使用nuxi preview命令预览Nuxt.js应用，包括安装和准备环境、启动预览服务器的步骤，以及如何指定根目录和使用自定义.env文件等高级用法。通过nuxi preview，开发者能够在本地快速验证应用构建后的实际效果，确保一切按预期工作。</description></item><item><title>使用 nuxi prepare 命令准备 Nuxt 项目</title><link>https://blog.cmdragon.cn/posts/f00fdc02feaaf3525efceaf3e2dc5814/</link><pubDate>Sat, 07 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/f00fdc02feaaf3525efceaf3e2dc5814/</guid><description>摘要：本文介绍nuxi prepare命令在Nuxt.js项目中的使用，该命令用于创建.nuxt目录并生成类型信息，以便于构建和部署。文章涵盖了命令的基本用法、指定根目录、设置日志级别及一个完整的准备流程示例。</description></item><item><title>使用 nuxi clean 命令清理 Nuxt 项目</title><link>https://blog.cmdragon.cn/posts/4382efd355d49a6c8c6ca9f96c90fe8d/</link><pubDate>Sun, 01 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/4382efd355d49a6c8c6ca9f96c90fe8d/</guid><description>nuxi clean 命令是管理和维护 Nuxt 项目的重要工具，它帮助你快速清理生成的文件和缓存，确保开发环境的干净。通过定期使用这个命令，你可以避免由于缓存或生成文件导致的构建问题，从而提升开发效率和项目稳定性。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>命令 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%91%BD%E4%BB%A4/</link>
+    <description>Recent content in 命令 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 10 Sep 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%91%BD%E4%BB%A4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 nuxi upgrade 升级现有nuxt项目版本</title>
+      <link>https://blog.cmdragon.cn/posts/0e0c114dbed4df069069c50bc4b57510/</link>
+      <pubDate>Tue, 10 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/0e0c114dbed4df069069c50bc4b57510/</guid>
+      <description>摘要：本文介绍了如何使用nuxi upgrade命令升级Nuxt 3项目，包括打开终端、运行升级命令、使用选项、测试项目等步骤，以及升级前的注意事项，如备份代码、检查文档和依赖问题处理，帮助开发者轻松完成项目升级。</description>
+    </item>
+    <item>
+      <title>使用 nuxi preview 命令预览 Nuxt 应用</title>
+      <link>https://blog.cmdragon.cn/posts/5b05eb48f0dc0e960be86be0f59de2fa/</link>
+      <pubDate>Sun, 08 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/5b05eb48f0dc0e960be86be0f59de2fa/</guid>
+      <description>摘要：本文介绍了如何使用nuxi preview命令预览Nuxt.js应用，包括安装和准备环境、启动预览服务器的步骤，以及如何指定根目录和使用自定义.env文件等高级用法。通过nuxi preview，开发者能够在本地快速验证应用构建后的实际效果，确保一切按预期工作。</description>
+    </item>
+    <item>
+      <title>使用 nuxi prepare 命令准备 Nuxt 项目</title>
+      <link>https://blog.cmdragon.cn/posts/f00fdc02feaaf3525efceaf3e2dc5814/</link>
+      <pubDate>Sat, 07 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/f00fdc02feaaf3525efceaf3e2dc5814/</guid>
+      <description>摘要：本文介绍nuxi prepare命令在Nuxt.js项目中的使用，该命令用于创建.nuxt目录并生成类型信息，以便于构建和部署。文章涵盖了命令的基本用法、指定根目录、设置日志级别及一个完整的准备流程示例。</description>
+    </item>
+    <item>
+      <title>使用 nuxi clean 命令清理 Nuxt 项目</title>
+      <link>https://blog.cmdragon.cn/posts/4382efd355d49a6c8c6ca9f96c90fe8d/</link>
+      <pubDate>Sun, 01 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/4382efd355d49a6c8c6ca9f96c90fe8d/</guid>
+      <description>nuxi clean 命令是管理和维护 Nuxt 项目的重要工具，它帮助你快速清理生成的文件和缓存，确保开发环境的干净。通过定期使用这个命令，你可以避免由于缓存或生成文件导致的构建问题，从而提升开发效率和项目稳定性。</description>
+    </item>
+  </channel>
+</rss>

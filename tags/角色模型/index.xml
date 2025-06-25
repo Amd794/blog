@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>角色模型 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E8%A7%92%E8%89%B2%E6%A8%A1%E5%9E%8B/</link><description>Recent content in 角色模型 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 11 Jun 2025 13:18:54 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E8%A7%92%E8%89%B2%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>如何用FastAPI和Tortoise-ORM打造一个既高效又灵活的角色管理系统？</title><link>https://blog.cmdragon.cn/posts/2b0a2003074eba56a6f6c57aa9690900/</link><pubDate>Wed, 11 Jun 2025 13:18:54 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/2b0a2003074eba56a6f6c57aa9690900/</guid><description>角色模型设计包含核心字段如唯一标识、角色名称、描述、启用状态和创建时间。权限关联通过多对多关系实现，角色与权限通过中间表关联。完整的CRUD接口包括创建角色、获取角色信息等操作。数据库关系映射实战展示了如何为角色分配权限。常见报错解决方案提供了初始化数据库和处理请求体字段错误的指导。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>角色模型 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E8%A7%92%E8%89%B2%E6%A8%A1%E5%9E%8B/</link>
+    <description>Recent content in 角色模型 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 11 Jun 2025 13:18:54 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E8%A7%92%E8%89%B2%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何用FastAPI和Tortoise-ORM打造一个既高效又灵活的角色管理系统？</title>
+      <link>https://blog.cmdragon.cn/posts/2b0a2003074eba56a6f6c57aa9690900/</link>
+      <pubDate>Wed, 11 Jun 2025 13:18:54 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/2b0a2003074eba56a6f6c57aa9690900/</guid>
+      <description>角色模型设计包含核心字段如唯一标识、角色名称、描述、启用状态和创建时间。权限关联通过多对多关系实现，角色与权限通过中间表关联。完整的CRUD接口包括创建角色、获取角色信息等操作。数据库关系映射实战展示了如何为角色分配权限。常见报错解决方案提供了初始化数据库和处理请求体字段错误的指导。</description>
+    </item>
+  </channel>
+</rss>

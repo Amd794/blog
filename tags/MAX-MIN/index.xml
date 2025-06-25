@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MAX, MIN on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/MAX-MIN/</link><description>Recent content in MAX, MIN on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 13 Jan 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/MAX-MIN/index.xml" rel="self" type="application/rss+xml"/><item><title>深入探讨聚合函数（COUNT, SUM, AVG, MAX, MIN）：分析和总结数据的新视野</title><link>https://blog.cmdragon.cn/posts/27d8b24508379d4e5d4ae97873aa9397/</link><pubDate>Mon, 13 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/27d8b24508379d4e5d4ae97873aa9397/</guid><description>在数据分析和数据库管理领域，聚合函数（Aggregate Functions）是获取数据总结和统计信息的关键工具。聚合函数如 COUNT、SUM、AVG、MAX 和 MIN 能够有效地分析大量数据，帮助用户从中提取有价值的信息。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MAX, MIN on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/MAX-MIN/</link>
+    <description>Recent content in MAX, MIN on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 13 Jan 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/MAX-MIN/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入探讨聚合函数（COUNT, SUM, AVG, MAX, MIN）：分析和总结数据的新视野</title>
+      <link>https://blog.cmdragon.cn/posts/27d8b24508379d4e5d4ae97873aa9397/</link>
+      <pubDate>Mon, 13 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/27d8b24508379d4e5d4ae97873aa9397/</guid>
+      <description>在数据分析和数据库管理领域，聚合函数（Aggregate Functions）是获取数据总结和统计信息的关键工具。聚合函数如 COUNT、SUM、AVG、MAX 和 MIN 能够有效地分析大量数据，帮助用户从中提取有价值的信息。</description>
+    </item>
+  </channel>
+</rss>

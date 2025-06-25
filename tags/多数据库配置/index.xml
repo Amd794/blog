@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>多数据库配置 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE/</link><description>Recent content in 多数据库配置 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 16 May 2025 00:58:24 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml"/><item><title>驾驭FastAPI多数据库：从读写分离到跨库事务的艺术</title><link>https://blog.cmdragon.cn/posts/82c823f30695c4f6a2bbd95931894efe/</link><pubDate>Fri, 16 May 2025 00:58:24 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/82c823f30695c4f6a2bbd95931894efe/</guid><description>在微服务架构中，FastAPI 多数据库配置管理通过独立数据存储实现隔离性、扩展性和性能优化。配置主从数据库时，使用 SQLAlchemy 创建异步引擎和会话工厂，并通过中间件实现动态数据库路由，实现读写分离。跨库事务处理采用 Saga 事务模式，确保分布式事务的一致性。以电商订单系统为例，展示了如何在 PostgreSQL、MongoDB 和 MySQL 之间进行跨库操作，并通过补偿机制处理事务失败。常见报错解决方案包括精确查询条件、正确管理会话和处理事务回滚。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>多数据库配置 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE/</link>
+    <description>Recent content in 多数据库配置 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 16 May 2025 00:58:24 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>驾驭FastAPI多数据库：从读写分离到跨库事务的艺术</title>
+      <link>https://blog.cmdragon.cn/posts/82c823f30695c4f6a2bbd95931894efe/</link>
+      <pubDate>Fri, 16 May 2025 00:58:24 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/82c823f30695c4f6a2bbd95931894efe/</guid>
+      <description>在微服务架构中，FastAPI 多数据库配置管理通过独立数据存储实现隔离性、扩展性和性能优化。配置主从数据库时，使用 SQLAlchemy 创建异步引擎和会话工厂，并通过中间件实现动态数据库路由，实现读写分离。跨库事务处理采用 Saga 事务模式，确保分布式事务的一致性。以电商订单系统为例，展示了如何在 PostgreSQL、MongoDB 和 MySQL 之间进行跨库操作，并通过补偿机制处理事务失败。常见报错解决方案包括精确查询条件、正确管理会话和处理事务回滚。</description>
+    </item>
+  </channel>
+</rss>

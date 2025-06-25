@@ -1,1 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>客户端 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/</link><description>Recent content in 客户端 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 01 Dec 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 render：island 事件钩子</title><link>https://blog.cmdragon.cn/posts/a788981a66c14c5edd407545ac29b6ee/</link><pubDate>Sun, 01 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/a788981a66c14c5edd407545ac29b6ee/</guid><description>在 Nuxt.js 中，render:island 钩子允许开发者在构建“岛屿”HTML之前进行处理和修改。此钩子为实现复杂的客户端交互和动态内容提供了基本支持，特别适合与服务器渲染和客户端渲染混合使用的场景。</description></item><item><title>使用 prefetchComponents 进行组件预取</title><link>https://blog.cmdragon.cn/posts/a87f935f1fba15457925fce9d47af8f4/</link><pubDate>Sat, 17 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/a87f935f1fba15457925fce9d47af8f4/</guid><description>摘要：本文介绍Nuxt.js中的prefetchComponents功能，用于预取组件以提高用户体验。通过在客户端后台下载和缓存组件，确保在用户需要时快速加载。文章涵盖了prefetchComponents的基本概念、与预加载的区别、使用方法以及如何在Nuxt.js项目中配置和应用此功能，最终达到优化应用加载速度的目的。</description></item><item><title>使用 onNuxtReady 进行异步初始化</title><link>https://blog.cmdragon.cn/posts/838b6733c038fcb291025b2c777b3e8b/</link><pubDate>Fri, 16 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/838b6733c038fcb291025b2c777b3e8b/</guid><description>摘要：本文详细介绍了Nuxt.js框架中的onNuxtReady函数用途、使用场景及其实现步骤，并通过集成分析库的示例代码，指导开发者如何在应用初始化完成后执行异步操作，以优化用户体验。</description></item><item><title>使用 useRequestURL 组合函数访问请求URL</title><link>https://blog.cmdragon.cn/posts/06f3f8268aaa2d02d711d8e895bb2bc9/</link><pubDate>Fri, 26 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/06f3f8268aaa2d02d711d8e895bb2bc9/</guid><description>摘要：本文介绍了Nuxt 3中的useRequestURL组合函数，用于在服务器端和客户端环境中获取当前页面的URL信息。通过示例展示了如何在页面中使用此函数获取并显示URL及其组成部分，如路径、查询参数等，适用于现代Web应用程序的开发。</description></item><item><title>Nuxt.js 错误侦探：useError 组合函数</title><link>https://blog.cmdragon.cn/posts/b73679558bc672550fbbb72ae295fdf5/</link><pubDate>Sun, 14 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/b73679558bc672550fbbb72ae295fdf5/</guid><description>摘要：文章介绍Nuxt.js中的useError组合函数，用于统一处理客户端和服务器端的错误，提供statusCode、statusMessage和message属性，示例展示了如何在组件中使用它来捕获和显示错误信息。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>客户端 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/</link>
+    <description>Recent content in 客户端 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 01 Dec 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 render：island 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/a788981a66c14c5edd407545ac29b6ee/</link>
+      <pubDate>Sun, 01 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/a788981a66c14c5edd407545ac29b6ee/</guid>
+      <description>在 Nuxt.js 中，render:island 钩子允许开发者在构建“岛屿”HTML之前进行处理和修改。此钩子为实现复杂的客户端交互和动态内容提供了基本支持，特别适合与服务器渲染和客户端渲染混合使用的场景。</description>
+    </item>
+    <item>
+      <title>使用 prefetchComponents 进行组件预取</title>
+      <link>https://blog.cmdragon.cn/posts/a87f935f1fba15457925fce9d47af8f4/</link>
+      <pubDate>Sat, 17 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/a87f935f1fba15457925fce9d47af8f4/</guid>
+      <description>摘要：本文介绍Nuxt.js中的prefetchComponents功能，用于预取组件以提高用户体验。通过在客户端后台下载和缓存组件，确保在用户需要时快速加载。文章涵盖了prefetchComponents的基本概念、与预加载的区别、使用方法以及如何在Nuxt.js项目中配置和应用此功能，最终达到优化应用加载速度的目的。</description>
+    </item>
+    <item>
+      <title>使用 onNuxtReady 进行异步初始化</title>
+      <link>https://blog.cmdragon.cn/posts/838b6733c038fcb291025b2c777b3e8b/</link>
+      <pubDate>Fri, 16 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/838b6733c038fcb291025b2c777b3e8b/</guid>
+      <description>摘要：本文详细介绍了Nuxt.js框架中的onNuxtReady函数用途、使用场景及其实现步骤，并通过集成分析库的示例代码，指导开发者如何在应用初始化完成后执行异步操作，以优化用户体验。</description>
+    </item>
+    <item>
+      <title>使用 useRequestURL 组合函数访问请求URL</title>
+      <link>https://blog.cmdragon.cn/posts/06f3f8268aaa2d02d711d8e895bb2bc9/</link>
+      <pubDate>Fri, 26 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/06f3f8268aaa2d02d711d8e895bb2bc9/</guid>
+      <description>摘要：本文介绍了Nuxt 3中的useRequestURL组合函数，用于在服务器端和客户端环境中获取当前页面的URL信息。通过示例展示了如何在页面中使用此函数获取并显示URL及其组成部分，如路径、查询参数等，适用于现代Web应用程序的开发。</description>
+    </item>
+    <item>
+      <title>Nuxt.js 错误侦探：useError 组合函数</title>
+      <link>https://blog.cmdragon.cn/posts/b73679558bc672550fbbb72ae295fdf5/</link>
+      <pubDate>Sun, 14 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/b73679558bc672550fbbb72ae295fdf5/</guid>
+      <description>摘要：文章介绍Nuxt.js中的useError组合函数，用于统一处理客户端和服务器端的错误，提供statusCode、statusMessage和message属性，示例展示了如何在组件中使用它来捕获和显示错误信息。</description>
+    </item>
+  </channel>
+</rss>

@@ -1,7 +1,271 @@
-<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Django 安全性与防御性编程：如何保护 Django Web 应用 - cmdragon's Blog</title><meta name=description content=" 跨站请求伪造（CSRF） 跨站请求伪造（CSRF）是一种常见的网络攻击，它利用用户的身份和权限，欺骗服务器执行非预期的操作。Django 提供了一种内置的 CSRF 保护机制，可以帮助保护应用免受 CSRF 攻击。
-"><meta name=author content="cmdragon"><meta name=robots content="index, follow"><link rel=canonical href=https://blog.cmdragon.cn/posts/f8ba40152b39d84f918402253b9e3158/><meta property="og:title" content="Django 安全性与防御性编程：如何保护 Django Web 应用 - cmdragon's Blog"><meta property="og:description" content=" 跨站请求伪造（CSRF） 跨站请求伪造（CSRF）是一种常见的网络攻击，它利用用户的身份和权限，欺骗服务器执行非预期的操作。Django 提供了一种内置的 CSRF 保护机制，可以帮助保护应用免受 CSRF 攻击。
-"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.cmdragon.cn/posts/f8ba40152b39d84f918402253b9e3158/"><meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png"><meta property="og:site_name" content="cmdragon's Blog"><meta property="article:published_time" content="2024-05-13T20:26:58+08:00"><meta property="article:modified_time" content="2024-05-13T20:26:58+08:00"><meta property="article:section" content="后端开发"><meta property="article:tag" content="CSRF"><meta property="article:tag" content="XSS"><meta property="article:tag" content="SQL"><meta property="article:tag" content="Upload"><meta property="article:tag" content="HTTPOnly"><meta property="article:tag" content="Password"><meta property="article:tag" content="Session"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Django 安全性与防御性编程：如何保护 Django Web 应用 - cmdragon's Blog"><meta name=twitter:description content=" 跨站请求伪造（CSRF） 跨站请求伪造（CSRF）是一种常见的网络攻击，它利用用户的身份和权限，欺骗服务器执行非预期的操作。Django 提供了一种内置的 CSRF 保护机制，可以帮助保护应用免受 CSRF 攻击。
-"><meta name=twitter:image content="https://blog.cmdragon.cn/images/logo/social-card.png"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Django 安全性与防御性编程：如何保护 Django Web 应用","datePublished":"2024-05-13T20:26:58\u002b08:00","dateModified":"2024-05-13T20:26:58\u002b08:00","author":{"@type":"Person","name":"cmdragon"},"description":" 跨站请求伪造（CSRF） 跨站请求伪造（CSRF）是一种常见的网络攻击，它利用用户的身份和权限，欺骗服务器执行非预期的操作。Django 提供了一种内置的 CSRF 保护机制，可以帮助保护应用免受 CSRF 攻击。\n","image":"https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png","url":"https:\/\/blog.cmdragon.cn\/posts\/f8ba40152b39d84f918402253b9e3158\/","publisher":{"@type":"Organization","name":"cmdragon\u0027s Blog","logo":{"@type":"ImageObject","url":"https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/blog.cmdragon.cn\/posts\/f8ba40152b39d84f918402253b9e3158\/"},"keywords":"后端开发","keywords":"CSRF, XSS, SQL, Upload, HTTPOnly, Password, Session","wordCount":"4843"}</script><link rel=preconnect href=https://cdnjs.cloudflare.com><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js as=script><link rel=icon href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon href=/images/logo/small.png><link rel=icon type=image/png sizes=32x32 href=/images/logo/small.png><link rel=icon type=image/svg+xml href=/images/logo/scalable.svg><meta name=theme-color content="#3B82F6"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js></script><script>(function(){if(typeof mermaid!="undefined"){window.mermaid=mermaid;const e=document.documentElement.classList.contains("dark")||window.matchMedia("(prefers-color-scheme: dark)").matches;window.mermaid.initialize({startOnLoad:!0,theme:e?"dark":"default",securityLevel:"loose",flowchart:{curve:"basis",htmlLabels:!0},sequence:{mirrorActors:!1,wrap:!0},themeVariables:{primaryColor:"#3b82f6",primaryTextColor:"#ffffff",primaryBorderColor:e?"#60a5fa":"#2563eb",lineColor:e?"#94a3b8":"#4b5563",secondaryColor:e?"#1e293b":"#f0f9ff",tertiaryColor:e?"#334155":"#f3f4f6"}}),document.addEventListener("DOMContentLoaded",function(){try{typeof window.mermaid.init=="function"&&window.mermaid.init(0[0],document.querySelectorAll(".mermaid"))}catch{}})}})()</script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js></script><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js></script><script src=https://cdn.tailwindcss.com/3.4.16></script><script>tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#3B82F6","primary-light":"#60a5fa","primary-dark":"#2563eb"},typography:e=>({DEFAULT:{css:{color:e("colors.gray.800"),a:{color:e("colors.primary"),"&:hover":{color:e("colors.primary-dark")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.900")},pre:{backgroundColor:e("colors.gray.800"),color:e("colors.gray.100")},code:{color:e("colors.primary"),backgroundColor:e("colors.gray.100"),padding:"0.25rem",borderRadius:"0.25rem",fontWeight:"400"},"code::before":{content:'""'},"code::after":{content:'""'}}},dark:{css:{color:e("colors.gray.200"),a:{color:e("colors.primary-light"),"&:hover":{color:e("colors.primary")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.100")},pre:{backgroundColor:e("colors.gray.900")},code:{color:e("colors.primary-light"),backgroundColor:e("colors.gray.800")}}}})}}}</script><script src=/js/iconify-icon.min.js></script><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"><link rel=stylesheet href=/css/code-highlight.css><link rel=stylesheet href=/css/markdown.css><style type=text/tailwindcss>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Django 安全性与防御性编程：如何保护 Django Web 应用 - cmdragon&#39;s Blog</title>
+<meta name="description" content=" 跨站请求伪造（CSRF） 跨站请求伪造（CSRF）是一种常见的网络攻击，它利用用户的身份和权限，欺骗服务器执行非预期的操作。Django 提供了一种内置的 CSRF 保护机制，可以帮助保护应用免受 CSRF 攻击。
+">
+
+
+<meta name="author" content="cmdragon">
+<meta name="robots" content="index, follow">
+
+
+<link rel="canonical" href="https://blog.cmdragon.cn/posts/f8ba40152b39d84f918402253b9e3158/">
+
+
+
+
+
+<meta property="og:title" content="Django 安全性与防御性编程：如何保护 Django Web 应用 - cmdragon&#39;s Blog">
+<meta property="og:description" content=" 跨站请求伪造（CSRF） 跨站请求伪造（CSRF）是一种常见的网络攻击，它利用用户的身份和权限，欺骗服务器执行非预期的操作。Django 提供了一种内置的 CSRF 保护机制，可以帮助保护应用免受 CSRF 攻击。
+">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cmdragon.cn/posts/f8ba40152b39d84f918402253b9e3158/">
+
+<meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+<meta property="og:site_name" content="cmdragon&#39;s Blog">
+
+<meta property="article:published_time" content="2024-05-13T20:26:58&#43;08:00">
+
+<meta property="article:modified_time" content="2024-05-13T20:26:58&#43;08:00">
+
+
+
+<meta property="article:section" content="后端开发">
+
+
+
+
+<meta property="article:tag" content="CSRF">
+
+<meta property="article:tag" content="XSS">
+
+<meta property="article:tag" content="SQL">
+
+<meta property="article:tag" content="Upload">
+
+<meta property="article:tag" content="HTTPOnly">
+
+<meta property="article:tag" content="Password">
+
+<meta property="article:tag" content="Session">
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Django 安全性与防御性编程：如何保护 Django Web 应用 - cmdragon&#39;s Blog">
+<meta name="twitter:description" content=" 跨站请求伪造（CSRF） 跨站请求伪造（CSRF）是一种常见的网络攻击，它利用用户的身份和权限，欺骗服务器执行非预期的操作。Django 提供了一种内置的 CSRF 保护机制，可以帮助保护应用免受 CSRF 攻击。
+">
+
+<meta name="twitter:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Django 安全性与防御性编程：如何保护 Django Web 应用",
+  "datePublished": "2024-05-13T20:26:58\u002b08:00",
+  "dateModified": "2024-05-13T20:26:58\u002b08:00",
+  "author": {
+    "@type": "Person",
+    "name": "cmdragon"
+  },
+  "description": " 跨站请求伪造（CSRF） 跨站请求伪造（CSRF）是一种常见的网络攻击，它利用用户的身份和权限，欺骗服务器执行非预期的操作。Django 提供了一种内置的 CSRF 保护机制，可以帮助保护应用免受 CSRF 攻击。\n",
+  
+  "image": "https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png",
+  
+  "url": "https:\/\/blog.cmdragon.cn\/posts\/f8ba40152b39d84f918402253b9e3158\/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "cmdragon\u0027s Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/blog.cmdragon.cn\/posts\/f8ba40152b39d84f918402253b9e3158\/"
+  },
+  
+  "keywords": "后端开发",
+  
+  
+  "keywords": "CSRF, XSS, SQL, Upload, HTTPOnly, Password, Session",
+  
+  "wordCount": "4843"
+}
+</script>
+
+
+
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js" as="script">
+
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/images/logo/small.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo/small.png">
+<link rel="icon" type="image/svg+xml" href="/images/logo/scalable.svg">
+<meta name="theme-color" content="#3B82F6">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135"
+     crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js"></script>
+<script>
+  
+  (function() {
+    if (typeof mermaid !== 'undefined') {
+      
+      window.mermaid = mermaid;
+      
+      
+      const isDarkMode = document.documentElement.classList.contains('dark') || 
+                        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      
+      window.mermaid.initialize({
+        startOnLoad: true,  
+        theme: isDarkMode ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: {
+          curve: 'basis',
+          htmlLabels: true
+        },
+        sequence: {
+          mirrorActors: false,
+          wrap: true
+        },
+        themeVariables: {
+          primaryColor: '#3b82f6',
+          primaryTextColor: '#ffffff',
+          primaryBorderColor: isDarkMode ? '#60a5fa' : '#2563eb',
+          lineColor: isDarkMode ? '#94a3b8' : '#4b5563',
+          secondaryColor: isDarkMode ? '#1e293b' : '#f0f9ff',
+          tertiaryColor: isDarkMode ? '#334155' : '#f3f4f6'
+        }
+      });
+      
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          
+          if (typeof window.mermaid.init === 'function') {
+            window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+          }
+        } catch (e) {
+          
+        }
+      });
+    }
+  })();
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#3B82F6',
+                    'primary-light': '#60a5fa',
+                    'primary-dark': '#2563eb',
+                },
+                typography: (theme) => ({
+                    DEFAULT: {
+                        css: {
+                            color: theme('colors.gray.800'),
+                            a: {
+                                color: theme('colors.primary'),
+                                '&:hover': {
+                                    color: theme('colors.primary-dark'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.900'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.800'),
+                                color: theme('colors.gray.100'),
+                            },
+                            code: {
+                                color: theme('colors.primary'),
+                                backgroundColor: theme('colors.gray.100'),
+                                padding: '0.25rem',
+                                borderRadius: '0.25rem',
+                                fontWeight: '400',
+                            },
+                            'code::before': {
+                                content: '""',
+                            },
+                            'code::after': {
+                                content: '""',
+                            },
+                        },
+                    },
+                    dark: {
+                        css: {
+                            color: theme('colors.gray.200'),
+                            a: {
+                                color: theme('colors.primary-light'),
+                                '&:hover': {
+                                    color: theme('colors.primary'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.100'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.900'),
+                            },
+                            code: {
+                                color: theme('colors.primary-light'),
+                                backgroundColor: theme('colors.gray.800'),
+                            },
+                        },
+                    },
+                }),
+            },
+        },
+    }
+</script>
+
+
+<script src="/js/iconify-icon.min.js"></script>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+
+<link rel="stylesheet" href="/css/code-highlight.css">
+<link rel="stylesheet" href="/css/markdown.css">
+
+
+<style type="text/tailwindcss">
     @layer components {
         body {
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -22,43 +286,501 @@
             @apply bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white;
         }
     }
-</style><style>.mermaid{margin:2rem auto;text-align:center;overflow:visible;width:auto;max-width:100%;background-color:#f9fafb;padding:1.5rem .5rem;border-radius:.5rem;box-shadow:0 2px 4px rgba(0,0,0,5%);display:block}.dark .mermaid{background-color:#1e293b;box-shadow:0 2px 4px rgba(0,0,0,.15)}.mermaid svg{display:block !important;max-width:100%;width:auto !important;height:auto !important;font-size:14px;margin:0 auto}.mermaid .node rect,.mermaid .node circle,.mermaid .node ellipse,.mermaid .node polygon,.mermaid .node path{stroke-width:1px}.mermaid .edgePath .path{stroke-width:1.5px}.mermaid .edgeLabel{font-size:.85em;background-color:inherit !important}.mermaid .label text,.mermaid text.label{fill:#374151;font-weight:400}.dark .mermaid .label text,.dark .mermaid text.label{fill:#e5e7eb}@media(max-width:768px){.mermaid{max-width:98%;padding:.8rem .3rem;margin:1.2rem auto}.mermaid svg{font-size:12px}}</style></head><body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col"><div class="flex-grow flex flex-col"><header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700"><div class="container mx-auto px-4"><div class="flex justify-between items-center h-16"><div class="flex items-center"><a href=https://blog.cmdragon.cn/ class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300"><div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105"><img src=/images/logo/small.png alt="cmdragon's Blog Logo" class="h-full w-auto"></div><span class="group-hover:text-primary transition-colors duration-300">cmdragon's Blog</span></a></div><nav class="hidden md:flex space-x-1"><a href=/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=首页 tabindex=0><span class="relative z-10">首页</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/archives/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=归档 tabindex=0><span class="relative z-10">归档</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/categories/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=分类 tabindex=0><span class="relative z-10">分类</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/tags/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=标签 tabindex=0><span class="relative z-10">标签</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/friends/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=友链 tabindex=0><span class="relative z-10">友链</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span></a></nav><div class="flex items-center space-x-3"><button class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=搜索 tabindex=0 onclick=openSiteSearch()>
-<iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></button>
-<button id=theme-toggle class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=切换深色模式 tabindex=0>
-<iconify-icon icon=mdi:weather-sunny class=dark:hidden width=20 height=20></iconify-icon><iconify-icon icon=mdi:weather-night class="hidden dark:block" width=20 height=20></iconify-icon></button>
-<button id=mobile-menu-button class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=打开菜单 tabindex=0>
-<iconify-icon icon=mdi:menu width=20 height=20></iconify-icon></button></div></div><div id=mobile-menu class="md:hidden hidden pb-3"><div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner"><a href=/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=首页 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>首页</div></a><a href=/archives/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=归档 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>归档</div></a><a href=/categories/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=分类 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>分类</div></a><a href=/tags/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=标签 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>标签</div></a><a href=/friends/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=友链 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>友链</div></a></div></div></div></header><script>document.getElementById("mobile-menu-button").addEventListener("click",function(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden")}),document.getElementById("theme-toggle").addEventListener("click",function(){document.documentElement.classList.contains("dark")?(document.documentElement.classList.remove("dark"),localStorage.setItem("color-theme","light")):(document.documentElement.classList.add("dark"),localStorage.setItem("color-theme","dark"))}),window.addEventListener("scroll",function(){const e=document.querySelector("header");window.scrollY>10?e.classList.add("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95"):e.classList.remove("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95")})</script><main class="container mx-auto px-4 py-8 flex-grow"><div class="container mx-auto px-4 sm:px-6 relative"><div class="flex flex-col lg:flex-row lg:gap-8"><article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700"><nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label=面包屑导航><ol class="flex flex-wrap items-center" itemscope itemtype=https://schema.org/BreadcrumbList><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/ class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=首页><span itemprop=name>首页</span>
-</a><meta itemprop=position content="1"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/posts class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=Posts><span itemprop=name>Posts</span>
-</a><meta itemprop=position content="2"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><span class="text-gray-800 dark:text-gray-200" itemprop=name title="Django 安全性与防御性编程：如何保护 Django Web 应用">Django 安全性与防御性编程：如何保护 Django W...</span>
-<meta itemprop=position content="3"></li></ol></nav><header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6"><h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">Django 安全性与防御性编程：如何保护 Django Web 应用</h1><div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3"><span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:calendar class=mr-1 width=16 height=16></iconify-icon>2024-05-13
-</span><span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:folder class=mr-1 width=16 height=16></iconify-icon><a href=/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91 class="hover:text-primary transition-colors">后端开发
-</a></span><span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:clock-outline class=mr-1 width=16 height=16></iconify-icon>24 分钟阅读
-</span><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed target=_blank rel="noopener noreferrer" class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors" aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" tabindex=0><iconify-icon icon=simple-icons:creativecommons width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsbysa width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsnc width=16 height=16 class=mr-1></iconify-icon><span>BY-NC-SA 4.0</span></a></div></header><div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed"><img src="https://static.cmdragon.cn/blog/images/2024_05_13 20_31_47.png@blog" title="2024_05_13 20_31_47.png" alt="2024_05_13 20_31_47.png"><h2 id=跨站请求伪造csrf>跨站请求伪造（CSRF）</h2><p>跨站请求伪造（CSRF）是一种常见的网络攻击，它利用用户的身份和权限，欺骗服务器执行非预期的操作。Django 提供了一种内置的 CSRF
-保护机制，可以帮助保护应用免受 CSRF 攻击。</p><p>Django 的 CSRF 保护机制是通过 CSRF 令牌（CSRF Token）实现的，它是一个加密字符串，包含了一些关于用户会话和请求的信息。在每个
+</style>
+
+
+<style>
+   
+  .mermaid {
+    margin: 2rem auto;
+    text-align: center;
+    overflow: visible;
+    width: auto;
+    max-width: 100%;
+    background-color: #f9fafb;
+    padding: 1.5rem 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: block;
+  }
+  
+  .dark .mermaid {
+    background-color: #1e293b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+   
+  .mermaid svg {
+    display: block !important;
+    max-width: 100%;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px;
+    margin: 0 auto;
+  }
+  
+   
+  .mermaid .node rect,
+  .mermaid .node circle,
+  .mermaid .node ellipse,
+  .mermaid .node polygon,
+  .mermaid .node path {
+    stroke-width: 1px;
+  }
+  
+  .mermaid .edgePath .path {
+    stroke-width: 1.5px;
+  }
+  
+  .mermaid .edgeLabel {
+    font-size: 0.85em;
+    background-color: inherit !important;
+  }
+  
+   
+  .mermaid .label text,
+  .mermaid text.label {
+    fill: #374151;
+    font-weight: normal;
+  }
+  
+  .dark .mermaid .label text,
+  .dark .mermaid text.label {
+    fill: #e5e7eb;
+  }
+  
+   
+  @media (max-width: 768px) {
+    .mermaid {
+      max-width: 98%;
+      padding: 0.8rem 0.3rem;
+      margin: 1.2rem auto;
+    }
+    
+    .mermaid svg {
+      font-size: 12px;
+    }
+  }
+</style> 
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col">
+    <div class="flex-grow flex flex-col">
+        <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            
+            <div class="flex items-center">
+                <a href="https://blog.cmdragon.cn/" class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300">
+                    <div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105">
+                        <img src="/images/logo/small.png" alt="cmdragon&#39;s Blog Logo" class="h-full w-auto" />
+                    </div>
+                    <span class="group-hover:text-primary transition-colors duration-300">cmdragon&#39;s Blog</span>
+                </a>
+            </div>
+            
+            
+            <nav class="hidden md:flex space-x-1">
+                
+                
+                    <a href="/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="首页"
+                       tabindex="0">
+                        <span class="relative z-10">首页</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="归档"
+                       tabindex="0">
+                        <span class="relative z-10">归档</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="分类"
+                       tabindex="0">
+                        <span class="relative z-10">分类</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="标签"
+                       tabindex="0">
+                        <span class="relative z-10">标签</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="友链"
+                       tabindex="0">
+                        <span class="relative z-10">友链</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+            </nav>
+            
+            
+            <div class="flex items-center space-x-3">
+                
+                <button 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="搜索"
+                    tabindex="0"
+                    onclick="openSiteSearch()">
+                    <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="theme-toggle" 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="切换深色模式"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:weather-sunny" class="dark:hidden" width="20" height="20"></iconify-icon>
+                    <iconify-icon icon="mdi:weather-night" class="hidden dark:block" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="mobile-menu-button" 
+                    class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="打开菜单"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:menu" width="20" height="20"></iconify-icon>
+                </button>
+            </div>
+        </div>
+        
+        
+        <div id="mobile-menu" class="md:hidden hidden pb-3">
+            <div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner">
+                
+                    <a href="/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="首页"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            首页
+                        </div>
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="归档"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            归档
+                        </div>
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="分类"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            分类
+                        </div>
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="标签"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            标签
+                        </div>
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="友链"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            友链
+                        </div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+    });
+    
+    
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        } else {
+            header.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        }
+    });
+</script> 
+        
+        <main class="container mx-auto px-4 py-8 flex-grow">
+            
+<div class="container mx-auto px-4 sm:px-6 relative">
+    <div class="flex flex-col lg:flex-row lg:gap-8">
+        
+        <article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700">
+            
+            <nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label="面包屑导航">
+    <ol class="flex flex-wrap items-center" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="https://blog.cmdragon.cn/" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="首页">
+                <span itemprop="name">首页</span>
+            </a>
+            <meta itemprop="position" content="1" />
+        </li>
+        
+        
+        
+            
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="https://blog.cmdragon.cn/posts" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="Posts">
+                        <span itemprop="name">Posts</span>
+                    </a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span class="text-gray-800 dark:text-gray-200" itemprop="name" title="Django 安全性与防御性编程：如何保护 Django Web 应用">Django 安全性与防御性编程：如何保护 Django W...</span>
+                    <meta itemprop="position" content="3" />
+                </li>
+            
+        
+    </ol>
+</nav> 
+            
+            <header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">Django 安全性与防御性编程：如何保护 Django Web 应用</h1>
+                
+                <div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3">
+                    <span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:calendar" class="mr-1" width="16" height="16"></iconify-icon>
+                        2024-05-13
+                    </span>
+                    
+                    
+                        <span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full">
+                            <iconify-icon icon="mdi:folder" class="mr-1" width="16" height="16"></iconify-icon>
+                            
+                                
+                                <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91" class="hover:text-primary transition-colors">
+                                    后端开发
+                                </a>
+                            
+                        </span>
+                    
+                    
+                    
+                    <span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:clock-outline" class="mr-1" width="16" height="16"></iconify-icon>
+                        24 分钟阅读
+                    </span>
+                    
+                    
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank" rel="noopener noreferrer" 
+                       class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors"
+                       aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" 
+                       tabindex="0">
+                        <iconify-icon icon="simple-icons:creativecommons" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsbysa" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsnc" width="16" height="16" class="mr-1"></iconify-icon>
+                        <span>BY-NC-SA 4.0</span>
+                    </a>
+                </div>
+            </header>
+            
+            
+            <div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed">
+                <img src="https://static.cmdragon.cn/blog/images/2024_05_13 20_31_47.png@blog" title="2024_05_13 20_31_47.png" alt="2024_05_13 20_31_47.png"/>
+<h2 id="跨站请求伪造csrf">跨站请求伪造（CSRF）</h2>
+<p>跨站请求伪造（CSRF）是一种常见的网络攻击，它利用用户的身份和权限，欺骗服务器执行非预期的操作。Django 提供了一种内置的 CSRF
+保护机制，可以帮助保护应用免受 CSRF 攻击。</p>
+<p>Django 的 CSRF 保护机制是通过 CSRF 令牌（CSRF Token）实现的，它是一个加密字符串，包含了一些关于用户会话和请求的信息。在每个
 POST、PUT、PATCH 和 DELETE 请求中，都需要在表单或 AJAX 请求中包含这个 CSRF 令牌，以便服务器可以验证请求的合法性。
-AD：<a href=https://cmdragon.cn/>首页 | 一个覆盖广泛主题工具的高效在线平台</a>
-在 Django 中，可以通过以下几种方式获取 CSRF 令牌：</p><ol><li><p>在 HTML 模板中，使用<code>{% csrf_token %}</code>标签，在表单中插入 CSRF 令牌。</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>&lt;form method=&#34;post&#34;&gt;
+AD：<a href="https://cmdragon.cn/">首页 | 一个覆盖广泛主题工具的高效在线平台</a>
+在 Django 中，可以通过以下几种方式获取 CSRF 令牌：</p>
+<ol>
+<li>
+<p>在 HTML 模板中，使用<code>{% csrf_token %}</code>标签，在表单中插入 CSRF 令牌。</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">&lt;form method=&#34;post&#34;&gt;
     {% csrf_token %}
     {{ form.as_p }}
     &lt;button type=&#34;submit&#34;&gt;提交&lt;/button&gt;
-&lt;/form&gt;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li><li><p>在 AJAX 请求中，可以从<code>csrfmiddlewaretoken</code>的 cookie 中获取 CSRF 令牌，并在请求头中添加<code>X-CSRFToken</code>字段。</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>function getCookie(name) {
+&lt;/form&gt;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+<li>
+<p>在 AJAX 请求中，可以从<code>csrfmiddlewaretoken</code>的 cookie 中获取 CSRF 令牌，并在请求头中添加<code>X-CSRFToken</code>字段。</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">function getCookie(name) {
     var cookieValue = null;
     if (document.cookie &amp;&amp; document.cookie !== &#39;&#39;) {
         var cookies = document.cookie.split(&#39;;&#39;);
@@ -85,10 +807,118 @@ $.ajaxSetup({
             xhr.setRequestHeader(&#34;X-CSRFToken&#34;, getCookie(&#39;csrftoken&#39;));
         }
     }
-});</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li><li><p>在 Django 视图函数中，可以使用<code>request.META</code>获取 CSRF 令牌，并在请求中验证它的合法性。</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>from django.middleware.csrf import get_token
+});</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+<li>
+<p>在 Django 视图函数中，可以使用<code>request.META</code>获取 CSRF 令牌，并在请求中验证它的合法性。</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">from django.middleware.csrf import get_token
 
 def my_view(request):
     token = get_token(request)
@@ -96,111 +926,1668 @@ def my_view(request):
     if request.method == &#39;POST&#39;:
         # ...
         if not request.is_csrf_token_valid():
-            return HttpResponseBadRequest(&#39;Invalid CSRF token.&#39;)</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li></ol><p>Django 的 CSRF 保护机制可以帮助开发人员快速实现安全的 Web 应用，但是也需要注意一些问题，例如在使用 AJAX 请求时，需要确保请求头中包含了
+            return HttpResponseBadRequest(&#39;Invalid CSRF token.&#39;)</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+</ol>
+<p>Django 的 CSRF 保护机制可以帮助开发人员快速实现安全的 Web 应用，但是也需要注意一些问题，例如在使用 AJAX 请求时，需要确保请求头中包含了
 CSRF 令牌，否则服务器会拒绝处理该请求。同时，在使用 CSRF 令牌时，也需要注意防止 CSRF 令牌被泄露，例如在表单中使用 HTTP GET
-方法时，需要注意 CSRF 令牌的隐藏性。</p><p>AD：<a href=https://movie.cmdragon.cn:2083/>专业搜索引擎</a>
+方法时，需要注意 CSRF 令牌的隐藏性。</p>
+<p>AD：<a href="https://movie.cmdragon.cn:2083/">专业搜索引擎</a>
 总之，Django 的 CSRF 保护机制是一个强大的工具，可以帮助开发人员快速实现安全的 Web 应用，但是也需要注意一些问题，以确保 CSRF
-令牌的安全性。</p><h2 id=跨站脚本xss>跨站脚本（XSS）</h2><p>跨站脚本（XSS，Cross-site Scripting）攻击是一种常见的网络安全威胁，攻击者通过注入恶意脚本到用户的浏览器中，来窃取用户的敏感信息或者执行非授权操作。Django
-提供了一套内置的安全特性来帮助防止 XSS 攻击，其中包括过滤器（filters）和模板标签（template tags）。</p><ol><li><p><strong>内置过滤器</strong>： Django 的模板引擎（如 Django 的<code>{{ }}</code>模板标签）提供了<code>safe</code>过滤器，用于标记字符串为安全的，不会进行 HTML
-实体转义。当需要在模板中显示用户输入的内容，但不想进行转义时，可以使用<code>safe</code>过滤器。</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>&lt;p&gt;{{ user_input|safe }}&lt;/p&gt;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>如果<code>user_input</code>可能包含恶意脚本，你需要确保它是可信的，或者在输出之前进行适当的清理和验证。</p></li><li><p><strong>模板标签</strong>： Django 提供了<code>safe</code>标签，可以将整个块标记为安全，不会进行转义。</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>{% autoescape off %}
+令牌的安全性。</p>
+<h2 id="跨站脚本xss">跨站脚本（XSS）</h2>
+<p>跨站脚本（XSS，Cross-site Scripting）攻击是一种常见的网络安全威胁，攻击者通过注入恶意脚本到用户的浏览器中，来窃取用户的敏感信息或者执行非授权操作。Django
+提供了一套内置的安全特性来帮助防止 XSS 攻击，其中包括过滤器（filters）和模板标签（template tags）。</p>
+<ol>
+<li>
+<p><strong>内置过滤器</strong>： Django 的模板引擎（如 Django 的<code>{{ }}</code>模板标签）提供了<code>safe</code>过滤器，用于标记字符串为安全的，不会进行 HTML
+实体转义。当需要在模板中显示用户输入的内容，但不想进行转义时，可以使用<code>safe</code>过滤器。</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">&lt;p&gt;{{ user_input|safe }}&lt;/p&gt;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>如果<code>user_input</code>可能包含恶意脚本，你需要确保它是可信的，或者在输出之前进行适当的清理和验证。</p>
+</li>
+<li>
+<p><strong>模板标签</strong>： Django 提供了<code>safe</code>标签，可以将整个块标记为安全，不会进行转义。</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">{% autoescape off %}
 &lt;p&gt;{{ user_input|safe }}&lt;/p&gt;
-{% endautoescape %}</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>这里<code>autoescape off</code>指令关闭了模板的自动转义功能，如果在块内部使用<code>safe</code>标签，可以确保用户输入不会被转义。</p></li><li><p><strong>Content Security Policy (CSP)</strong> ： Django 的<code>django.middleware.clickjacking.XSSMiddleware</code>
-和<code>django.middleware.security.SecurityMiddleware</code>中包含了 Content Security Policy 的支持，可以限制页面可以加载的内容来源，防止恶意脚本的执行。</p></li><li><p><strong>HTML5 模式</strong>： Django 的<code>X_FRAME_OPTIONS</code>设置可以控制页面是否可以嵌入到其他页面中，防止点击劫持（Clickjacking）攻击，这是一种变相的
-XSS 攻击。</p></li><li><p><strong>输入验证</strong>： 在接收用户输入时，始终进行适当的验证和清理，确保数据的格式和内容符合预期，避免恶意脚本的注入。</p></li></ol><p>尽管 Django
+{% endautoescape %}</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>这里<code>autoescape off</code>指令关闭了模板的自动转义功能，如果在块内部使用<code>safe</code>标签，可以确保用户输入不会被转义。</p>
+</li>
+<li>
+<p><strong>Content Security Policy (CSP)</strong> ： Django 的<code>django.middleware.clickjacking.XSSMiddleware</code>
+和<code>django.middleware.security.SecurityMiddleware</code>中包含了 Content Security Policy 的支持，可以限制页面可以加载的内容来源，防止恶意脚本的执行。</p>
+</li>
+<li>
+<p><strong>HTML5 模式</strong>： Django 的<code>X_FRAME_OPTIONS</code>设置可以控制页面是否可以嵌入到其他页面中，防止点击劫持（Clickjacking）攻击，这是一种变相的
+XSS 攻击。</p>
+</li>
+<li>
+<p><strong>输入验证</strong>： 在接收用户输入时，始终进行适当的验证和清理，确保数据的格式和内容符合预期，避免恶意脚本的注入。</p>
+</li>
+</ol>
+<p>尽管 Django
 提供了这些内置的保护机制，但开发人员仍然需要保持警惕，因为攻击者可能会使用各种手段绕过这些防御。在处理用户输入时，始终遵循“最小权限原则”，只允许必要的数据和功能，并且在必要时使用第三方库（如<code>django-csp</code>
-或<code>django-xss-filter</code>）进行额外的安全增强。</p><h2 id=sql注入>SQL注入</h2><p>Django 使用 Object-Relational Mapping (ORM) 技术，可以有效帮助开发人员避免 SQL 注入攻击。ORM 是一种在应用程序中使用高级编程语言（如
-Python）来操作数据库的方法，它可以将 SQL 语句的构造转移到框架内部，从而减少直接编写 SQL 语句的需求。</p><p>AD：<a href=https://comic.cmdragon.cn:2087/>漫画首页</a>
+或<code>django-xss-filter</code>）进行额外的安全增强。</p>
+<h2 id="sql注入">SQL注入</h2>
+<p>Django 使用 Object-Relational Mapping (ORM) 技术，可以有效帮助开发人员避免 SQL 注入攻击。ORM 是一种在应用程序中使用高级编程语言（如
+Python）来操作数据库的方法，它可以将 SQL 语句的构造转移到框架内部，从而减少直接编写 SQL 语句的需求。</p>
+<p>AD：<a href="https://comic.cmdragon.cn:2087/">漫画首页</a>
 Django 的 ORM 将参数化查询作为默认行为，这意味着在构造 SQL 语句时，用户提供的数据会被自动转义，避免了直接将用户输入拼接到
-SQL 语句中，这是 SQL 注入攻击的主要入口。</p><p>以下是使用 Django ORM 时应该遵循的安全最佳实践：</p><ol><li><p><strong>使用 ORM 而不是原生 SQL</strong>：尽可能地使用 Django ORM 来操作数据库，而不是直接编写原生 SQL 语句。ORM 会帮助你自动转义用户输入，避免
-SQL 注入攻击。</p></li><li><p><strong>使用参数化查询</strong>：当需要使用原生 SQL 时，始终使用参数化查询，避免将用户输入直接拼接到 SQL 语句中。例如，使用 Django
-的<code>execute</code>方法：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>from django.db import connection
+SQL 语句中，这是 SQL 注入攻击的主要入口。</p>
+<p>以下是使用 Django ORM 时应该遵循的安全最佳实践：</p>
+<ol>
+<li>
+<p><strong>使用 ORM 而不是原生 SQL</strong>：尽可能地使用 Django ORM 来操作数据库，而不是直接编写原生 SQL 语句。ORM 会帮助你自动转义用户输入，避免
+SQL 注入攻击。</p>
+</li>
+<li>
+<p><strong>使用参数化查询</strong>：当需要使用原生 SQL 时，始终使用参数化查询，避免将用户输入直接拼接到 SQL 语句中。例如，使用 Django
+的<code>execute</code>方法：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">from django.db import connection
 
 with connection.cursor() as cursor:
     cursor.execute(&#34;SELECT * FROM myapp_model WHERE id = %s&#34;, [user_id])
-    result = cursor.fetchone()</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>这里，<code>%s</code>是一个占位符，<code>[user_id]</code>是一个列表，其中包含用户输入的数据，ORM 会自动将其转义，避免 SQL 注入攻击。</p></li><li><p><strong>使用预定义的查询</strong>：使用 Django ORM 提供的查询方法，如<code>get</code>、<code>filter</code>、<code>exclude</code>等，而不是直接使用原生的 SQL
-查询。这些查询方法也会自动转义用户输入，避免 SQL 注入攻击。</p></li><li><p><strong>输入验证</strong>：在接收用户输入时，始终进行适当的验证和清理，确保数据的格式和内容符合预期，避免恶意输入。</p></li></ol><p>虽然 Django ORM 可以有效帮助开发人员避免 SQL
+    result = cursor.fetchone()</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>这里，<code>%s</code>是一个占位符，<code>[user_id]</code>是一个列表，其中包含用户输入的数据，ORM 会自动将其转义，避免 SQL 注入攻击。</p>
+</li>
+<li>
+<p><strong>使用预定义的查询</strong>：使用 Django ORM 提供的查询方法，如<code>get</code>、<code>filter</code>、<code>exclude</code>等，而不是直接使用原生的 SQL
+查询。这些查询方法也会自动转义用户输入，避免 SQL 注入攻击。</p>
+</li>
+<li>
+<p><strong>输入验证</strong>：在接收用户输入时，始终进行适当的验证和清理，确保数据的格式和内容符合预期，避免恶意输入。</p>
+</li>
+</ol>
+<p>虽然 Django ORM 可以有效帮助开发人员避免 SQL
 注入攻击，但不能完全消除这种风险。因此，在处理用户输入时，始终应该遵循“最小权限原则”，只允许必要的数据和功能，并在必要时使用第三方库（如<code>django-sql-security</code>
-）进行额外的安全增强。</p><h2 id=文件上传攻击>文件上传攻击</h2><p>Django 提供了一些内置的安全特性来帮助处理文件上传，以减少文件上传攻击的风险。以下是一些关键的安全措施和最佳实践：</p><ol><li><p><strong>文件存储和路径安全</strong>：</p><ul><li><strong>避免使用用户提供的文件名</strong>：不要直接使用用户上传的文件名来保存文件，因为这可能导致路径遍历攻击。应该生成一个随机的文件名，并确保文件存储在安全的目录中。</li><li><strong>限制文件存储位置</strong>：确保文件存储在应用程序的受控目录中，避免将文件存储在可由Web服务器直接访问的位置，这样可以防止直接访问上传的文件。</li></ul></li><li><p><strong>文件类型和大小限制</strong>：</p><ul><li><strong>检查文件类型</strong>：使用<code>mimetype</code>、<code>content_type</code>或文件的扩展名来验证文件类型，确保只接受预期的文件类型。</li><li><strong>限制文件大小</strong>：在<code>settings.py</code>中设置<code>FILE_UPLOAD_MAX_MEMORY_SIZE</code>和<code>FILE_UPLOAD_MAX_NUMBER_PER_FIELD</code>
-来限制单个文件上传的大小和每个表单字段可以上传的文件数量。</li></ul></li><li><p><strong>文件内容验证</strong>：</p><ul><li><strong>检查文件内容</strong>：对于某些文件类型（如图像），可以使用库（如<code>PIL</code>）来检查文件内容是否符合预期格式，以防止嵌入恶意代码。</li></ul></li><li><p><strong>使用 Django 的<code>FileField</code>和<code>ImageField</code></strong>：</p><ul><li>这些字段类型提供了内置的验证，可以检查文件的<code>mimetype</code>和大小。</li></ul></li><li><p><strong>安全处理上传的文件</strong>：</p><ul><li><strong>不要执行不可信的文件</strong>：永远不要在服务器上执行用户上传的文件，这可能导致代码执行攻击。</li><li><strong>隔离上传文件</strong>：如果可能，将上传的文件存储在隔离的环境中，以减少潜在的安全风险。</li></ul></li><li><p><strong>使用 Django 的中间件和视图</strong>：</p><ul><li>Django 的中间件可以用来在文件上传到视图之前进行额外的安全检查。</li><li>使用 Django 的视图装饰器，如<code>@login_required</code>，来确保只有认证用户才能上传文件。</li></ul></li><li><p><strong>定期更新和安全审计</strong>：</p><ul><li>定期更新 Django 和所有依赖库，以确保使用最新的安全修复。</li><li>进行安全审计，检查文件上传功能是否存在潜在的安全漏洞。</li></ul></li></ol><p>通过遵循这些最佳实践，可以大大降低文件上传攻击的风险。然而，安全是一个持续的过程，需要不断地评估和改进。</p><h2 id=httponly-cookie>HTTPOnly cookie</h2><p>Django 框架支持 HTTPOnly cookie，这是一种有助于提高网站安全性的措施。HTTPOnly cookie 是一种特殊的 cookie，它通过在设置
-cookie 时添加<code>HttpOnly</code>标志来实现。这个标志告诉浏览器，该 cookie 不应该通过客户端脚本（如 JavaScript）访问。</p><p>以下是 HTTPOnly cookie 的一些关键点：</p><ol><li><p><strong>防止 XSS 攻击</strong>： HTTPOnly cookie 可以防止跨站脚本（XSS）攻击，因为攻击者无法通过注入恶意脚本来读取用户的
-cookie。这有助于保护用户的会话信息不被窃取。</p></li><li><p><strong>增强会话安全</strong>： 当用户登录到一个网站时，服务器通常会创建一个会话 cookie，用于在后续请求中识别用户。如果这个 cookie 是
-HTTPOnly 的，那么即使网站存在 XSS 漏洞，攻击者也无法通过 JavaScript 获取这个 cookie。</p></li><li><p><strong>Django 中的设置</strong>： Django 默认会为 session cookie 和 CSRF token cookie 启用 HTTPOnly 标志。你可以在 Django
-的设置文件<code>settings.py</code>中找到以下配置：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SESSION_COOKIE_HTTPONLY = True
-CSRF_COOKIE_HTTPONLY = True</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>这些设置确保了 Django 生成的 session cookie 和 CSRF token cookie 都是 HTTPOnly 的。</p></li><li><p><strong>手动设置 HTTPOnly cookie</strong>： 如果你需要在 Django 视图中手动设置 cookie，并且希望它是 HTTPOnly 的，你可以这样做：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>response = HttpResponse()
-response.set_cookie(&#39;my_cookie&#39;, &#39;value&#39;, httponly=True)</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>在这个例子中，<code>my_cookie</code>将被设置为 HTTPOnly cookie。</p></li></ol><p>虽然 HTTPOnly cookie 提供了额外的安全层，但它并不能完全防止所有类型的攻击。例如，它不能防止中间人攻击或通过其他方式（如网络嗅探）获取
-cookie。因此，除了使用 HTTPOnly cookie 之外，还应该采取其他安全措施，如使用 HTTPS、实施内容安全策略（CSP）等，以进一步提高网站的安全性。</p><h2 id=密码安全性>密码安全性</h2><p>Django 提供了内置的安全密码存储功能，这是通过其内置的<code>django.contrib.auth</code>库中的<code>User</code>
-模型和密码哈希处理机制实现的。当用户注册并设置密码时，Django并不会直接存储明文密码，而是存储密码的哈希值和一个随机盐值（salt）。</p><p>以下是 Django 安全密码存储的关键点：</p><ol><li><p><strong>哈希算法</strong>： Django 使用了 bcrypt 和 PBKDF2（取决于你的 Django
-版本）这样的安全哈希算法来加密密码。这些算法经过精心设计，即使攻击者知道哈希值，也无法轻易地通过暴力破解或彩虹表来恢复原始密码。</p></li><li><p><strong>盐值</strong>： 每个用户的密码哈希值都会与一个唯一的随机盐值结合，这样即使相同的密码，由于盐值不同，生成的哈希值也会不同。这进一步增加了破解的难度。</p></li><li><p><strong><code>set_password()</code>方法</strong>： 当用户设置密码时，Django 提供了<code>set_password()</code>方法，它会自动处理密码的哈希和盐值生成。示例代码如下：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>user = User.objects.create_user(username=&#39;myuser&#39;, password=&#39;mypassword&#39;)
+）进行额外的安全增强。</p>
+<h2 id="文件上传攻击">文件上传攻击</h2>
+<p>Django 提供了一些内置的安全特性来帮助处理文件上传，以减少文件上传攻击的风险。以下是一些关键的安全措施和最佳实践：</p>
+<ol>
+<li>
+<p><strong>文件存储和路径安全</strong>：</p>
+<ul>
+<li><strong>避免使用用户提供的文件名</strong>：不要直接使用用户上传的文件名来保存文件，因为这可能导致路径遍历攻击。应该生成一个随机的文件名，并确保文件存储在安全的目录中。</li>
+<li><strong>限制文件存储位置</strong>：确保文件存储在应用程序的受控目录中，避免将文件存储在可由Web服务器直接访问的位置，这样可以防止直接访问上传的文件。</li>
+</ul>
+</li>
+<li>
+<p><strong>文件类型和大小限制</strong>：</p>
+<ul>
+<li><strong>检查文件类型</strong>：使用<code>mimetype</code>、<code>content_type</code>或文件的扩展名来验证文件类型，确保只接受预期的文件类型。</li>
+<li><strong>限制文件大小</strong>：在<code>settings.py</code>中设置<code>FILE_UPLOAD_MAX_MEMORY_SIZE</code>和<code>FILE_UPLOAD_MAX_NUMBER_PER_FIELD</code>
+来限制单个文件上传的大小和每个表单字段可以上传的文件数量。</li>
+</ul>
+</li>
+<li>
+<p><strong>文件内容验证</strong>：</p>
+<ul>
+<li><strong>检查文件内容</strong>：对于某些文件类型（如图像），可以使用库（如<code>PIL</code>）来检查文件内容是否符合预期格式，以防止嵌入恶意代码。</li>
+</ul>
+</li>
+<li>
+<p><strong>使用 Django 的<code>FileField</code>和<code>ImageField</code></strong>：</p>
+<ul>
+<li>这些字段类型提供了内置的验证，可以检查文件的<code>mimetype</code>和大小。</li>
+</ul>
+</li>
+<li>
+<p><strong>安全处理上传的文件</strong>：</p>
+<ul>
+<li><strong>不要执行不可信的文件</strong>：永远不要在服务器上执行用户上传的文件，这可能导致代码执行攻击。</li>
+<li><strong>隔离上传文件</strong>：如果可能，将上传的文件存储在隔离的环境中，以减少潜在的安全风险。</li>
+</ul>
+</li>
+<li>
+<p><strong>使用 Django 的中间件和视图</strong>：</p>
+<ul>
+<li>Django 的中间件可以用来在文件上传到视图之前进行额外的安全检查。</li>
+<li>使用 Django 的视图装饰器，如<code>@login_required</code>，来确保只有认证用户才能上传文件。</li>
+</ul>
+</li>
+<li>
+<p><strong>定期更新和安全审计</strong>：</p>
+<ul>
+<li>定期更新 Django 和所有依赖库，以确保使用最新的安全修复。</li>
+<li>进行安全审计，检查文件上传功能是否存在潜在的安全漏洞。</li>
+</ul>
+</li>
+</ol>
+<p>通过遵循这些最佳实践，可以大大降低文件上传攻击的风险。然而，安全是一个持续的过程，需要不断地评估和改进。</p>
+<h2 id="httponly-cookie">HTTPOnly cookie</h2>
+<p>Django 框架支持 HTTPOnly cookie，这是一种有助于提高网站安全性的措施。HTTPOnly cookie 是一种特殊的 cookie，它通过在设置
+cookie 时添加<code>HttpOnly</code>标志来实现。这个标志告诉浏览器，该 cookie 不应该通过客户端脚本（如 JavaScript）访问。</p>
+<p>以下是 HTTPOnly cookie 的一些关键点：</p>
+<ol>
+<li>
+<p><strong>防止 XSS 攻击</strong>： HTTPOnly cookie 可以防止跨站脚本（XSS）攻击，因为攻击者无法通过注入恶意脚本来读取用户的
+cookie。这有助于保护用户的会话信息不被窃取。</p>
+</li>
+<li>
+<p><strong>增强会话安全</strong>： 当用户登录到一个网站时，服务器通常会创建一个会话 cookie，用于在后续请求中识别用户。如果这个 cookie 是
+HTTPOnly 的，那么即使网站存在 XSS 漏洞，攻击者也无法通过 JavaScript 获取这个 cookie。</p>
+</li>
+<li>
+<p><strong>Django 中的设置</strong>： Django 默认会为 session cookie 和 CSRF token cookie 启用 HTTPOnly 标志。你可以在 Django
+的设置文件<code>settings.py</code>中找到以下配置：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = True</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>这些设置确保了 Django 生成的 session cookie 和 CSRF token cookie 都是 HTTPOnly 的。</p>
+</li>
+<li>
+<p><strong>手动设置 HTTPOnly cookie</strong>： 如果你需要在 Django 视图中手动设置 cookie，并且希望它是 HTTPOnly 的，你可以这样做：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">response = HttpResponse()
+response.set_cookie(&#39;my_cookie&#39;, &#39;value&#39;, httponly=True)</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>在这个例子中，<code>my_cookie</code>将被设置为 HTTPOnly cookie。</p>
+</li>
+</ol>
+<p>虽然 HTTPOnly cookie 提供了额外的安全层，但它并不能完全防止所有类型的攻击。例如，它不能防止中间人攻击或通过其他方式（如网络嗅探）获取
+cookie。因此，除了使用 HTTPOnly cookie 之外，还应该采取其他安全措施，如使用 HTTPS、实施内容安全策略（CSP）等，以进一步提高网站的安全性。</p>
+<h2 id="密码安全性">密码安全性</h2>
+<p>Django 提供了内置的安全密码存储功能，这是通过其内置的<code>django.contrib.auth</code>库中的<code>User</code>
+模型和密码哈希处理机制实现的。当用户注册并设置密码时，Django并不会直接存储明文密码，而是存储密码的哈希值和一个随机盐值（salt）。</p>
+<p>以下是 Django 安全密码存储的关键点：</p>
+<ol>
+<li>
+<p><strong>哈希算法</strong>： Django 使用了 bcrypt 和 PBKDF2（取决于你的 Django
+版本）这样的安全哈希算法来加密密码。这些算法经过精心设计，即使攻击者知道哈希值，也无法轻易地通过暴力破解或彩虹表来恢复原始密码。</p>
+</li>
+<li>
+<p><strong>盐值</strong>： 每个用户的密码哈希值都会与一个唯一的随机盐值结合，这样即使相同的密码，由于盐值不同，生成的哈希值也会不同。这进一步增加了破解的难度。</p>
+</li>
+<li>
+<p><strong><code>set_password()</code>方法</strong>： 当用户设置密码时，Django 提供了<code>set_password()</code>方法，它会自动处理密码的哈希和盐值生成。示例代码如下：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">user = User.objects.create_user(username=&#39;myuser&#39;, password=&#39;mypassword&#39;)
 user.set_password(&#39;mypassword&#39;)
-user.save()</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li><li><p><strong>验证密码</strong>： 当用户尝试登录时，Django 会计算他们提供的密码与数据库中存储的哈希值和盐值的匹配。这通过<code>authenticate()</code>
-函数完成，而不是直接比较密码。</p></li><li><p><strong><code>check_password()</code>方法</strong>： 为了验证密码，可以使用<code>check_password()</code>方法，如：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>if user.check_password(&#39;mynewpassword&#39;):
+user.save()</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+<li>
+<p><strong>验证密码</strong>： 当用户尝试登录时，Django 会计算他们提供的密码与数据库中存储的哈希值和盐值的匹配。这通过<code>authenticate()</code>
+函数完成，而不是直接比较密码。</p>
+</li>
+<li>
+<p><strong><code>check_password()</code>方法</strong>： 为了验证密码，可以使用<code>check_password()</code>方法，如：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">if user.check_password(&#39;mynewpassword&#39;):
     # 密码正确
 else:
-    # 密码错误</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li></ol><p>通过这种方式，Django 有效地保护了用户的密码，即使数据库被泄露，攻击者也无法直接获取到用户的密码，从而提高了安全性。</p><h2 id=安全会话>安全会话</h2><p>Django 使用加密和签名的方式来保护会话数据，以确保会话的安全性。下面是 Django 中安全会话的实现方式：</p><ol><li><strong>加密会话数据</strong>： Django 默认会将会话数据加密后存储在用户的浏览器中。这样即使用户可以查看浏览器的 cookie
-数据，也无法直接读取和理解其中的内容。Django 使用密钥来加密和解密会话数据，确保数据的机密性。</li><li><strong>签名会话数据</strong>： 除了加密数据外，Django
-还会对会话数据进行签名。签名是通过使用密钥和哈希算法来生成一个签名值，用于验证数据的完整性和真实性。如果会话数据在传输过程中被篡改，签名验证将失败，从而防止数据被篡改。</li><li><strong>SESSION_ENGINE 设置</strong>： 在 Django 的设置文件中，可以通过<code>SESSION_ENGINE</code>设置来选择会话引擎。默认情况下，Django
+    # 密码错误</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+</ol>
+<p>通过这种方式，Django 有效地保护了用户的密码，即使数据库被泄露，攻击者也无法直接获取到用户的密码，从而提高了安全性。</p>
+<h2 id="安全会话">安全会话</h2>
+<p>Django 使用加密和签名的方式来保护会话数据，以确保会话的安全性。下面是 Django 中安全会话的实现方式：</p>
+<ol>
+<li><strong>加密会话数据</strong>： Django 默认会将会话数据加密后存储在用户的浏览器中。这样即使用户可以查看浏览器的 cookie
+数据，也无法直接读取和理解其中的内容。Django 使用密钥来加密和解密会话数据，确保数据的机密性。</li>
+<li><strong>签名会话数据</strong>： 除了加密数据外，Django
+还会对会话数据进行签名。签名是通过使用密钥和哈希算法来生成一个签名值，用于验证数据的完整性和真实性。如果会话数据在传输过程中被篡改，签名验证将失败，从而防止数据被篡改。</li>
+<li><strong>SESSION_ENGINE 设置</strong>： 在 Django 的设置文件中，可以通过<code>SESSION_ENGINE</code>设置来选择会话引擎。默认情况下，Django
 使用<code>django.contrib.sessions.backends.db</code>
 作为会话引擎，将加密和签名的会话数据存储在数据库中。也可以选择其他会话引擎，如<code>django.contrib.sessions.backends.cache</code>
-或<code>django.contrib.sessions.backends.file</code>。</li><li><strong>SESSION_COOKIE_SECURE 设置</strong>： 可以通过设置<code>SESSION_COOKIE_SECURE = True</code>来确保会话 cookie 只能通过 HTTPS
-连接传输，增加会话数据的安全性。</li><li><strong>SESSION_COOKIE_HTTPONLY 设置</strong>： 同样可以通过设置<code>SESSION_COOKIE_HTTPONLY = True</code>来禁止 JavaScript 访问会话
-cookie，减少 XSS 攻击的可能性。</li></ol><p>通过加密和签名会话数据，Django 确保了用户的会话信息在传输和存储过程中的安全性，防止敏感数据泄露和篡改。这是保护用户隐私和确保系统安全的重要措施之一。</p></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>标签</h3><div class="flex flex-wrap gap-2"><a href=/tags/CSRF class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: CSRF" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>CSRF
-</a><a href=/tags/XSS class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: XSS" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>XSS
-</a><a href=/tags/SQL class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: SQL" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>SQL
-</a><a href=/tags/Upload class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: Upload" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>Upload
-</a><a href=/tags/HTTPOnly class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: HTTPOnly" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>HTTPOnly
-</a><a href=/tags/Password class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: Password" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>Password
-</a><a href=/tags/Session class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: Session" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>Session</a></div></div><nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center"><iconify-icon icon=mdi:arrow-left class=mr-2 width=16 height=16></iconify-icon>上一篇
-</span><a href=https://blog.cmdragon.cn/posts/fb3988914d7d0faa88af45cb045aba9e/ class="font-medium text-primary hover:text-primary-dark block" aria-label="上一篇: Django国际化与本地化指南" tabindex=0>Django国际化与本地化指南</a></div><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">下一篇<iconify-icon icon=mdi:arrow-right class=ml-2 width=16 height=16></iconify-icon>
-</span><a href=https://blog.cmdragon.cn/posts/eb1fa8383e445fbb6f0f2ff1276d4ae2/ class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: Django RESTful API设计与实践指南" tabindex=0>Django RESTful API设计与实践指南</a></div></nav><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:share-variant width=16 height=16></iconify-icon></div>分享</h3><div class="flex flex-wrap gap-3"><a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2ff8ba40152b39d84f918402253b9e3158%2f&text=Django%20%e5%ae%89%e5%85%a8%e6%80%a7%e4%b8%8e%e9%98%b2%e5%be%a1%e6%80%a7%e7%bc%96%e7%a8%8b%ef%bc%9a%e5%a6%82%e4%bd%95%e4%bf%9d%e6%8a%a4%20Django%20Web%20%e5%ba%94%e7%94%a8" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Twitter" tabindex=0><iconify-icon icon=mdi:twitter width=20 height=20></iconify-icon></a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2ff8ba40152b39d84f918402253b9e3158%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Facebook" tabindex=0><iconify-icon icon=mdi:facebook width=20 height=20></iconify-icon></a><a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2ff8ba40152b39d84f918402253b9e3158%2f&title=Django%20%e5%ae%89%e5%85%a8%e6%80%a7%e4%b8%8e%e9%98%b2%e5%be%a1%e6%80%a7%e7%bc%96%e7%a8%8b%ef%bc%9a%e5%a6%82%e4%bd%95%e4%bf%9d%e6%8a%a4%20Django%20Web%20%e5%ba%94%e7%94%a8" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label=分享到微博 tabindex=0><iconify-icon icon=mdi:sina-weibo width=20 height=20></iconify-icon></a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2ff8ba40152b39d84f918402253b9e3158%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 LinkedIn" tabindex=0><iconify-icon icon=mdi:linkedin width=20 height=20></iconify-icon></a></div></div></article><aside class="w-full lg:w-1/4"><button id=mobile-toc-toggle class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-<iconify-icon icon=mdi:table-of-contents width=24 height=24></iconify-icon></button><div id=toc-container class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
-fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
-lg:overflow-visible flex flex-col"><div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4"><h2 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:table-of-contents width=16 height=16></iconify-icon></div>目录</h2><div class="flex items-center"><button id=toc-toggle class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label=折叠目录>
-<iconify-icon id=toc-icon icon=mdi:chevron-up width=20 height=20></iconify-icon></button>
-<button id=toc-close class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div></div><div id=toc-content class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto"><nav id=TableOfContents><ul><li><a href=#跨站请求伪造csrf>跨站请求伪造（CSRF）</a></li><li><a href=#跨站脚本xss>跨站脚本（XSS）</a></li><li><a href=#sql注入>SQL注入</a></li><li><a href=#文件上传攻击>文件上传攻击</a></li><li><a href=#httponly-cookie>HTTPOnly cookie</a></li><li><a href=#密码安全性>密码安全性</a></li><li><a href=#安全会话>安全会话</a></li></ul></nav></div></div><div id=toc-overlay class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div></aside></div></div><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js></script><link rel=stylesheet href=/css/markdown.css><link rel=stylesheet href=/css/code-highlight.css><script src=/js/code-highlight.js></script><script src=/js/toc.js></script><script>document.addEventListener("DOMContentLoaded",function(){console.log("初始化代码高亮..."),window.hljs?(console.log("highlight.js 已加载"),document.querySelectorAll("pre code").forEach(function(e){console.log("应用高亮到代码块"),hljs.highlightElement(e)})):console.error("highlight.js 未加载!")})</script><style>#toc-content{max-height:none}@media(min-width:1024px){#toc-content{max-height:none;overflow:visible}#toc-container{max-height:calc(100vh - 120px);overflow-y:auto}nav#TableOfContents{overflow:visible}}@media(max-width:1023px){#toc-container{padding-bottom:env(safe-area-inset-bottom,20px);display:flex;flex-direction:column}#toc-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:20px}}</style></main><footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700"><div class="container mx-auto px-4"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:information width=16 height=16></iconify-icon></div>关于本站</h3><p class="text-sm text-gray-600 dark:text-gray-400 mb-4">cmdragon's Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。</p><div class="flex space-x-3"><a href=https://github.com/amd794 class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=GitHub tabindex=0 target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:github width=18 height=18></iconify-icon></a><button id=wechat-btn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=微信 tabindex=0>
-<iconify-icon icon=mdi:wechat width=18 height=18></iconify-icon></button>
-<a href=mailto:support@cmdragon.cn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=Email tabindex=0><iconify-icon icon=mdi:email width=18 height=18></iconify-icon></a><a href=/index.xml class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=RSS tabindex=0><iconify-icon icon=mdi:rss width=18 height=18></iconify-icon></a></div></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:link-variant width=16 height=16></iconify-icon></div>快速链接</h3><ul class=space-y-2><li><a href=https://movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>高清影视库</a></li><li><a href=https://comic.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>精选漫画阅读</a></li><li><a href=https://tools.cmdragon.cn/zh class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>实用在线工具</a></li><li><a href=https://hot-movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>热映影视推荐</a></li></ul></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>热门标签</h3><div class="flex flex-wrap gap-2"><a href=https://blog.cmdragon.cn/tags/FastAPI/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#FastAPI <span class="text-xs opacity-70">(85)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt <span class="text-xs opacity-70">(68)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#钩子 <span class="text-xs opacity-70">(62)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#性能优化 <span class="text-xs opacity-70">(47)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt.js/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt.js <span class="text-xs opacity-70">(43)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#生命周期 <span class="text-xs opacity-70">(38)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt3/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt3 <span class="text-xs opacity-70">(37)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#错误处理 <span class="text-xs opacity-70">(32)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#组件 <span class="text-xs opacity-70">(29)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#数据库管理 <span class="text-xs opacity-70">(27)</span></a></div></div></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6"><div class="flex flex-col md:flex-row justify-between items-center"><div class="text-center md:text-left mb-4 md:mb-0"><p class="text-sm text-gray-600 dark:text-gray-400">&copy; 2023 cmdragon's Blog. 保留所有权利.</p><p class="text-xs text-gray-500 dark:text-gray-500 mt-1">由 <a href=https://gohugo.io/ class="hover:text-primary transition-colors duration-300" target=_blank rel="noopener noreferrer">Hugo</a> 强力驱动</p></div><button id=back-to-top class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
-<iconify-icon icon=mdi:arrow-up class=mr-1 width=16 height=16></iconify-icon>返回顶部</button></div></div></div><div id=wechat-modal class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick='this.classList.add("hidden")'><div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick=event.stopPropagation()><button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick='document.getElementById("wechat-modal").classList.add("hidden")'>
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button><h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4><div class="flex justify-center"><img src=/images/wechat_qrcode.webp alt=微信二维码 class="w-64 h-64 object-contain"></div></div></div></footer><script>const backToTopButton=document.getElementById("back-to-top");window.addEventListener("scroll",function(){window.scrollY>300?(backToTopButton.classList.remove("opacity-0","invisible"),backToTopButton.classList.add("opacity-100","visible")):(backToTopButton.classList.add("opacity-0","invisible"),backToTopButton.classList.remove("opacity-100","visible"))}),backToTopButton.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})}),document.getElementById("wechat-btn").addEventListener("click",function(){document.getElementById("wechat-modal").classList.remove("hidden")}),document.getElementById("wechat-btn").addEventListener("keydown",function(e){(e.key==="Enter"||e.key===" ")&&(e.preventDefault(),document.getElementById("wechat-modal").classList.remove("hidden"))})</script></div><script>localStorage.getItem("color-theme")==="dark"||!("color-theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark")</script><script src=/js/code-highlight.js></script><script src=/js/advanced-render.js></script><div id=site-search-modal class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300"><div id=site-search-backdrop class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div><div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700"><div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700"><h3 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm"><iconify-icon icon=mdi:magnify width=16 height=16></iconify-icon></div><span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span></h3><button id=site-search-close class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div><div class=p-6><form id=site-search-form action=/search/ method=get><div class=relative><div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md"><span class="pl-4 text-gray-400"><iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></span><input type=text id=site-search-input name=q placeholder=输入关键词搜索... class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200" aria-label=搜索内容 tabindex=0>
-<button type=submit class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center" aria-label=搜索 tabindex=0>
-<span class="mr-1 hidden sm:inline">搜索</span>
-<iconify-icon icon=mdi:arrow-right width=18 height=18></iconify-icon></button></div></div></form><div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start"><div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5"><iconify-icon icon=mdi:information width=16 height=16 class="text-blue-500 dark:text-blue-300"></iconify-icon></div><div><p class=mb-1>快捷键提示:</p><ul class=space-y-1><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
-<span>打开搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
-<span>关闭搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
-<span>提交搜索</span></li></ul></div></div><div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"><div class="flex flex-wrap gap-2"><a href=/tags/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:tag-multiple class=mr-1 width=16 height=16></iconify-icon>标签
-</a><a href=/categories/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:folder-multiple class=mr-1 width=16 height=16></iconify-icon>分类
-</a><a href=/archives/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:archive class=mr-1 width=16 height=16></iconify-icon>归档</a></div></div></div></div></div><script>document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("site-search-modal"),t=e.querySelector('div[class*="rounded-xl"]'),s=document.getElementById("site-search-backdrop"),o=document.getElementById("site-search-close"),a=document.getElementById("site-search-form"),i=document.getElementById("site-search-input");window.openSiteSearch=function(){e.classList.remove("hidden"),document.body.classList.add("overflow-hidden"),setTimeout(()=>{e.classList.add("opacity-100"),t.classList.remove("scale-95","opacity-0"),t.classList.add("scale-100","opacity-100"),i.focus()},10)};function n(){e.classList.remove("opacity-100"),t.classList.remove("scale-100","opacity-100"),t.classList.add("scale-95","opacity-0"),setTimeout(()=>{e.classList.add("hidden"),document.body.classList.remove("overflow-hidden")},300)}s&&s.addEventListener("click",n),o&&o.addEventListener("click",n),document.addEventListener("keydown",t=>{t.key==="Escape"&&!e.classList.contains("hidden")&&n(),t.key==="/"&&e.classList.contains("hidden")&&document.activeElement.tagName!=="INPUT"&&(t.preventDefault(),openSiteSearch())}),t.addEventListener("click",e=>{e.stopPropagation()})})</script></body></html>
+或<code>django.contrib.sessions.backends.file</code>。</li>
+<li><strong>SESSION_COOKIE_SECURE 设置</strong>： 可以通过设置<code>SESSION_COOKIE_SECURE = True</code>来确保会话 cookie 只能通过 HTTPS
+连接传输，增加会话数据的安全性。</li>
+<li><strong>SESSION_COOKIE_HTTPONLY 设置</strong>： 同样可以通过设置<code>SESSION_COOKIE_HTTPONLY = True</code>来禁止 JavaScript 访问会话
+cookie，减少 XSS 攻击的可能性。</li>
+</ol>
+<p>通过加密和签名会话数据，Django 确保了用户的会话信息在传输和存储过程中的安全性，防止敏感数据泄露和篡改。这是保护用户隐私和确保系统安全的重要措施之一。</p>
+
+            </div>
+            
+            
+            
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                    <h3 class="text-lg font-medium mb-4 flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                        </div>
+                        标签
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        
+                            <a href="/tags/CSRF" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: CSRF"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>CSRF
+                            </a>
+                        
+                            <a href="/tags/XSS" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: XSS"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>XSS
+                            </a>
+                        
+                            <a href="/tags/SQL" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: SQL"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>SQL
+                            </a>
+                        
+                            <a href="/tags/Upload" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: Upload"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>Upload
+                            </a>
+                        
+                            <a href="/tags/HTTPOnly" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: HTTPOnly"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>HTTPOnly
+                            </a>
+                        
+                            <a href="/tags/Password" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: Password"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>Password
+                            </a>
+                        
+                            <a href="/tags/Session" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: Session"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>Session
+                            </a>
+                        
+                    </div>
+                </div>
+            
+            
+            
+            <nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center">
+                            <iconify-icon icon="mdi:arrow-left" class="mr-2" width="16" height="16"></iconify-icon>上一篇
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/fb3988914d7d0faa88af45cb045aba9e/" class="font-medium text-primary hover:text-primary-dark block" aria-label="上一篇: Django国际化与本地化指南" tabindex="0">
+                            Django国际化与本地化指南
+                        </a>
+                    </div>
+                
+                
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">
+                            下一篇<iconify-icon icon="mdi:arrow-right" class="ml-2" width="16" height="16"></iconify-icon>
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/eb1fa8383e445fbb6f0f2ff1276d4ae2/" class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: Django RESTful API设计与实践指南" tabindex="0">
+                            Django RESTful API设计与实践指南
+                        </a>
+                    </div>
+                
+            </nav>
+            
+            
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                <h3 class="text-lg font-medium mb-4 flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:share-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    分享
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2ff8ba40152b39d84f918402253b9e3158%2f&text=Django%20%e5%ae%89%e5%85%a8%e6%80%a7%e4%b8%8e%e9%98%b2%e5%be%a1%e6%80%a7%e7%bc%96%e7%a8%8b%ef%bc%9a%e5%a6%82%e4%bd%95%e4%bf%9d%e6%8a%a4%20Django%20Web%20%e5%ba%94%e7%94%a8" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Twitter" tabindex="0">
+                        <iconify-icon icon="mdi:twitter" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2ff8ba40152b39d84f918402253b9e3158%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Facebook" tabindex="0">
+                        <iconify-icon icon="mdi:facebook" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2ff8ba40152b39d84f918402253b9e3158%2f&title=Django%20%e5%ae%89%e5%85%a8%e6%80%a7%e4%b8%8e%e9%98%b2%e5%be%a1%e6%80%a7%e7%bc%96%e7%a8%8b%ef%bc%9a%e5%a6%82%e4%bd%95%e4%bf%9d%e6%8a%a4%20Django%20Web%20%e5%ba%94%e7%94%a8" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到微博" tabindex="0">
+                        <iconify-icon icon="mdi:sina-weibo" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2ff8ba40152b39d84f918402253b9e3158%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 LinkedIn" tabindex="0">
+                        <iconify-icon icon="mdi:linkedin" width="20" height="20"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            
+        </article>
+        
+        
+        
+        <aside class="w-full lg:w-1/4">
+            
+            <button id="mobile-toc-toggle" class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <iconify-icon icon="mdi:table-of-contents" width="24" height="24"></iconify-icon>
+            </button>
+            
+            
+            <div id="toc-container" class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
+                 fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
+                 lg:overflow-visible flex flex-col">
+                <div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4">
+                    <h2 class="text-lg font-medium flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:table-of-contents" width="16" height="16"></iconify-icon>
+                        </div>
+                        目录
+                    </h2>
+                    <div class="flex items-center">
+                        <button id="toc-toggle" class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label="折叠目录">
+                            <iconify-icon id="toc-icon" icon="mdi:chevron-up" width="20" height="20"></iconify-icon>
+                        </button>
+                        
+                        <button id="toc-close" class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                            <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                <div id="toc-content" class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#跨站请求伪造csrf">跨站请求伪造（CSRF）</a></li>
+    <li><a href="#跨站脚本xss">跨站脚本（XSS）</a></li>
+    <li><a href="#sql注入">SQL注入</a></li>
+    <li><a href="#文件上传攻击">文件上传攻击</a></li>
+    <li><a href="#httponly-cookie">HTTPOnly cookie</a></li>
+    <li><a href="#密码安全性">密码安全性</a></li>
+    <li><a href="#安全会话">安全会话</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+            
+            
+            <div id="toc-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div>
+        </aside>
+        
+    </div>
+</div>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+
+<link rel="stylesheet" href="/css/markdown.css">
+<link rel="stylesheet" href="/css/code-highlight.css">
+<script src="/js/code-highlight.js"></script>
+
+<script src="/js/toc.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('初始化代码高亮...');
+    if (window.hljs) {
+      console.log('highlight.js 已加载');
+      document.querySelectorAll('pre code').forEach(function(block) {
+        console.log('应用高亮到代码块');
+        hljs.highlightElement(block);
+      });
+    } else {
+      console.error('highlight.js 未加载!');
+    }
+  });
+</script>
+
+
+<style>
+ 
+#toc-content {
+  max-height: none;
+}
+
+@media (min-width: 1024px) {
+  #toc-content {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  #toc-container {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+  
+  nav#TableOfContents {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1023px) {
+  #toc-container {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #toc-content {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+}
+</style>
+
+        </main>
+        
+        <footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:information" width="16" height="16"></iconify-icon>
+                    </div>
+                    关于本站
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    cmdragon&#39;s Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。
+                </p>
+                <div class="flex space-x-3">
+                    
+                    <a href="https://github.com/amd794" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="GitHub" tabindex="0" target="_blank" rel="noopener noreferrer">
+                        <iconify-icon icon="mdi:github" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    
+                    <button id="wechat-btn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="微信" tabindex="0">
+                        <iconify-icon icon="mdi:wechat" width="18" height="18"></iconify-icon>
+                    </button>
+                    
+                    <a href="mailto:support@cmdragon.cn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="Email" tabindex="0">
+                        <iconify-icon icon="mdi:email" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    <a href="/index.xml" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="RSS" tabindex="0">
+                        <iconify-icon icon="mdi:rss" width="18" height="18"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:link-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    快速链接
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="https://movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            高清影视库
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://comic.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            精选漫画阅读
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://tools.cmdragon.cn/zh" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            实用在线工具
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://hot-movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            热映影视推荐
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                    </div>
+                    热门标签
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    
+                    <a href="https://blog.cmdragon.cn/tags/FastAPI/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #FastAPI <span class="text-xs opacity-70">(85)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt <span class="text-xs opacity-70">(68)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #钩子 <span class="text-xs opacity-70">(62)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #性能优化 <span class="text-xs opacity-70">(47)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt.js/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt.js <span class="text-xs opacity-70">(43)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #生命周期 <span class="text-xs opacity-70">(38)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt3/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt3 <span class="text-xs opacity-70">(37)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #错误处理 <span class="text-xs opacity-70">(32)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #组件 <span class="text-xs opacity-70">(29)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #数据库管理 <span class="text-xs opacity-70">(27)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        &copy; 2023 cmdragon&#39;s Blog. 保留所有权利.
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                        由 <a href="https://gohugo.io/" class="hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer">Hugo</a> 强力驱动
+                    </p>
+                </div>
+                
+                
+                <button id="back-to-top" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
+                    <iconify-icon icon="mdi:arrow-up" class="mr-1" width="16" height="16"></iconify-icon>
+                    返回顶部
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick="this.classList.add('hidden')">
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick="event.stopPropagation()">
+            <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick="document.getElementById('wechat-modal').classList.add('hidden')">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+            <h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4>
+            <div class="flex justify-center">
+                <img src="/images/wechat_qrcode.webp" alt="微信二维码" class="w-64 h-64 object-contain">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+    
+    
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('click', function() {
+        document.getElementById('wechat-modal').classList.remove('hidden');
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            document.getElementById('wechat-modal').classList.remove('hidden');
+        }
+    });
+</script> 
+    </div>
+    
+    
+    <script>
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    
+    <script src="/js/code-highlight.js"></script>
+    
+    
+    <script src="/js/advanced-render.js"></script>
+    
+    <div id="site-search-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    
+    <div id="site-search-backdrop" class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+    
+    
+    <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-medium flex items-center">
+                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm">
+                    <iconify-icon icon="mdi:magnify" width="16" height="16"></iconify-icon>
+                </div>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span>
+            </h3>
+            <button id="site-search-close" class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+        </div>
+        
+        <div class="p-6">
+            <form id="site-search-form" action="/search/" method="get">
+                <div class="relative">
+                    <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md">
+                        <span class="pl-4 text-gray-400">
+                            <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                        </span>
+                        <input 
+                            type="text" 
+                            id="site-search-input" 
+                            name="q" 
+                            placeholder="输入关键词搜索..."
+                            class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200"
+                            aria-label="搜索内容"
+                            tabindex="0"
+                        >
+                        <button 
+                            type="submit"
+                            class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center"
+                            aria-label="搜索"
+                            tabindex="0">
+                            <span class="mr-1 hidden sm:inline">搜索</span>
+                            <iconify-icon icon="mdi:arrow-right" width="18" height="18"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start">
+                <div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5">
+                    <iconify-icon icon="mdi:information" width="16" height="16" class="text-blue-500 dark:text-blue-300"></iconify-icon>
+                </div>
+                <div>
+                    <p class="mb-1">快捷键提示:</p>
+                    <ul class="space-y-1">
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
+                            <span>打开搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
+                            <span>关闭搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
+                            <span>提交搜索</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap gap-2">
+                    <a href="/tags/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:tag-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        标签
+                    </a>
+                    <a href="/categories/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:folder-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        分类
+                    </a>
+                    <a href="/archives/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:archive" class="mr-1" width="16" height="16"></iconify-icon>
+                        归档
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('site-search-modal');
+        const modalContent = modal.querySelector('div[class*="rounded-xl"]');
+        const backdrop = document.getElementById('site-search-backdrop');
+        const closeButton = document.getElementById('site-search-close');
+        const searchForm = document.getElementById('site-search-form');
+        const searchInput = document.getElementById('site-search-input');
+        
+        
+        window.openSiteSearch = function() {
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            
+            
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+                searchInput.focus();
+            }, 10);
+        };
+        
+        
+        function closeSiteSearch() {
+            
+            modal.classList.remove('opacity-100');
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        }
+        
+        
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        if (closeButton) {
+            closeButton.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeSiteSearch();
+            }
+            
+            
+            if (e.key === '/' && modal.classList.contains('hidden') && document.activeElement.tagName !== 'INPUT') {
+                e.preventDefault();
+                openSiteSearch();
+            }
+        });
+        
+        
+        modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    });
+</script> 
+</body>
+</html> 

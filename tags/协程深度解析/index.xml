@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>协程深度解析 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%8D%8F%E7%A8%8B%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/</link><description>Recent content in 协程深度解析 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 24 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%8D%8F%E7%A8%8B%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/index.xml" rel="self" type="application/rss+xml"/><item><title>Python异步编程终极指南：用协程与事件循环重构你的高并发系统</title><link>https://blog.cmdragon.cn/posts/bac9c0badd47defc03ac5508af4b6e1a/</link><pubDate>Mon, 24 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/bac9c0badd47defc03ac5508af4b6e1a/</guid><description>🚀 深入剖析Python异步编程的核心机制。你将掌握：\n 事件循环的底层实现原理与调度算法\n async/await协程的6种高级用法模式\n 异步HTTP请求的性能优化技巧（速度提升15倍+）\n 常见异步陷阱的26种解决方案</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>协程深度解析 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%8D%8F%E7%A8%8B%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/</link>
+    <description>Recent content in 协程深度解析 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 24 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%8D%8F%E7%A8%8B%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python异步编程终极指南：用协程与事件循环重构你的高并发系统</title>
+      <link>https://blog.cmdragon.cn/posts/bac9c0badd47defc03ac5508af4b6e1a/</link>
+      <pubDate>Mon, 24 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/bac9c0badd47defc03ac5508af4b6e1a/</guid>
+      <description>🚀 深入剖析Python异步编程的核心机制。你将掌握：\n 事件循环的底层实现原理与调度算法\n async/await协程的6种高级用法模式\n 异步HTTP请求的性能优化技巧（速度提升15倍+）\n 常见异步陷阱的26种解决方案</description>
+    </item>
+  </channel>
+</rss>

@@ -1,1 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据建模 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</link><description>Recent content in 数据建模 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 19 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/index.xml" rel="self" type="application/rss+xml"/><item><title>深入解析NoSQL数据库：从文档存储到图数据库的全场景实践</title><link>https://blog.cmdragon.cn/posts/deed11eed0f84c915ed9e9d5aad6c06d/</link><pubDate>Wed, 19 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/deed11eed0f84c915ed9e9d5aad6c06d/</guid><description>通过电商、社交网络、物联网等12个行业场景，结合MongoDB聚合管道、Redis Stream实时处理、Cassandra SSTable存储引擎、Neo4j路径遍历算法等42个生产级示例，揭示NoSQL数据库的架构设计与最佳实践</description></item><item><title>彻底理解数据库设计原则：生命周期、约束与反范式的应用</title><link>https://blog.cmdragon.cn/posts/934686b6ed93e241883a74eaf236bc96/</link><pubDate>Sun, 09 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/934686b6ed93e241883a74eaf236bc96/</guid><description>数据库设计原则是确保数据库系统高效、稳定和可维护的重要指导方针。了解整个设计生命周期，以及在设计过程中应遵循的约束和规则，对于构建高质量的数据库至关重要。此外，在特定场景中，反范式化也是一种有效的策略。</description></item><item><title>深入剖析实体-关系模型（ER 图）：理论与实践全解析</title><link>https://blog.cmdragon.cn/posts/ec68b3f706bd0db1585b4d150de54100/</link><pubDate>Sat, 08 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/ec68b3f706bd0db1585b4d150de54100/</guid><description>实体-关系模型（ER 模型）是一种用于描述现实世界中对象及其关系的概念模型，作为数据库设计的重要工具，ER 模型以图形方式表示数据之间的联系。通过建模，开发者能够理清数据结构，进而设计出高效数据库。</description></item><item><title>深入理解检查约束：确保数据质量的重要工具</title><link>https://blog.cmdragon.cn/posts/309f74bd85c733fb7a2cd79990d7af9b/</link><pubDate>Mon, 20 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/309f74bd85c733fb7a2cd79990d7af9b/</guid><description>在数据库管理中，检查约束是一种重要的约束类型，用于确保表中某一列或某些列的数据符合特定条件，从而维护数据的有效性和一致性。检查约束通过对数据的有效性进行验证，防止无效或不合逻辑的数据进入数据库。</description></item><item><title>深入理解唯一约束：确保数据完整性的关键因素</title><link>https://blog.cmdragon.cn/posts/573e556ece0cb56c6d637ae77d5365c0/</link><pubDate>Sun, 19 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/573e556ece0cb56c6d637ae77d5365c0/</guid><description>在关系数据库中，唯一约束是一种重要的数据库约束，用于确保表中某一列或多列的值是唯一的，从而防止重复数据的出现。唯一约束不仅提高了数据的完整性和一致性，还在一定程度上影响了数据库的设计和性能。</description></item><item><title>深入理解主键和外键：数据库设计的基石</title><link>https://blog.cmdragon.cn/posts/e7b9587a1dd95061a9ad68f21253a7e9/</link><pubDate>Sat, 18 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/e7b9587a1dd95061a9ad68f21253a7e9/</guid><description>在现代信息系统中，数据的管理和存储是至关重要的。关系数据库作为一种广泛使用的数据存储方式，其设计的合理性直接影响到数据的完整性和系统的性能。在关系数据库中，主键和外键是实现数据完整性和表之间关系的基础。理解这两个概念对于数据库设计师和开发者来说至关重要。</description></item><item><title>数据插入操作的深度分析：INSERT 语句使用及实践</title><link>https://blog.cmdragon.cn/posts/5d109d3a35a537bbf4da5b2319658c54/</link><pubDate>Sun, 05 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/5d109d3a35a537bbf4da5b2319658c54/</guid><description>在数据库管理系统中，数据插入（INSERT）操作是数据持久化的基础，也是应用程序与用户交互的核心功能之一。它不仅影响数据的完整性与一致性，还在数据建模、查询性能与业务逻辑实现中起着至关重要的作用。本文将深入探讨 PostgreSQL 中的插入数据操作，包括基本的 INSERT 语法、批量插入技巧、事务处理以及错误处理机制。同时，将通过具体示例和实际应用场景，分析如何在 INSERT 操作中实现最佳实践，以确保数据插入过程的高效性、安全性和可靠性。</description></item><item><title>数据库设计原则与方法</title><link>https://blog.cmdragon.cn/posts/0857c93758c59bc14ebc46611d81358f/</link><pubDate>Sun, 08 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/0857c93758c59bc14ebc46611d81358f/</guid><description>数据库设计是确保数据库高效、可靠运行的关键步骤。良好的数据库设计不仅能提高数据的存取速度，还能维护数据的完整性和一致性。在本节中，我们将探讨一些基本的数据库设计原则，以及常用的数据库设计方法，帮助读者理解如何创建一个有效的数据库结构。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据建模 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</link>
+    <description>Recent content in 数据建模 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 19 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入解析NoSQL数据库：从文档存储到图数据库的全场景实践</title>
+      <link>https://blog.cmdragon.cn/posts/deed11eed0f84c915ed9e9d5aad6c06d/</link>
+      <pubDate>Wed, 19 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/deed11eed0f84c915ed9e9d5aad6c06d/</guid>
+      <description>通过电商、社交网络、物联网等12个行业场景，结合MongoDB聚合管道、Redis Stream实时处理、Cassandra SSTable存储引擎、Neo4j路径遍历算法等42个生产级示例，揭示NoSQL数据库的架构设计与最佳实践</description>
+    </item>
+    <item>
+      <title>彻底理解数据库设计原则：生命周期、约束与反范式的应用</title>
+      <link>https://blog.cmdragon.cn/posts/934686b6ed93e241883a74eaf236bc96/</link>
+      <pubDate>Sun, 09 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/934686b6ed93e241883a74eaf236bc96/</guid>
+      <description>数据库设计原则是确保数据库系统高效、稳定和可维护的重要指导方针。了解整个设计生命周期，以及在设计过程中应遵循的约束和规则，对于构建高质量的数据库至关重要。此外，在特定场景中，反范式化也是一种有效的策略。</description>
+    </item>
+    <item>
+      <title>深入剖析实体-关系模型（ER 图）：理论与实践全解析</title>
+      <link>https://blog.cmdragon.cn/posts/ec68b3f706bd0db1585b4d150de54100/</link>
+      <pubDate>Sat, 08 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/ec68b3f706bd0db1585b4d150de54100/</guid>
+      <description>实体-关系模型（ER 模型）是一种用于描述现实世界中对象及其关系的概念模型，作为数据库设计的重要工具，ER 模型以图形方式表示数据之间的联系。通过建模，开发者能够理清数据结构，进而设计出高效数据库。</description>
+    </item>
+    <item>
+      <title>深入理解检查约束：确保数据质量的重要工具</title>
+      <link>https://blog.cmdragon.cn/posts/309f74bd85c733fb7a2cd79990d7af9b/</link>
+      <pubDate>Mon, 20 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/309f74bd85c733fb7a2cd79990d7af9b/</guid>
+      <description>在数据库管理中，检查约束是一种重要的约束类型，用于确保表中某一列或某些列的数据符合特定条件，从而维护数据的有效性和一致性。检查约束通过对数据的有效性进行验证，防止无效或不合逻辑的数据进入数据库。</description>
+    </item>
+    <item>
+      <title>深入理解唯一约束：确保数据完整性的关键因素</title>
+      <link>https://blog.cmdragon.cn/posts/573e556ece0cb56c6d637ae77d5365c0/</link>
+      <pubDate>Sun, 19 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/573e556ece0cb56c6d637ae77d5365c0/</guid>
+      <description>在关系数据库中，唯一约束是一种重要的数据库约束，用于确保表中某一列或多列的值是唯一的，从而防止重复数据的出现。唯一约束不仅提高了数据的完整性和一致性，还在一定程度上影响了数据库的设计和性能。</description>
+    </item>
+    <item>
+      <title>深入理解主键和外键：数据库设计的基石</title>
+      <link>https://blog.cmdragon.cn/posts/e7b9587a1dd95061a9ad68f21253a7e9/</link>
+      <pubDate>Sat, 18 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/e7b9587a1dd95061a9ad68f21253a7e9/</guid>
+      <description>在现代信息系统中，数据的管理和存储是至关重要的。关系数据库作为一种广泛使用的数据存储方式，其设计的合理性直接影响到数据的完整性和系统的性能。在关系数据库中，主键和外键是实现数据完整性和表之间关系的基础。理解这两个概念对于数据库设计师和开发者来说至关重要。</description>
+    </item>
+    <item>
+      <title>数据插入操作的深度分析：INSERT 语句使用及实践</title>
+      <link>https://blog.cmdragon.cn/posts/5d109d3a35a537bbf4da5b2319658c54/</link>
+      <pubDate>Sun, 05 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/5d109d3a35a537bbf4da5b2319658c54/</guid>
+      <description>在数据库管理系统中，数据插入（INSERT）操作是数据持久化的基础，也是应用程序与用户交互的核心功能之一。它不仅影响数据的完整性与一致性，还在数据建模、查询性能与业务逻辑实现中起着至关重要的作用。本文将深入探讨 PostgreSQL 中的插入数据操作，包括基本的 INSERT 语法、批量插入技巧、事务处理以及错误处理机制。同时，将通过具体示例和实际应用场景，分析如何在 INSERT 操作中实现最佳实践，以确保数据插入过程的高效性、安全性和可靠性。</description>
+    </item>
+    <item>
+      <title>数据库设计原则与方法</title>
+      <link>https://blog.cmdragon.cn/posts/0857c93758c59bc14ebc46611d81358f/</link>
+      <pubDate>Sun, 08 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/0857c93758c59bc14ebc46611d81358f/</guid>
+      <description>数据库设计是确保数据库高效、可靠运行的关键步骤。良好的数据库设计不仅能提高数据的存取速度，还能维护数据的完整性和一致性。在本节中，我们将探讨一些基本的数据库设计原则，以及常用的数据库设计方法，帮助读者理解如何创建一个有效的数据库结构。</description>
+    </item>
+  </channel>
+</rss>

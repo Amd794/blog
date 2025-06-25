@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>高可用架构 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84/</link><description>Recent content in 高可用架构 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 20 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml"/><item><title>分布式数据库解析</title><link>https://blog.cmdragon.cn/posts/4c553fe22df1e15c19d37a7dc10c5b3a/</link><pubDate>Thu, 20 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/4c553fe22df1e15c19d37a7dc10c5b3a/</guid><description>通过金融交易、社交平台、物联网等9大真实场景，结合Google Spanner跨洲事务、DynamoDB毫秒级扩展等38个生产级案例，揭示分布式数据库的核心原理与工程实践。内容涵盖CAP定理的动态权衡策略、Paxos/Raft协议的工程实现差异、TrueTime时钟同步机制等关键技术，提供跨云多活架构设计、千万级TPS流量调度、数据一致性验证工具链等完整解决方案。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>高可用架构 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84/</link>
+    <description>Recent content in 高可用架构 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 20 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>分布式数据库解析</title>
+      <link>https://blog.cmdragon.cn/posts/4c553fe22df1e15c19d37a7dc10c5b3a/</link>
+      <pubDate>Thu, 20 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/4c553fe22df1e15c19d37a7dc10c5b3a/</guid>
+      <description>通过金融交易、社交平台、物联网等9大真实场景，结合Google Spanner跨洲事务、DynamoDB毫秒级扩展等38个生产级案例，揭示分布式数据库的核心原理与工程实践。内容涵盖CAP定理的动态权衡策略、Paxos/Raft协议的工程实现差异、TrueTime时钟同步机制等关键技术，提供跨云多活架构设计、千万级TPS流量调度、数据一致性验证工具链等完整解决方案。</description>
+    </item>
+  </channel>
+</rss>

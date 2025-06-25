@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>状态码 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E7%8A%B6%E6%80%81%E7%A0%81/</link><description>Recent content in 状态码 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 25 Aug 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E7%8A%B6%E6%80%81%E7%A0%81/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 setResponseStatus 函数设置响应状态码</title><link>https://blog.cmdragon.cn/posts/302e9ee7406d6304cf38978e07b4480c/</link><pubDate>Sun, 25 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/302e9ee7406d6304cf38978e07b4480c/</guid><description>通过 setResponseStatus 函数，你可以轻松地在 Nuxt.js 中设置响应的状态码。这不仅能帮助用户更好地理解发生了什么，还能在需要时显示自定义的错误页面。在实际应用中，合理使用状态码对于提升用户体验至关重要。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>状态码 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E7%8A%B6%E6%80%81%E7%A0%81/</link>
+    <description>Recent content in 状态码 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 25 Aug 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E7%8A%B6%E6%80%81%E7%A0%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 setResponseStatus 函数设置响应状态码</title>
+      <link>https://blog.cmdragon.cn/posts/302e9ee7406d6304cf38978e07b4480c/</link>
+      <pubDate>Sun, 25 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/302e9ee7406d6304cf38978e07b4480c/</guid>
+      <description>通过 setResponseStatus 函数，你可以轻松地在 Nuxt.js 中设置响应的状态码。这不仅能帮助用户更好地理解发生了什么，还能在需要时显示自定义的错误页面。在实际应用中，合理使用状态码对于提升用户体验至关重要。</description>
+    </item>
+  </channel>
+</rss>

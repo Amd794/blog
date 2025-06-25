@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>变化 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%8F%98%E5%8C%96/</link><description>Recent content in 变化 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 24 Oct 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%8F%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 builder：watch 事件钩子详解</title><link>https://blog.cmdragon.cn/posts/4cfe5f35f1a903646731a6c05a54d1dc/</link><pubDate>Thu, 24 Oct 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/4cfe5f35f1a903646731a6c05a54d1dc/</guid><description>builder:watch 是 Nuxt.js 中的一个生命周期钩子，在开发环境的构建过程期间被调用。它允许开发者在监视到项目中的文件或目录发生变化时，执行特定的操作。这对于实现自定义构建过程或响应代码更改非常有用，使得开发体验更为高效。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>变化 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%8F%98%E5%8C%96/</link>
+    <description>Recent content in 变化 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 24 Oct 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%8F%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 builder：watch 事件钩子详解</title>
+      <link>https://blog.cmdragon.cn/posts/4cfe5f35f1a903646731a6c05a54d1dc/</link>
+      <pubDate>Thu, 24 Oct 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/4cfe5f35f1a903646731a6c05a54d1dc/</guid>
+      <description>builder:watch 是 Nuxt.js 中的一个生命周期钩子，在开发环境的构建过程期间被调用。它允许开发者在监视到项目中的文件或目录发生变化时，执行特定的操作。这对于实现自定义构建过程或响应代码更改非常有用，使得开发体验更为高效。</description>
+    </item>
+  </channel>
+</rss>

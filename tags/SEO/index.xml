@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SEO on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/SEO/</link><description>Recent content in SEO on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 01 Dec 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/SEO/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 render：island 事件钩子</title><link>https://blog.cmdragon.cn/posts/a788981a66c14c5edd407545ac29b6ee/</link><pubDate>Sun, 01 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/a788981a66c14c5edd407545ac29b6ee/</guid><description>在 Nuxt.js 中，render:island 钩子允许开发者在构建“岛屿”HTML之前进行处理和修改。此钩子为实现复杂的客户端交互和动态内容提供了基本支持，特别适合与服务器渲染和客户端渲染混合使用的场景。</description></item><item><title>Nuxt.js 应用中的 render：html 事件钩子</title><link>https://blog.cmdragon.cn/posts/e2e4ffc078733570a7b98d6f0dd9ea13/</link><pubDate>Sat, 30 Nov 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/e2e4ffc078733570a7b98d6f0dd9ea13/</guid><description>在构建 HTML 内容时，能够对其进行动态修改是非常有用的。render:html 钩子为开发者提供了在 HTML 被构建之前的最后机会去调整内容。这对于自定义渲染行为、注入额外的脚本或数据，以及实现复杂的 SEO 优化等场景非常重要。</description></item><item><title>Nuxt.js 应用中的 prerender：routes 事件钩子详解</title><link>https://blog.cmdragon.cn/posts/7a11deaf9e3d140fd18d7ad3cde4b9d7/</link><pubDate>Wed, 06 Nov 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/7a11deaf9e3d140fd18d7ad3cde4b9d7/</guid><description>prerender:routes 是 Nuxt.js 中的一个钩子，允许开发者在预渲染过程中扩展要预渲染的路由列表。这对于静态站点生成（SSG）尤为重要，开发者可以根据需求添加额外的动态路由或者其他需要预渲染的页面。</description></item><item><title>使用 prerenderRoutes 进行预渲染路由</title><link>https://blog.cmdragon.cn/posts/87586efe60054fbbb53f151d9025f356/</link><pubDate>Tue, 20 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/87586efe60054fbbb53f151d9025f356/</guid><description>prerenderRoutes 函数是 Nuxt 3 中一个强大的工具，它能够帮助开发者优化页面加载速度和改善用户体验。通过使用 prerenderRoutes，你能够灵活地指定需要预渲染的路由，提升网站性能和 SEO 效果。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SEO on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/SEO/</link>
+    <description>Recent content in SEO on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 01 Dec 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/SEO/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 render：island 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/a788981a66c14c5edd407545ac29b6ee/</link>
+      <pubDate>Sun, 01 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/a788981a66c14c5edd407545ac29b6ee/</guid>
+      <description>在 Nuxt.js 中，render:island 钩子允许开发者在构建“岛屿”HTML之前进行处理和修改。此钩子为实现复杂的客户端交互和动态内容提供了基本支持，特别适合与服务器渲染和客户端渲染混合使用的场景。</description>
+    </item>
+    <item>
+      <title>Nuxt.js 应用中的 render：html 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/e2e4ffc078733570a7b98d6f0dd9ea13/</link>
+      <pubDate>Sat, 30 Nov 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/e2e4ffc078733570a7b98d6f0dd9ea13/</guid>
+      <description>在构建 HTML 内容时，能够对其进行动态修改是非常有用的。render:html 钩子为开发者提供了在 HTML 被构建之前的最后机会去调整内容。这对于自定义渲染行为、注入额外的脚本或数据，以及实现复杂的 SEO 优化等场景非常重要。</description>
+    </item>
+    <item>
+      <title>Nuxt.js 应用中的 prerender：routes 事件钩子详解</title>
+      <link>https://blog.cmdragon.cn/posts/7a11deaf9e3d140fd18d7ad3cde4b9d7/</link>
+      <pubDate>Wed, 06 Nov 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/7a11deaf9e3d140fd18d7ad3cde4b9d7/</guid>
+      <description>prerender:routes 是 Nuxt.js 中的一个钩子，允许开发者在预渲染过程中扩展要预渲染的路由列表。这对于静态站点生成（SSG）尤为重要，开发者可以根据需求添加额外的动态路由或者其他需要预渲染的页面。</description>
+    </item>
+    <item>
+      <title>使用 prerenderRoutes 进行预渲染路由</title>
+      <link>https://blog.cmdragon.cn/posts/87586efe60054fbbb53f151d9025f356/</link>
+      <pubDate>Tue, 20 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/87586efe60054fbbb53f151d9025f356/</guid>
+      <description>prerenderRoutes 函数是 Nuxt 3 中一个强大的工具，它能够帮助开发者优化页面加载速度和改善用户体验。通过使用 prerenderRoutes，你能够灵活地指定需要预渲染的路由，提升网站性能和 SEO 效果。</description>
+    </item>
+  </channel>
+</rss>

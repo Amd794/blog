@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>对象关系映射 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/</link><description>Recent content in 对象关系映射 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 22 Dec 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/index.xml" rel="self" type="application/rss+xml"/><item><title>ORM框架与数据库交互</title><link>https://blog.cmdragon.cn/posts/4748dacd8cb1ebab02a32f43d1d026f6/</link><pubDate>Sun, 22 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/4748dacd8cb1ebab02a32f43d1d026f6/</guid><description>对象关系映射（Object-Relational Mapping，ORM）框架是简化数据库与编程语言之间交互的强大工具。通过使用ORM，开发者可以避免直接编写SQL代码，便捷地执行CRUD操作，从而提高开发效率，减少错误。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>对象关系映射 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/</link>
+    <description>Recent content in 对象关系映射 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 22 Dec 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ORM框架与数据库交互</title>
+      <link>https://blog.cmdragon.cn/posts/4748dacd8cb1ebab02a32f43d1d026f6/</link>
+      <pubDate>Sun, 22 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/4748dacd8cb1ebab02a32f43d1d026f6/</guid>
+      <description>对象关系映射（Object-Relational Mapping，ORM）框架是简化数据库与编程语言之间交互的强大工具。通过使用ORM，开发者可以避免直接编写SQL代码，便捷地执行CRUD操作，从而提高开发效率，减少错误。</description>
+    </item>
+  </channel>
+</rss>

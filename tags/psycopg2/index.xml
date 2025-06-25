@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Psycopg2 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/psycopg2/</link><description>Recent content in Psycopg2 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 04 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/psycopg2/index.xml" rel="self" type="application/rss+xml"/><item><title>Python 与 PostgreSQL 集成：深入 psycopg2 的应用与实践</title><link>https://blog.cmdragon.cn/posts/d8496eacd21bf9342264e22050b82cb3/</link><pubDate>Tue, 04 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/d8496eacd21bf9342264e22050b82cb3/</guid><description>PostgreSQL 作为开源关系型数据库的佼佼者，因其强大的功能与性能被广泛应用于各种项目中。而 Python 则因其简洁易用的语法、丰富的库和强大的数据处理能力，成为数据科学与Web开发领域的重要语言。在这两者的结合中，psycopg2 作为 PostgreSQL 数据库与 Python 之间的桥梁，实现了高效的数据交互。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Psycopg2 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/psycopg2/</link>
+    <description>Recent content in Psycopg2 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 04 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/psycopg2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python 与 PostgreSQL 集成：深入 psycopg2 的应用与实践</title>
+      <link>https://blog.cmdragon.cn/posts/d8496eacd21bf9342264e22050b82cb3/</link>
+      <pubDate>Tue, 04 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/d8496eacd21bf9342264e22050b82cb3/</guid>
+      <description>PostgreSQL 作为开源关系型数据库的佼佼者，因其强大的功能与性能被广泛应用于各种项目中。而 Python 则因其简洁易用的语法、丰富的库和强大的数据处理能力，成为数据科学与Web开发领域的重要语言。在这两者的结合中，psycopg2 作为 PostgreSQL 数据库与 Python 之间的桥梁，实现了高效的数据交互。</description>
+    </item>
+  </channel>
+</rss>

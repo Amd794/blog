@@ -1,118 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>环境搭建 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><description>Recent content in 环境搭建 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 23 May 2024 19:37:34 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>nuxt开发</title><link>https://blog.cmdragon.cn/posts/1b603ec387c047de7e0eb7f961ae4b2c/</link><pubDate>Thu, 23 May 2024 19:37:34 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/1b603ec387c047de7e0eb7f961ae4b2c/</guid><description>&lt;h2 id="创建nuxtjs项目">创建Nuxt.js项目&lt;/h2>
-&lt;h3 id="步骤-1-安装-nodejs-和-npm">步骤 1: 安装 Node.js 和 NPM&lt;/h3>
-&lt;p>确保你的计算机上安装了 Node.js 和 NPM。你可以从 &lt;a href="https://nodejs.org/">Node.js 官网&lt;/a> 下载并安装。&lt;/p>
-&lt;h3 id="步骤-2-创建-nuxtjs-项目">步骤 2: 创建 Nuxt.js 项目&lt;/h3>
-&lt;p>打开命令行工具，运行以下命令来创建一个新的 Nuxt.js 项目：&lt;/p>
-
-
-
-
-
-
-
-
- 
- 
- 
-
-
-
-
- &lt;div class="highlight-wrapper">
- &lt;div class="highlight">
- &lt;pre class="chroma">&lt;code class="language-" data-lang="">npx nuxi@latest init &amp;lt;project-name&amp;gt;&lt;/code>&lt;/pre>
- &lt;/div>
-
- &lt;div class="copy-code-button-container">
- &lt;span class="language-name">&lt;/span>
- &lt;button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
- &lt;svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24">&lt;path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/>&lt;path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/>&lt;/svg>
- &lt;svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;">&lt;path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/>&lt;/svg>
- &lt;/button>
- &lt;/div>
- &lt;/div>
-
- &lt;script>
- function copyCodeToClipboard(button) {
- const pre = button.parentElement.parentElement.querySelector('pre');
- const code = pre.textContent;
- 
- navigator.clipboard.writeText(code).then(
- function() {
- 
- const copyIcon = button.querySelector('.copy-icon');
- const checkIcon = button.querySelector('.check-icon');
- 
- 
- copyIcon.style.display = 'none';
- checkIcon.style.display = 'inline-block';
- 
- 
- setTimeout(function() {
- copyIcon.style.display = 'inline-block';
- checkIcon.style.display = 'none';
- }, 2000);
- },
- function() {
- 
- console.error('复制失败!');
- }
- );
- }
- &lt;/script>
- 
- &lt;style>
- .highlight-wrapper {
- position: relative;
- margin: 1.5rem 0;
- }
- 
- .copy-code-button-container {
- position: absolute;
- top: 5px;
- right: 5px;
- display: flex;
- align-items: center;
- opacity: 0.7;
- transition: opacity 0.2s;
- }
- 
- .highlight-wrapper:hover .copy-code-button-container {
- opacity: 1;
- }
- 
- .language-name {
- font-size: 0.8rem;
- color: #718096;
- margin-right: 0.5rem;
- }
- 
- .copy-code-button {
- background-color: transparent;
- border: none;
- color: #718096;
- cursor: pointer;
- padding: 4px;
- border-radius: 4px;
- }
- 
- .copy-code-button:hover {
- background-color: rgba(203, 213, 224, 0.2);
- color: #4a5568;
- }
- 
- .dark .language-name,
- .dark .copy-code-button {
- color: #a0aec0;
- }
- 
- .dark .copy-code-button:hover {
- background-color: rgba(160, 174, 192, 0.2);
- color: #e2e8f0;
- }
- &lt;/style>
- &lt;p>在这个过程中，你可以选择服务器框架、UI框架等。按照提示完成项目的基本配置。&lt;/p></description></item><item><title>Vue 3入门指南</title><link>https://blog.cmdragon.cn/posts/ab6d0d2bfb031bcf85fa63e9706be9e3/</link><pubDate>Thu, 23 May 2024 19:37:34 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/ab6d0d2bfb031bcf85fa63e9706be9e3/</guid><description>&lt;img src="https://static.cmdragon.cn/blog/images/2024_05_23 19_46_00.png@blog" title="2024_05_23 19_46_00.png" alt="2024_05_23 19_46_00.png"/>
-&lt;h2 id="第1章vue-3简介">&lt;strong>第1章：Vue 3简介&lt;/strong>&lt;/h2>
-&lt;h3 id="11-vuejs的历史与发展">&lt;strong>1.1 Vue.js的历史与发展&lt;/strong>&lt;/h3>
-&lt;p>Vue.js由前谷歌工程师尤雨溪（Evan
-You）在2014年发布。它的设计目标是提供一个轻量级、渐进式的JavaScript框架，用于构建用户界面。Vue的核心库专注于视图层，易于上手，同时也便于与第三方库或既有项目整合。随着时间的推移，Vue.js因其简洁的API、灵活的组件系统和高效的性能而受到开发者的广泛欢迎。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>环境搭建 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+    <description>Recent content in 环境搭建 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 23 May 2024 19:37:34 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nuxt开发</title>
+      <link>https://blog.cmdragon.cn/posts/1b603ec387c047de7e0eb7f961ae4b2c/</link>
+      <pubDate>Thu, 23 May 2024 19:37:34 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/1b603ec387c047de7e0eb7f961ae4b2c/</guid>
+      <description>&lt;h2 id=&#34;创建nuxtjs项目&#34;&gt;创建Nuxt.js项目&lt;/h2&gt;&#xA;&lt;h3 id=&#34;步骤-1-安装-nodejs-和-npm&#34;&gt;步骤 1: 安装 Node.js 和 NPM&lt;/h3&gt;&#xA;&lt;p&gt;确保你的计算机上安装了 Node.js 和 NPM。你可以从 &lt;a href=&#34;https://nodejs.org/&#34;&gt;Node.js 官网&lt;/a&gt; 下载并安装。&lt;/p&gt;&#xA;&lt;h3 id=&#34;步骤-2-创建-nuxtjs-项目&#34;&gt;步骤 2: 创建 Nuxt.js 项目&lt;/h3&gt;&#xA;&lt;p&gt;打开命令行工具，运行以下命令来创建一个新的 Nuxt.js 项目：&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;  &#xA;  &#xA;  &#xA;&#xA;&#xA;&#xA;&#xA;  &lt;div class=&#34;highlight-wrapper&#34;&gt;&#xA;    &lt;div class=&#34;highlight&#34;&gt;&#xA;      &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-&#34; data-lang=&#34;&#34;&gt;npx nuxi@latest init &amp;lt;project-name&amp;gt;&lt;/code&gt;&lt;/pre&gt;&#xA;    &lt;/div&gt;&#xA;&#xA;    &lt;div class=&#34;copy-code-button-container&#34;&gt;&#xA;      &lt;span class=&#34;language-name&#34;&gt;&lt;/span&gt;&#xA;      &lt;button class=&#34;copy-code-button&#34; aria-label=&#34;复制代码&#34; onclick=&#34;copyCodeToClipboard(this)&#34;&gt;&#xA;        &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;copy-icon&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z&#34;/&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z&#34;/&gt;&lt;/svg&gt;&#xA;        &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;check-icon&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; style=&#34;display: none;&#34;&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z&#34;/&gt;&lt;/svg&gt;&#xA;      &lt;/button&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&#xA;  &lt;script&gt;&#xA;    function copyCodeToClipboard(button) {&#xA;      const pre = button.parentElement.parentElement.querySelector(&#39;pre&#39;);&#xA;      const code = pre.textContent;&#xA;      &#xA;      navigator.clipboard.writeText(code).then(&#xA;        function() {&#xA;          &#xA;          const copyIcon = button.querySelector(&#39;.copy-icon&#39;);&#xA;          const checkIcon = button.querySelector(&#39;.check-icon&#39;);&#xA;          &#xA;          &#xA;          copyIcon.style.display = &#39;none&#39;;&#xA;          checkIcon.style.display = &#39;inline-block&#39;;&#xA;          &#xA;          &#xA;          setTimeout(function() {&#xA;            copyIcon.style.display = &#39;inline-block&#39;;&#xA;            checkIcon.style.display = &#39;none&#39;;&#xA;          }, 2000);&#xA;        },&#xA;        function() {&#xA;          &#xA;          console.error(&#39;复制失败!&#39;);&#xA;        }&#xA;      );&#xA;    }&#xA;  &lt;/script&gt;&#xA;  &#xA;  &lt;style&gt;&#xA;    .highlight-wrapper {&#xA;      position: relative;&#xA;      margin: 1.5rem 0;&#xA;    }&#xA;    &#xA;    .copy-code-button-container {&#xA;      position: absolute;&#xA;      top: 5px;&#xA;      right: 5px;&#xA;      display: flex;&#xA;      align-items: center;&#xA;      opacity: 0.7;&#xA;      transition: opacity 0.2s;&#xA;    }&#xA;    &#xA;    .highlight-wrapper:hover .copy-code-button-container {&#xA;      opacity: 1;&#xA;    }&#xA;    &#xA;    .language-name {&#xA;      font-size: 0.8rem;&#xA;      color: #718096;&#xA;      margin-right: 0.5rem;&#xA;    }&#xA;    &#xA;    .copy-code-button {&#xA;      background-color: transparent;&#xA;      border: none;&#xA;      color: #718096;&#xA;      cursor: pointer;&#xA;      padding: 4px;&#xA;      border-radius: 4px;&#xA;    }&#xA;    &#xA;    .copy-code-button:hover {&#xA;      background-color: rgba(203, 213, 224, 0.2);&#xA;      color: #4a5568;&#xA;    }&#xA;    &#xA;    .dark .language-name,&#xA;    .dark .copy-code-button {&#xA;      color: #a0aec0;&#xA;    }&#xA;    &#xA;    .dark .copy-code-button:hover {&#xA;      background-color: rgba(160, 174, 192, 0.2);&#xA;      color: #e2e8f0;&#xA;    }&#xA;  &lt;/style&gt;&#xA; &lt;p&gt;在这个过程中，你可以选择服务器框架、UI框架等。按照提示完成项目的基本配置。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Vue 3入门指南</title>
+      <link>https://blog.cmdragon.cn/posts/ab6d0d2bfb031bcf85fa63e9706be9e3/</link>
+      <pubDate>Thu, 23 May 2024 19:37:34 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/ab6d0d2bfb031bcf85fa63e9706be9e3/</guid>
+      <description>&lt;img src=&#34;https://static.cmdragon.cn/blog/images/2024_05_23 19_46_00.png@blog&#34; title=&#34;2024_05_23 19_46_00.png&#34; alt=&#34;2024_05_23 19_46_00.png&#34;/&gt;&#xA;&lt;h2 id=&#34;第1章vue-3简介&#34;&gt;&lt;strong&gt;第1章：Vue 3简介&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;11-vuejs的历史与发展&#34;&gt;&lt;strong&gt;1.1 Vue.js的历史与发展&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Vue.js由前谷歌工程师尤雨溪（Evan&#xA;You）在2014年发布。它的设计目标是提供一个轻量级、渐进式的JavaScript框架，用于构建用户界面。Vue的核心库专注于视图层，易于上手，同时也便于与第三方库或既有项目整合。随着时间的推移，Vue.js因其简洁的API、灵活的组件系统和高效的性能而受到开发者的广泛欢迎。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

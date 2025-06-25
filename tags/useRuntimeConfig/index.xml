@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>UseRuntimeConfig on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/useRuntimeConfig/</link><description>Recent content in UseRuntimeConfig on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 29 Jul 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/useRuntimeConfig/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js必读：轻松掌握运行时配置与 useRuntimeConfig</title><link>https://blog.cmdragon.cn/posts/bbb706a14f541c1932c5a42b4cab92a6/</link><pubDate>Mon, 29 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/bbb706a14f541c1932c5a42b4cab92a6/</guid><description>本文详细介绍了Nuxt.js中的运行时配置功能，包括定义和使用运行时配置的方法，以及如何通过useRuntimeConfig访问配置。同时，讲解了环境变量与.env文件的使用，特别是在不同环境下的配置管理。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UseRuntimeConfig on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/useRuntimeConfig/</link>
+    <description>Recent content in UseRuntimeConfig on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 29 Jul 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/useRuntimeConfig/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js必读：轻松掌握运行时配置与 useRuntimeConfig</title>
+      <link>https://blog.cmdragon.cn/posts/bbb706a14f541c1932c5a42b4cab92a6/</link>
+      <pubDate>Mon, 29 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/bbb706a14f541c1932c5a42b4cab92a6/</guid>
+      <description>本文详细介绍了Nuxt.js中的运行时配置功能，包括定义和使用运行时配置的方法，以及如何通过useRuntimeConfig访问配置。同时，讲解了环境变量与.env文件的使用，特别是在不同环境下的配置管理。</description>
+    </item>
+  </channel>
+</rss>

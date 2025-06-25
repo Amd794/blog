@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>零信任架构 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB%E6%9E%B6%E6%9E%84/</link><description>Recent content in 零信任架构 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 24 Jun 2025 08:23:40 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml"/><item><title>如何在FastAPI中玩转跨服务权限校验的魔法？</title><link>https://blog.cmdragon.cn/posts/3308559e2761ceaaa2fcbdd39fc29e18/</link><pubDate>Tue, 24 Jun 2025 08:23:40 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/3308559e2761ceaaa2fcbdd39fc29e18/</guid><description>FastAPI跨服务权限校验通过可信令牌颁发、令牌传播机制和分布式验证实现微服务架构安全。核心组件包括令牌生成服务和验证逻辑，使用JWT进行身份认证和权限控制。服务间调用通过HTTPX自动携带令牌，确保权限上下文传递。实践案例展示了电商订单流程中的跨服务操作。常见报错涉及无效签名和权限不足，建议使用短期令牌和权限枚举。进阶安全措施包括双因素令牌、请求签名和令牌绑定，增强系统安全性。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>零信任架构 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB%E6%9E%B6%E6%9E%84/</link>
+    <description>Recent content in 零信任架构 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 24 Jun 2025 08:23:40 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何在FastAPI中玩转跨服务权限校验的魔法？</title>
+      <link>https://blog.cmdragon.cn/posts/3308559e2761ceaaa2fcbdd39fc29e18/</link>
+      <pubDate>Tue, 24 Jun 2025 08:23:40 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/3308559e2761ceaaa2fcbdd39fc29e18/</guid>
+      <description>FastAPI跨服务权限校验通过可信令牌颁发、令牌传播机制和分布式验证实现微服务架构安全。核心组件包括令牌生成服务和验证逻辑，使用JWT进行身份认证和权限控制。服务间调用通过HTTPX自动携带令牌，确保权限上下文传递。实践案例展示了电商订单流程中的跨服务操作。常见报错涉及无效签名和权限不足，建议使用短期令牌和权限枚举。进阶安全措施包括双因素令牌、请求签名和令牌绑定，增强系统安全性。</description>
+    </item>
+  </channel>
+</rss>

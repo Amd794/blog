@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>大规模数据验证 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/</link><description>Recent content in 大规模数据验证 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 26 Mar 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/index.xml" rel="self" type="application/rss+xml"/><item><title>Pydantic递归模型深度校验36计：从无限嵌套到亿级数据的优化法则</title><link>https://blog.cmdragon.cn/posts/448b2f4522926a7bdf477332fa57df2b/</link><pubDate>Wed, 26 Mar 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/448b2f4522926a7bdf477332fa57df2b/</guid><description>递归模型通过前向引用支持无限层级嵌套结构，自动处理类型自洽验证。图结构校验器实现环检测算法，管理关系验证防止交叉引用循环。性能优化采用延迟加载与分块校验策略，分别处理大型数据解析与内存占用问题。分布式管道验证确保节点间schema一致性，内存优化通过不可变数据类型转换实现。生成式校验分析模板变量依赖关系，增量校验应用版本差异比对。错误处理需区分递归深度异常与循环引用，采用路径跟踪和迭代转换替代深层递归。架构设计遵循有限深度原则，结合访问者模式与缓存机制提升校验效率。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>大规模数据验证 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/</link>
+    <description>Recent content in 大规模数据验证 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 26 Mar 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pydantic递归模型深度校验36计：从无限嵌套到亿级数据的优化法则</title>
+      <link>https://blog.cmdragon.cn/posts/448b2f4522926a7bdf477332fa57df2b/</link>
+      <pubDate>Wed, 26 Mar 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/448b2f4522926a7bdf477332fa57df2b/</guid>
+      <description>递归模型通过前向引用支持无限层级嵌套结构，自动处理类型自洽验证。图结构校验器实现环检测算法，管理关系验证防止交叉引用循环。性能优化采用延迟加载与分块校验策略，分别处理大型数据解析与内存占用问题。分布式管道验证确保节点间schema一致性，内存优化通过不可变数据类型转换实现。生成式校验分析模板变量依赖关系，增量校验应用版本差异比对。错误处理需区分递归深度异常与循环引用，采用路径跟踪和迭代转换替代深层递归。架构设计遵循有限深度原则，结合访问者模式与缓存机制提升校验效率。</description>
+    </item>
+  </channel>
+</rss>

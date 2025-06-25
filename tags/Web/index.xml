@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/Web/</link><description>Recent content in Web on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 06 Sep 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/Web/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 nuxi init 创建全新 Nuxt 项目</title><link>https://blog.cmdragon.cn/posts/e215ae9d731aea9f7b5d6aef7aa1a4db/</link><pubDate>Fri, 06 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/e215ae9d731aea9f7b5d6aef7aa1a4db/</guid><description>摘要：本文介绍了如何使用nuxi init命令创建全新的Nuxt.js项目，包括安装所需环境、命令使用方法、指定模板、强制克隆、启动开发服务器等步骤，并提供了完整的项目初始化流程示例，帮助开发者快速上手Nuxt.js框架进行高效Web应用开发。</description></item><item><title>使用 preloadComponents 进行组件预加载</title><link>https://blog.cmdragon.cn/posts/b54b94bb4434e506c17b07f68a13bf94/</link><pubDate>Sun, 18 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/b54b94bb4434e506c17b07f68a13bf94/</guid><description>摘要：本文介绍Nuxt 3中的preloadComponents功能，用于预加载全局注册的组件以减少首次渲染阻塞时间，通过实例演示如何设置并使用该工具来提升页面性能。</description></item><item><title>使用 onBeforeRouteLeave 组合式函数提升应用的用户体验</title><link>https://blog.cmdragon.cn/posts/ec76c32456eed5c68935b916beb053c2/</link><pubDate>Wed, 14 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/ec76c32456eed5c68935b916beb053c2/</guid><description>摘要：本文介绍了在Nuxtjs中使用onBeforeRouteLeave组合式函数来提升应用用户体验的方法。onBeforeRouteLeave允许在组件离开当前路由前执行逻辑，如处理路由变化、清理资源、保存数据等。文章通过示例展示了如何在Vue组件中注册此守卫，解释了其参数含义及使用注意事项，并提供了完整示例代码，强调了此功能对增强用户体验的重要性。</description></item><item><title>使用 navigateTo 实现灵活的路由导航</title><link>https://blog.cmdragon.cn/posts/f68163dee0a38a46b874f4885c661f48/</link><pubDate>Tue, 13 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/f68163dee0a38a46b874f4885c661f48/</guid><description>摘要：本文详细介绍 Nuxt.js 中的 navigateTo 函数，包括基本用法、在路由中间件中使用、导航到外部 URL 和新标签页打开链接的方法，以及参数详解和注意事项，展示了该函数在程序化导航中的灵活性和强大功能。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/Web/</link>
+    <description>Recent content in Web on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Sep 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/Web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 nuxi init 创建全新 Nuxt 项目</title>
+      <link>https://blog.cmdragon.cn/posts/e215ae9d731aea9f7b5d6aef7aa1a4db/</link>
+      <pubDate>Fri, 06 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/e215ae9d731aea9f7b5d6aef7aa1a4db/</guid>
+      <description>摘要：本文介绍了如何使用nuxi init命令创建全新的Nuxt.js项目，包括安装所需环境、命令使用方法、指定模板、强制克隆、启动开发服务器等步骤，并提供了完整的项目初始化流程示例，帮助开发者快速上手Nuxt.js框架进行高效Web应用开发。</description>
+    </item>
+    <item>
+      <title>使用 preloadComponents 进行组件预加载</title>
+      <link>https://blog.cmdragon.cn/posts/b54b94bb4434e506c17b07f68a13bf94/</link>
+      <pubDate>Sun, 18 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/b54b94bb4434e506c17b07f68a13bf94/</guid>
+      <description>摘要：本文介绍Nuxt 3中的preloadComponents功能，用于预加载全局注册的组件以减少首次渲染阻塞时间，通过实例演示如何设置并使用该工具来提升页面性能。</description>
+    </item>
+    <item>
+      <title>使用 onBeforeRouteLeave 组合式函数提升应用的用户体验</title>
+      <link>https://blog.cmdragon.cn/posts/ec76c32456eed5c68935b916beb053c2/</link>
+      <pubDate>Wed, 14 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/ec76c32456eed5c68935b916beb053c2/</guid>
+      <description>摘要：本文介绍了在Nuxtjs中使用onBeforeRouteLeave组合式函数来提升应用用户体验的方法。onBeforeRouteLeave允许在组件离开当前路由前执行逻辑，如处理路由变化、清理资源、保存数据等。文章通过示例展示了如何在Vue组件中注册此守卫，解释了其参数含义及使用注意事项，并提供了完整示例代码，强调了此功能对增强用户体验的重要性。</description>
+    </item>
+    <item>
+      <title>使用 navigateTo 实现灵活的路由导航</title>
+      <link>https://blog.cmdragon.cn/posts/f68163dee0a38a46b874f4885c661f48/</link>
+      <pubDate>Tue, 13 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/f68163dee0a38a46b874f4885c661f48/</guid>
+      <description>摘要：本文详细介绍 Nuxt.js 中的 navigateTo 函数，包括基本用法、在路由中间件中使用、导航到外部 URL 和新标签页打开链接的方法，以及参数详解和注意事项，展示了该函数在程序化导航中的灵活性和强大功能。</description>
+    </item>
+  </channel>
+</rss>

@@ -1,1 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nuxt Kit on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/Nuxt-Kit/</link><description>Recent content in Nuxt Kit on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 24 Sep 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/Nuxt-Kit/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Nuxt Kit 的构建器 API 来扩展配置</title><link>https://blog.cmdragon.cn/posts/bdeb7bbd58b884c871d4a545bab57769/</link><pubDate>Tue, 24 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/bdeb7bbd58b884c871d4a545bab57769/</guid><description>摘要：本文详细介绍了如何使用 Nuxt Kit 的构建器 API 来扩展和定制 Nuxt 3 项目的 webpack 和 Vite 构建配置，包括扩展Webpack和Vite配置、添加自定义插件、以及通过具体示例展示了如何在实际项目中应用这些API以满足不同开发需求，从而提升前端构建流程的灵活性和效率。</description></item><item><title>Nuxt Kit 使用日志记录工具</title><link>https://blog.cmdragon.cn/posts/24f0f8f3dea325a2fc15dd6568b4c039/</link><pubDate>Mon, 23 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/24f0f8f3dea325a2fc15dd6568b4c039/</guid><description>摘要：本文介绍在Nuxt 3框架的Nuxt Kit中使用日志记录工具的方法，重点讲解useLogger函数的应用，通过创建示例项目一步步展示如何配置和使用日志记录功能来监控应用状态、记录信息和调试错误，提升开发效率和应用维护性。</description></item><item><title>Nuxt Kit 中的模板处理</title><link>https://blog.cmdragon.cn/posts/65413519c80ce2a292bf056178a0d195/</link><pubDate>Fri, 20 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/65413519c80ce2a292bf056178a0d195/</guid><description>摘要：本文详细介绍了在Nuxt 3框架中，使用Nuxt Kit进行模板处理的方法，包括理解模板基本概念、使用addTemplate动态生成文件、应用addTypeTemplate注册类型模板以增强TypeScript支持，以及利用updateTemplates实现模板的自动更新。</description></item><item><title>Nuxt Kit 中的插件：创建与使用</title><link>https://blog.cmdragon.cn/posts/cb753641cae33519dd339d523c5afa32/</link><pubDate>Thu, 19 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/cb753641cae33519dd339d523c5afa32/</guid><description>摘要：本文介绍了在 Nuxt 3 框架中使用 Nuxt Kit 创建和管理插件的方法，包括使用addPlugin注册插件、创建插件文件、在Vue组件中使用插件，以及使用addPluginTemplate创建插件模板和动态生成插件代码。</description></item><item><title>Nuxt Kit 自动导入功能：高效管理你的模块和组合式函数</title><link>https://blog.cmdragon.cn/posts/5640663d513476298fbd449f82a67e09/</link><pubDate>Sat, 14 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/5640663d513476298fbd449f82a67e09/</guid><description>通过使用 Nuxt Kit 的自动导入功能，您可以更高效地管理和使用公共函数、组合式函数和 Vue API。无论是单个导入、目录导入还是从第三方模块导入，您都可以通过简单的 API 调用轻松实现。</description></item><item><title>Nuxt Kit 的使用指南：模块创建与管理</title><link>https://blog.cmdragon.cn/posts/4e6cc94790bffcc52782fde71dbdb0f3/</link><pubDate>Wed, 11 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/4e6cc94790bffcc52782fde71dbdb0f3/</guid><description>摘要：本文是关于Nuxt Kit的使用指南，重点介绍了如何使用defineNuxtModule创建自定义模块及installModule函数以编程方式安装模块，以增强Nuxt 3应用的功能性、可维护性和开发效率。通过具体示例和函数说明，展示了这两个工具的应用方法，助力开发者更好地管理和扩展Nuxt项目。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nuxt Kit on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/Nuxt-Kit/</link>
+    <description>Recent content in Nuxt Kit on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 24 Sep 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/Nuxt-Kit/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Nuxt Kit 的构建器 API 来扩展配置</title>
+      <link>https://blog.cmdragon.cn/posts/bdeb7bbd58b884c871d4a545bab57769/</link>
+      <pubDate>Tue, 24 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/bdeb7bbd58b884c871d4a545bab57769/</guid>
+      <description>摘要：本文详细介绍了如何使用 Nuxt Kit 的构建器 API 来扩展和定制 Nuxt 3 项目的 webpack 和 Vite 构建配置，包括扩展Webpack和Vite配置、添加自定义插件、以及通过具体示例展示了如何在实际项目中应用这些API以满足不同开发需求，从而提升前端构建流程的灵活性和效率。</description>
+    </item>
+    <item>
+      <title>Nuxt Kit 使用日志记录工具</title>
+      <link>https://blog.cmdragon.cn/posts/24f0f8f3dea325a2fc15dd6568b4c039/</link>
+      <pubDate>Mon, 23 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/24f0f8f3dea325a2fc15dd6568b4c039/</guid>
+      <description>摘要：本文介绍在Nuxt 3框架的Nuxt Kit中使用日志记录工具的方法，重点讲解useLogger函数的应用，通过创建示例项目一步步展示如何配置和使用日志记录功能来监控应用状态、记录信息和调试错误，提升开发效率和应用维护性。</description>
+    </item>
+    <item>
+      <title>Nuxt Kit 中的模板处理</title>
+      <link>https://blog.cmdragon.cn/posts/65413519c80ce2a292bf056178a0d195/</link>
+      <pubDate>Fri, 20 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/65413519c80ce2a292bf056178a0d195/</guid>
+      <description>摘要：本文详细介绍了在Nuxt 3框架中，使用Nuxt Kit进行模板处理的方法，包括理解模板基本概念、使用addTemplate动态生成文件、应用addTypeTemplate注册类型模板以增强TypeScript支持，以及利用updateTemplates实现模板的自动更新。</description>
+    </item>
+    <item>
+      <title>Nuxt Kit 中的插件：创建与使用</title>
+      <link>https://blog.cmdragon.cn/posts/cb753641cae33519dd339d523c5afa32/</link>
+      <pubDate>Thu, 19 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/cb753641cae33519dd339d523c5afa32/</guid>
+      <description>摘要：本文介绍了在 Nuxt 3 框架中使用 Nuxt Kit 创建和管理插件的方法，包括使用addPlugin注册插件、创建插件文件、在Vue组件中使用插件，以及使用addPluginTemplate创建插件模板和动态生成插件代码。</description>
+    </item>
+    <item>
+      <title>Nuxt Kit 自动导入功能：高效管理你的模块和组合式函数</title>
+      <link>https://blog.cmdragon.cn/posts/5640663d513476298fbd449f82a67e09/</link>
+      <pubDate>Sat, 14 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/5640663d513476298fbd449f82a67e09/</guid>
+      <description>通过使用 Nuxt Kit 的自动导入功能，您可以更高效地管理和使用公共函数、组合式函数和 Vue API。无论是单个导入、目录导入还是从第三方模块导入，您都可以通过简单的 API 调用轻松实现。</description>
+    </item>
+    <item>
+      <title>Nuxt Kit 的使用指南：模块创建与管理</title>
+      <link>https://blog.cmdragon.cn/posts/4e6cc94790bffcc52782fde71dbdb0f3/</link>
+      <pubDate>Wed, 11 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/4e6cc94790bffcc52782fde71dbdb0f3/</guid>
+      <description>摘要：本文是关于Nuxt Kit的使用指南，重点介绍了如何使用defineNuxtModule创建自定义模块及installModule函数以编程方式安装模块，以增强Nuxt 3应用的功能性、可维护性和开发效率。通过具体示例和函数说明，展示了这两个工具的应用方法，助力开发者更好地管理和扩展Nuxt项目。</description>
+    </item>
+  </channel>
+</rss>

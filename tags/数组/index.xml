@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数组 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%95%B0%E7%BB%84/</link><description>Recent content in 数组 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 04 Jan 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E7%BB%84/index.xml" rel="self" type="application/rss+xml"/><item><title>特殊数据类型的深度分析：JSON、数组和 HSTORE 的实用价值</title><link>https://blog.cmdragon.cn/posts/df7c5c2cb46a70a8bd8eb41d25cbc407/</link><pubDate>Sat, 04 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/df7c5c2cb46a70a8bd8eb41d25cbc407/</guid><description>随着数据管理需求的多样化，许多现代数据库系统开始支持特殊数据类型，以满足更多复杂应用场景的需求。在 PostgreSQL 中，JSON、数组和 HSTORE 类型为开发者提供了灵活的数据存储和操作方式，使得结构化和非结构化数据的处理愈加高效。智的选择。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数组 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%95%B0%E7%BB%84/</link>
+    <description>Recent content in 数组 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 04 Jan 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E7%BB%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>特殊数据类型的深度分析：JSON、数组和 HSTORE 的实用价值</title>
+      <link>https://blog.cmdragon.cn/posts/df7c5c2cb46a70a8bd8eb41d25cbc407/</link>
+      <pubDate>Sat, 04 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/df7c5c2cb46a70a8bd8eb41d25cbc407/</guid>
+      <description>随着数据管理需求的多样化，许多现代数据库系统开始支持特殊数据类型，以满足更多复杂应用场景的需求。在 PostgreSQL 中，JSON、数组和 HSTORE 类型为开发者提供了灵活的数据存储和操作方式，使得结构化和非结构化数据的处理愈加高效。智的选择。</description>
+    </item>
+  </channel>
+</rss>

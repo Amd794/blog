@@ -1,4 +1,268 @@
-<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Nuxt.js 应用中的 prepare：types 事件钩子详解 - cmdragon's Blog</title><meta name=description content="prepare:types 钩子为 Nuxt.js 开发者提供了灵活定制 TypeScript 配置和声明的能力。通过使用此钩子，开发者能够确保 TypeScript 配置和类型声明能够满足他们的项目需求，提升代码的可维护性和类型安全性。"><meta name=author content="cmdragon"><meta name=robots content="index, follow"><link rel=canonical href=https://blog.cmdragon.cn/posts/68419c6dd94db64cbb46673ab19a5146/><meta property="og:title" content="Nuxt.js 应用中的 prepare：types 事件钩子详解 - cmdragon's Blog"><meta property="og:description" content="prepare:types 钩子为 Nuxt.js 开发者提供了灵活定制 TypeScript 配置和声明的能力。通过使用此钩子，开发者能够确保 TypeScript 配置和类型声明能够满足他们的项目需求，提升代码的可维护性和类型安全性。"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.cmdragon.cn/posts/68419c6dd94db64cbb46673ab19a5146/"><meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png"><meta property="og:site_name" content="cmdragon's Blog"><meta property="article:published_time" content="2024-11-08T00:18:53+08:00"><meta property="article:modified_time" content="2024-11-08T00:18:53+08:00"><meta property="article:section" content="前端开发"><meta property="article:tag" content="Nuxt"><meta property="article:tag" content="TypeScript"><meta property="article:tag" content="钩子"><meta property="article:tag" content="自定义"><meta property="article:tag" content="类型"><meta property="article:tag" content="配置"><meta property="article:tag" content="构建"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Nuxt.js 应用中的 prepare：types 事件钩子详解 - cmdragon's Blog"><meta name=twitter:description content="prepare:types 钩子为 Nuxt.js 开发者提供了灵活定制 TypeScript 配置和声明的能力。通过使用此钩子，开发者能够确保 TypeScript 配置和类型声明能够满足他们的项目需求，提升代码的可维护性和类型安全性。"><meta name=twitter:image content="https://blog.cmdragon.cn/images/logo/social-card.png"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Nuxt.js 应用中的 prepare：types 事件钩子详解","datePublished":"2024-11-08T00:18:53\u002b08:00","dateModified":"2024-11-08T00:18:53\u002b08:00","author":{"@type":"Person","name":"cmdragon"},"description":"prepare:types 钩子为 Nuxt.js 开发者提供了灵活定制 TypeScript 配置和声明的能力。通过使用此钩子，开发者能够确保 TypeScript 配置和类型声明能够满足他们的项目需求，提升代码的可维护性和类型安全性。","image":"https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png","url":"https:\/\/blog.cmdragon.cn\/posts\/68419c6dd94db64cbb46673ab19a5146\/","publisher":{"@type":"Organization","name":"cmdragon\u0027s Blog","logo":{"@type":"ImageObject","url":"https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/blog.cmdragon.cn\/posts\/68419c6dd94db64cbb46673ab19a5146\/"},"keywords":"前端开发","keywords":"Nuxt, TypeScript, 钩子, 自定义, 类型, 配置, 构建","wordCount":"1967"}</script><link rel=preconnect href=https://cdnjs.cloudflare.com><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js as=script><link rel=icon href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon href=/images/logo/small.png><link rel=icon type=image/png sizes=32x32 href=/images/logo/small.png><link rel=icon type=image/svg+xml href=/images/logo/scalable.svg><meta name=theme-color content="#3B82F6"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js></script><script>(function(){if(typeof mermaid!="undefined"){window.mermaid=mermaid;const e=document.documentElement.classList.contains("dark")||window.matchMedia("(prefers-color-scheme: dark)").matches;window.mermaid.initialize({startOnLoad:!0,theme:e?"dark":"default",securityLevel:"loose",flowchart:{curve:"basis",htmlLabels:!0},sequence:{mirrorActors:!1,wrap:!0},themeVariables:{primaryColor:"#3b82f6",primaryTextColor:"#ffffff",primaryBorderColor:e?"#60a5fa":"#2563eb",lineColor:e?"#94a3b8":"#4b5563",secondaryColor:e?"#1e293b":"#f0f9ff",tertiaryColor:e?"#334155":"#f3f4f6"}}),document.addEventListener("DOMContentLoaded",function(){try{typeof window.mermaid.init=="function"&&window.mermaid.init(0[0],document.querySelectorAll(".mermaid"))}catch{}})}})()</script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js></script><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js></script><script src=https://cdn.tailwindcss.com/3.4.16></script><script>tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#3B82F6","primary-light":"#60a5fa","primary-dark":"#2563eb"},typography:e=>({DEFAULT:{css:{color:e("colors.gray.800"),a:{color:e("colors.primary"),"&:hover":{color:e("colors.primary-dark")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.900")},pre:{backgroundColor:e("colors.gray.800"),color:e("colors.gray.100")},code:{color:e("colors.primary"),backgroundColor:e("colors.gray.100"),padding:"0.25rem",borderRadius:"0.25rem",fontWeight:"400"},"code::before":{content:'""'},"code::after":{content:'""'}}},dark:{css:{color:e("colors.gray.200"),a:{color:e("colors.primary-light"),"&:hover":{color:e("colors.primary")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.100")},pre:{backgroundColor:e("colors.gray.900")},code:{color:e("colors.primary-light"),backgroundColor:e("colors.gray.800")}}}})}}}</script><script src=/js/iconify-icon.min.js></script><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"><link rel=stylesheet href=/css/code-highlight.css><link rel=stylesheet href=/css/markdown.css><style type=text/tailwindcss>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuxt.js 应用中的 prepare：types 事件钩子详解 - cmdragon&#39;s Blog</title>
+<meta name="description" content="prepare:types 钩子为 Nuxt.js 开发者提供了灵活定制 TypeScript 配置和声明的能力。通过使用此钩子，开发者能够确保 TypeScript 配置和类型声明能够满足他们的项目需求，提升代码的可维护性和类型安全性。">
+
+
+<meta name="author" content="cmdragon">
+<meta name="robots" content="index, follow">
+
+
+<link rel="canonical" href="https://blog.cmdragon.cn/posts/68419c6dd94db64cbb46673ab19a5146/">
+
+
+
+
+
+<meta property="og:title" content="Nuxt.js 应用中的 prepare：types 事件钩子详解 - cmdragon&#39;s Blog">
+<meta property="og:description" content="prepare:types 钩子为 Nuxt.js 开发者提供了灵活定制 TypeScript 配置和声明的能力。通过使用此钩子，开发者能够确保 TypeScript 配置和类型声明能够满足他们的项目需求，提升代码的可维护性和类型安全性。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cmdragon.cn/posts/68419c6dd94db64cbb46673ab19a5146/">
+
+<meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+<meta property="og:site_name" content="cmdragon&#39;s Blog">
+
+<meta property="article:published_time" content="2024-11-08T00:18:53&#43;08:00">
+
+<meta property="article:modified_time" content="2024-11-08T00:18:53&#43;08:00">
+
+
+
+<meta property="article:section" content="前端开发">
+
+
+
+
+<meta property="article:tag" content="Nuxt">
+
+<meta property="article:tag" content="TypeScript">
+
+<meta property="article:tag" content="钩子">
+
+<meta property="article:tag" content="自定义">
+
+<meta property="article:tag" content="类型">
+
+<meta property="article:tag" content="配置">
+
+<meta property="article:tag" content="构建">
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nuxt.js 应用中的 prepare：types 事件钩子详解 - cmdragon&#39;s Blog">
+<meta name="twitter:description" content="prepare:types 钩子为 Nuxt.js 开发者提供了灵活定制 TypeScript 配置和声明的能力。通过使用此钩子，开发者能够确保 TypeScript 配置和类型声明能够满足他们的项目需求，提升代码的可维护性和类型安全性。">
+
+<meta name="twitter:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Nuxt.js 应用中的 prepare：types 事件钩子详解",
+  "datePublished": "2024-11-08T00:18:53\u002b08:00",
+  "dateModified": "2024-11-08T00:18:53\u002b08:00",
+  "author": {
+    "@type": "Person",
+    "name": "cmdragon"
+  },
+  "description": "prepare:types 钩子为 Nuxt.js 开发者提供了灵活定制 TypeScript 配置和声明的能力。通过使用此钩子，开发者能够确保 TypeScript 配置和类型声明能够满足他们的项目需求，提升代码的可维护性和类型安全性。",
+  
+  "image": "https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png",
+  
+  "url": "https:\/\/blog.cmdragon.cn\/posts\/68419c6dd94db64cbb46673ab19a5146\/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "cmdragon\u0027s Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/blog.cmdragon.cn\/posts\/68419c6dd94db64cbb46673ab19a5146\/"
+  },
+  
+  "keywords": "前端开发",
+  
+  
+  "keywords": "Nuxt, TypeScript, 钩子, 自定义, 类型, 配置, 构建",
+  
+  "wordCount": "1967"
+}
+</script>
+
+
+
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js" as="script">
+
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/images/logo/small.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo/small.png">
+<link rel="icon" type="image/svg+xml" href="/images/logo/scalable.svg">
+<meta name="theme-color" content="#3B82F6">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135"
+     crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js"></script>
+<script>
+  
+  (function() {
+    if (typeof mermaid !== 'undefined') {
+      
+      window.mermaid = mermaid;
+      
+      
+      const isDarkMode = document.documentElement.classList.contains('dark') || 
+                        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      
+      window.mermaid.initialize({
+        startOnLoad: true,  
+        theme: isDarkMode ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: {
+          curve: 'basis',
+          htmlLabels: true
+        },
+        sequence: {
+          mirrorActors: false,
+          wrap: true
+        },
+        themeVariables: {
+          primaryColor: '#3b82f6',
+          primaryTextColor: '#ffffff',
+          primaryBorderColor: isDarkMode ? '#60a5fa' : '#2563eb',
+          lineColor: isDarkMode ? '#94a3b8' : '#4b5563',
+          secondaryColor: isDarkMode ? '#1e293b' : '#f0f9ff',
+          tertiaryColor: isDarkMode ? '#334155' : '#f3f4f6'
+        }
+      });
+      
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          
+          if (typeof window.mermaid.init === 'function') {
+            window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+          }
+        } catch (e) {
+          
+        }
+      });
+    }
+  })();
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#3B82F6',
+                    'primary-light': '#60a5fa',
+                    'primary-dark': '#2563eb',
+                },
+                typography: (theme) => ({
+                    DEFAULT: {
+                        css: {
+                            color: theme('colors.gray.800'),
+                            a: {
+                                color: theme('colors.primary'),
+                                '&:hover': {
+                                    color: theme('colors.primary-dark'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.900'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.800'),
+                                color: theme('colors.gray.100'),
+                            },
+                            code: {
+                                color: theme('colors.primary'),
+                                backgroundColor: theme('colors.gray.100'),
+                                padding: '0.25rem',
+                                borderRadius: '0.25rem',
+                                fontWeight: '400',
+                            },
+                            'code::before': {
+                                content: '""',
+                            },
+                            'code::after': {
+                                content: '""',
+                            },
+                        },
+                    },
+                    dark: {
+                        css: {
+                            color: theme('colors.gray.200'),
+                            a: {
+                                color: theme('colors.primary-light'),
+                                '&:hover': {
+                                    color: theme('colors.primary'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.100'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.900'),
+                            },
+                            code: {
+                                color: theme('colors.primary-light'),
+                                backgroundColor: theme('colors.gray.800'),
+                            },
+                        },
+                    },
+                }),
+            },
+        },
+    }
+</script>
+
+
+<script src="/js/iconify-icon.min.js"></script>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+
+<link rel="stylesheet" href="/css/code-highlight.css">
+<link rel="stylesheet" href="/css/markdown.css">
+
+
+<style type="text/tailwindcss">
     @layer components {
         body {
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -19,43 +283,539 @@
             @apply bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white;
         }
     }
-</style><style>.mermaid{margin:2rem auto;text-align:center;overflow:visible;width:auto;max-width:100%;background-color:#f9fafb;padding:1.5rem .5rem;border-radius:.5rem;box-shadow:0 2px 4px rgba(0,0,0,5%);display:block}.dark .mermaid{background-color:#1e293b;box-shadow:0 2px 4px rgba(0,0,0,.15)}.mermaid svg{display:block !important;max-width:100%;width:auto !important;height:auto !important;font-size:14px;margin:0 auto}.mermaid .node rect,.mermaid .node circle,.mermaid .node ellipse,.mermaid .node polygon,.mermaid .node path{stroke-width:1px}.mermaid .edgePath .path{stroke-width:1.5px}.mermaid .edgeLabel{font-size:.85em;background-color:inherit !important}.mermaid .label text,.mermaid text.label{fill:#374151;font-weight:400}.dark .mermaid .label text,.dark .mermaid text.label{fill:#e5e7eb}@media(max-width:768px){.mermaid{max-width:98%;padding:.8rem .3rem;margin:1.2rem auto}.mermaid svg{font-size:12px}}</style></head><body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col"><div class="flex-grow flex flex-col"><header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700"><div class="container mx-auto px-4"><div class="flex justify-between items-center h-16"><div class="flex items-center"><a href=https://blog.cmdragon.cn/ class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300"><div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105"><img src=/images/logo/small.png alt="cmdragon's Blog Logo" class="h-full w-auto"></div><span class="group-hover:text-primary transition-colors duration-300">cmdragon's Blog</span></a></div><nav class="hidden md:flex space-x-1"><a href=/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=首页 tabindex=0><span class="relative z-10">首页</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/archives/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=归档 tabindex=0><span class="relative z-10">归档</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/categories/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=分类 tabindex=0><span class="relative z-10">分类</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/tags/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=标签 tabindex=0><span class="relative z-10">标签</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/friends/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=友链 tabindex=0><span class="relative z-10">友链</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span></a></nav><div class="flex items-center space-x-3"><button class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=搜索 tabindex=0 onclick=openSiteSearch()>
-<iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></button>
-<button id=theme-toggle class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=切换深色模式 tabindex=0>
-<iconify-icon icon=mdi:weather-sunny class=dark:hidden width=20 height=20></iconify-icon><iconify-icon icon=mdi:weather-night class="hidden dark:block" width=20 height=20></iconify-icon></button>
-<button id=mobile-menu-button class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=打开菜单 tabindex=0>
-<iconify-icon icon=mdi:menu width=20 height=20></iconify-icon></button></div></div><div id=mobile-menu class="md:hidden hidden pb-3"><div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner"><a href=/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=首页 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>首页</div></a><a href=/archives/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=归档 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>归档</div></a><a href=/categories/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=分类 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>分类</div></a><a href=/tags/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=标签 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>标签</div></a><a href=/friends/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=友链 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>友链</div></a></div></div></div></header><script>document.getElementById("mobile-menu-button").addEventListener("click",function(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden")}),document.getElementById("theme-toggle").addEventListener("click",function(){document.documentElement.classList.contains("dark")?(document.documentElement.classList.remove("dark"),localStorage.setItem("color-theme","light")):(document.documentElement.classList.add("dark"),localStorage.setItem("color-theme","dark"))}),window.addEventListener("scroll",function(){const e=document.querySelector("header");window.scrollY>10?e.classList.add("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95"):e.classList.remove("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95")})</script><main class="container mx-auto px-4 py-8 flex-grow"><div class="container mx-auto px-4 sm:px-6 relative"><div class="flex flex-col lg:flex-row lg:gap-8"><article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700"><nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label=面包屑导航><ol class="flex flex-wrap items-center" itemscope itemtype=https://schema.org/BreadcrumbList><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/ class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=首页><span itemprop=name>首页</span>
-</a><meta itemprop=position content="1"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/posts class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=Posts><span itemprop=name>Posts</span>
-</a><meta itemprop=position content="2"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><span class="text-gray-800 dark:text-gray-200" itemprop=name title="Nuxt.js 应用中的 prepare：types 事件钩子详解">Nuxt.js 应用中的 prepare：types 事件钩...</span>
-<meta itemprop=position content="3"></li></ol></nav><header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6"><h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">Nuxt.js 应用中的 prepare：types 事件钩子详解</h1><div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3"><span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:calendar class=mr-1 width=16 height=16></iconify-icon>2024-11-08
-</span><span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:folder class=mr-1 width=16 height=16></iconify-icon><a href=/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91 class="hover:text-primary transition-colors">前端开发
-</a></span><span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:clock-outline class=mr-1 width=16 height=16></iconify-icon>10 分钟阅读
-</span><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed target=_blank rel="noopener noreferrer" class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors" aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" tabindex=0><iconify-icon icon=simple-icons:creativecommons width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsbysa width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsnc width=16 height=16 class=mr-1></iconify-icon><span>BY-NC-SA 4.0</span></a></div></header><div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed"><img src="https://static.cmdragon.cn/blog/images/2024_11_08 15_08_01.png@blog" title="2024_11_08 15_08_01.png" alt="2024_11_08 15_08_01.png">
-<img src=https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg title=cmdragon_cn.png alt=cmdragon_cn.png><p>扫描<a href=https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg>二维码</a>关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code></p><h1 id=preparetypes-钩子详解><code>prepare:types</code> 钩子详解</h1><p><code>prepare:types</code> 是 Nuxt.js 中的一个生命周期钩子，它允许开发者在 Nuxi 写入 <code>.nuxt/tsconfig.json</code> 和 <code>.nuxt/nuxt.d.ts</code> 文件之前，自定义 TypeScript 配置或在类型声明中添加额外的引用。这个钩子对于那些需要进行 TypeScript 定制的项目来说非常有用，使得开发者能够更好地控制和扩展 TypeScript 的类型定义。</p><hr><h2 id=目录>目录</h2><ol><li><a href=#1-%E6%A6%82%E8%BF%B0>概述</a></li><li><a href=#2-preparatypes-%E9%92%A9%E5%AD%90%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E>prepare:types 钩子的详细说明</a><ul><li>2.1 <a href=#21-%E9%92%A9%E5%AD%90%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%9C%E7%94%A8>钩子的定义与作用</a></li><li>2.2 <a href=#22-%E8%B0%83%E7%94%A8%E6%97%B6%E6%9C%BA>调用时机</a></li><li>2.3 <a href=#23-%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E>参数说明</a></li></ul></li><li><a href=#3-%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B>具体使用示例</a><ul><li>3.1 <a href=#31-%E4%BF%AE%E6%94%B9-tsconfigjson-%E7%9A%84%E7%A4%BA%E4%BE%8B>修改 tsconfig.json 的示例</a></li><li>3.2 <a href=#32-%E5%9C%A8-nuxtdts-%E4%B8%AD%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A3%B0%E6%98%8E%E7%9A%84%E7%A4%BA%E4%BE%8B>在 nuxt.d.ts 中添加自定义声明的示例</a></li></ul></li><li><a href=#4-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF>应用场景</a></li><li><a href=#5-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9>注意事项</a></li><li><a href=#6-%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9>关键要点</a></li><li><a href=#7-%E6%80%BB%E7%BB%93>总结</a></li></ol><hr><h3 id=1-概述>1. 概述</h3><p><code>prepare:types</code> 钩子允许开发者在 Nuxt.js 生成的 TypeScript 配置文件和声明文件被写入之前，进行自定义配置。这有助于确保在 TypeScript 项目中使用附加的类型声明或修改默认的编译配置。</p><h3 id=2-preparetypes-钩子的详细说明>2. prepare:types 钩子的详细说明</h3><h4 id=21-钩子的定义与作用>2.1 钩子的定义与作用</h4><ul><li><strong>定义</strong>: <code>prepare:types</code> 是一个钩子，用于在生成 TypeScript 配置和声明文件之前调整这些文件的内容。</li><li><strong>作用</strong>: 开发者可以通过此钩子向生成的 TypeScript 配置 (<code>tsconfig.json</code>) 和声明文件 (<code>nuxt.d.ts</code>) 中注入自定义的类型声明或选项，增强类型检查和提示。</li></ul><h4 id=22-调用时机>2.2 调用时机</h4><ul><li><strong>执行环境</strong>: 在 Nuxt 执行生成 TypeScript 配置和声明文件的过程中调用。</li><li><strong>挂载时机</strong>: 通常在构建过程的初始化阶段，确保开发者的自定义配置能在项目生成的相关文件中生效。</li></ul><h4 id=23-参数说明>2.3 参数说明</h4><ul><li><strong>options</strong>: 提供当前 TypeScript 配置和自定义声明的选项，开发者可以使用这些选项进行修改和扩展。</li></ul><h3 id=3-具体使用示例>3. 具体使用示例</h3><h4 id=31-修改-tsconfigjson-的示例>3.1 修改 tsconfig.json 的示例</h4><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>// plugins/prepareTypes.js
+</style>
+
+
+<style>
+   
+  .mermaid {
+    margin: 2rem auto;
+    text-align: center;
+    overflow: visible;
+    width: auto;
+    max-width: 100%;
+    background-color: #f9fafb;
+    padding: 1.5rem 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: block;
+  }
+  
+  .dark .mermaid {
+    background-color: #1e293b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+   
+  .mermaid svg {
+    display: block !important;
+    max-width: 100%;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px;
+    margin: 0 auto;
+  }
+  
+   
+  .mermaid .node rect,
+  .mermaid .node circle,
+  .mermaid .node ellipse,
+  .mermaid .node polygon,
+  .mermaid .node path {
+    stroke-width: 1px;
+  }
+  
+  .mermaid .edgePath .path {
+    stroke-width: 1.5px;
+  }
+  
+  .mermaid .edgeLabel {
+    font-size: 0.85em;
+    background-color: inherit !important;
+  }
+  
+   
+  .mermaid .label text,
+  .mermaid text.label {
+    fill: #374151;
+    font-weight: normal;
+  }
+  
+  .dark .mermaid .label text,
+  .dark .mermaid text.label {
+    fill: #e5e7eb;
+  }
+  
+   
+  @media (max-width: 768px) {
+    .mermaid {
+      max-width: 98%;
+      padding: 0.8rem 0.3rem;
+      margin: 1.2rem auto;
+    }
+    
+    .mermaid svg {
+      font-size: 12px;
+    }
+  }
+</style> 
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col">
+    <div class="flex-grow flex flex-col">
+        <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            
+            <div class="flex items-center">
+                <a href="https://blog.cmdragon.cn/" class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300">
+                    <div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105">
+                        <img src="/images/logo/small.png" alt="cmdragon&#39;s Blog Logo" class="h-full w-auto" />
+                    </div>
+                    <span class="group-hover:text-primary transition-colors duration-300">cmdragon&#39;s Blog</span>
+                </a>
+            </div>
+            
+            
+            <nav class="hidden md:flex space-x-1">
+                
+                
+                    <a href="/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="首页"
+                       tabindex="0">
+                        <span class="relative z-10">首页</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="归档"
+                       tabindex="0">
+                        <span class="relative z-10">归档</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="分类"
+                       tabindex="0">
+                        <span class="relative z-10">分类</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="标签"
+                       tabindex="0">
+                        <span class="relative z-10">标签</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="友链"
+                       tabindex="0">
+                        <span class="relative z-10">友链</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+            </nav>
+            
+            
+            <div class="flex items-center space-x-3">
+                
+                <button 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="搜索"
+                    tabindex="0"
+                    onclick="openSiteSearch()">
+                    <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="theme-toggle" 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="切换深色模式"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:weather-sunny" class="dark:hidden" width="20" height="20"></iconify-icon>
+                    <iconify-icon icon="mdi:weather-night" class="hidden dark:block" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="mobile-menu-button" 
+                    class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="打开菜单"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:menu" width="20" height="20"></iconify-icon>
+                </button>
+            </div>
+        </div>
+        
+        
+        <div id="mobile-menu" class="md:hidden hidden pb-3">
+            <div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner">
+                
+                    <a href="/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="首页"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            首页
+                        </div>
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="归档"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            归档
+                        </div>
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="分类"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            分类
+                        </div>
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="标签"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            标签
+                        </div>
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="友链"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            友链
+                        </div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+    });
+    
+    
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        } else {
+            header.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        }
+    });
+</script> 
+        
+        <main class="container mx-auto px-4 py-8 flex-grow">
+            
+<div class="container mx-auto px-4 sm:px-6 relative">
+    <div class="flex flex-col lg:flex-row lg:gap-8">
+        
+        <article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700">
+            
+            <nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label="面包屑导航">
+    <ol class="flex flex-wrap items-center" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="https://blog.cmdragon.cn/" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="首页">
+                <span itemprop="name">首页</span>
+            </a>
+            <meta itemprop="position" content="1" />
+        </li>
+        
+        
+        
+            
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="https://blog.cmdragon.cn/posts" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="Posts">
+                        <span itemprop="name">Posts</span>
+                    </a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span class="text-gray-800 dark:text-gray-200" itemprop="name" title="Nuxt.js 应用中的 prepare：types 事件钩子详解">Nuxt.js 应用中的 prepare：types 事件钩...</span>
+                    <meta itemprop="position" content="3" />
+                </li>
+            
+        
+    </ol>
+</nav> 
+            
+            <header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">Nuxt.js 应用中的 prepare：types 事件钩子详解</h1>
+                
+                <div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3">
+                    <span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:calendar" class="mr-1" width="16" height="16"></iconify-icon>
+                        2024-11-08
+                    </span>
+                    
+                    
+                        <span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full">
+                            <iconify-icon icon="mdi:folder" class="mr-1" width="16" height="16"></iconify-icon>
+                            
+                                
+                                <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91" class="hover:text-primary transition-colors">
+                                    前端开发
+                                </a>
+                            
+                        </span>
+                    
+                    
+                    
+                    <span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:clock-outline" class="mr-1" width="16" height="16"></iconify-icon>
+                        10 分钟阅读
+                    </span>
+                    
+                    
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank" rel="noopener noreferrer" 
+                       class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors"
+                       aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" 
+                       tabindex="0">
+                        <iconify-icon icon="simple-icons:creativecommons" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsbysa" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsnc" width="16" height="16" class="mr-1"></iconify-icon>
+                        <span>BY-NC-SA 4.0</span>
+                    </a>
+                </div>
+            </header>
+            
+            
+            <div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed">
+                <img src="https://static.cmdragon.cn/blog/images/2024_11_08 15_08_01.png@blog" title="2024_11_08 15_08_01.png" alt="2024_11_08 15_08_01.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<p>扫描<a href="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg">二维码</a>关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code></p>
+<h1 id="preparetypes-钩子详解"><code>prepare:types</code> 钩子详解</h1>
+<p><code>prepare:types</code> 是 Nuxt.js 中的一个生命周期钩子，它允许开发者在 Nuxi 写入 <code>.nuxt/tsconfig.json</code> 和 <code>.nuxt/nuxt.d.ts</code> 文件之前，自定义 TypeScript 配置或在类型声明中添加额外的引用。这个钩子对于那些需要进行 TypeScript 定制的项目来说非常有用，使得开发者能够更好地控制和扩展 TypeScript 的类型定义。</p>
+<hr>
+<h2 id="目录">目录</h2>
+<ol>
+<li><a href="#1-%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#2-preparatypes-%E9%92%A9%E5%AD%90%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E">prepare:types 钩子的详细说明</a>
+<ul>
+<li>2.1 <a href="#21-%E9%92%A9%E5%AD%90%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%9C%E7%94%A8">钩子的定义与作用</a></li>
+<li>2.2 <a href="#22-%E8%B0%83%E7%94%A8%E6%97%B6%E6%9C%BA">调用时机</a></li>
+<li>2.3 <a href="#23-%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E">参数说明</a></li>
+</ul>
+</li>
+<li><a href="#3-%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B">具体使用示例</a>
+<ul>
+<li>3.1 <a href="#31-%E4%BF%AE%E6%94%B9-tsconfigjson-%E7%9A%84%E7%A4%BA%E4%BE%8B">修改 tsconfig.json 的示例</a></li>
+<li>3.2 <a href="#32-%E5%9C%A8-nuxtdts-%E4%B8%AD%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A3%B0%E6%98%8E%E7%9A%84%E7%A4%BA%E4%BE%8B">在 nuxt.d.ts 中添加自定义声明的示例</a></li>
+</ul>
+</li>
+<li><a href="#4-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF">应用场景</a></li>
+<li><a href="#5-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+<li><a href="#6-%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9">关键要点</a></li>
+<li><a href="#7-%E6%80%BB%E7%BB%93">总结</a></li>
+</ol>
+<hr>
+<h3 id="1-概述">1. 概述</h3>
+<p><code>prepare:types</code> 钩子允许开发者在 Nuxt.js 生成的 TypeScript 配置文件和声明文件被写入之前，进行自定义配置。这有助于确保在 TypeScript 项目中使用附加的类型声明或修改默认的编译配置。</p>
+<h3 id="2-preparetypes-钩子的详细说明">2. prepare:types 钩子的详细说明</h3>
+<h4 id="21-钩子的定义与作用">2.1 钩子的定义与作用</h4>
+<ul>
+<li><strong>定义</strong>: <code>prepare:types</code> 是一个钩子，用于在生成 TypeScript 配置和声明文件之前调整这些文件的内容。</li>
+<li><strong>作用</strong>: 开发者可以通过此钩子向生成的 TypeScript 配置 (<code>tsconfig.json</code>) 和声明文件 (<code>nuxt.d.ts</code>) 中注入自定义的类型声明或选项，增强类型检查和提示。</li>
+</ul>
+<h4 id="22-调用时机">2.2 调用时机</h4>
+<ul>
+<li><strong>执行环境</strong>: 在 Nuxt 执行生成 TypeScript 配置和声明文件的过程中调用。</li>
+<li><strong>挂载时机</strong>: 通常在构建过程的初始化阶段，确保开发者的自定义配置能在项目生成的相关文件中生效。</li>
+</ul>
+<h4 id="23-参数说明">2.3 参数说明</h4>
+<ul>
+<li><strong>options</strong>: 提供当前 TypeScript 配置和自定义声明的选项，开发者可以使用这些选项进行修改和扩展。</li>
+</ul>
+<h3 id="3-具体使用示例">3. 具体使用示例</h3>
+<h4 id="31-修改-tsconfigjson-的示例">3.1 修改 tsconfig.json 的示例</h4>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">// plugins/prepareTypes.js
 export default defineNuxtPlugin((nuxtApp) =&gt; {
   nuxtApp.hooks(&#39;prepare:types&#39;, (options) =&gt; {
     // 修改 tsconfig.json 中的编译选项
     options.tsconfig.compilerOptions.strict = true; // 开启严格模式
     options.tsconfig.include.push(&#39;my-custom-dir/**/*&#39;); // 添加自定义目录
   });
-});</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>在这个示例中，我们使用 <code>prepare:types</code> 钩子修改了 <code>tsconfig.json</code> 的编译选项，开启了 TypeScript 的严格模式，并添加了一个自定义目录到编译包含列表中。</p><h4 id=32-在-nuxtdts-中添加自定义声明的示例>3.2 在 nuxt.d.ts 中添加自定义声明的示例</h4><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>// plugins/prepareTypes.js
+});</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>在这个示例中，我们使用 <code>prepare:types</code> 钩子修改了 <code>tsconfig.json</code> 的编译选项，开启了 TypeScript 的严格模式，并添加了一个自定义目录到编译包含列表中。</p>
+<h4 id="32-在-nuxtdts-中添加自定义声明的示例">3.2 在 nuxt.d.ts 中添加自定义声明的示例</h4>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">// plugins/prepareTypes.js
 export default defineNuxtPlugin((nuxtApp) =&gt; {
   nuxtApp.hooks(&#39;prepare:types&#39;, (options) =&gt; {
     // 在 nuxt.d.ts 中添加自定义声明
@@ -67,43 +827,788 @@ export default defineNuxtPlugin((nuxtApp) =&gt; {
       }
     `);
   });
-});</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style><p>在这个示例中，我们在 <code>nuxt.d.ts</code> 中添加了一个自定义声明，扩展了 <code>NuxtApp</code> 接口，为其添加了一个新的属性 <code>$myCustomProperty</code>。</p><h3 id=4-应用场景>4. 应用场景</h3><ol><li><strong>自定义类型声明</strong>: 在使用 Nuxt.js 时，可能需要添加自定义类型或接口来适配项目需求。</li><li><strong>修改默认 TypeScript 配置</strong>: 通过钩子修改项目的 TypeScript 编译选项，确保符合团队或项目标准。</li><li><strong>动态添加项目路径</strong>: 根据项目结构动态引入属于自定义模块或库的类型定义。</li></ol><h3 id=5-注意事项>5. 注意事项</h3><ul><li><strong>兼容性</strong>: 确保使用的 TypeScript 特性与项目中使用的 TypeScript 版本兼容。</li><li><strong>类型冲突</strong>: 在添加自定义声明时，要注意避免与已有的类型冲突。</li><li><strong>性能</strong>: 修改 <code>tsconfig</code> 的编译选项可能会影响 TypeScript 的性能，尤其是在大型项目中。</li></ul><h3 id=6-关键要点>6. 关键要点</h3><ul><li><code>prepare:types</code> 钩子允许开发者在生成 TypeScript 配置和声明文件之前进行自定义设置。</li><li>该钩子可以帮助开发者扩展和修改 TypeScript 类型声明，以满足项目的具体需求。</li></ul><h3 id=7-总结>7. 总结</h3><p><code>prepare:types</code> 钩子为 Nuxt.js 开发者提供了灵活定制 TypeScript 配置和声明的能力。通过使用此钩子，开发者能够确保 TypeScript 配置和类型声明能够满足他们的项目需求，提升代码的可维护性和类型安全性。</p><p>余下文章内容请点击跳转至 个人博客页面 或者 扫码关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code>，阅读完整的文章：</p><h2 id=往期文章归档>往期文章归档：</h2><ul><li><a href=https://blog.cmdragon.cn/posts/6ea046edf756/>Nuxt.js 应用中的 build：error 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/925363b7ba91/>Nuxt.js 应用中的 prerender：routes 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/e3ab63fec9ce/>Nuxt.js 应用中的 nitro：build：public-assets 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/1c70713c402c/>Nuxt.js 应用中的 nitro：build：before 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/8122bb43e5c6/>Nuxt.js 应用中的 nitro：init 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/61ef115005d4/>Nuxt.js 应用中的 nitro：config 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/f1df4f41c9a9/>Nuxt.js 应用中的 components：extend 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/0f896139298c/>Nuxt.js 应用中的 components：dirs 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/ddb970c3c508/>Nuxt.js 应用中的 imports：dirs 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/95d21c3b16f6/>Nuxt.js 应用中的 imports：context 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/002d9daf4c46/>Nuxt.js 应用中的 imports：extend 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/f4858dcadca1/>Nuxt.js 应用中的 imports：sources 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/801ed4ce0612/>Nuxt.js 应用中的 server：devHandler 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/83af28e7c789/>Nuxt.js 应用中的 pages：extend 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/fa5b7db36d2d/>Nuxt.js 应用中的 builder：watch 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/adc96aee3b3c/>Nuxt.js 应用中的 builder：generateApp 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/523de9001247/>Nuxt.js 应用中的 build：manifest 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/41dece9c782c/>Nuxt.js 应用中的 build：done 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/eb2bd3bbfab8/>Nuxt.js 应用中的 build：before 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/b76b5d553a8b/>Nuxt.js 应用中的 app：templatesGenerated 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/ace6c53275c4/>Nuxt.js 应用中的 app：templates 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/9ea12f07cc2a/>Nuxt.js 应用中的 app：resolve 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/397fbad66fab/>Nuxt.js 应用中的 modules：done 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/5b5669bca701/>Nuxt.js 应用中的 modules：before 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/25888bf37a0f/>Nuxt.js 应用中的 restart 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/ec1665a791a5/>Nuxt.js 应用中的 close 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/37d771762c8f/>Nuxt.js 应用中的 ready 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/52224e8e71ec/>Nuxt.js 应用中的 kit：compatibility 事件钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/80acaed2b809/>Nuxt.js 应用中的 page：transition：finish 钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/2e422732f13a/>Nuxt.js 应用中的 page：finish 钩子详解 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/9876204f1a7b/>Nuxt.js 应用中的 page：start 钩子详解 | cmdragon&rsquo;s Blog</a></li><li></li></ul></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>标签</h3><div class="flex flex-wrap gap-2"><a href=/tags/Nuxt class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: Nuxt" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>Nuxt
-</a><a href=/tags/TypeScript class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: TypeScript" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>TypeScript
-</a><a href=/tags/%E9%92%A9%E5%AD%90 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 钩子" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>钩子
-</a><a href=/tags/%E8%87%AA%E5%AE%9A%E4%B9%89 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 自定义" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>自定义
-</a><a href=/tags/%E7%B1%BB%E5%9E%8B class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 类型" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>类型
-</a><a href=/tags/%E9%85%8D%E7%BD%AE class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 配置" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>配置
-</a><a href=/tags/%E6%9E%84%E5%BB%BA class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 构建" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>构建</a></div></div><nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center"><iconify-icon icon=mdi:arrow-left class=mr-2 width=16 height=16></iconify-icon>上一篇
-</span><a href=https://blog.cmdragon.cn/posts/4a5e09829cf63001943fc481d69e01e0/ class="font-medium text-primary hover:text-primary-dark block" aria-label="上一篇: Nuxt.js 应用中的 build：error 事件钩子详解" tabindex=0>Nuxt.js 应用中的 build：error 事件钩子详解</a></div><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">下一篇<iconify-icon icon=mdi:arrow-right class=ml-2 width=16 height=16></iconify-icon>
-</span><a href=https://blog.cmdragon.cn/posts/59f320ae722d9803c0c4eb42ccb295b2/ class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: Nuxt.js 应用中的 listen 事件钩子详解" tabindex=0>Nuxt.js 应用中的 listen 事件钩子详解</a></div></nav><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:share-variant width=16 height=16></iconify-icon></div>分享</h3><div class="flex flex-wrap gap-3"><a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f68419c6dd94db64cbb46673ab19a5146%2f&text=Nuxt.js%20%e5%ba%94%e7%94%a8%e4%b8%ad%e7%9a%84%20prepare%ef%bc%9atypes%20%e4%ba%8b%e4%bb%b6%e9%92%a9%e5%ad%90%e8%af%a6%e8%a7%a3" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Twitter" tabindex=0><iconify-icon icon=mdi:twitter width=20 height=20></iconify-icon></a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f68419c6dd94db64cbb46673ab19a5146%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Facebook" tabindex=0><iconify-icon icon=mdi:facebook width=20 height=20></iconify-icon></a><a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f68419c6dd94db64cbb46673ab19a5146%2f&title=Nuxt.js%20%e5%ba%94%e7%94%a8%e4%b8%ad%e7%9a%84%20prepare%ef%bc%9atypes%20%e4%ba%8b%e4%bb%b6%e9%92%a9%e5%ad%90%e8%af%a6%e8%a7%a3" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label=分享到微博 tabindex=0><iconify-icon icon=mdi:sina-weibo width=20 height=20></iconify-icon></a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f68419c6dd94db64cbb46673ab19a5146%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 LinkedIn" tabindex=0><iconify-icon icon=mdi:linkedin width=20 height=20></iconify-icon></a></div></div></article><aside class="w-full lg:w-1/4"><button id=mobile-toc-toggle class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-<iconify-icon icon=mdi:table-of-contents width=24 height=24></iconify-icon></button><div id=toc-container class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
-fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
-lg:overflow-visible flex flex-col"><div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4"><h2 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:table-of-contents width=16 height=16></iconify-icon></div>目录</h2><div class="flex items-center"><button id=toc-toggle class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label=折叠目录>
-<iconify-icon id=toc-icon icon=mdi:chevron-up width=20 height=20></iconify-icon></button>
-<button id=toc-close class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div></div><div id=toc-content class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto"><nav id=TableOfContents><ul><li><a href=#目录>目录</a><ul><li><a href=#1-概述>1. 概述</a></li><li><a href=#2-preparetypes-钩子的详细说明>2. prepare:types 钩子的详细说明</a><ul><li><a href=#21-钩子的定义与作用>2.1 钩子的定义与作用</a></li><li><a href=#22-调用时机>2.2 调用时机</a></li><li><a href=#23-参数说明>2.3 参数说明</a></li></ul></li><li><a href=#3-具体使用示例>3. 具体使用示例</a><ul><li><a href=#31-修改-tsconfigjson-的示例>3.1 修改 tsconfig.json 的示例</a></li><li><a href=#32-在-nuxtdts-中添加自定义声明的示例>3.2 在 nuxt.d.ts 中添加自定义声明的示例</a></li></ul></li><li><a href=#4-应用场景>4. 应用场景</a></li><li><a href=#5-注意事项>5. 注意事项</a></li><li><a href=#6-关键要点>6. 关键要点</a></li><li><a href=#7-总结>7. 总结</a></li></ul></li><li><a href=#往期文章归档>往期文章归档：</a></li></ul></nav></div></div><div id=toc-overlay class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div></aside></div></div><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js></script><link rel=stylesheet href=/css/markdown.css><link rel=stylesheet href=/css/code-highlight.css><script src=/js/code-highlight.js></script><script src=/js/toc.js></script><script>document.addEventListener("DOMContentLoaded",function(){console.log("初始化代码高亮..."),window.hljs?(console.log("highlight.js 已加载"),document.querySelectorAll("pre code").forEach(function(e){console.log("应用高亮到代码块"),hljs.highlightElement(e)})):console.error("highlight.js 未加载!")})</script><style>#toc-content{max-height:none}@media(min-width:1024px){#toc-content{max-height:none;overflow:visible}#toc-container{max-height:calc(100vh - 120px);overflow-y:auto}nav#TableOfContents{overflow:visible}}@media(max-width:1023px){#toc-container{padding-bottom:env(safe-area-inset-bottom,20px);display:flex;flex-direction:column}#toc-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:20px}}</style></main><footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700"><div class="container mx-auto px-4"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:information width=16 height=16></iconify-icon></div>关于本站</h3><p class="text-sm text-gray-600 dark:text-gray-400 mb-4">cmdragon's Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。</p><div class="flex space-x-3"><a href=https://github.com/amd794 class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=GitHub tabindex=0 target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:github width=18 height=18></iconify-icon></a><button id=wechat-btn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=微信 tabindex=0>
-<iconify-icon icon=mdi:wechat width=18 height=18></iconify-icon></button>
-<a href=mailto:support@cmdragon.cn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=Email tabindex=0><iconify-icon icon=mdi:email width=18 height=18></iconify-icon></a><a href=/index.xml class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=RSS tabindex=0><iconify-icon icon=mdi:rss width=18 height=18></iconify-icon></a></div></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:link-variant width=16 height=16></iconify-icon></div>快速链接</h3><ul class=space-y-2><li><a href=https://movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>高清影视库</a></li><li><a href=https://comic.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>精选漫画阅读</a></li><li><a href=https://tools.cmdragon.cn/zh class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>实用在线工具</a></li><li><a href=https://hot-movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>热映影视推荐</a></li></ul></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>热门标签</h3><div class="flex flex-wrap gap-2"><a href=https://blog.cmdragon.cn/tags/FastAPI/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#FastAPI <span class="text-xs opacity-70">(85)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt <span class="text-xs opacity-70">(68)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#钩子 <span class="text-xs opacity-70">(62)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#性能优化 <span class="text-xs opacity-70">(47)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt.js/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt.js <span class="text-xs opacity-70">(43)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#生命周期 <span class="text-xs opacity-70">(38)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt3/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt3 <span class="text-xs opacity-70">(37)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#错误处理 <span class="text-xs opacity-70">(32)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#组件 <span class="text-xs opacity-70">(29)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#数据库管理 <span class="text-xs opacity-70">(27)</span></a></div></div></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6"><div class="flex flex-col md:flex-row justify-between items-center"><div class="text-center md:text-left mb-4 md:mb-0"><p class="text-sm text-gray-600 dark:text-gray-400">&copy; 2023 cmdragon's Blog. 保留所有权利.</p><p class="text-xs text-gray-500 dark:text-gray-500 mt-1">由 <a href=https://gohugo.io/ class="hover:text-primary transition-colors duration-300" target=_blank rel="noopener noreferrer">Hugo</a> 强力驱动</p></div><button id=back-to-top class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
-<iconify-icon icon=mdi:arrow-up class=mr-1 width=16 height=16></iconify-icon>返回顶部</button></div></div></div><div id=wechat-modal class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick='this.classList.add("hidden")'><div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick=event.stopPropagation()><button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick='document.getElementById("wechat-modal").classList.add("hidden")'>
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button><h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4><div class="flex justify-center"><img src=/images/wechat_qrcode.webp alt=微信二维码 class="w-64 h-64 object-contain"></div></div></div></footer><script>const backToTopButton=document.getElementById("back-to-top");window.addEventListener("scroll",function(){window.scrollY>300?(backToTopButton.classList.remove("opacity-0","invisible"),backToTopButton.classList.add("opacity-100","visible")):(backToTopButton.classList.add("opacity-0","invisible"),backToTopButton.classList.remove("opacity-100","visible"))}),backToTopButton.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})}),document.getElementById("wechat-btn").addEventListener("click",function(){document.getElementById("wechat-modal").classList.remove("hidden")}),document.getElementById("wechat-btn").addEventListener("keydown",function(e){(e.key==="Enter"||e.key===" ")&&(e.preventDefault(),document.getElementById("wechat-modal").classList.remove("hidden"))})</script></div><script>localStorage.getItem("color-theme")==="dark"||!("color-theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark")</script><script src=/js/code-highlight.js></script><script src=/js/advanced-render.js></script><div id=site-search-modal class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300"><div id=site-search-backdrop class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div><div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700"><div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700"><h3 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm"><iconify-icon icon=mdi:magnify width=16 height=16></iconify-icon></div><span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span></h3><button id=site-search-close class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div><div class=p-6><form id=site-search-form action=/search/ method=get><div class=relative><div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md"><span class="pl-4 text-gray-400"><iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></span><input type=text id=site-search-input name=q placeholder=输入关键词搜索... class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200" aria-label=搜索内容 tabindex=0>
-<button type=submit class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center" aria-label=搜索 tabindex=0>
-<span class="mr-1 hidden sm:inline">搜索</span>
-<iconify-icon icon=mdi:arrow-right width=18 height=18></iconify-icon></button></div></div></form><div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start"><div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5"><iconify-icon icon=mdi:information width=16 height=16 class="text-blue-500 dark:text-blue-300"></iconify-icon></div><div><p class=mb-1>快捷键提示:</p><ul class=space-y-1><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
-<span>打开搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
-<span>关闭搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
-<span>提交搜索</span></li></ul></div></div><div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"><div class="flex flex-wrap gap-2"><a href=/tags/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:tag-multiple class=mr-1 width=16 height=16></iconify-icon>标签
-</a><a href=/categories/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:folder-multiple class=mr-1 width=16 height=16></iconify-icon>分类
-</a><a href=/archives/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:archive class=mr-1 width=16 height=16></iconify-icon>归档</a></div></div></div></div></div><script>document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("site-search-modal"),t=e.querySelector('div[class*="rounded-xl"]'),s=document.getElementById("site-search-backdrop"),o=document.getElementById("site-search-close"),a=document.getElementById("site-search-form"),i=document.getElementById("site-search-input");window.openSiteSearch=function(){e.classList.remove("hidden"),document.body.classList.add("overflow-hidden"),setTimeout(()=>{e.classList.add("opacity-100"),t.classList.remove("scale-95","opacity-0"),t.classList.add("scale-100","opacity-100"),i.focus()},10)};function n(){e.classList.remove("opacity-100"),t.classList.remove("scale-100","opacity-100"),t.classList.add("scale-95","opacity-0"),setTimeout(()=>{e.classList.add("hidden"),document.body.classList.remove("overflow-hidden")},300)}s&&s.addEventListener("click",n),o&&o.addEventListener("click",n),document.addEventListener("keydown",t=>{t.key==="Escape"&&!e.classList.contains("hidden")&&n(),t.key==="/"&&e.classList.contains("hidden")&&document.activeElement.tagName!=="INPUT"&&(t.preventDefault(),openSiteSearch())}),t.addEventListener("click",e=>{e.stopPropagation()})})</script></body></html>
+});</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ <p>在这个示例中，我们在 <code>nuxt.d.ts</code> 中添加了一个自定义声明，扩展了 <code>NuxtApp</code> 接口，为其添加了一个新的属性 <code>$myCustomProperty</code>。</p>
+<h3 id="4-应用场景">4. 应用场景</h3>
+<ol>
+<li><strong>自定义类型声明</strong>: 在使用 Nuxt.js 时，可能需要添加自定义类型或接口来适配项目需求。</li>
+<li><strong>修改默认 TypeScript 配置</strong>: 通过钩子修改项目的 TypeScript 编译选项，确保符合团队或项目标准。</li>
+<li><strong>动态添加项目路径</strong>: 根据项目结构动态引入属于自定义模块或库的类型定义。</li>
+</ol>
+<h3 id="5-注意事项">5. 注意事项</h3>
+<ul>
+<li><strong>兼容性</strong>: 确保使用的 TypeScript 特性与项目中使用的 TypeScript 版本兼容。</li>
+<li><strong>类型冲突</strong>: 在添加自定义声明时，要注意避免与已有的类型冲突。</li>
+<li><strong>性能</strong>: 修改 <code>tsconfig</code> 的编译选项可能会影响 TypeScript 的性能，尤其是在大型项目中。</li>
+</ul>
+<h3 id="6-关键要点">6. 关键要点</h3>
+<ul>
+<li><code>prepare:types</code> 钩子允许开发者在生成 TypeScript 配置和声明文件之前进行自定义设置。</li>
+<li>该钩子可以帮助开发者扩展和修改 TypeScript 类型声明，以满足项目的具体需求。</li>
+</ul>
+<h3 id="7-总结">7. 总结</h3>
+<p><code>prepare:types</code> 钩子为 Nuxt.js 开发者提供了灵活定制 TypeScript 配置和声明的能力。通过使用此钩子，开发者能够确保 TypeScript 配置和类型声明能够满足他们的项目需求，提升代码的可维护性和类型安全性。</p>
+<p>余下文章内容请点击跳转至 个人博客页面 或者 扫码关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code>，阅读完整的文章：</p>
+<h2 id="往期文章归档">往期文章归档：</h2>
+<ul>
+<li><a href="https://blog.cmdragon.cn/posts/6ea046edf756/">Nuxt.js 应用中的 build：error 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/925363b7ba91/">Nuxt.js 应用中的 prerender：routes 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/e3ab63fec9ce/">Nuxt.js 应用中的 nitro：build：public-assets 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/1c70713c402c/">Nuxt.js 应用中的 nitro：build：before 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/8122bb43e5c6/">Nuxt.js 应用中的 nitro：init 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/61ef115005d4/">Nuxt.js 应用中的 nitro：config 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/f1df4f41c9a9/">Nuxt.js 应用中的 components：extend 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/0f896139298c/">Nuxt.js 应用中的 components：dirs 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/ddb970c3c508/">Nuxt.js 应用中的 imports：dirs 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/95d21c3b16f6/">Nuxt.js 应用中的 imports：context 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/002d9daf4c46/">Nuxt.js 应用中的 imports：extend 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/f4858dcadca1/">Nuxt.js 应用中的 imports：sources 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/801ed4ce0612/">Nuxt.js 应用中的 server：devHandler 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/83af28e7c789/">Nuxt.js 应用中的 pages：extend 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/fa5b7db36d2d/">Nuxt.js 应用中的 builder：watch 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/adc96aee3b3c/">Nuxt.js 应用中的 builder：generateApp 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/523de9001247/">Nuxt.js 应用中的 build：manifest 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/41dece9c782c/">Nuxt.js 应用中的 build：done 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/eb2bd3bbfab8/">Nuxt.js 应用中的 build：before 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/b76b5d553a8b/">Nuxt.js 应用中的 app：templatesGenerated 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/ace6c53275c4/">Nuxt.js 应用中的 app：templates 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/9ea12f07cc2a/">Nuxt.js 应用中的 app：resolve 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/397fbad66fab/">Nuxt.js 应用中的 modules：done 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/5b5669bca701/">Nuxt.js 应用中的 modules：before 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/25888bf37a0f/">Nuxt.js 应用中的 restart 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/ec1665a791a5/">Nuxt.js 应用中的 close 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/37d771762c8f/">Nuxt.js 应用中的 ready 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/52224e8e71ec/">Nuxt.js 应用中的 kit：compatibility 事件钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/80acaed2b809/">Nuxt.js 应用中的 page：transition：finish 钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/2e422732f13a/">Nuxt.js 应用中的 page：finish 钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/9876204f1a7b/">Nuxt.js 应用中的 page：start 钩子详解 | cmdragon&rsquo;s Blog</a></li>
+<li></li>
+</ul>
+
+            </div>
+            
+            
+            
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                    <h3 class="text-lg font-medium mb-4 flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                        </div>
+                        标签
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        
+                            <a href="/tags/Nuxt" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: Nuxt"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>Nuxt
+                            </a>
+                        
+                            <a href="/tags/TypeScript" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: TypeScript"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>TypeScript
+                            </a>
+                        
+                            <a href="/tags/%E9%92%A9%E5%AD%90" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 钩子"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>钩子
+                            </a>
+                        
+                            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 自定义"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>自定义
+                            </a>
+                        
+                            <a href="/tags/%E7%B1%BB%E5%9E%8B" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 类型"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>类型
+                            </a>
+                        
+                            <a href="/tags/%E9%85%8D%E7%BD%AE" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 配置"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>配置
+                            </a>
+                        
+                            <a href="/tags/%E6%9E%84%E5%BB%BA" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 构建"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>构建
+                            </a>
+                        
+                    </div>
+                </div>
+            
+            
+            
+            <nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center">
+                            <iconify-icon icon="mdi:arrow-left" class="mr-2" width="16" height="16"></iconify-icon>上一篇
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/4a5e09829cf63001943fc481d69e01e0/" class="font-medium text-primary hover:text-primary-dark block" aria-label="上一篇: Nuxt.js 应用中的 build：error 事件钩子详解" tabindex="0">
+                            Nuxt.js 应用中的 build：error 事件钩子详解
+                        </a>
+                    </div>
+                
+                
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">
+                            下一篇<iconify-icon icon="mdi:arrow-right" class="ml-2" width="16" height="16"></iconify-icon>
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/59f320ae722d9803c0c4eb42ccb295b2/" class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: Nuxt.js 应用中的 listen 事件钩子详解" tabindex="0">
+                            Nuxt.js 应用中的 listen 事件钩子详解
+                        </a>
+                    </div>
+                
+            </nav>
+            
+            
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                <h3 class="text-lg font-medium mb-4 flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:share-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    分享
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f68419c6dd94db64cbb46673ab19a5146%2f&text=Nuxt.js%20%e5%ba%94%e7%94%a8%e4%b8%ad%e7%9a%84%20prepare%ef%bc%9atypes%20%e4%ba%8b%e4%bb%b6%e9%92%a9%e5%ad%90%e8%af%a6%e8%a7%a3" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Twitter" tabindex="0">
+                        <iconify-icon icon="mdi:twitter" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f68419c6dd94db64cbb46673ab19a5146%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Facebook" tabindex="0">
+                        <iconify-icon icon="mdi:facebook" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f68419c6dd94db64cbb46673ab19a5146%2f&title=Nuxt.js%20%e5%ba%94%e7%94%a8%e4%b8%ad%e7%9a%84%20prepare%ef%bc%9atypes%20%e4%ba%8b%e4%bb%b6%e9%92%a9%e5%ad%90%e8%af%a6%e8%a7%a3" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到微博" tabindex="0">
+                        <iconify-icon icon="mdi:sina-weibo" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f68419c6dd94db64cbb46673ab19a5146%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 LinkedIn" tabindex="0">
+                        <iconify-icon icon="mdi:linkedin" width="20" height="20"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            
+        </article>
+        
+        
+        
+        <aside class="w-full lg:w-1/4">
+            
+            <button id="mobile-toc-toggle" class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <iconify-icon icon="mdi:table-of-contents" width="24" height="24"></iconify-icon>
+            </button>
+            
+            
+            <div id="toc-container" class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
+                 fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
+                 lg:overflow-visible flex flex-col">
+                <div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4">
+                    <h2 class="text-lg font-medium flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:table-of-contents" width="16" height="16"></iconify-icon>
+                        </div>
+                        目录
+                    </h2>
+                    <div class="flex items-center">
+                        <button id="toc-toggle" class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label="折叠目录">
+                            <iconify-icon id="toc-icon" icon="mdi:chevron-up" width="20" height="20"></iconify-icon>
+                        </button>
+                        
+                        <button id="toc-close" class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                            <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                <div id="toc-content" class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a>
+      <ul>
+        <li><a href="#1-概述">1. 概述</a></li>
+        <li><a href="#2-preparetypes-钩子的详细说明">2. prepare:types 钩子的详细说明</a>
+          <ul>
+            <li><a href="#21-钩子的定义与作用">2.1 钩子的定义与作用</a></li>
+            <li><a href="#22-调用时机">2.2 调用时机</a></li>
+            <li><a href="#23-参数说明">2.3 参数说明</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-具体使用示例">3. 具体使用示例</a>
+          <ul>
+            <li><a href="#31-修改-tsconfigjson-的示例">3.1 修改 tsconfig.json 的示例</a></li>
+            <li><a href="#32-在-nuxtdts-中添加自定义声明的示例">3.2 在 nuxt.d.ts 中添加自定义声明的示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-应用场景">4. 应用场景</a></li>
+        <li><a href="#5-注意事项">5. 注意事项</a></li>
+        <li><a href="#6-关键要点">6. 关键要点</a></li>
+        <li><a href="#7-总结">7. 总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#往期文章归档">往期文章归档：</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+            
+            
+            <div id="toc-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div>
+        </aside>
+        
+    </div>
+</div>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+
+<link rel="stylesheet" href="/css/markdown.css">
+<link rel="stylesheet" href="/css/code-highlight.css">
+<script src="/js/code-highlight.js"></script>
+
+<script src="/js/toc.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('初始化代码高亮...');
+    if (window.hljs) {
+      console.log('highlight.js 已加载');
+      document.querySelectorAll('pre code').forEach(function(block) {
+        console.log('应用高亮到代码块');
+        hljs.highlightElement(block);
+      });
+    } else {
+      console.error('highlight.js 未加载!');
+    }
+  });
+</script>
+
+
+<style>
+ 
+#toc-content {
+  max-height: none;
+}
+
+@media (min-width: 1024px) {
+  #toc-content {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  #toc-container {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+  
+  nav#TableOfContents {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1023px) {
+  #toc-container {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #toc-content {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+}
+</style>
+
+        </main>
+        
+        <footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:information" width="16" height="16"></iconify-icon>
+                    </div>
+                    关于本站
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    cmdragon&#39;s Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。
+                </p>
+                <div class="flex space-x-3">
+                    
+                    <a href="https://github.com/amd794" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="GitHub" tabindex="0" target="_blank" rel="noopener noreferrer">
+                        <iconify-icon icon="mdi:github" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    
+                    <button id="wechat-btn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="微信" tabindex="0">
+                        <iconify-icon icon="mdi:wechat" width="18" height="18"></iconify-icon>
+                    </button>
+                    
+                    <a href="mailto:support@cmdragon.cn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="Email" tabindex="0">
+                        <iconify-icon icon="mdi:email" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    <a href="/index.xml" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="RSS" tabindex="0">
+                        <iconify-icon icon="mdi:rss" width="18" height="18"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:link-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    快速链接
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="https://movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            高清影视库
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://comic.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            精选漫画阅读
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://tools.cmdragon.cn/zh" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            实用在线工具
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://hot-movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            热映影视推荐
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                    </div>
+                    热门标签
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    
+                    <a href="https://blog.cmdragon.cn/tags/FastAPI/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #FastAPI <span class="text-xs opacity-70">(85)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt <span class="text-xs opacity-70">(68)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #钩子 <span class="text-xs opacity-70">(62)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #性能优化 <span class="text-xs opacity-70">(47)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt.js/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt.js <span class="text-xs opacity-70">(43)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #生命周期 <span class="text-xs opacity-70">(38)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt3/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt3 <span class="text-xs opacity-70">(37)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #错误处理 <span class="text-xs opacity-70">(32)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #组件 <span class="text-xs opacity-70">(29)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #数据库管理 <span class="text-xs opacity-70">(27)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        &copy; 2023 cmdragon&#39;s Blog. 保留所有权利.
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                        由 <a href="https://gohugo.io/" class="hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer">Hugo</a> 强力驱动
+                    </p>
+                </div>
+                
+                
+                <button id="back-to-top" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
+                    <iconify-icon icon="mdi:arrow-up" class="mr-1" width="16" height="16"></iconify-icon>
+                    返回顶部
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick="this.classList.add('hidden')">
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick="event.stopPropagation()">
+            <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick="document.getElementById('wechat-modal').classList.add('hidden')">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+            <h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4>
+            <div class="flex justify-center">
+                <img src="/images/wechat_qrcode.webp" alt="微信二维码" class="w-64 h-64 object-contain">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+    
+    
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('click', function() {
+        document.getElementById('wechat-modal').classList.remove('hidden');
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            document.getElementById('wechat-modal').classList.remove('hidden');
+        }
+    });
+</script> 
+    </div>
+    
+    
+    <script>
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    
+    <script src="/js/code-highlight.js"></script>
+    
+    
+    <script src="/js/advanced-render.js"></script>
+    
+    <div id="site-search-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    
+    <div id="site-search-backdrop" class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+    
+    
+    <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-medium flex items-center">
+                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm">
+                    <iconify-icon icon="mdi:magnify" width="16" height="16"></iconify-icon>
+                </div>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span>
+            </h3>
+            <button id="site-search-close" class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+        </div>
+        
+        <div class="p-6">
+            <form id="site-search-form" action="/search/" method="get">
+                <div class="relative">
+                    <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md">
+                        <span class="pl-4 text-gray-400">
+                            <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                        </span>
+                        <input 
+                            type="text" 
+                            id="site-search-input" 
+                            name="q" 
+                            placeholder="输入关键词搜索..."
+                            class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200"
+                            aria-label="搜索内容"
+                            tabindex="0"
+                        >
+                        <button 
+                            type="submit"
+                            class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center"
+                            aria-label="搜索"
+                            tabindex="0">
+                            <span class="mr-1 hidden sm:inline">搜索</span>
+                            <iconify-icon icon="mdi:arrow-right" width="18" height="18"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start">
+                <div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5">
+                    <iconify-icon icon="mdi:information" width="16" height="16" class="text-blue-500 dark:text-blue-300"></iconify-icon>
+                </div>
+                <div>
+                    <p class="mb-1">快捷键提示:</p>
+                    <ul class="space-y-1">
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
+                            <span>打开搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
+                            <span>关闭搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
+                            <span>提交搜索</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap gap-2">
+                    <a href="/tags/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:tag-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        标签
+                    </a>
+                    <a href="/categories/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:folder-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        分类
+                    </a>
+                    <a href="/archives/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:archive" class="mr-1" width="16" height="16"></iconify-icon>
+                        归档
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('site-search-modal');
+        const modalContent = modal.querySelector('div[class*="rounded-xl"]');
+        const backdrop = document.getElementById('site-search-backdrop');
+        const closeButton = document.getElementById('site-search-close');
+        const searchForm = document.getElementById('site-search-form');
+        const searchInput = document.getElementById('site-search-input');
+        
+        
+        window.openSiteSearch = function() {
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            
+            
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+                searchInput.focus();
+            }, 10);
+        };
+        
+        
+        function closeSiteSearch() {
+            
+            modal.classList.remove('opacity-100');
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        }
+        
+        
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        if (closeButton) {
+            closeButton.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeSiteSearch();
+            }
+            
+            
+            if (e.key === '/' && modal.classList.contains('hidden') && document.activeElement.tagName !== 'INPUT') {
+                e.preventDefault();
+                openSiteSearch();
+            }
+        });
+        
+        
+        modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    });
+</script> 
+</body>
+</html> 

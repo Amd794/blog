@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>应用程序 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/</link><description>Recent content in 应用程序 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 26 Jul 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 useRequestURL 组合函数访问请求URL</title><link>https://blog.cmdragon.cn/posts/06f3f8268aaa2d02d711d8e895bb2bc9/</link><pubDate>Fri, 26 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/06f3f8268aaa2d02d711d8e895bb2bc9/</guid><description>摘要：本文介绍了Nuxt 3中的useRequestURL组合函数，用于在服务器端和客户端环境中获取当前页面的URL信息。通过示例展示了如何在页面中使用此函数获取并显示URL及其组成部分，如路径、查询参数等，适用于现代Web应用程序的开发。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>应用程序 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/</link>
+    <description>Recent content in 应用程序 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 26 Jul 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 useRequestURL 组合函数访问请求URL</title>
+      <link>https://blog.cmdragon.cn/posts/06f3f8268aaa2d02d711d8e895bb2bc9/</link>
+      <pubDate>Fri, 26 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/06f3f8268aaa2d02d711d8e895bb2bc9/</guid>
+      <description>摘要：本文介绍了Nuxt 3中的useRequestURL组合函数，用于在服务器端和客户端环境中获取当前页面的URL信息。通过示例展示了如何在页面中使用此函数获取并显示URL及其组成部分，如路径、查询参数等，适用于现代Web应用程序的开发。</description>
+    </item>
+  </channel>
+</rss>

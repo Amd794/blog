@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nuxt实例 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/Nuxt%E5%AE%9E%E4%BE%8B/</link><description>Recent content in Nuxt实例 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 12 Oct 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/Nuxt%E5%AE%9E%E4%BE%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 ready 事件钩子详解</title><link>https://blog.cmdragon.cn/posts/bf27341c381e447f9e64e2d4e9b36db4/</link><pubDate>Sat, 12 Oct 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/bf27341c381e447f9e64e2d4e9b36db4/</guid><description>ready 钩子是 Nuxt.js 中一个重要的生命周期事件，它在 Nuxt 实例初始化完成后被调用。当 Nuxt 已经准备好并准备开始处理请求或渲染页面时，这一钩子会被触发。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nuxt实例 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/Nuxt%E5%AE%9E%E4%BE%8B/</link>
+    <description>Recent content in Nuxt实例 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 12 Oct 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/Nuxt%E5%AE%9E%E4%BE%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 ready 事件钩子详解</title>
+      <link>https://blog.cmdragon.cn/posts/bf27341c381e447f9e64e2d4e9b36db4/</link>
+      <pubDate>Sat, 12 Oct 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/bf27341c381e447f9e64e2d4e9b36db4/</guid>
+      <description>ready 钩子是 Nuxt.js 中一个重要的生命周期事件，它在 Nuxt 实例初始化完成后被调用。当 Nuxt 已经准备好并准备开始处理请求或渲染页面时，这一钩子会被触发。</description>
+    </item>
+  </channel>
+</rss>

@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>成本优化 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96/</link><description>Recent content in 成本优化 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 21 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml"/><item><title>三大平台云数据库生态服务对决</title><link>https://blog.cmdragon.cn/posts/acbd74fc659aaa3d2e0c76387bc3e2d5/</link><pubDate>Fri, 21 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/acbd74fc659aaa3d2e0c76387bc3e2d5/</guid><description>包含自动分片算法实现、跨云迁移工具链开发、智能索引推荐系统构建等核心内容，提供成本优化计算模型、灾备演练方案设计、性能调优路线图等完整解决方案。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>成本优化 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96/</link>
+    <description>Recent content in 成本优化 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 21 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>三大平台云数据库生态服务对决</title>
+      <link>https://blog.cmdragon.cn/posts/acbd74fc659aaa3d2e0c76387bc3e2d5/</link>
+      <pubDate>Fri, 21 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/acbd74fc659aaa3d2e0c76387bc3e2d5/</guid>
+      <description>包含自动分片算法实现、跨云迁移工具链开发、智能索引推荐系统构建等核心内容，提供成本优化计算模型、灾备演练方案设计、性能调优路线图等完整解决方案。</description>
+    </item>
+  </channel>
+</rss>

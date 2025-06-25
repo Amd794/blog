@@ -1,7 +1,265 @@
-<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>深入理解高级加密标准（Advanced Encryption Standard） - cmdragon's Blog</title><meta name=description content=" 第一章：AES概述 AES的历史和背景 **历史：**高级加密标准（Advanced Encryption Standard，AES）是一种对称密钥加密标准，由美国国（Advanced Encryption Standard），家标准与技术研究所（NIST）于2001年发布。AES取代了之前的数据加密标准（Data Encryption Standard，DES），成为目前广泛使用的加密算法之一。 背景：即高级加密标准，是一种对称密钥加密算法，是美国国家标准与技术 AES的产生是为了解决DES存在的密钥长度过短、安全性不足等问题，以适应当时互联网和电子商务快速发展的需求。AES研究所（NIST）于2001年正式公布的一种加密标准，用来替经过了严格的密码学分析和评估，成为一种安全可靠的加密算法。 AES的基本原理 **对称密钥加密：**AES是一种对称密钥加密算法，即加密和解密使用相同的密钥。这种加密代之前的DES（Data Encryption Standard方式效率高，适用于大规模数据的加密和解密操作。 **替代网络：**AES使用代换-置换网络（Substitution-Permutation Network，SPN）结构，包括代换层和置换层，通过多轮迭代运算实现加密和解密过程。 **轮函数：**AES中的轮函数包括字节替代、行移位、列混淆和轮密钥加法等操作，通过多轮轮函数的迭代实现数据的混淆和扩散，）。DES因为密钥长度短（56位）而逐渐显露出安全性不足的问题增强了加密算法的安全性。 AES的优势和特点 **安全性高：**AES经过了广泛的密码学分析和评估，被，于是NIST通过国际竞赛的形式选择AES的算法作为其替代方案。 AES的算法来自于比利时密码学家Joan Daemen和Vincent Rijmen提出的Rijndael算法，该证明具有很高的安全性，能够抵抗目前已知的攻击方法。
-"><meta name=author content="cmdragon"><meta name=robots content="index, follow"><link rel=canonical href=https://blog.cmdragon.cn/posts/d1e54f865ff7846e64123f294982a233/><meta property="og:title" content="深入理解高级加密标准（Advanced Encryption Standard） - cmdragon's Blog"><meta property="og:description" content=" 第一章：AES概述 AES的历史和背景 **历史：**高级加密标准（Advanced Encryption Standard，AES）是一种对称密钥加密标准，由美国国（Advanced Encryption Standard），家标准与技术研究所（NIST）于2001年发布。AES取代了之前的数据加密标准（Data Encryption Standard，DES），成为目前广泛使用的加密算法之一。 背景：即高级加密标准，是一种对称密钥加密算法，是美国国家标准与技术 AES的产生是为了解决DES存在的密钥长度过短、安全性不足等问题，以适应当时互联网和电子商务快速发展的需求。AES研究所（NIST）于2001年正式公布的一种加密标准，用来替经过了严格的密码学分析和评估，成为一种安全可靠的加密算法。 AES的基本原理 **对称密钥加密：**AES是一种对称密钥加密算法，即加密和解密使用相同的密钥。这种加密代之前的DES（Data Encryption Standard方式效率高，适用于大规模数据的加密和解密操作。 **替代网络：**AES使用代换-置换网络（Substitution-Permutation Network，SPN）结构，包括代换层和置换层，通过多轮迭代运算实现加密和解密过程。 **轮函数：**AES中的轮函数包括字节替代、行移位、列混淆和轮密钥加法等操作，通过多轮轮函数的迭代实现数据的混淆和扩散，）。DES因为密钥长度短（56位）而逐渐显露出安全性不足的问题增强了加密算法的安全性。 AES的优势和特点 **安全性高：**AES经过了广泛的密码学分析和评估，被，于是NIST通过国际竞赛的形式选择AES的算法作为其替代方案。 AES的算法来自于比利时密码学家Joan Daemen和Vincent Rijmen提出的Rijndael算法，该证明具有很高的安全性，能够抵抗目前已知的攻击方法。
-"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.cmdragon.cn/posts/d1e54f865ff7846e64123f294982a233/"><meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png"><meta property="og:site_name" content="cmdragon's Blog"><meta property="article:published_time" content="2024-04-23T20:04:36+08:00"><meta property="article:modified_time" content="2024-04-23T20:04:36+08:00"><meta property="article:tag" content="AES概述"><meta property="article:tag" content="加密原理"><meta property="article:tag" content="优势特点"><meta property="article:tag" content="算法详解"><meta property="article:tag" content="安全性"><meta property="article:tag" content="应用实践"><meta property="article:tag" content="案例分析"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="深入理解高级加密标准（Advanced Encryption Standard） - cmdragon's Blog"><meta name=twitter:description content=" 第一章：AES概述 AES的历史和背景 **历史：**高级加密标准（Advanced Encryption Standard，AES）是一种对称密钥加密标准，由美国国（Advanced Encryption Standard），家标准与技术研究所（NIST）于2001年发布。AES取代了之前的数据加密标准（Data Encryption Standard，DES），成为目前广泛使用的加密算法之一。 背景：即高级加密标准，是一种对称密钥加密算法，是美国国家标准与技术 AES的产生是为了解决DES存在的密钥长度过短、安全性不足等问题，以适应当时互联网和电子商务快速发展的需求。AES研究所（NIST）于2001年正式公布的一种加密标准，用来替经过了严格的密码学分析和评估，成为一种安全可靠的加密算法。 AES的基本原理 **对称密钥加密：**AES是一种对称密钥加密算法，即加密和解密使用相同的密钥。这种加密代之前的DES（Data Encryption Standard方式效率高，适用于大规模数据的加密和解密操作。 **替代网络：**AES使用代换-置换网络（Substitution-Permutation Network，SPN）结构，包括代换层和置换层，通过多轮迭代运算实现加密和解密过程。 **轮函数：**AES中的轮函数包括字节替代、行移位、列混淆和轮密钥加法等操作，通过多轮轮函数的迭代实现数据的混淆和扩散，）。DES因为密钥长度短（56位）而逐渐显露出安全性不足的问题增强了加密算法的安全性。 AES的优势和特点 **安全性高：**AES经过了广泛的密码学分析和评估，被，于是NIST通过国际竞赛的形式选择AES的算法作为其替代方案。 AES的算法来自于比利时密码学家Joan Daemen和Vincent Rijmen提出的Rijndael算法，该证明具有很高的安全性，能够抵抗目前已知的攻击方法。
-"><meta name=twitter:image content="https://blog.cmdragon.cn/images/logo/social-card.png"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"深入理解高级加密标准（Advanced Encryption Standard）","datePublished":"2024-04-23T20:04:36\u002b08:00","dateModified":"2024-04-23T20:04:36\u002b08:00","author":{"@type":"Person","name":"cmdragon"},"description":" 第一章：AES概述 AES的历史和背景 **历史：**高级加密标准（Advanced Encryption Standard，AES）是一种对称密钥加密标准，由美国国（Advanced Encryption Standard），家标准与技术研究所（NIST）于2001年发布。AES取代了之前的数据加密标准（Data Encryption Standard，DES），成为目前广泛使用的加密算法之一。 背景：即高级加密标准，是一种对称密钥加密算法，是美国国家标准与技术 AES的产生是为了解决DES存在的密钥长度过短、安全性不足等问题，以适应当时互联网和电子商务快速发展的需求。AES研究所（NIST）于2001年正式公布的一种加密标准，用来替经过了严格的密码学分析和评估，成为一种安全可靠的加密算法。 AES的基本原理 **对称密钥加密：**AES是一种对称密钥加密算法，即加密和解密使用相同的密钥。这种加密代之前的DES（Data Encryption Standard方式效率高，适用于大规模数据的加密和解密操作。 **替代网络：**AES使用代换-置换网络（Substitution-Permutation Network，SPN）结构，包括代换层和置换层，通过多轮迭代运算实现加密和解密过程。 **轮函数：**AES中的轮函数包括字节替代、行移位、列混淆和轮密钥加法等操作，通过多轮轮函数的迭代实现数据的混淆和扩散，）。DES因为密钥长度短（56位）而逐渐显露出安全性不足的问题增强了加密算法的安全性。 AES的优势和特点 **安全性高：**AES经过了广泛的密码学分析和评估，被，于是NIST通过国际竞赛的形式选择AES的算法作为其替代方案。 AES的算法来自于比利时密码学家Joan Daemen和Vincent Rijmen提出的Rijndael算法，该证明具有很高的安全性，能够抵抗目前已知的攻击方法。\n","image":"https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png","url":"https:\/\/blog.cmdragon.cn\/posts\/d1e54f865ff7846e64123f294982a233\/","publisher":{"@type":"Organization","name":"cmdragon\u0027s Blog","logo":{"@type":"ImageObject","url":"https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/blog.cmdragon.cn\/posts\/d1e54f865ff7846e64123f294982a233\/"},"keywords":"AES概述, 加密原理, 优势特点, 算法详解, 安全性, 应用实践, 案例分析","wordCount":"5483"}</script><link rel=preconnect href=https://cdnjs.cloudflare.com><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js as=script><link rel=icon href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon href=/images/logo/small.png><link rel=icon type=image/png sizes=32x32 href=/images/logo/small.png><link rel=icon type=image/svg+xml href=/images/logo/scalable.svg><meta name=theme-color content="#3B82F6"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js></script><script>(function(){if(typeof mermaid!="undefined"){window.mermaid=mermaid;const e=document.documentElement.classList.contains("dark")||window.matchMedia("(prefers-color-scheme: dark)").matches;window.mermaid.initialize({startOnLoad:!0,theme:e?"dark":"default",securityLevel:"loose",flowchart:{curve:"basis",htmlLabels:!0},sequence:{mirrorActors:!1,wrap:!0},themeVariables:{primaryColor:"#3b82f6",primaryTextColor:"#ffffff",primaryBorderColor:e?"#60a5fa":"#2563eb",lineColor:e?"#94a3b8":"#4b5563",secondaryColor:e?"#1e293b":"#f0f9ff",tertiaryColor:e?"#334155":"#f3f4f6"}}),document.addEventListener("DOMContentLoaded",function(){try{typeof window.mermaid.init=="function"&&window.mermaid.init(0[0],document.querySelectorAll(".mermaid"))}catch{}})}})()</script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js></script><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js></script><script src=https://cdn.tailwindcss.com/3.4.16></script><script>tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#3B82F6","primary-light":"#60a5fa","primary-dark":"#2563eb"},typography:e=>({DEFAULT:{css:{color:e("colors.gray.800"),a:{color:e("colors.primary"),"&:hover":{color:e("colors.primary-dark")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.900")},pre:{backgroundColor:e("colors.gray.800"),color:e("colors.gray.100")},code:{color:e("colors.primary"),backgroundColor:e("colors.gray.100"),padding:"0.25rem",borderRadius:"0.25rem",fontWeight:"400"},"code::before":{content:'""'},"code::after":{content:'""'}}},dark:{css:{color:e("colors.gray.200"),a:{color:e("colors.primary-light"),"&:hover":{color:e("colors.primary")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.100")},pre:{backgroundColor:e("colors.gray.900")},code:{color:e("colors.primary-light"),backgroundColor:e("colors.gray.800")}}}})}}}</script><script src=/js/iconify-icon.min.js></script><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"><link rel=stylesheet href=/css/code-highlight.css><link rel=stylesheet href=/css/markdown.css><style type=text/tailwindcss>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深入理解高级加密标准（Advanced Encryption Standard） - cmdragon&#39;s Blog</title>
+<meta name="description" content=" 第一章：AES概述 AES的历史和背景 **历史：**高级加密标准（Advanced Encryption Standard，AES）是一种对称密钥加密标准，由美国国（Advanced Encryption Standard），家标准与技术研究所（NIST）于2001年发布。AES取代了之前的数据加密标准（Data Encryption Standard，DES），成为目前广泛使用的加密算法之一。 背景：即高级加密标准，是一种对称密钥加密算法，是美国国家标准与技术 AES的产生是为了解决DES存在的密钥长度过短、安全性不足等问题，以适应当时互联网和电子商务快速发展的需求。AES研究所（NIST）于2001年正式公布的一种加密标准，用来替经过了严格的密码学分析和评估，成为一种安全可靠的加密算法。 AES的基本原理 **对称密钥加密：**AES是一种对称密钥加密算法，即加密和解密使用相同的密钥。这种加密代之前的DES（Data Encryption Standard方式效率高，适用于大规模数据的加密和解密操作。 **替代网络：**AES使用代换-置换网络（Substitution-Permutation Network，SPN）结构，包括代换层和置换层，通过多轮迭代运算实现加密和解密过程。 **轮函数：**AES中的轮函数包括字节替代、行移位、列混淆和轮密钥加法等操作，通过多轮轮函数的迭代实现数据的混淆和扩散，）。DES因为密钥长度短（56位）而逐渐显露出安全性不足的问题增强了加密算法的安全性。 AES的优势和特点 **安全性高：**AES经过了广泛的密码学分析和评估，被，于是NIST通过国际竞赛的形式选择AES的算法作为其替代方案。 AES的算法来自于比利时密码学家Joan Daemen和Vincent Rijmen提出的Rijndael算法，该证明具有很高的安全性，能够抵抗目前已知的攻击方法。
+">
+
+
+<meta name="author" content="cmdragon">
+<meta name="robots" content="index, follow">
+
+
+<link rel="canonical" href="https://blog.cmdragon.cn/posts/d1e54f865ff7846e64123f294982a233/">
+
+
+
+
+
+<meta property="og:title" content="深入理解高级加密标准（Advanced Encryption Standard） - cmdragon&#39;s Blog">
+<meta property="og:description" content=" 第一章：AES概述 AES的历史和背景 **历史：**高级加密标准（Advanced Encryption Standard，AES）是一种对称密钥加密标准，由美国国（Advanced Encryption Standard），家标准与技术研究所（NIST）于2001年发布。AES取代了之前的数据加密标准（Data Encryption Standard，DES），成为目前广泛使用的加密算法之一。 背景：即高级加密标准，是一种对称密钥加密算法，是美国国家标准与技术 AES的产生是为了解决DES存在的密钥长度过短、安全性不足等问题，以适应当时互联网和电子商务快速发展的需求。AES研究所（NIST）于2001年正式公布的一种加密标准，用来替经过了严格的密码学分析和评估，成为一种安全可靠的加密算法。 AES的基本原理 **对称密钥加密：**AES是一种对称密钥加密算法，即加密和解密使用相同的密钥。这种加密代之前的DES（Data Encryption Standard方式效率高，适用于大规模数据的加密和解密操作。 **替代网络：**AES使用代换-置换网络（Substitution-Permutation Network，SPN）结构，包括代换层和置换层，通过多轮迭代运算实现加密和解密过程。 **轮函数：**AES中的轮函数包括字节替代、行移位、列混淆和轮密钥加法等操作，通过多轮轮函数的迭代实现数据的混淆和扩散，）。DES因为密钥长度短（56位）而逐渐显露出安全性不足的问题增强了加密算法的安全性。 AES的优势和特点 **安全性高：**AES经过了广泛的密码学分析和评估，被，于是NIST通过国际竞赛的形式选择AES的算法作为其替代方案。 AES的算法来自于比利时密码学家Joan Daemen和Vincent Rijmen提出的Rijndael算法，该证明具有很高的安全性，能够抵抗目前已知的攻击方法。
+">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cmdragon.cn/posts/d1e54f865ff7846e64123f294982a233/">
+
+<meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+<meta property="og:site_name" content="cmdragon&#39;s Blog">
+
+<meta property="article:published_time" content="2024-04-23T20:04:36&#43;08:00">
+
+<meta property="article:modified_time" content="2024-04-23T20:04:36&#43;08:00">
+
+
+
+
+<meta property="article:tag" content="AES概述">
+
+<meta property="article:tag" content="加密原理">
+
+<meta property="article:tag" content="优势特点">
+
+<meta property="article:tag" content="算法详解">
+
+<meta property="article:tag" content="安全性">
+
+<meta property="article:tag" content="应用实践">
+
+<meta property="article:tag" content="案例分析">
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="深入理解高级加密标准（Advanced Encryption Standard） - cmdragon&#39;s Blog">
+<meta name="twitter:description" content=" 第一章：AES概述 AES的历史和背景 **历史：**高级加密标准（Advanced Encryption Standard，AES）是一种对称密钥加密标准，由美国国（Advanced Encryption Standard），家标准与技术研究所（NIST）于2001年发布。AES取代了之前的数据加密标准（Data Encryption Standard，DES），成为目前广泛使用的加密算法之一。 背景：即高级加密标准，是一种对称密钥加密算法，是美国国家标准与技术 AES的产生是为了解决DES存在的密钥长度过短、安全性不足等问题，以适应当时互联网和电子商务快速发展的需求。AES研究所（NIST）于2001年正式公布的一种加密标准，用来替经过了严格的密码学分析和评估，成为一种安全可靠的加密算法。 AES的基本原理 **对称密钥加密：**AES是一种对称密钥加密算法，即加密和解密使用相同的密钥。这种加密代之前的DES（Data Encryption Standard方式效率高，适用于大规模数据的加密和解密操作。 **替代网络：**AES使用代换-置换网络（Substitution-Permutation Network，SPN）结构，包括代换层和置换层，通过多轮迭代运算实现加密和解密过程。 **轮函数：**AES中的轮函数包括字节替代、行移位、列混淆和轮密钥加法等操作，通过多轮轮函数的迭代实现数据的混淆和扩散，）。DES因为密钥长度短（56位）而逐渐显露出安全性不足的问题增强了加密算法的安全性。 AES的优势和特点 **安全性高：**AES经过了广泛的密码学分析和评估，被，于是NIST通过国际竞赛的形式选择AES的算法作为其替代方案。 AES的算法来自于比利时密码学家Joan Daemen和Vincent Rijmen提出的Rijndael算法，该证明具有很高的安全性，能够抵抗目前已知的攻击方法。
+">
+
+<meta name="twitter:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "深入理解高级加密标准（Advanced Encryption Standard）",
+  "datePublished": "2024-04-23T20:04:36\u002b08:00",
+  "dateModified": "2024-04-23T20:04:36\u002b08:00",
+  "author": {
+    "@type": "Person",
+    "name": "cmdragon"
+  },
+  "description": " 第一章：AES概述 AES的历史和背景 **历史：**高级加密标准（Advanced Encryption Standard，AES）是一种对称密钥加密标准，由美国国（Advanced Encryption Standard），家标准与技术研究所（NIST）于2001年发布。AES取代了之前的数据加密标准（Data Encryption Standard，DES），成为目前广泛使用的加密算法之一。 背景：即高级加密标准，是一种对称密钥加密算法，是美国国家标准与技术 AES的产生是为了解决DES存在的密钥长度过短、安全性不足等问题，以适应当时互联网和电子商务快速发展的需求。AES研究所（NIST）于2001年正式公布的一种加密标准，用来替经过了严格的密码学分析和评估，成为一种安全可靠的加密算法。 AES的基本原理 **对称密钥加密：**AES是一种对称密钥加密算法，即加密和解密使用相同的密钥。这种加密代之前的DES（Data Encryption Standard方式效率高，适用于大规模数据的加密和解密操作。 **替代网络：**AES使用代换-置换网络（Substitution-Permutation Network，SPN）结构，包括代换层和置换层，通过多轮迭代运算实现加密和解密过程。 **轮函数：**AES中的轮函数包括字节替代、行移位、列混淆和轮密钥加法等操作，通过多轮轮函数的迭代实现数据的混淆和扩散，）。DES因为密钥长度短（56位）而逐渐显露出安全性不足的问题增强了加密算法的安全性。 AES的优势和特点 **安全性高：**AES经过了广泛的密码学分析和评估，被，于是NIST通过国际竞赛的形式选择AES的算法作为其替代方案。 AES的算法来自于比利时密码学家Joan Daemen和Vincent Rijmen提出的Rijndael算法，该证明具有很高的安全性，能够抵抗目前已知的攻击方法。\n",
+  
+  "image": "https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png",
+  
+  "url": "https:\/\/blog.cmdragon.cn\/posts\/d1e54f865ff7846e64123f294982a233\/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "cmdragon\u0027s Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/blog.cmdragon.cn\/posts\/d1e54f865ff7846e64123f294982a233\/"
+  },
+  
+  
+  "keywords": "AES概述, 加密原理, 优势特点, 算法详解, 安全性, 应用实践, 案例分析",
+  
+  "wordCount": "5483"
+}
+</script>
+
+
+
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js" as="script">
+
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/images/logo/small.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo/small.png">
+<link rel="icon" type="image/svg+xml" href="/images/logo/scalable.svg">
+<meta name="theme-color" content="#3B82F6">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135"
+     crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js"></script>
+<script>
+  
+  (function() {
+    if (typeof mermaid !== 'undefined') {
+      
+      window.mermaid = mermaid;
+      
+      
+      const isDarkMode = document.documentElement.classList.contains('dark') || 
+                        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      
+      window.mermaid.initialize({
+        startOnLoad: true,  
+        theme: isDarkMode ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: {
+          curve: 'basis',
+          htmlLabels: true
+        },
+        sequence: {
+          mirrorActors: false,
+          wrap: true
+        },
+        themeVariables: {
+          primaryColor: '#3b82f6',
+          primaryTextColor: '#ffffff',
+          primaryBorderColor: isDarkMode ? '#60a5fa' : '#2563eb',
+          lineColor: isDarkMode ? '#94a3b8' : '#4b5563',
+          secondaryColor: isDarkMode ? '#1e293b' : '#f0f9ff',
+          tertiaryColor: isDarkMode ? '#334155' : '#f3f4f6'
+        }
+      });
+      
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          
+          if (typeof window.mermaid.init === 'function') {
+            window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+          }
+        } catch (e) {
+          
+        }
+      });
+    }
+  })();
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#3B82F6',
+                    'primary-light': '#60a5fa',
+                    'primary-dark': '#2563eb',
+                },
+                typography: (theme) => ({
+                    DEFAULT: {
+                        css: {
+                            color: theme('colors.gray.800'),
+                            a: {
+                                color: theme('colors.primary'),
+                                '&:hover': {
+                                    color: theme('colors.primary-dark'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.900'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.800'),
+                                color: theme('colors.gray.100'),
+                            },
+                            code: {
+                                color: theme('colors.primary'),
+                                backgroundColor: theme('colors.gray.100'),
+                                padding: '0.25rem',
+                                borderRadius: '0.25rem',
+                                fontWeight: '400',
+                            },
+                            'code::before': {
+                                content: '""',
+                            },
+                            'code::after': {
+                                content: '""',
+                            },
+                        },
+                    },
+                    dark: {
+                        css: {
+                            color: theme('colors.gray.200'),
+                            a: {
+                                color: theme('colors.primary-light'),
+                                '&:hover': {
+                                    color: theme('colors.primary'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.100'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.900'),
+                            },
+                            code: {
+                                color: theme('colors.primary-light'),
+                                backgroundColor: theme('colors.gray.800'),
+                            },
+                        },
+                    },
+                }),
+            },
+        },
+    }
+</script>
+
+
+<script src="/js/iconify-icon.min.js"></script>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+
+<link rel="stylesheet" href="/css/code-highlight.css">
+<link rel="stylesheet" href="/css/markdown.css">
+
+
+<style type="text/tailwindcss">
     @layer components {
         body {
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -22,68 +280,1178 @@
             @apply bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white;
         }
     }
-</style><style>.mermaid{margin:2rem auto;text-align:center;overflow:visible;width:auto;max-width:100%;background-color:#f9fafb;padding:1.5rem .5rem;border-radius:.5rem;box-shadow:0 2px 4px rgba(0,0,0,5%);display:block}.dark .mermaid{background-color:#1e293b;box-shadow:0 2px 4px rgba(0,0,0,.15)}.mermaid svg{display:block !important;max-width:100%;width:auto !important;height:auto !important;font-size:14px;margin:0 auto}.mermaid .node rect,.mermaid .node circle,.mermaid .node ellipse,.mermaid .node polygon,.mermaid .node path{stroke-width:1px}.mermaid .edgePath .path{stroke-width:1.5px}.mermaid .edgeLabel{font-size:.85em;background-color:inherit !important}.mermaid .label text,.mermaid text.label{fill:#374151;font-weight:400}.dark .mermaid .label text,.dark .mermaid text.label{fill:#e5e7eb}@media(max-width:768px){.mermaid{max-width:98%;padding:.8rem .3rem;margin:1.2rem auto}.mermaid svg{font-size:12px}}</style></head><body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col"><div class="flex-grow flex flex-col"><header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700"><div class="container mx-auto px-4"><div class="flex justify-between items-center h-16"><div class="flex items-center"><a href=https://blog.cmdragon.cn/ class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300"><div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105"><img src=/images/logo/small.png alt="cmdragon's Blog Logo" class="h-full w-auto"></div><span class="group-hover:text-primary transition-colors duration-300">cmdragon's Blog</span></a></div><nav class="hidden md:flex space-x-1"><a href=/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=首页 tabindex=0><span class="relative z-10">首页</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/archives/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=归档 tabindex=0><span class="relative z-10">归档</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/categories/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=分类 tabindex=0><span class="relative z-10">分类</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/tags/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=标签 tabindex=0><span class="relative z-10">标签</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/friends/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=友链 tabindex=0><span class="relative z-10">友链</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span></a></nav><div class="flex items-center space-x-3"><button class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=搜索 tabindex=0 onclick=openSiteSearch()>
-<iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></button>
-<button id=theme-toggle class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=切换深色模式 tabindex=0>
-<iconify-icon icon=mdi:weather-sunny class=dark:hidden width=20 height=20></iconify-icon><iconify-icon icon=mdi:weather-night class="hidden dark:block" width=20 height=20></iconify-icon></button>
-<button id=mobile-menu-button class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=打开菜单 tabindex=0>
-<iconify-icon icon=mdi:menu width=20 height=20></iconify-icon></button></div></div><div id=mobile-menu class="md:hidden hidden pb-3"><div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner"><a href=/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=首页 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>首页</div></a><a href=/archives/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=归档 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>归档</div></a><a href=/categories/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=分类 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>分类</div></a><a href=/tags/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=标签 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>标签</div></a><a href=/friends/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=友链 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>友链</div></a></div></div></div></header><script>document.getElementById("mobile-menu-button").addEventListener("click",function(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden")}),document.getElementById("theme-toggle").addEventListener("click",function(){document.documentElement.classList.contains("dark")?(document.documentElement.classList.remove("dark"),localStorage.setItem("color-theme","light")):(document.documentElement.classList.add("dark"),localStorage.setItem("color-theme","dark"))}),window.addEventListener("scroll",function(){const e=document.querySelector("header");window.scrollY>10?e.classList.add("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95"):e.classList.remove("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95")})</script><main class="container mx-auto px-4 py-8 flex-grow"><div class="container mx-auto px-4 sm:px-6 relative"><div class="flex flex-col lg:flex-row lg:gap-8"><article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700"><nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label=面包屑导航><ol class="flex flex-wrap items-center" itemscope itemtype=https://schema.org/BreadcrumbList><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/ class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=首页><span itemprop=name>首页</span>
-</a><meta itemprop=position content="1"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/posts class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=Posts><span itemprop=name>Posts</span>
-</a><meta itemprop=position content="2"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><span class="text-gray-800 dark:text-gray-200" itemprop=name title="深入理解高级加密标准（Advanced Encryption Standard）">深入理解高级加密标准（Advanced Encryption...</span>
-<meta itemprop=position content="3"></li></ol></nav><header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6"><h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">深入理解高级加密标准（Advanced Encryption Standard）</h1><div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3"><span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:calendar class=mr-1 width=16 height=16></iconify-icon>2024-04-23
-</span><span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:clock-outline class=mr-1 width=16 height=16></iconify-icon>27 分钟阅读
-</span><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed target=_blank rel="noopener noreferrer" class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors" aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" tabindex=0><iconify-icon icon=simple-icons:creativecommons width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsbysa width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsnc width=16 height=16 class=mr-1></iconify-icon><span>BY-NC-SA 4.0</span></a></div></header><div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed"><img src="https://static.cmdragon.cn/blog/images/2024_04_23 20_24_08.png@blog" title="2024_04_23 20_24_08.png" alt="2024_04_23 20_24_08.png"><h3 id=第一章aes概述>第一章：AES概述</h3><h4 id=aes的历史和背景>AES的历史和背景</h4><ul><li>**历史：**高级加密标准（Advanced Encryption Standard，AES）是一种对称密钥加密标准，由美国国（Advanced Encryption
+</style>
+
+
+<style>
+   
+  .mermaid {
+    margin: 2rem auto;
+    text-align: center;
+    overflow: visible;
+    width: auto;
+    max-width: 100%;
+    background-color: #f9fafb;
+    padding: 1.5rem 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: block;
+  }
+  
+  .dark .mermaid {
+    background-color: #1e293b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+   
+  .mermaid svg {
+    display: block !important;
+    max-width: 100%;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px;
+    margin: 0 auto;
+  }
+  
+   
+  .mermaid .node rect,
+  .mermaid .node circle,
+  .mermaid .node ellipse,
+  .mermaid .node polygon,
+  .mermaid .node path {
+    stroke-width: 1px;
+  }
+  
+  .mermaid .edgePath .path {
+    stroke-width: 1.5px;
+  }
+  
+  .mermaid .edgeLabel {
+    font-size: 0.85em;
+    background-color: inherit !important;
+  }
+  
+   
+  .mermaid .label text,
+  .mermaid text.label {
+    fill: #374151;
+    font-weight: normal;
+  }
+  
+  .dark .mermaid .label text,
+  .dark .mermaid text.label {
+    fill: #e5e7eb;
+  }
+  
+   
+  @media (max-width: 768px) {
+    .mermaid {
+      max-width: 98%;
+      padding: 0.8rem 0.3rem;
+      margin: 1.2rem auto;
+    }
+    
+    .mermaid svg {
+      font-size: 12px;
+    }
+  }
+</style> 
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col">
+    <div class="flex-grow flex flex-col">
+        <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            
+            <div class="flex items-center">
+                <a href="https://blog.cmdragon.cn/" class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300">
+                    <div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105">
+                        <img src="/images/logo/small.png" alt="cmdragon&#39;s Blog Logo" class="h-full w-auto" />
+                    </div>
+                    <span class="group-hover:text-primary transition-colors duration-300">cmdragon&#39;s Blog</span>
+                </a>
+            </div>
+            
+            
+            <nav class="hidden md:flex space-x-1">
+                
+                
+                    <a href="/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="首页"
+                       tabindex="0">
+                        <span class="relative z-10">首页</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="归档"
+                       tabindex="0">
+                        <span class="relative z-10">归档</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="分类"
+                       tabindex="0">
+                        <span class="relative z-10">分类</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="标签"
+                       tabindex="0">
+                        <span class="relative z-10">标签</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="友链"
+                       tabindex="0">
+                        <span class="relative z-10">友链</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+            </nav>
+            
+            
+            <div class="flex items-center space-x-3">
+                
+                <button 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="搜索"
+                    tabindex="0"
+                    onclick="openSiteSearch()">
+                    <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="theme-toggle" 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="切换深色模式"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:weather-sunny" class="dark:hidden" width="20" height="20"></iconify-icon>
+                    <iconify-icon icon="mdi:weather-night" class="hidden dark:block" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="mobile-menu-button" 
+                    class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="打开菜单"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:menu" width="20" height="20"></iconify-icon>
+                </button>
+            </div>
+        </div>
+        
+        
+        <div id="mobile-menu" class="md:hidden hidden pb-3">
+            <div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner">
+                
+                    <a href="/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="首页"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            首页
+                        </div>
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="归档"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            归档
+                        </div>
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="分类"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            分类
+                        </div>
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="标签"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            标签
+                        </div>
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="友链"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            友链
+                        </div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+    });
+    
+    
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        } else {
+            header.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        }
+    });
+</script> 
+        
+        <main class="container mx-auto px-4 py-8 flex-grow">
+            
+<div class="container mx-auto px-4 sm:px-6 relative">
+    <div class="flex flex-col lg:flex-row lg:gap-8">
+        
+        <article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700">
+            
+            <nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label="面包屑导航">
+    <ol class="flex flex-wrap items-center" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="https://blog.cmdragon.cn/" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="首页">
+                <span itemprop="name">首页</span>
+            </a>
+            <meta itemprop="position" content="1" />
+        </li>
+        
+        
+        
+            
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="https://blog.cmdragon.cn/posts" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="Posts">
+                        <span itemprop="name">Posts</span>
+                    </a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span class="text-gray-800 dark:text-gray-200" itemprop="name" title="深入理解高级加密标准（Advanced Encryption Standard）">深入理解高级加密标准（Advanced Encryption...</span>
+                    <meta itemprop="position" content="3" />
+                </li>
+            
+        
+    </ol>
+</nav> 
+            
+            <header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">深入理解高级加密标准（Advanced Encryption Standard）</h1>
+                
+                <div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3">
+                    <span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:calendar" class="mr-1" width="16" height="16"></iconify-icon>
+                        2024-04-23
+                    </span>
+                    
+                    
+                    
+                    
+                    <span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:clock-outline" class="mr-1" width="16" height="16"></iconify-icon>
+                        27 分钟阅读
+                    </span>
+                    
+                    
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank" rel="noopener noreferrer" 
+                       class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors"
+                       aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" 
+                       tabindex="0">
+                        <iconify-icon icon="simple-icons:creativecommons" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsbysa" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsnc" width="16" height="16" class="mr-1"></iconify-icon>
+                        <span>BY-NC-SA 4.0</span>
+                    </a>
+                </div>
+            </header>
+            
+            
+            <div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed">
+                <img src="https://static.cmdragon.cn/blog/images/2024_04_23 20_24_08.png@blog" title="2024_04_23 20_24_08.png" alt="2024_04_23 20_24_08.png"/>
+<h3 id="第一章aes概述">第一章：AES概述</h3>
+<h4 id="aes的历史和背景">AES的历史和背景</h4>
+<ul>
+<li>**历史：**高级加密标准（Advanced Encryption Standard，AES）是一种对称密钥加密标准，由美国国（Advanced Encryption
 Standard），家标准与技术研究所（NIST）于2001年发布。AES取代了之前的数据加密标准（Data Encryption
-Standard，DES），成为目前广泛使用的加密算法之一。</li><li><strong>背景：即高级加密标准，是一种对称密钥加密算法，是美国国家标准与技术</strong>
-AES的产生是为了解决DES存在的密钥长度过短、安全性不足等问题，以适应当时互联网和电子商务快速发展的需求。AES研究所（NIST）于2001年正式公布的一种加密标准，用来替经过了严格的密码学分析和评估，成为一种安全可靠的加密算法。</li></ul><h4 id=aes的基本原理>AES的基本原理</h4><ul><li>**对称密钥加密：**AES是一种对称密钥加密算法，即加密和解密使用相同的密钥。这种加密代之前的DES（Data Encryption
-Standard方式效率高，适用于大规模数据的加密和解密操作。</li><li>**替代网络：**AES使用代换-置换网络（Substitution-Permutation Network，SPN）结构，包括代换层和置换层，通过多轮迭代运算实现加密和解密过程。</li><li>**轮函数：**AES中的轮函数包括字节替代、行移位、列混淆和轮密钥加法等操作，通过多轮轮函数的迭代实现数据的混淆和扩散，）。DES因为密钥长度短（56位）而逐渐显露出安全性不足的问题增强了加密算法的安全性。</li></ul><h4 id=aes的优势和特点>AES的优势和特点</h4><ul><li>**安全性高：**AES经过了广泛的密码学分析和评估，被，于是NIST通过国际竞赛的形式选择AES的算法作为其替代方案。</li></ul><p>AES的算法来自于比利时密码学家Joan Daemen和Vincent Rijmen提出的Rijndael算法，该证明具有很高的安全性，能够抵抗目前已知的攻击方法。</p><ul><li>**效率高：**AES在软硬件实现上都具有较高的效率，加密速度快，适用于各种计算平台和设备。</li><li>**灵活性强：**AES算法在竞赛中被选为AES标准。自2001年起，AES已成为广支持多种密钥长度（128位、192位、256位），可以根据不同安全需求选择合适的密钥长度。</li><li>**广泛应用：**AES已成为许多安全通信协议（如SSL/TLS）、数据存储系统和网络安全设备的标准加密算法，得到了广泛的应用和支持。</li></ul><h3 id=第二章aes算法>第二章：AES算法</h3><h4 id=aes的加密和解密过程>AES的加密和解密过程</h4><ul><li><p><strong>加密过程：</strong></p><ol><li>**初始轮（AddRoundKey）：**将明文与初始密钥进行按位异或操作。</li><li>**多轮迭代（9/11/13轮）：**每轮包括SubBytes（字节替代）、ShiftRows（行移位）、MixColumns（列混淆）和AddRoundKey（轮密钥加）操作。</li><li>**最后一轮：**不包括MixColumns操作，仅进行SubBytes、ShiftRows和AddRoundKey操作。</li><li>**输出密文：**最终得到加密后的密文。</li></ol></li><li><p>**解密过程：**解密过程与加密过程类似，但使用的是逆操作，包括逆SubBytes、逆ShiftRows、逆MixColumns和逆AddRoundKey操作。</p></li></ul><h4 id=aes的密钥调度算法>AES的密钥调度算法</h4><ul><li>AES的密钥调度算法用于生成每一轮所需的轮密钥。</li><li>**密钥扩展：**通过对初始密钥进行一系列操作生成多个轮密钥，用于每轮的AddRoundKey操作。</li><li>**密钥调度核心：**包括字节替代、循环左移、轮常数和轮密钥混合等操作，确保生成的轮密钥安全且与原始密钥无关。</li></ul><h4 id=aes的轮函数和s盒设计>AES的轮函数和S盒设计</h4><ul><li>**轮函数：**AES的轮函数包括SubBytes、ShiftRows、MixColumns和AddRoundKey操作，这些操作结合在一起提供了高度的混淆和扩散。</li><li>**S盒设计：**AES中的S盒是一个固定的字节替代盒，用于SubBytes操作。S盒经过严格的密码学分析和选择，具有良好的非线性性和扩散性，增强了AES的安全性。</li></ul><h3 id=第三章aes的安全性>第三章：AES的安全性</h3><h4 id=aes的安全性分析>AES的安全性分析</h4><p>AES（Advanced Encryption Standard）是一种对称加密算法，被广泛应用于保护数据的安全性。AES的安全性取决于其设计的几个关键方面：</p><ol><li>**密钥长度：**AES支持128位、192位和256位三种密钥长度。一般来说，密钥长度越长，破解难度越大，安全性越高。推荐使用256位密钥以获得最高级别的安全性。</li><li>**轮数：**AES的安全性与轮数有关，一般128位密钥对应10轮，192位密钥对应12轮，256位密钥对应14轮。增加轮数可以增强加密算法的安全性，但也会增加计算成本。</li><li>**S盒设计：**AES的S盒（Substitution Box）经过专门设计，具有良好的非线性性和扩散性，增强了AES的安全性。S盒的设计是AES抵抗差分攻击和线性攻击的关键。</li><li>**密钥调度算法：**AES使用密钥调度算法生成轮密钥，确保生成的轮密钥与原始密钥无关，增加了密码的复杂性，提高了安全性。</li></ol><h4 id=aes的抗攻击性能>AES的抗攻击性能</h4><p>AES具有很好的抗攻击性能，主要表现在以下几个方面：</p><ol><li>**差分攻击（Differential Cryptanalysis）：**AES对差分攻击有较好的抵抗能力，这种攻击方式需要大量的明文-密文对来分析密码算法的性质，而AES的S盒设计和轮函数的复杂性使得差分攻击变得更加困难。</li><li>**线性攻击（Linear Cryptanalysis）：**AES对线性攻击也有较好的抵抗能力，线性攻击利用线性逼近的特性来破解密码算法，AES的设计使得线性攻击难以成功。</li></ol><h4 id=aes的密钥长度选择>AES的密钥长度选择</h4><p>在选择AES的密钥长度时，应根据所需的安全级别和性能需求来决定：</p><ul><li>对于一般应用，128位密钥已经足够安全，而且具有较好的性能表现。</li><li>如果需要更高级别的安全性，可以选择192位或256位密钥。256位密钥提供了最高级别的安全性，但会增加加密和解密的计算成本。</li><li>在实际应用中，应权衡安全性和性能需求，选择合适的密钥长度。</li></ul><p>综上所述，AES是一种安全性较高的加密算法，通过选择适当的密钥长度和轮数，以及合理设计的S盒和密钥调度算法，可以提供有效的数据保护和抗攻击性能。</p><h3 id=第四章aes的应用>第四章：AES的应用</h3><h4 id=aes在数据加密中的应用>AES在数据加密中的应用</h4><p>AES在数据加密中被广泛应用，用于保护数据的机密性和完整性。以下是AES在数据加密中的一些常见应用：</p><ol><li>**文件加密：**AES可用于加密文件，确保文件在存储或传输过程中不被未经授权的访问者获取。</li><li>**数据库加密：**数据库中的敏感数据可以使用AES进行加密，以防止数据库泄露导致数据泄露。</li><li>**通信加密：**在网络通信中，AES可用于加密通信内容，确保通信数据的机密性，防止被窃听者获取敏感信息。</li><li>**移动设备加密：**移动设备中的数据可以使用AES进行加密，保护用户的个人信息和隐私数据。</li></ol><h4 id=aes在网络安全中的应用>AES在网络安全中的应用</h4><p>AES在网络安全中扮演着重要的角色，用于保护网络通信的安全性。以下是AES在网络安全中的一些应用：</p><ol><li>**VPN加密：**虚拟私人网络（VPN）中的数据通常使用AES进行加密，确保远程访问者和分支机构之间的通信安全。</li><li>**SSL/TLS加密：**在Web通信中，SSL/TLS协议使用AES加密算法来保护网站和用户之间的数据传输，确保数据的机密性。</li><li>**数据包加密：**网络数据包可以使用AES进行加密，防止中间人攻击和数据篡改。</li><li>**数字签名：**AES也可以与数字签名算法结合使用，确保数据的完整性和认证性。</li></ol><h4 id=aes在软件和硬件中的实现>AES在软件和硬件中的实现</h4><p>AES可以在软件和硬件中实现，提供数据加密和解密功能。在软件中，AES通常通过调用加密库或使用加密算法实现。在硬件中，AES可以通过专用的加密芯片或FPGA实现加速加密运算。</p><p>在软件中实现AES时，可以使用各种编程语言（如C、C++、Java等）提供的加密库，或者使用开源的加密算法库（如OpenSSL、Crypto++等）来实现AES算法。</p><p>在硬件中实现AES时，可以使用专门设计的加密芯片（如TPM芯片）或者使用FPGA（现场可编程门阵列）来加速AES加密运算。硬件实现通常能提供更高的性能和安全性，适用于对加密性能要求较高的场景。</p><h3 id=第五章aes的未来发展>第五章：AES的未来发展</h3><h4 id=aes的发展历程>AES的发展历程</h4><p>AES（高级加密标准）是一种对称加密算法，由美国国家标准与技术研究院（NIST）于2001年发布。AES的发展历程可以简要总结如下：</p><ol><li>**选定过程：**在1997年，NIST发起了AES算法的选定过程，邀请全球加密专家提交候选算法进行评估和比较。</li><li>**Rijndael算法：**经过多轮评审和测试，Rijndael算法被选定为AES的标准，取代了之前的DES算法。</li><li>**标准化：**AES算法在2001年被正式标准化，并成为了美国政府采用的加密标准。</li><li>**广泛应用：**自标准化以来，AES已成为最流行的对称加密算法之一，被广泛应用于各种领域，包括网络通信、数据存储、移动设备等。</li></ol><h4 id=aes的标准化和演进>AES的标准化和演进</h4><p>AES的标准化过程经历了严格的评审和测试，确保算法的安全性和性能。虽然AES本身已经被广泛接受和应用，但在未来仍可能经历一些演进：</p><ol><li>**性能优化：**针对特定应用场景，可能会对AES进行性能优化，提高加密速度和效率。</li><li>**安全性更新：**随着计算能力的增强和密码分析技术的发展，可能会出现对AES的攻击，因此可能需要对AES进行安全性更新，以抵御新型攻击。</li><li>**量子计算：**随着量子计算技术的发展，传统的对称加密算法可能会受到威胁，AES也可能需要在量子计算环境下进行更新或替代。</li></ol><h4 id=aes在未来的应用前景>AES在未来的应用前景</h4><p>AES作为一种安全可靠的对称加密算法，其在未来仍将有广泛的应用前景，包括但不限于以下方面：</p><ol><li>**云安全：**随着云计算的普及，AES将继续在云安全领域发挥重要作用，保护云服务中的数据安全。</li><li>**物联网安全：**在物联网领域，AES可用于保护物联网设备之间的通信数据，确保物联网系统的安全性。</li><li>**区块链安全：**区块链技术的发展需要强大的加密算法来保护交易数据的安全，AES可以在区块链系统中发挥重要作用。</li><li>**AI安全：**随着人工智能技术的快速发展，AES可用于保护机器学习模型和数据的安全，防止恶意攻击和数据泄露。</li></ol><p>总的来说，AES作为一种经典的对称加密算法，将在未来继续扮演重要角色，保护各种信息系统的安全性。同时，随着技术的发展，AES可能会不断演进和优化，以适应新的安全挑战和应用场景。</p><h3 id=第六章aes的高级应用>第六章：AES的高级应用</h3><h4 id=aes与其他加密算法的比较>AES与其他加密算法的比较</h4><p>AES（Advanced Encryption Standard）是一种对称加密算法，与其他加密算法相比具有以下优势：</p><ol><li>**安全性：**AES经过广泛的安全性分析和评估，被广泛认可为安全可靠的加密算法，能够抵御当前的攻击手段。</li><li>**效率：**AES在软硬件平台上有较高的性能表现，加密解密速度快，适合对大量数据进行加密处理。</li><li>**标准化：**AES已被美国国家标准与技术研究所（NIST）确定为加密标准，被广泛应用于各种领域。</li><li>**适用性：**AES适用于各种应用场景，包括网络通信、数据存储、移动设备等，具有较高的通用性。</li></ol><h4 id=aes在云计算和物联网中的应用>AES在云计算和物联网中的应用</h4><ol><li>**云计算：**在云计算环境中，数据需要在网络上传输和存储，使用AES可以对数据进行加密保护，确保数据在传输和存储过程中的安全性，防止数据泄露和篡改。</li><li>**物联网：**在物联网中，大量设备需要进行通信和数据交换，使用AES可以对通信数据进行加密，防止数据被恶意窃取或篡改，保障物联网系统的安全性和稳定性。</li></ol><h4 id=aes在区块链和人工智能中的应用>AES在区块链和人工智能中的应用</h4><ol><li>**区块链：**区块链技术依赖于加密算法来保护交易数据的安全性和完整性，AES可以用于对区块链中的数据进行加密，确保交易记录不被篡改，保障区块链系统的安全性。</li><li>**人工智能：**在人工智能领域，机器学习模型和数据的安全性至关重要，使用AES可以对机器学习模型和数据进行加密保护，防止机密信息泄露和恶意攻击，确保人工智能系统的可靠性和安全性。</li></ol><p>综上所述，AES作为一种安全可靠的加密算法，在云计算、物联网、区块链和人工智能等领域都有广泛的应用前景，能够有效保护数据的安全性和隐私，确保信息系统的稳定运行和用户数据的保护。</p><h3 id=第七章aes的实践案例>第七章：AES的实践案例</h3><h4 id=aes在线加密解密>AES在线加密解密</h4><p><a href=https://cmdragon.cn/aesencordec>AES(Rijndael)加密解密</a></p><p><a href=https://cmdragon.cn/aesencordec>https://cmdragon.cn/aesencordec</a></p><h4 id=aes在企业信息安全中的应用案例>AES在企业信息安全中的应用案例</h4><ol><li>**数据加密保护：**企业通常使用AES对敏感数据进行加密，包括客户信息、财务数据等，以防止数据泄露和未经授权的访问。</li><li>**通信加密：**企业内部通信、文件传输等敏感信息的传输过程中，可以使用AES加密算法确保数据传输的安全性，防止信息被窃取或篡改。</li><li>**数据库加密：**企业数据库中存储的重要数据可以使用AES进行加密保护，防止数据库被攻击者非法访问或恶意篡改。</li></ol><h4 id=aes在政府和军事领域的应用案例>AES在政府和军事领域的应用案例</h4><ol><li>**保密通信：**政府和军事部门经常使用AES对机密通信和文件进行加密，确保敏感信息的安全传输和存储。</li><li>**情报保护：**情报机构使用AES加密算法来保护重要情报数据的安全性，防止敌对势力获取敏感信息。</li><li>**网络安全：**政府和军事网络系统中的数据传输和存储都可能使用AES进行加密，以应对网络攻击和信息泄露的威胁。</li></ol><h4 id=aes在金融和医疗领域的应用案例>AES在金融和医疗领域的应用案例</h4><ol><li>**金融交易安全：**金融机构通过AES加密算法保护客户的交易数据和个人信息，确保在线银行、支付系统等金融服务的安全性。</li><li>**医疗数据保护：**医疗机构使用AES对患者的医疗记录和个人信息进行加密，保护患者隐私，同时确保医疗数据的安全性和完整性。</li><li>**电子病历加密：**医疗机构可以使用AES对电子病历进行加密，防止未经授权的访问和篡改，保障患者的隐私和医疗信息安全。</li></ol></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>标签</h3><div class="flex flex-wrap gap-2"><a href=/tags/AES%E6%A6%82%E8%BF%B0 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: AES概述" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>AES概述
-</a><a href=/tags/%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 加密原理" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>加密原理
-</a><a href=/tags/%E4%BC%98%E5%8A%BF%E7%89%B9%E7%82%B9 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 优势特点" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>优势特点
-</a><a href=/tags/%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 算法详解" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>算法详解
-</a><a href=/tags/%E5%AE%89%E5%85%A8%E6%80%A7 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 安全性" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>安全性
-</a><a href=/tags/%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 应用实践" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>应用实践
-</a><a href=/tags/%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 案例分析" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>案例分析</a></div></div><nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center"><iconify-icon icon=mdi:arrow-left class=mr-2 width=16 height=16></iconify-icon>上一篇
-</span><a href=https://blog.cmdragon.cn/posts/5255d53346ad861384a2a938be282cb6/ class="font-medium text-primary hover:text-primary-dark block" aria-label="上一篇: HMAC：Introduction History and Applications" tabindex=0>HMAC：Introduction History and Applications</a></div><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">下一篇<iconify-icon icon=mdi:arrow-right class=ml-2 width=16 height=16></iconify-icon>
-</span><a href=https://blog.cmdragon.cn/posts/095483e361766cf14fef7dafd9822a76/ class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: 文本语音互相转换系统设计" tabindex=0>文本语音互相转换系统设计</a></div></nav><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:share-variant width=16 height=16></iconify-icon></div>分享</h3><div class="flex flex-wrap gap-3"><a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2fd1e54f865ff7846e64123f294982a233%2f&text=%e6%b7%b1%e5%85%a5%e7%90%86%e8%a7%a3%e9%ab%98%e7%ba%a7%e5%8a%a0%e5%af%86%e6%a0%87%e5%87%86%ef%bc%88Advanced%20Encryption%20Standard%ef%bc%89" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Twitter" tabindex=0><iconify-icon icon=mdi:twitter width=20 height=20></iconify-icon></a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2fd1e54f865ff7846e64123f294982a233%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Facebook" tabindex=0><iconify-icon icon=mdi:facebook width=20 height=20></iconify-icon></a><a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2fd1e54f865ff7846e64123f294982a233%2f&title=%e6%b7%b1%e5%85%a5%e7%90%86%e8%a7%a3%e9%ab%98%e7%ba%a7%e5%8a%a0%e5%af%86%e6%a0%87%e5%87%86%ef%bc%88Advanced%20Encryption%20Standard%ef%bc%89" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label=分享到微博 tabindex=0><iconify-icon icon=mdi:sina-weibo width=20 height=20></iconify-icon></a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2fd1e54f865ff7846e64123f294982a233%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 LinkedIn" tabindex=0><iconify-icon icon=mdi:linkedin width=20 height=20></iconify-icon></a></div></div></article><aside class="w-full lg:w-1/4"><button id=mobile-toc-toggle class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-<iconify-icon icon=mdi:table-of-contents width=24 height=24></iconify-icon></button><div id=toc-container class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
-fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
-lg:overflow-visible flex flex-col"><div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4"><h2 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:table-of-contents width=16 height=16></iconify-icon></div>目录</h2><div class="flex items-center"><button id=toc-toggle class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label=折叠目录>
-<iconify-icon id=toc-icon icon=mdi:chevron-up width=20 height=20></iconify-icon></button>
-<button id=toc-close class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div></div><div id=toc-content class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto"><nav id=TableOfContents><ul><li><ul><li><a href=#第一章aes概述>第一章：AES概述</a><ul><li><a href=#aes的历史和背景>AES的历史和背景</a></li><li><a href=#aes的基本原理>AES的基本原理</a></li><li><a href=#aes的优势和特点>AES的优势和特点</a></li></ul></li><li><a href=#第二章aes算法>第二章：AES算法</a><ul><li><a href=#aes的加密和解密过程>AES的加密和解密过程</a></li><li><a href=#aes的密钥调度算法>AES的密钥调度算法</a></li><li><a href=#aes的轮函数和s盒设计>AES的轮函数和S盒设计</a></li></ul></li><li><a href=#第三章aes的安全性>第三章：AES的安全性</a><ul><li><a href=#aes的安全性分析>AES的安全性分析</a></li><li><a href=#aes的抗攻击性能>AES的抗攻击性能</a></li><li><a href=#aes的密钥长度选择>AES的密钥长度选择</a></li></ul></li><li><a href=#第四章aes的应用>第四章：AES的应用</a><ul><li><a href=#aes在数据加密中的应用>AES在数据加密中的应用</a></li><li><a href=#aes在网络安全中的应用>AES在网络安全中的应用</a></li><li><a href=#aes在软件和硬件中的实现>AES在软件和硬件中的实现</a></li></ul></li><li><a href=#第五章aes的未来发展>第五章：AES的未来发展</a><ul><li><a href=#aes的发展历程>AES的发展历程</a></li><li><a href=#aes的标准化和演进>AES的标准化和演进</a></li><li><a href=#aes在未来的应用前景>AES在未来的应用前景</a></li></ul></li><li><a href=#第六章aes的高级应用>第六章：AES的高级应用</a><ul><li><a href=#aes与其他加密算法的比较>AES与其他加密算法的比较</a></li><li><a href=#aes在云计算和物联网中的应用>AES在云计算和物联网中的应用</a></li><li><a href=#aes在区块链和人工智能中的应用>AES在区块链和人工智能中的应用</a></li></ul></li><li><a href=#第七章aes的实践案例>第七章：AES的实践案例</a><ul><li><a href=#aes在线加密解密>AES在线加密解密</a></li><li><a href=#aes在企业信息安全中的应用案例>AES在企业信息安全中的应用案例</a></li><li><a href=#aes在政府和军事领域的应用案例>AES在政府和军事领域的应用案例</a></li><li><a href=#aes在金融和医疗领域的应用案例>AES在金融和医疗领域的应用案例</a></li></ul></li></ul></li></ul></nav></div></div><div id=toc-overlay class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div></aside></div></div><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js></script><link rel=stylesheet href=/css/markdown.css><link rel=stylesheet href=/css/code-highlight.css><script src=/js/code-highlight.js></script><script src=/js/toc.js></script><script>document.addEventListener("DOMContentLoaded",function(){console.log("初始化代码高亮..."),window.hljs?(console.log("highlight.js 已加载"),document.querySelectorAll("pre code").forEach(function(e){console.log("应用高亮到代码块"),hljs.highlightElement(e)})):console.error("highlight.js 未加载!")})</script><style>#toc-content{max-height:none}@media(min-width:1024px){#toc-content{max-height:none;overflow:visible}#toc-container{max-height:calc(100vh - 120px);overflow-y:auto}nav#TableOfContents{overflow:visible}}@media(max-width:1023px){#toc-container{padding-bottom:env(safe-area-inset-bottom,20px);display:flex;flex-direction:column}#toc-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:20px}}</style></main><footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700"><div class="container mx-auto px-4"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:information width=16 height=16></iconify-icon></div>关于本站</h3><p class="text-sm text-gray-600 dark:text-gray-400 mb-4">cmdragon's Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。</p><div class="flex space-x-3"><a href=https://github.com/amd794 class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=GitHub tabindex=0 target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:github width=18 height=18></iconify-icon></a><button id=wechat-btn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=微信 tabindex=0>
-<iconify-icon icon=mdi:wechat width=18 height=18></iconify-icon></button>
-<a href=mailto:support@cmdragon.cn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=Email tabindex=0><iconify-icon icon=mdi:email width=18 height=18></iconify-icon></a><a href=/index.xml class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=RSS tabindex=0><iconify-icon icon=mdi:rss width=18 height=18></iconify-icon></a></div></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:link-variant width=16 height=16></iconify-icon></div>快速链接</h3><ul class=space-y-2><li><a href=https://movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>高清影视库</a></li><li><a href=https://comic.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>精选漫画阅读</a></li><li><a href=https://tools.cmdragon.cn/zh class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>实用在线工具</a></li><li><a href=https://hot-movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>热映影视推荐</a></li></ul></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>热门标签</h3><div class="flex flex-wrap gap-2"><a href=https://blog.cmdragon.cn/tags/FastAPI/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#FastAPI <span class="text-xs opacity-70">(85)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt <span class="text-xs opacity-70">(68)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#钩子 <span class="text-xs opacity-70">(62)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#性能优化 <span class="text-xs opacity-70">(47)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt.js/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt.js <span class="text-xs opacity-70">(43)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#生命周期 <span class="text-xs opacity-70">(38)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt3/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt3 <span class="text-xs opacity-70">(37)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#错误处理 <span class="text-xs opacity-70">(32)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#组件 <span class="text-xs opacity-70">(29)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#数据库管理 <span class="text-xs opacity-70">(27)</span></a></div></div></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6"><div class="flex flex-col md:flex-row justify-between items-center"><div class="text-center md:text-left mb-4 md:mb-0"><p class="text-sm text-gray-600 dark:text-gray-400">&copy; 2023 cmdragon's Blog. 保留所有权利.</p><p class="text-xs text-gray-500 dark:text-gray-500 mt-1">由 <a href=https://gohugo.io/ class="hover:text-primary transition-colors duration-300" target=_blank rel="noopener noreferrer">Hugo</a> 强力驱动</p></div><button id=back-to-top class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
-<iconify-icon icon=mdi:arrow-up class=mr-1 width=16 height=16></iconify-icon>返回顶部</button></div></div></div><div id=wechat-modal class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick='this.classList.add("hidden")'><div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick=event.stopPropagation()><button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick='document.getElementById("wechat-modal").classList.add("hidden")'>
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button><h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4><div class="flex justify-center"><img src=/images/wechat_qrcode.webp alt=微信二维码 class="w-64 h-64 object-contain"></div></div></div></footer><script>const backToTopButton=document.getElementById("back-to-top");window.addEventListener("scroll",function(){window.scrollY>300?(backToTopButton.classList.remove("opacity-0","invisible"),backToTopButton.classList.add("opacity-100","visible")):(backToTopButton.classList.add("opacity-0","invisible"),backToTopButton.classList.remove("opacity-100","visible"))}),backToTopButton.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})}),document.getElementById("wechat-btn").addEventListener("click",function(){document.getElementById("wechat-modal").classList.remove("hidden")}),document.getElementById("wechat-btn").addEventListener("keydown",function(e){(e.key==="Enter"||e.key===" ")&&(e.preventDefault(),document.getElementById("wechat-modal").classList.remove("hidden"))})</script></div><script>localStorage.getItem("color-theme")==="dark"||!("color-theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark")</script><script src=/js/code-highlight.js></script><script src=/js/advanced-render.js></script><div id=site-search-modal class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300"><div id=site-search-backdrop class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div><div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700"><div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700"><h3 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm"><iconify-icon icon=mdi:magnify width=16 height=16></iconify-icon></div><span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span></h3><button id=site-search-close class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div><div class=p-6><form id=site-search-form action=/search/ method=get><div class=relative><div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md"><span class="pl-4 text-gray-400"><iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></span><input type=text id=site-search-input name=q placeholder=输入关键词搜索... class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200" aria-label=搜索内容 tabindex=0>
-<button type=submit class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center" aria-label=搜索 tabindex=0>
-<span class="mr-1 hidden sm:inline">搜索</span>
-<iconify-icon icon=mdi:arrow-right width=18 height=18></iconify-icon></button></div></div></form><div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start"><div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5"><iconify-icon icon=mdi:information width=16 height=16 class="text-blue-500 dark:text-blue-300"></iconify-icon></div><div><p class=mb-1>快捷键提示:</p><ul class=space-y-1><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
-<span>打开搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
-<span>关闭搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
-<span>提交搜索</span></li></ul></div></div><div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"><div class="flex flex-wrap gap-2"><a href=/tags/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:tag-multiple class=mr-1 width=16 height=16></iconify-icon>标签
-</a><a href=/categories/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:folder-multiple class=mr-1 width=16 height=16></iconify-icon>分类
-</a><a href=/archives/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:archive class=mr-1 width=16 height=16></iconify-icon>归档</a></div></div></div></div></div><script>document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("site-search-modal"),t=e.querySelector('div[class*="rounded-xl"]'),s=document.getElementById("site-search-backdrop"),o=document.getElementById("site-search-close"),a=document.getElementById("site-search-form"),i=document.getElementById("site-search-input");window.openSiteSearch=function(){e.classList.remove("hidden"),document.body.classList.add("overflow-hidden"),setTimeout(()=>{e.classList.add("opacity-100"),t.classList.remove("scale-95","opacity-0"),t.classList.add("scale-100","opacity-100"),i.focus()},10)};function n(){e.classList.remove("opacity-100"),t.classList.remove("scale-100","opacity-100"),t.classList.add("scale-95","opacity-0"),setTimeout(()=>{e.classList.add("hidden"),document.body.classList.remove("overflow-hidden")},300)}s&&s.addEventListener("click",n),o&&o.addEventListener("click",n),document.addEventListener("keydown",t=>{t.key==="Escape"&&!e.classList.contains("hidden")&&n(),t.key==="/"&&e.classList.contains("hidden")&&document.activeElement.tagName!=="INPUT"&&(t.preventDefault(),openSiteSearch())}),t.addEventListener("click",e=>{e.stopPropagation()})})</script></body></html>
+Standard，DES），成为目前广泛使用的加密算法之一。</li>
+<li><strong>背景：即高级加密标准，是一种对称密钥加密算法，是美国国家标准与技术</strong>
+AES的产生是为了解决DES存在的密钥长度过短、安全性不足等问题，以适应当时互联网和电子商务快速发展的需求。AES研究所（NIST）于2001年正式公布的一种加密标准，用来替经过了严格的密码学分析和评估，成为一种安全可靠的加密算法。</li>
+</ul>
+<h4 id="aes的基本原理">AES的基本原理</h4>
+<ul>
+<li>**对称密钥加密：**AES是一种对称密钥加密算法，即加密和解密使用相同的密钥。这种加密代之前的DES（Data Encryption
+Standard方式效率高，适用于大规模数据的加密和解密操作。</li>
+<li>**替代网络：**AES使用代换-置换网络（Substitution-Permutation Network，SPN）结构，包括代换层和置换层，通过多轮迭代运算实现加密和解密过程。</li>
+<li>**轮函数：**AES中的轮函数包括字节替代、行移位、列混淆和轮密钥加法等操作，通过多轮轮函数的迭代实现数据的混淆和扩散，）。DES因为密钥长度短（56位）而逐渐显露出安全性不足的问题增强了加密算法的安全性。</li>
+</ul>
+<h4 id="aes的优势和特点">AES的优势和特点</h4>
+<ul>
+<li>**安全性高：**AES经过了广泛的密码学分析和评估，被，于是NIST通过国际竞赛的形式选择AES的算法作为其替代方案。</li>
+</ul>
+<p>AES的算法来自于比利时密码学家Joan Daemen和Vincent Rijmen提出的Rijndael算法，该证明具有很高的安全性，能够抵抗目前已知的攻击方法。</p>
+<ul>
+<li>**效率高：**AES在软硬件实现上都具有较高的效率，加密速度快，适用于各种计算平台和设备。</li>
+<li>**灵活性强：**AES算法在竞赛中被选为AES标准。自2001年起，AES已成为广支持多种密钥长度（128位、192位、256位），可以根据不同安全需求选择合适的密钥长度。</li>
+<li>**广泛应用：**AES已成为许多安全通信协议（如SSL/TLS）、数据存储系统和网络安全设备的标准加密算法，得到了广泛的应用和支持。</li>
+</ul>
+<h3 id="第二章aes算法">第二章：AES算法</h3>
+<h4 id="aes的加密和解密过程">AES的加密和解密过程</h4>
+<ul>
+<li>
+<p><strong>加密过程：</strong></p>
+<ol>
+<li>**初始轮（AddRoundKey）：**将明文与初始密钥进行按位异或操作。</li>
+<li>**多轮迭代（9/11/13轮）：**每轮包括SubBytes（字节替代）、ShiftRows（行移位）、MixColumns（列混淆）和AddRoundKey（轮密钥加）操作。</li>
+<li>**最后一轮：**不包括MixColumns操作，仅进行SubBytes、ShiftRows和AddRoundKey操作。</li>
+<li>**输出密文：**最终得到加密后的密文。</li>
+</ol>
+</li>
+<li>
+<p>**解密过程：**解密过程与加密过程类似，但使用的是逆操作，包括逆SubBytes、逆ShiftRows、逆MixColumns和逆AddRoundKey操作。</p>
+</li>
+</ul>
+<h4 id="aes的密钥调度算法">AES的密钥调度算法</h4>
+<ul>
+<li>AES的密钥调度算法用于生成每一轮所需的轮密钥。</li>
+<li>**密钥扩展：**通过对初始密钥进行一系列操作生成多个轮密钥，用于每轮的AddRoundKey操作。</li>
+<li>**密钥调度核心：**包括字节替代、循环左移、轮常数和轮密钥混合等操作，确保生成的轮密钥安全且与原始密钥无关。</li>
+</ul>
+<h4 id="aes的轮函数和s盒设计">AES的轮函数和S盒设计</h4>
+<ul>
+<li>**轮函数：**AES的轮函数包括SubBytes、ShiftRows、MixColumns和AddRoundKey操作，这些操作结合在一起提供了高度的混淆和扩散。</li>
+<li>**S盒设计：**AES中的S盒是一个固定的字节替代盒，用于SubBytes操作。S盒经过严格的密码学分析和选择，具有良好的非线性性和扩散性，增强了AES的安全性。</li>
+</ul>
+<h3 id="第三章aes的安全性">第三章：AES的安全性</h3>
+<h4 id="aes的安全性分析">AES的安全性分析</h4>
+<p>AES（Advanced Encryption Standard）是一种对称加密算法，被广泛应用于保护数据的安全性。AES的安全性取决于其设计的几个关键方面：</p>
+<ol>
+<li>**密钥长度：**AES支持128位、192位和256位三种密钥长度。一般来说，密钥长度越长，破解难度越大，安全性越高。推荐使用256位密钥以获得最高级别的安全性。</li>
+<li>**轮数：**AES的安全性与轮数有关，一般128位密钥对应10轮，192位密钥对应12轮，256位密钥对应14轮。增加轮数可以增强加密算法的安全性，但也会增加计算成本。</li>
+<li>**S盒设计：**AES的S盒（Substitution Box）经过专门设计，具有良好的非线性性和扩散性，增强了AES的安全性。S盒的设计是AES抵抗差分攻击和线性攻击的关键。</li>
+<li>**密钥调度算法：**AES使用密钥调度算法生成轮密钥，确保生成的轮密钥与原始密钥无关，增加了密码的复杂性，提高了安全性。</li>
+</ol>
+<h4 id="aes的抗攻击性能">AES的抗攻击性能</h4>
+<p>AES具有很好的抗攻击性能，主要表现在以下几个方面：</p>
+<ol>
+<li>**差分攻击（Differential Cryptanalysis）：**AES对差分攻击有较好的抵抗能力，这种攻击方式需要大量的明文-密文对来分析密码算法的性质，而AES的S盒设计和轮函数的复杂性使得差分攻击变得更加困难。</li>
+<li>**线性攻击（Linear Cryptanalysis）：**AES对线性攻击也有较好的抵抗能力，线性攻击利用线性逼近的特性来破解密码算法，AES的设计使得线性攻击难以成功。</li>
+</ol>
+<h4 id="aes的密钥长度选择">AES的密钥长度选择</h4>
+<p>在选择AES的密钥长度时，应根据所需的安全级别和性能需求来决定：</p>
+<ul>
+<li>对于一般应用，128位密钥已经足够安全，而且具有较好的性能表现。</li>
+<li>如果需要更高级别的安全性，可以选择192位或256位密钥。256位密钥提供了最高级别的安全性，但会增加加密和解密的计算成本。</li>
+<li>在实际应用中，应权衡安全性和性能需求，选择合适的密钥长度。</li>
+</ul>
+<p>综上所述，AES是一种安全性较高的加密算法，通过选择适当的密钥长度和轮数，以及合理设计的S盒和密钥调度算法，可以提供有效的数据保护和抗攻击性能。</p>
+<h3 id="第四章aes的应用">第四章：AES的应用</h3>
+<h4 id="aes在数据加密中的应用">AES在数据加密中的应用</h4>
+<p>AES在数据加密中被广泛应用，用于保护数据的机密性和完整性。以下是AES在数据加密中的一些常见应用：</p>
+<ol>
+<li>**文件加密：**AES可用于加密文件，确保文件在存储或传输过程中不被未经授权的访问者获取。</li>
+<li>**数据库加密：**数据库中的敏感数据可以使用AES进行加密，以防止数据库泄露导致数据泄露。</li>
+<li>**通信加密：**在网络通信中，AES可用于加密通信内容，确保通信数据的机密性，防止被窃听者获取敏感信息。</li>
+<li>**移动设备加密：**移动设备中的数据可以使用AES进行加密，保护用户的个人信息和隐私数据。</li>
+</ol>
+<h4 id="aes在网络安全中的应用">AES在网络安全中的应用</h4>
+<p>AES在网络安全中扮演着重要的角色，用于保护网络通信的安全性。以下是AES在网络安全中的一些应用：</p>
+<ol>
+<li>**VPN加密：**虚拟私人网络（VPN）中的数据通常使用AES进行加密，确保远程访问者和分支机构之间的通信安全。</li>
+<li>**SSL/TLS加密：**在Web通信中，SSL/TLS协议使用AES加密算法来保护网站和用户之间的数据传输，确保数据的机密性。</li>
+<li>**数据包加密：**网络数据包可以使用AES进行加密，防止中间人攻击和数据篡改。</li>
+<li>**数字签名：**AES也可以与数字签名算法结合使用，确保数据的完整性和认证性。</li>
+</ol>
+<h4 id="aes在软件和硬件中的实现">AES在软件和硬件中的实现</h4>
+<p>AES可以在软件和硬件中实现，提供数据加密和解密功能。在软件中，AES通常通过调用加密库或使用加密算法实现。在硬件中，AES可以通过专用的加密芯片或FPGA实现加速加密运算。</p>
+<p>在软件中实现AES时，可以使用各种编程语言（如C、C++、Java等）提供的加密库，或者使用开源的加密算法库（如OpenSSL、Crypto++等）来实现AES算法。</p>
+<p>在硬件中实现AES时，可以使用专门设计的加密芯片（如TPM芯片）或者使用FPGA（现场可编程门阵列）来加速AES加密运算。硬件实现通常能提供更高的性能和安全性，适用于对加密性能要求较高的场景。</p>
+<h3 id="第五章aes的未来发展">第五章：AES的未来发展</h3>
+<h4 id="aes的发展历程">AES的发展历程</h4>
+<p>AES（高级加密标准）是一种对称加密算法，由美国国家标准与技术研究院（NIST）于2001年发布。AES的发展历程可以简要总结如下：</p>
+<ol>
+<li>**选定过程：**在1997年，NIST发起了AES算法的选定过程，邀请全球加密专家提交候选算法进行评估和比较。</li>
+<li>**Rijndael算法：**经过多轮评审和测试，Rijndael算法被选定为AES的标准，取代了之前的DES算法。</li>
+<li>**标准化：**AES算法在2001年被正式标准化，并成为了美国政府采用的加密标准。</li>
+<li>**广泛应用：**自标准化以来，AES已成为最流行的对称加密算法之一，被广泛应用于各种领域，包括网络通信、数据存储、移动设备等。</li>
+</ol>
+<h4 id="aes的标准化和演进">AES的标准化和演进</h4>
+<p>AES的标准化过程经历了严格的评审和测试，确保算法的安全性和性能。虽然AES本身已经被广泛接受和应用，但在未来仍可能经历一些演进：</p>
+<ol>
+<li>**性能优化：**针对特定应用场景，可能会对AES进行性能优化，提高加密速度和效率。</li>
+<li>**安全性更新：**随着计算能力的增强和密码分析技术的发展，可能会出现对AES的攻击，因此可能需要对AES进行安全性更新，以抵御新型攻击。</li>
+<li>**量子计算：**随着量子计算技术的发展，传统的对称加密算法可能会受到威胁，AES也可能需要在量子计算环境下进行更新或替代。</li>
+</ol>
+<h4 id="aes在未来的应用前景">AES在未来的应用前景</h4>
+<p>AES作为一种安全可靠的对称加密算法，其在未来仍将有广泛的应用前景，包括但不限于以下方面：</p>
+<ol>
+<li>**云安全：**随着云计算的普及，AES将继续在云安全领域发挥重要作用，保护云服务中的数据安全。</li>
+<li>**物联网安全：**在物联网领域，AES可用于保护物联网设备之间的通信数据，确保物联网系统的安全性。</li>
+<li>**区块链安全：**区块链技术的发展需要强大的加密算法来保护交易数据的安全，AES可以在区块链系统中发挥重要作用。</li>
+<li>**AI安全：**随着人工智能技术的快速发展，AES可用于保护机器学习模型和数据的安全，防止恶意攻击和数据泄露。</li>
+</ol>
+<p>总的来说，AES作为一种经典的对称加密算法，将在未来继续扮演重要角色，保护各种信息系统的安全性。同时，随着技术的发展，AES可能会不断演进和优化，以适应新的安全挑战和应用场景。</p>
+<h3 id="第六章aes的高级应用">第六章：AES的高级应用</h3>
+<h4 id="aes与其他加密算法的比较">AES与其他加密算法的比较</h4>
+<p>AES（Advanced Encryption Standard）是一种对称加密算法，与其他加密算法相比具有以下优势：</p>
+<ol>
+<li>**安全性：**AES经过广泛的安全性分析和评估，被广泛认可为安全可靠的加密算法，能够抵御当前的攻击手段。</li>
+<li>**效率：**AES在软硬件平台上有较高的性能表现，加密解密速度快，适合对大量数据进行加密处理。</li>
+<li>**标准化：**AES已被美国国家标准与技术研究所（NIST）确定为加密标准，被广泛应用于各种领域。</li>
+<li>**适用性：**AES适用于各种应用场景，包括网络通信、数据存储、移动设备等，具有较高的通用性。</li>
+</ol>
+<h4 id="aes在云计算和物联网中的应用">AES在云计算和物联网中的应用</h4>
+<ol>
+<li>**云计算：**在云计算环境中，数据需要在网络上传输和存储，使用AES可以对数据进行加密保护，确保数据在传输和存储过程中的安全性，防止数据泄露和篡改。</li>
+<li>**物联网：**在物联网中，大量设备需要进行通信和数据交换，使用AES可以对通信数据进行加密，防止数据被恶意窃取或篡改，保障物联网系统的安全性和稳定性。</li>
+</ol>
+<h4 id="aes在区块链和人工智能中的应用">AES在区块链和人工智能中的应用</h4>
+<ol>
+<li>**区块链：**区块链技术依赖于加密算法来保护交易数据的安全性和完整性，AES可以用于对区块链中的数据进行加密，确保交易记录不被篡改，保障区块链系统的安全性。</li>
+<li>**人工智能：**在人工智能领域，机器学习模型和数据的安全性至关重要，使用AES可以对机器学习模型和数据进行加密保护，防止机密信息泄露和恶意攻击，确保人工智能系统的可靠性和安全性。</li>
+</ol>
+<p>综上所述，AES作为一种安全可靠的加密算法，在云计算、物联网、区块链和人工智能等领域都有广泛的应用前景，能够有效保护数据的安全性和隐私，确保信息系统的稳定运行和用户数据的保护。</p>
+<h3 id="第七章aes的实践案例">第七章：AES的实践案例</h3>
+<h4 id="aes在线加密解密">AES在线加密解密</h4>
+<p><a href="https://cmdragon.cn/aesencordec">AES(Rijndael)加密解密 </a></p>
+<p><a href="https://cmdragon.cn/aesencordec">https://cmdragon.cn/aesencordec</a></p>
+<h4 id="aes在企业信息安全中的应用案例">AES在企业信息安全中的应用案例</h4>
+<ol>
+<li>**数据加密保护：**企业通常使用AES对敏感数据进行加密，包括客户信息、财务数据等，以防止数据泄露和未经授权的访问。</li>
+<li>**通信加密：**企业内部通信、文件传输等敏感信息的传输过程中，可以使用AES加密算法确保数据传输的安全性，防止信息被窃取或篡改。</li>
+<li>**数据库加密：**企业数据库中存储的重要数据可以使用AES进行加密保护，防止数据库被攻击者非法访问或恶意篡改。</li>
+</ol>
+<h4 id="aes在政府和军事领域的应用案例">AES在政府和军事领域的应用案例</h4>
+<ol>
+<li>**保密通信：**政府和军事部门经常使用AES对机密通信和文件进行加密，确保敏感信息的安全传输和存储。</li>
+<li>**情报保护：**情报机构使用AES加密算法来保护重要情报数据的安全性，防止敌对势力获取敏感信息。</li>
+<li>**网络安全：**政府和军事网络系统中的数据传输和存储都可能使用AES进行加密，以应对网络攻击和信息泄露的威胁。</li>
+</ol>
+<h4 id="aes在金融和医疗领域的应用案例">AES在金融和医疗领域的应用案例</h4>
+<ol>
+<li>**金融交易安全：**金融机构通过AES加密算法保护客户的交易数据和个人信息，确保在线银行、支付系统等金融服务的安全性。</li>
+<li>**医疗数据保护：**医疗机构使用AES对患者的医疗记录和个人信息进行加密，保护患者隐私，同时确保医疗数据的安全性和完整性。</li>
+<li>**电子病历加密：**医疗机构可以使用AES对电子病历进行加密，防止未经授权的访问和篡改，保障患者的隐私和医疗信息安全。</li>
+</ol>
+
+            </div>
+            
+            
+            
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                    <h3 class="text-lg font-medium mb-4 flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                        </div>
+                        标签
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        
+                            <a href="/tags/AES%E6%A6%82%E8%BF%B0" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: AES概述"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>AES概述
+                            </a>
+                        
+                            <a href="/tags/%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 加密原理"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>加密原理
+                            </a>
+                        
+                            <a href="/tags/%E4%BC%98%E5%8A%BF%E7%89%B9%E7%82%B9" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 优势特点"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>优势特点
+                            </a>
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 算法详解"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>算法详解
+                            </a>
+                        
+                            <a href="/tags/%E5%AE%89%E5%85%A8%E6%80%A7" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 安全性"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>安全性
+                            </a>
+                        
+                            <a href="/tags/%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 应用实践"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>应用实践
+                            </a>
+                        
+                            <a href="/tags/%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 案例分析"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>案例分析
+                            </a>
+                        
+                    </div>
+                </div>
+            
+            
+            
+            <nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center">
+                            <iconify-icon icon="mdi:arrow-left" class="mr-2" width="16" height="16"></iconify-icon>上一篇
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/5255d53346ad861384a2a938be282cb6/" class="font-medium text-primary hover:text-primary-dark block" aria-label="上一篇: HMAC：Introduction History and Applications" tabindex="0">
+                            HMAC：Introduction History and Applications
+                        </a>
+                    </div>
+                
+                
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">
+                            下一篇<iconify-icon icon="mdi:arrow-right" class="ml-2" width="16" height="16"></iconify-icon>
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/095483e361766cf14fef7dafd9822a76/" class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: 文本语音互相转换系统设计" tabindex="0">
+                            文本语音互相转换系统设计
+                        </a>
+                    </div>
+                
+            </nav>
+            
+            
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                <h3 class="text-lg font-medium mb-4 flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:share-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    分享
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2fd1e54f865ff7846e64123f294982a233%2f&text=%e6%b7%b1%e5%85%a5%e7%90%86%e8%a7%a3%e9%ab%98%e7%ba%a7%e5%8a%a0%e5%af%86%e6%a0%87%e5%87%86%ef%bc%88Advanced%20Encryption%20Standard%ef%bc%89" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Twitter" tabindex="0">
+                        <iconify-icon icon="mdi:twitter" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2fd1e54f865ff7846e64123f294982a233%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Facebook" tabindex="0">
+                        <iconify-icon icon="mdi:facebook" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2fd1e54f865ff7846e64123f294982a233%2f&title=%e6%b7%b1%e5%85%a5%e7%90%86%e8%a7%a3%e9%ab%98%e7%ba%a7%e5%8a%a0%e5%af%86%e6%a0%87%e5%87%86%ef%bc%88Advanced%20Encryption%20Standard%ef%bc%89" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到微博" tabindex="0">
+                        <iconify-icon icon="mdi:sina-weibo" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2fd1e54f865ff7846e64123f294982a233%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 LinkedIn" tabindex="0">
+                        <iconify-icon icon="mdi:linkedin" width="20" height="20"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            
+        </article>
+        
+        
+        
+        <aside class="w-full lg:w-1/4">
+            
+            <button id="mobile-toc-toggle" class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <iconify-icon icon="mdi:table-of-contents" width="24" height="24"></iconify-icon>
+            </button>
+            
+            
+            <div id="toc-container" class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
+                 fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
+                 lg:overflow-visible flex flex-col">
+                <div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4">
+                    <h2 class="text-lg font-medium flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:table-of-contents" width="16" height="16"></iconify-icon>
+                        </div>
+                        目录
+                    </h2>
+                    <div class="flex items-center">
+                        <button id="toc-toggle" class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label="折叠目录">
+                            <iconify-icon id="toc-icon" icon="mdi:chevron-up" width="20" height="20"></iconify-icon>
+                        </button>
+                        
+                        <button id="toc-close" class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                            <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                <div id="toc-content" class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#第一章aes概述">第一章：AES概述</a>
+          <ul>
+            <li><a href="#aes的历史和背景">AES的历史和背景</a></li>
+            <li><a href="#aes的基本原理">AES的基本原理</a></li>
+            <li><a href="#aes的优势和特点">AES的优势和特点</a></li>
+          </ul>
+        </li>
+        <li><a href="#第二章aes算法">第二章：AES算法</a>
+          <ul>
+            <li><a href="#aes的加密和解密过程">AES的加密和解密过程</a></li>
+            <li><a href="#aes的密钥调度算法">AES的密钥调度算法</a></li>
+            <li><a href="#aes的轮函数和s盒设计">AES的轮函数和S盒设计</a></li>
+          </ul>
+        </li>
+        <li><a href="#第三章aes的安全性">第三章：AES的安全性</a>
+          <ul>
+            <li><a href="#aes的安全性分析">AES的安全性分析</a></li>
+            <li><a href="#aes的抗攻击性能">AES的抗攻击性能</a></li>
+            <li><a href="#aes的密钥长度选择">AES的密钥长度选择</a></li>
+          </ul>
+        </li>
+        <li><a href="#第四章aes的应用">第四章：AES的应用</a>
+          <ul>
+            <li><a href="#aes在数据加密中的应用">AES在数据加密中的应用</a></li>
+            <li><a href="#aes在网络安全中的应用">AES在网络安全中的应用</a></li>
+            <li><a href="#aes在软件和硬件中的实现">AES在软件和硬件中的实现</a></li>
+          </ul>
+        </li>
+        <li><a href="#第五章aes的未来发展">第五章：AES的未来发展</a>
+          <ul>
+            <li><a href="#aes的发展历程">AES的发展历程</a></li>
+            <li><a href="#aes的标准化和演进">AES的标准化和演进</a></li>
+            <li><a href="#aes在未来的应用前景">AES在未来的应用前景</a></li>
+          </ul>
+        </li>
+        <li><a href="#第六章aes的高级应用">第六章：AES的高级应用</a>
+          <ul>
+            <li><a href="#aes与其他加密算法的比较">AES与其他加密算法的比较</a></li>
+            <li><a href="#aes在云计算和物联网中的应用">AES在云计算和物联网中的应用</a></li>
+            <li><a href="#aes在区块链和人工智能中的应用">AES在区块链和人工智能中的应用</a></li>
+          </ul>
+        </li>
+        <li><a href="#第七章aes的实践案例">第七章：AES的实践案例</a>
+          <ul>
+            <li><a href="#aes在线加密解密">AES在线加密解密</a></li>
+            <li><a href="#aes在企业信息安全中的应用案例">AES在企业信息安全中的应用案例</a></li>
+            <li><a href="#aes在政府和军事领域的应用案例">AES在政府和军事领域的应用案例</a></li>
+            <li><a href="#aes在金融和医疗领域的应用案例">AES在金融和医疗领域的应用案例</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </div>
+            
+            
+            <div id="toc-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div>
+        </aside>
+        
+    </div>
+</div>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+
+<link rel="stylesheet" href="/css/markdown.css">
+<link rel="stylesheet" href="/css/code-highlight.css">
+<script src="/js/code-highlight.js"></script>
+
+<script src="/js/toc.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('初始化代码高亮...');
+    if (window.hljs) {
+      console.log('highlight.js 已加载');
+      document.querySelectorAll('pre code').forEach(function(block) {
+        console.log('应用高亮到代码块');
+        hljs.highlightElement(block);
+      });
+    } else {
+      console.error('highlight.js 未加载!');
+    }
+  });
+</script>
+
+
+<style>
+ 
+#toc-content {
+  max-height: none;
+}
+
+@media (min-width: 1024px) {
+  #toc-content {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  #toc-container {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+  
+  nav#TableOfContents {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1023px) {
+  #toc-container {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #toc-content {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+}
+</style>
+
+        </main>
+        
+        <footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:information" width="16" height="16"></iconify-icon>
+                    </div>
+                    关于本站
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    cmdragon&#39;s Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。
+                </p>
+                <div class="flex space-x-3">
+                    
+                    <a href="https://github.com/amd794" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="GitHub" tabindex="0" target="_blank" rel="noopener noreferrer">
+                        <iconify-icon icon="mdi:github" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    
+                    <button id="wechat-btn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="微信" tabindex="0">
+                        <iconify-icon icon="mdi:wechat" width="18" height="18"></iconify-icon>
+                    </button>
+                    
+                    <a href="mailto:support@cmdragon.cn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="Email" tabindex="0">
+                        <iconify-icon icon="mdi:email" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    <a href="/index.xml" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="RSS" tabindex="0">
+                        <iconify-icon icon="mdi:rss" width="18" height="18"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:link-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    快速链接
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="https://movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            高清影视库
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://comic.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            精选漫画阅读
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://tools.cmdragon.cn/zh" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            实用在线工具
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://hot-movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            热映影视推荐
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                    </div>
+                    热门标签
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    
+                    <a href="https://blog.cmdragon.cn/tags/FastAPI/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #FastAPI <span class="text-xs opacity-70">(85)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt <span class="text-xs opacity-70">(68)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #钩子 <span class="text-xs opacity-70">(62)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #性能优化 <span class="text-xs opacity-70">(47)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt.js/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt.js <span class="text-xs opacity-70">(43)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #生命周期 <span class="text-xs opacity-70">(38)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt3/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt3 <span class="text-xs opacity-70">(37)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #错误处理 <span class="text-xs opacity-70">(32)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #组件 <span class="text-xs opacity-70">(29)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #数据库管理 <span class="text-xs opacity-70">(27)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        &copy; 2023 cmdragon&#39;s Blog. 保留所有权利.
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                        由 <a href="https://gohugo.io/" class="hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer">Hugo</a> 强力驱动
+                    </p>
+                </div>
+                
+                
+                <button id="back-to-top" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
+                    <iconify-icon icon="mdi:arrow-up" class="mr-1" width="16" height="16"></iconify-icon>
+                    返回顶部
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick="this.classList.add('hidden')">
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick="event.stopPropagation()">
+            <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick="document.getElementById('wechat-modal').classList.add('hidden')">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+            <h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4>
+            <div class="flex justify-center">
+                <img src="/images/wechat_qrcode.webp" alt="微信二维码" class="w-64 h-64 object-contain">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+    
+    
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('click', function() {
+        document.getElementById('wechat-modal').classList.remove('hidden');
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            document.getElementById('wechat-modal').classList.remove('hidden');
+        }
+    });
+</script> 
+    </div>
+    
+    
+    <script>
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    
+    <script src="/js/code-highlight.js"></script>
+    
+    
+    <script src="/js/advanced-render.js"></script>
+    
+    <div id="site-search-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    
+    <div id="site-search-backdrop" class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+    
+    
+    <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-medium flex items-center">
+                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm">
+                    <iconify-icon icon="mdi:magnify" width="16" height="16"></iconify-icon>
+                </div>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span>
+            </h3>
+            <button id="site-search-close" class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+        </div>
+        
+        <div class="p-6">
+            <form id="site-search-form" action="/search/" method="get">
+                <div class="relative">
+                    <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md">
+                        <span class="pl-4 text-gray-400">
+                            <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                        </span>
+                        <input 
+                            type="text" 
+                            id="site-search-input" 
+                            name="q" 
+                            placeholder="输入关键词搜索..."
+                            class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200"
+                            aria-label="搜索内容"
+                            tabindex="0"
+                        >
+                        <button 
+                            type="submit"
+                            class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center"
+                            aria-label="搜索"
+                            tabindex="0">
+                            <span class="mr-1 hidden sm:inline">搜索</span>
+                            <iconify-icon icon="mdi:arrow-right" width="18" height="18"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start">
+                <div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5">
+                    <iconify-icon icon="mdi:information" width="16" height="16" class="text-blue-500 dark:text-blue-300"></iconify-icon>
+                </div>
+                <div>
+                    <p class="mb-1">快捷键提示:</p>
+                    <ul class="space-y-1">
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
+                            <span>打开搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
+                            <span>关闭搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
+                            <span>提交搜索</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap gap-2">
+                    <a href="/tags/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:tag-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        标签
+                    </a>
+                    <a href="/categories/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:folder-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        分类
+                    </a>
+                    <a href="/archives/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:archive" class="mr-1" width="16" height="16"></iconify-icon>
+                        归档
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('site-search-modal');
+        const modalContent = modal.querySelector('div[class*="rounded-xl"]');
+        const backdrop = document.getElementById('site-search-backdrop');
+        const closeButton = document.getElementById('site-search-close');
+        const searchForm = document.getElementById('site-search-form');
+        const searchInput = document.getElementById('site-search-input');
+        
+        
+        window.openSiteSearch = function() {
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            
+            
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+                searchInput.focus();
+            }, 10);
+        };
+        
+        
+        function closeSiteSearch() {
+            
+            modal.classList.remove('opacity-100');
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        }
+        
+        
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        if (closeButton) {
+            closeButton.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeSiteSearch();
+            }
+            
+            
+            if (e.key === '/' && modal.classList.contains('hidden') && document.activeElement.tagName !== 'INPUT') {
+                e.preventDefault();
+                openSiteSearch();
+            }
+        });
+        
+        
+        modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    });
+</script> 
+</body>
+</html> 

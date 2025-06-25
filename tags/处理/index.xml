@@ -1,1 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>处理 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%A4%84%E7%90%86/</link><description>Recent content in 处理 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 05 Dec 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 beforeResponse 事件钩子</title><link>https://blog.cmdragon.cn/posts/a53897bbc3efd267f867b8ad06770144/</link><pubDate>Thu, 05 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/a53897bbc3efd267f867b8ad06770144/</guid><description>在 Web 开发中，处理响应是一个至关重要的环节。Nuxt.js 提供的 beforeResponse 钩子允许开发者在发送响应之前对结果进行修改或处理。这一机制非常有助于确保返回给客户端的数据格式、内容以及响应头等符合特定需求，从而提升用户体验和系统的稳定性。</description></item><item><title>Nuxt.js 应用中的 request 事件钩子</title><link>https://blog.cmdragon.cn/posts/d821e2e0d8af1f6e0a02aa2f6cddf24e/</link><pubDate>Wed, 04 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/d821e2e0d8af1f6e0a02aa2f6cddf24e/</guid><description>在构建现代 Web 应用时，处理请求是核心内容之一。无论是从后端获取数据，还是处理用户请求、验证和授权，正确地处理请求能够确保应用的稳定性、可维护性和用户体验。Nuxt.js 提供了 request 钩子，允许开发者在接收到请求时进行自定义处理，这为复杂应用提供了极大的灵活性。</description></item><item><title>Nuxt.js 应用中的 render：response 事件钩子</title><link>https://blog.cmdragon.cn/posts/b12508be9c4fb6b8f0499948ecd68ad9/</link><pubDate>Fri, 29 Nov 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/b12508be9c4fb6b8f0499948ecd68ad9/</guid><description>render:response 是一个在 Nuxt.js 中与服务器端渲染（SSR）相关的钩子，它会在请求的响应发送之前被调用。这个钩子的目的是让开发者可以在响应发送之前对响应进行修改或处理。此钩子接收两个参数：response 和 event。</description></item><item><title>Nuxt.js 应用中的 webpack：error 事件钩子</title><link>https://blog.cmdragon.cn/posts/8de760bec83aa6eedb15a70959e37ac5/</link><pubDate>Mon, 25 Nov 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/8de760bec83aa6eedb15a70959e37ac5/</guid><description>webpack:error 钩子是用于在 Webpack 编译过程中捕获和处理错误的一个重要机制。当发生编译错误时，这个钩子会被调用，通常用于在 UI 上给出反馈或者处理错误日志。</description></item><item><title>Nuxt.js 应用中的 build：error 事件钩子详解</title><link>https://blog.cmdragon.cn/posts/4a5e09829cf63001943fc481d69e01e0/</link><pubDate>Thu, 07 Nov 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/4a5e09829cf63001943fc481d69e01e0/</guid><description>build:error 是 Nuxt.js 中的一个生命周期钩子，当构建过程中发生错误时，该钩子将被调用。通过此钩子，开发者可以捕获和响应构建错误，进行相应的处理，例如记录日志或通知开发团队。</description></item><item><title>Nuxt.js 应用中的 nitro：build：public-assets 事件钩子详解</title><link>https://blog.cmdragon.cn/posts/271508b42bc005f41e4fa31830a84e83/</link><pubDate>Tue, 05 Nov 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/271508b42bc005f41e4fa31830a84e83/</guid><description>nitro:build:public-assets 是 Nuxt 3 中的一个生命周期钩子，在复制公共资产之后调用。该钩子使开发者能够在构建 Nitro 服务器之前，对公共资产进行修改或处理，比如添加、删除或修改文件。</description></item><item><title>Nuxt.js 应用中的 app：templatesGenerated 事件钩子详解</title><link>https://blog.cmdragon.cn/posts/3c565b88d4290c513e7c55ef934ec509/</link><pubDate>Sat, 19 Oct 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/3c565b88d4290c513e7c55ef934ec509/</guid><description>app:templatesGenerated 是 Nuxt.js 的一个生命周期钩子，在模板编译到虚拟文件系统（Virtual File System, VFS）之后被调用。这个钩子允许开发者在生成的模板文件准备好之后进行进一步的处理或自定义。</description></item><item><title>使用 Nuxt 的 showError 显示全屏错误页面</title><link>https://blog.cmdragon.cn/posts/54debfbfcb8e75989b8e0efe82573a86/</link><pubDate>Mon, 26 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/54debfbfcb8e75989b8e0efe82573a86/</guid><description>摘要：本文介绍Nuxt.js中的showError方法用于显示全屏错误页面，包括其参数类型及使用方式，并演示了如何在页面中捕获并展示错误，还介绍了useError用于管理共享错误状态的方法。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>处理 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%A4%84%E7%90%86/</link>
+    <description>Recent content in 处理 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 05 Dec 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 beforeResponse 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/a53897bbc3efd267f867b8ad06770144/</link>
+      <pubDate>Thu, 05 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/a53897bbc3efd267f867b8ad06770144/</guid>
+      <description>在 Web 开发中，处理响应是一个至关重要的环节。Nuxt.js 提供的 beforeResponse 钩子允许开发者在发送响应之前对结果进行修改或处理。这一机制非常有助于确保返回给客户端的数据格式、内容以及响应头等符合特定需求，从而提升用户体验和系统的稳定性。</description>
+    </item>
+    <item>
+      <title>Nuxt.js 应用中的 request 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/d821e2e0d8af1f6e0a02aa2f6cddf24e/</link>
+      <pubDate>Wed, 04 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/d821e2e0d8af1f6e0a02aa2f6cddf24e/</guid>
+      <description>在构建现代 Web 应用时，处理请求是核心内容之一。无论是从后端获取数据，还是处理用户请求、验证和授权，正确地处理请求能够确保应用的稳定性、可维护性和用户体验。Nuxt.js 提供了 request 钩子，允许开发者在接收到请求时进行自定义处理，这为复杂应用提供了极大的灵活性。</description>
+    </item>
+    <item>
+      <title>Nuxt.js 应用中的 render：response 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/b12508be9c4fb6b8f0499948ecd68ad9/</link>
+      <pubDate>Fri, 29 Nov 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/b12508be9c4fb6b8f0499948ecd68ad9/</guid>
+      <description>render:response 是一个在 Nuxt.js 中与服务器端渲染（SSR）相关的钩子，它会在请求的响应发送之前被调用。这个钩子的目的是让开发者可以在响应发送之前对响应进行修改或处理。此钩子接收两个参数：response 和 event。</description>
+    </item>
+    <item>
+      <title>Nuxt.js 应用中的 webpack：error 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/8de760bec83aa6eedb15a70959e37ac5/</link>
+      <pubDate>Mon, 25 Nov 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/8de760bec83aa6eedb15a70959e37ac5/</guid>
+      <description>webpack:error 钩子是用于在 Webpack 编译过程中捕获和处理错误的一个重要机制。当发生编译错误时，这个钩子会被调用，通常用于在 UI 上给出反馈或者处理错误日志。</description>
+    </item>
+    <item>
+      <title>Nuxt.js 应用中的 build：error 事件钩子详解</title>
+      <link>https://blog.cmdragon.cn/posts/4a5e09829cf63001943fc481d69e01e0/</link>
+      <pubDate>Thu, 07 Nov 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/4a5e09829cf63001943fc481d69e01e0/</guid>
+      <description>build:error 是 Nuxt.js 中的一个生命周期钩子，当构建过程中发生错误时，该钩子将被调用。通过此钩子，开发者可以捕获和响应构建错误，进行相应的处理，例如记录日志或通知开发团队。</description>
+    </item>
+    <item>
+      <title>Nuxt.js 应用中的 nitro：build：public-assets 事件钩子详解</title>
+      <link>https://blog.cmdragon.cn/posts/271508b42bc005f41e4fa31830a84e83/</link>
+      <pubDate>Tue, 05 Nov 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/271508b42bc005f41e4fa31830a84e83/</guid>
+      <description>nitro:build:public-assets 是 Nuxt 3 中的一个生命周期钩子，在复制公共资产之后调用。该钩子使开发者能够在构建 Nitro 服务器之前，对公共资产进行修改或处理，比如添加、删除或修改文件。</description>
+    </item>
+    <item>
+      <title>Nuxt.js 应用中的 app：templatesGenerated 事件钩子详解</title>
+      <link>https://blog.cmdragon.cn/posts/3c565b88d4290c513e7c55ef934ec509/</link>
+      <pubDate>Sat, 19 Oct 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/3c565b88d4290c513e7c55ef934ec509/</guid>
+      <description>app:templatesGenerated 是 Nuxt.js 的一个生命周期钩子，在模板编译到虚拟文件系统（Virtual File System, VFS）之后被调用。这个钩子允许开发者在生成的模板文件准备好之后进行进一步的处理或自定义。</description>
+    </item>
+    <item>
+      <title>使用 Nuxt 的 showError 显示全屏错误页面</title>
+      <link>https://blog.cmdragon.cn/posts/54debfbfcb8e75989b8e0efe82573a86/</link>
+      <pubDate>Mon, 26 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/54debfbfcb8e75989b8e0efe82573a86/</guid>
+      <description>摘要：本文介绍Nuxt.js中的showError方法用于显示全屏错误页面，包括其参数类型及使用方式，并演示了如何在页面中捕获并展示错误，还介绍了useError用于管理共享错误状态的方法。</description>
+    </item>
+  </channel>
+</rss>

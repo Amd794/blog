@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>异步写入 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%BC%82%E6%AD%A5%E5%86%99%E5%85%A5/</link><description>Recent content in 异步写入 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 23 May 2025 21:55:11 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%BC%82%E6%AD%A5%E5%86%99%E5%85%A5/index.xml" rel="self" type="application/rss+xml"/><item><title>异步之舞：FastAPI与MongoDB的极致性能优化之旅</title><link>https://blog.cmdragon.cn/posts/e63cc4b272abe6d8f909bf698d205977/</link><pubDate>Fri, 23 May 2025 21:55:11 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/e63cc4b272abe6d8f909bf698d205977/</guid><description>FastAPI与MongoDB的异步写入优化通过Motor驱动实现非阻塞I/O操作，显著提升吞吐量。Motor驱动深度集成支持批量写入优化，使用bulk_write方法比单条插入快10倍以上。聚合管道性能调优通过索引优化策略和典型聚合场景提升查询效率。实战案例展示了构建可处理10万TPS的日志处理API，通过批量插入和异步操作实现高效日志处理。常见报错解决方案包括验证错误处理和预防建议，确保API稳定性和数据完整性。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>异步写入 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%BC%82%E6%AD%A5%E5%86%99%E5%85%A5/</link>
+    <description>Recent content in 异步写入 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 23 May 2025 21:55:11 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%BC%82%E6%AD%A5%E5%86%99%E5%85%A5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>异步之舞：FastAPI与MongoDB的极致性能优化之旅</title>
+      <link>https://blog.cmdragon.cn/posts/e63cc4b272abe6d8f909bf698d205977/</link>
+      <pubDate>Fri, 23 May 2025 21:55:11 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/e63cc4b272abe6d8f909bf698d205977/</guid>
+      <description>FastAPI与MongoDB的异步写入优化通过Motor驱动实现非阻塞I/O操作，显著提升吞吐量。Motor驱动深度集成支持批量写入优化，使用bulk_write方法比单条插入快10倍以上。聚合管道性能调优通过索引优化策略和典型聚合场景提升查询效率。实战案例展示了构建可处理10万TPS的日志处理API，通过批量插入和异步操作实现高效日志处理。常见报错解决方案包括验证错误处理和预防建议，确保API稳定性和数据完整性。</description>
+    </item>
+  </channel>
+</rss>

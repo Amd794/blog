@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>热更新 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/</link><description>Recent content in 热更新 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 19 Nov 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 vite：compiled 事件钩子</title><link>https://blog.cmdragon.cn/posts/11098eb685e9bd4009275da31c80ae6d/</link><pubDate>Tue, 19 Nov 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/11098eb685e9bd4009275da31c80ae6d/</guid><description>在 Nuxt 3 中，vite:compiled 钩子允许开发者在 Vite 编译完成后执行自定义逻辑。通过这个钩子，开发者可以在代码编译完成后进行一些必要的处理，比如输出编译状态、更新 UI 或触发其他事件。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>热更新 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/</link>
+    <description>Recent content in 热更新 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 19 Nov 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 vite：compiled 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/11098eb685e9bd4009275da31c80ae6d/</link>
+      <pubDate>Tue, 19 Nov 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/11098eb685e9bd4009275da31c80ae6d/</guid>
+      <description>在 Nuxt 3 中，vite:compiled 钩子允许开发者在 Vite 编译完成后执行自定义逻辑。通过这个钩子，开发者可以在代码编译完成后进行一些必要的处理，比如输出编译状态、更新 UI 或触发其他事件。</description>
+    </item>
+  </channel>
+</rss>

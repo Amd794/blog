@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>存储过程 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link><description>Recent content in 存储过程 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 12 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>存储过程与触发器：提高数据库性能与安全性的利器</title><link>https://blog.cmdragon.cn/posts/712adcfc99736718e1182040d70fd36b/</link><pubDate>Wed, 12 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/712adcfc99736718e1182040d70fd36b/</guid><description>在现代数据库管理中，存储过程和触发器是两种强大的工具，能够极大提升操作效率和数据完整性。</description></item><item><title>深入探讨存储过程的创建与应用：提高数据库管理效率的关键工具</title><link>https://blog.cmdragon.cn/posts/570cd68087f5895415ab3f94980ecc84/</link><pubDate>Thu, 23 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/570cd68087f5895415ab3f94980ecc84/</guid><description>在数据驱动的商业环境中，数据库管理系统必须具备高效的操作能力。而存储过程作为一种封装的数据库逻辑，提供了一种有效的解决方案，以增强数据库的功能。存储过程是一组预编译的SQL语句，可以被应用程序多次调用，从而有效地简化复杂的数据库操作</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>存储过程 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link>
+    <description>Recent content in 存储过程 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>存储过程与触发器：提高数据库性能与安全性的利器</title>
+      <link>https://blog.cmdragon.cn/posts/712adcfc99736718e1182040d70fd36b/</link>
+      <pubDate>Wed, 12 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/712adcfc99736718e1182040d70fd36b/</guid>
+      <description>在现代数据库管理中，存储过程和触发器是两种强大的工具，能够极大提升操作效率和数据完整性。</description>
+    </item>
+    <item>
+      <title>深入探讨存储过程的创建与应用：提高数据库管理效率的关键工具</title>
+      <link>https://blog.cmdragon.cn/posts/570cd68087f5895415ab3f94980ecc84/</link>
+      <pubDate>Thu, 23 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/570cd68087f5895415ab3f94980ecc84/</guid>
+      <description>在数据驱动的商业环境中，数据库管理系统必须具备高效的操作能力。而存储过程作为一种封装的数据库逻辑，提供了一种有效的解决方案，以增强数据库的功能。存储过程是一组预编译的SQL语句，可以被应用程序多次调用，从而有效地简化复杂的数据库操作</description>
+    </item>
+  </channel>
+</rss>

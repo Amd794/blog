@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>验证器 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E9%AA%8C%E8%AF%81%E5%99%A8/</link><description>Recent content in 验证器 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 01 Apr 2025 00:32:07 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E9%AA%8C%E8%AF%81%E5%99%A8/index.xml" rel="self" type="application/rss+xml"/><item><title>掌握FastAPI与Pydantic的跨字段验证技巧</title><link>https://blog.cmdragon.cn/posts/2e0c3ce718a08345f384ace84e80e891/</link><pubDate>Tue, 01 Apr 2025 00:32:07 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/2e0c3ce718a08345f384ace84e80e891/</guid><description>FastAPI中的Pydantic跨字段一致性验证用于处理用户注册、表单提交等场景中多个字段的联合验证需求。Pydantic通过验证器装饰器和根验证器实现字段间的联合判断，如密码确认、邮箱匹配等。文章详细介绍了验证器的基础用法、最佳实践示例以及如何在FastAPI中集成验证逻辑。进阶技巧包括自定义验证方法和组合验证规则。常见报错解决方案和最佳实践总结帮助开发者构建健壮的API系统。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>验证器 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E9%AA%8C%E8%AF%81%E5%99%A8/</link>
+    <description>Recent content in 验证器 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 01 Apr 2025 00:32:07 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E9%AA%8C%E8%AF%81%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>掌握FastAPI与Pydantic的跨字段验证技巧</title>
+      <link>https://blog.cmdragon.cn/posts/2e0c3ce718a08345f384ace84e80e891/</link>
+      <pubDate>Tue, 01 Apr 2025 00:32:07 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/2e0c3ce718a08345f384ace84e80e891/</guid>
+      <description>FastAPI中的Pydantic跨字段一致性验证用于处理用户注册、表单提交等场景中多个字段的联合验证需求。Pydantic通过验证器装饰器和根验证器实现字段间的联合判断，如密码确认、邮箱匹配等。文章详细介绍了验证器的基础用法、最佳实践示例以及如何在FastAPI中集成验证逻辑。进阶技巧包括自定义验证方法和组合验证规则。常见报错解决方案和最佳实践总结帮助开发者构建健壮的API系统。</description>
+    </item>
+  </channel>
+</rss>

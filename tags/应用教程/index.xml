@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>应用教程 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%BA%94%E7%94%A8%E6%95%99%E7%A8%8B/</link><description>Recent content in 应用教程 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 25 Jun 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%BA%94%E7%94%A8%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt3 的生命周期和钩子函数（一）</title><link>https://blog.cmdragon.cn/posts/5fa69707f657db97640ee64788afbd03/</link><pubDate>Tue, 25 Jun 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/5fa69707f657db97640ee64788afbd03/</guid><description>摘要：本文是关于Nuxt3的系列文章之一，主要探讨Nuxt3的生命周期和钩子函数，引导读者深入了解其在前端开发中的应用。文章提供了往期相关文章链接，涉及Nuxt中间件、Composables、状态管理、路由系统、组件开发等多个方面，帮助读者全面掌握Nuxt3框架的特性和实践技巧。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>应用教程 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%BA%94%E7%94%A8%E6%95%99%E7%A8%8B/</link>
+    <description>Recent content in 应用教程 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 25 Jun 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%BA%94%E7%94%A8%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt3 的生命周期和钩子函数（一）</title>
+      <link>https://blog.cmdragon.cn/posts/5fa69707f657db97640ee64788afbd03/</link>
+      <pubDate>Tue, 25 Jun 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/5fa69707f657db97640ee64788afbd03/</guid>
+      <description>摘要：本文是关于Nuxt3的系列文章之一，主要探讨Nuxt3的生命周期和钩子函数，引导读者深入了解其在前端开发中的应用。文章提供了往期相关文章链接，涉及Nuxt中间件、Composables、状态管理、路由系统、组件开发等多个方面，帮助读者全面掌握Nuxt3框架的特性和实践技巧。</description>
+    </item>
+  </channel>
+</rss>

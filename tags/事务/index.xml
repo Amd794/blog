@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>事务 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E4%BA%8B%E5%8A%A1/</link><description>Recent content in 事务 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 11 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E4%BA%8B%E5%8A%A1/index.xml" rel="self" type="application/rss+xml"/><item><title>数据操作与事务：确保数据一致性的关键</title><link>https://blog.cmdragon.cn/posts/aff107a909f04dc52a887b45e9bd2484/</link><pubDate>Tue, 11 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/aff107a909f04dc52a887b45e9bd2484/</guid><description>在现代数据管理中，事务处理是确保数据完整性和一致性的重要机制。本文将深入探讨事务的ACID特性、锁机制及其种类（行级锁与表级锁）以及事务隔离级别（READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ、SERIALIZABLE）。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>事务 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E4%BA%8B%E5%8A%A1/</link>
+    <description>Recent content in 事务 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 11 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E4%BA%8B%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据操作与事务：确保数据一致性的关键</title>
+      <link>https://blog.cmdragon.cn/posts/aff107a909f04dc52a887b45e9bd2484/</link>
+      <pubDate>Tue, 11 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/aff107a909f04dc52a887b45e9bd2484/</guid>
+      <description>在现代数据管理中，事务处理是确保数据完整性和一致性的重要机制。本文将深入探讨事务的ACID特性、锁机制及其种类（行级锁与表级锁）以及事务隔离级别（READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ、SERIALIZABLE）。</description>
+    </item>
+  </channel>
+</rss>

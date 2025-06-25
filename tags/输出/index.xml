@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>输出 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E8%BE%93%E5%87%BA/</link><description>Recent content in 输出 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 20 Nov 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E8%BE%93%E5%87%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 webpackConfigs 事件钩子</title><link>https://blog.cmdragon.cn/posts/27df5b46451b376fa9dbeae0b579612f/</link><pubDate>Wed, 20 Nov 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/27df5b46451b376fa9dbeae0b579612f/</guid><description>在 Nuxt.js 项目中，webpack:config 钩子允许运行时对 Webpack 配置进行修改。此钩子在配置 Webpack 编译器之前被调用，使得开发者能根据需要定制和扩展 Webpack 的默认配置。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>输出 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E8%BE%93%E5%87%BA/</link>
+    <description>Recent content in 输出 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 20 Nov 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E8%BE%93%E5%87%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 webpackConfigs 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/27df5b46451b376fa9dbeae0b579612f/</link>
+      <pubDate>Wed, 20 Nov 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/27df5b46451b376fa9dbeae0b579612f/</guid>
+      <description>在 Nuxt.js 项目中，webpack:config 钩子允许运行时对 Webpack 配置进行修改。此钩子在配置 Webpack 编译器之前被调用，使得开发者能根据需要定制和扩展 Webpack 的默认配置。</description>
+    </item>
+  </channel>
+</rss>

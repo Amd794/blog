@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web性能 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/Web%E6%80%A7%E8%83%BD/</link><description>Recent content in Web性能 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 17 Jun 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/Web%E6%80%A7%E8%83%BD/index.xml" rel="self" type="application/rss+xml"/><item><title>安装 Nuxt.js 的步骤和注意事项</title><link>https://blog.cmdragon.cn/posts/9280ced43b0f3e88e4a3856b3ce4464d/</link><pubDate>Mon, 17 Jun 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/9280ced43b0f3e88e4a3856b3ce4464d/</guid><description>Nuxt.js在Vue.js基础上提供的服务器端渲染框架优势，包括提高开发效率、代码维护性和应用性能。指南详细说明了从环境准备、Nuxt.js安装配置到进阶部署技巧，涵盖错误解决、性能优化及Docker、CI/CD实践，为开发者构建高效Web应用提供全面攻略。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web性能 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/Web%E6%80%A7%E8%83%BD/</link>
+    <description>Recent content in Web性能 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 17 Jun 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/Web%E6%80%A7%E8%83%BD/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>安装 Nuxt.js 的步骤和注意事项</title>
+      <link>https://blog.cmdragon.cn/posts/9280ced43b0f3e88e4a3856b3ce4464d/</link>
+      <pubDate>Mon, 17 Jun 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/9280ced43b0f3e88e4a3856b3ce4464d/</guid>
+      <description>Nuxt.js在Vue.js基础上提供的服务器端渲染框架优势，包括提高开发效率、代码维护性和应用性能。指南详细说明了从环境准备、Nuxt.js安装配置到进阶部署技巧，涵盖错误解决、性能优化及Docker、CI/CD实践，为开发者构建高效Web应用提供全面攻略。</description>
+    </item>
+  </channel>
+</rss>

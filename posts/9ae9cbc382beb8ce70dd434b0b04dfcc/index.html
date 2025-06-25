@@ -1,4 +1,268 @@
-<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>日期和时间数据类型的深入探讨：理论与实践 - cmdragon's Blog</title><meta name=description content="日期和时间数据类型在数据库管理系统中扮演着重要角色，尤其是在数据分析、时间序列数据和事件追踪等领域。这些数据类型不仅可以准确表示时间信息，还能在信息检索、数据存储和计算功能上发挥重要作用。"><meta name=author content="cmdragon"><meta name=robots content="index, follow"><link rel=canonical href=https://blog.cmdragon.cn/posts/9ae9cbc382beb8ce70dd434b0b04dfcc/><meta property="og:title" content="日期和时间数据类型的深入探讨：理论与实践 - cmdragon's Blog"><meta property="og:description" content="日期和时间数据类型在数据库管理系统中扮演着重要角色，尤其是在数据分析、时间序列数据和事件追踪等领域。这些数据类型不仅可以准确表示时间信息，还能在信息检索、数据存储和计算功能上发挥重要作用。"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.cmdragon.cn/posts/9ae9cbc382beb8ce70dd434b0b04dfcc/"><meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png"><meta property="og:site_name" content="cmdragon's Blog"><meta property="article:published_time" content="2025-01-03T00:18:53+08:00"><meta property="article:modified_time" content="2025-01-03T00:18:53+08:00"><meta property="article:section" content="前端开发"><meta property="article:tag" content="日期和时间"><meta property="article:tag" content="数据库"><meta property="article:tag" content="PostgreSQL"><meta property="article:tag" content="数据类型"><meta property="article:tag" content="数据存储"><meta property="article:tag" content="应用开发"><meta property="article:tag" content="数据管理"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="日期和时间数据类型的深入探讨：理论与实践 - cmdragon's Blog"><meta name=twitter:description content="日期和时间数据类型在数据库管理系统中扮演着重要角色，尤其是在数据分析、时间序列数据和事件追踪等领域。这些数据类型不仅可以准确表示时间信息，还能在信息检索、数据存储和计算功能上发挥重要作用。"><meta name=twitter:image content="https://blog.cmdragon.cn/images/logo/social-card.png"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"日期和时间数据类型的深入探讨：理论与实践","datePublished":"2025-01-03T00:18:53\u002b08:00","dateModified":"2025-01-03T00:18:53\u002b08:00","author":{"@type":"Person","name":"cmdragon"},"description":"日期和时间数据类型在数据库管理系统中扮演着重要角色，尤其是在数据分析、时间序列数据和事件追踪等领域。这些数据类型不仅可以准确表示时间信息，还能在信息检索、数据存储和计算功能上发挥重要作用。","image":"https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png","url":"https:\/\/blog.cmdragon.cn\/posts\/9ae9cbc382beb8ce70dd434b0b04dfcc\/","publisher":{"@type":"Organization","name":"cmdragon\u0027s Blog","logo":{"@type":"ImageObject","url":"https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/blog.cmdragon.cn\/posts\/9ae9cbc382beb8ce70dd434b0b04dfcc\/"},"keywords":"前端开发","keywords":"日期和时间, 数据库, PostgreSQL, 数据类型, 数据存储, 应用开发, 数据管理","wordCount":"2660"}</script><link rel=preconnect href=https://cdnjs.cloudflare.com><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js as=script><link rel=icon href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon href=/images/logo/small.png><link rel=icon type=image/png sizes=32x32 href=/images/logo/small.png><link rel=icon type=image/svg+xml href=/images/logo/scalable.svg><meta name=theme-color content="#3B82F6"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js></script><script>(function(){if(typeof mermaid!="undefined"){window.mermaid=mermaid;const e=document.documentElement.classList.contains("dark")||window.matchMedia("(prefers-color-scheme: dark)").matches;window.mermaid.initialize({startOnLoad:!0,theme:e?"dark":"default",securityLevel:"loose",flowchart:{curve:"basis",htmlLabels:!0},sequence:{mirrorActors:!1,wrap:!0},themeVariables:{primaryColor:"#3b82f6",primaryTextColor:"#ffffff",primaryBorderColor:e?"#60a5fa":"#2563eb",lineColor:e?"#94a3b8":"#4b5563",secondaryColor:e?"#1e293b":"#f0f9ff",tertiaryColor:e?"#334155":"#f3f4f6"}}),document.addEventListener("DOMContentLoaded",function(){try{typeof window.mermaid.init=="function"&&window.mermaid.init(0[0],document.querySelectorAll(".mermaid"))}catch{}})}})()</script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js></script><script defer src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js></script><script src=https://cdn.tailwindcss.com/3.4.16></script><script>tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#3B82F6","primary-light":"#60a5fa","primary-dark":"#2563eb"},typography:e=>({DEFAULT:{css:{color:e("colors.gray.800"),a:{color:e("colors.primary"),"&:hover":{color:e("colors.primary-dark")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.900")},pre:{backgroundColor:e("colors.gray.800"),color:e("colors.gray.100")},code:{color:e("colors.primary"),backgroundColor:e("colors.gray.100"),padding:"0.25rem",borderRadius:"0.25rem",fontWeight:"400"},"code::before":{content:'""'},"code::after":{content:'""'}}},dark:{css:{color:e("colors.gray.200"),a:{color:e("colors.primary-light"),"&:hover":{color:e("colors.primary")}},"h2, h3, h4, h5, h6":{color:e("colors.gray.100")},pre:{backgroundColor:e("colors.gray.900")},code:{color:e("colors.primary-light"),backgroundColor:e("colors.gray.800")}}}})}}}</script><script src=/js/iconify-icon.min.js></script><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"><link rel=stylesheet href=/css/code-highlight.css><link rel=stylesheet href=/css/markdown.css><style type=text/tailwindcss>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日期和时间数据类型的深入探讨：理论与实践 - cmdragon&#39;s Blog</title>
+<meta name="description" content="日期和时间数据类型在数据库管理系统中扮演着重要角色，尤其是在数据分析、时间序列数据和事件追踪等领域。这些数据类型不仅可以准确表示时间信息，还能在信息检索、数据存储和计算功能上发挥重要作用。">
+
+
+<meta name="author" content="cmdragon">
+<meta name="robots" content="index, follow">
+
+
+<link rel="canonical" href="https://blog.cmdragon.cn/posts/9ae9cbc382beb8ce70dd434b0b04dfcc/">
+
+
+
+
+
+<meta property="og:title" content="日期和时间数据类型的深入探讨：理论与实践 - cmdragon&#39;s Blog">
+<meta property="og:description" content="日期和时间数据类型在数据库管理系统中扮演着重要角色，尤其是在数据分析、时间序列数据和事件追踪等领域。这些数据类型不仅可以准确表示时间信息，还能在信息检索、数据存储和计算功能上发挥重要作用。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cmdragon.cn/posts/9ae9cbc382beb8ce70dd434b0b04dfcc/">
+
+<meta property="og:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+<meta property="og:site_name" content="cmdragon&#39;s Blog">
+
+<meta property="article:published_time" content="2025-01-03T00:18:53&#43;08:00">
+
+<meta property="article:modified_time" content="2025-01-03T00:18:53&#43;08:00">
+
+
+
+<meta property="article:section" content="前端开发">
+
+
+
+
+<meta property="article:tag" content="日期和时间">
+
+<meta property="article:tag" content="数据库">
+
+<meta property="article:tag" content="PostgreSQL">
+
+<meta property="article:tag" content="数据类型">
+
+<meta property="article:tag" content="数据存储">
+
+<meta property="article:tag" content="应用开发">
+
+<meta property="article:tag" content="数据管理">
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="日期和时间数据类型的深入探讨：理论与实践 - cmdragon&#39;s Blog">
+<meta name="twitter:description" content="日期和时间数据类型在数据库管理系统中扮演着重要角色，尤其是在数据分析、时间序列数据和事件追踪等领域。这些数据类型不仅可以准确表示时间信息，还能在信息检索、数据存储和计算功能上发挥重要作用。">
+
+<meta name="twitter:image" content="https://blog.cmdragon.cn/images/logo/social-card.png">
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "日期和时间数据类型的深入探讨：理论与实践",
+  "datePublished": "2025-01-03T00:18:53\u002b08:00",
+  "dateModified": "2025-01-03T00:18:53\u002b08:00",
+  "author": {
+    "@type": "Person",
+    "name": "cmdragon"
+  },
+  "description": "日期和时间数据类型在数据库管理系统中扮演着重要角色，尤其是在数据分析、时间序列数据和事件追踪等领域。这些数据类型不仅可以准确表示时间信息，还能在信息检索、数据存储和计算功能上发挥重要作用。",
+  
+  "image": "https:\/\/blog.cmdragon.cn\/images\/logo\/social-card.png",
+  
+  "url": "https:\/\/blog.cmdragon.cn\/posts\/9ae9cbc382beb8ce70dd434b0b04dfcc\/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "cmdragon\u0027s Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/blog.cmdragon.cn\/images\/logo\/small.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/blog.cmdragon.cn\/posts\/9ae9cbc382beb8ce70dd434b0b04dfcc\/"
+  },
+  
+  "keywords": "前端开发",
+  
+  
+  "keywords": "日期和时间, 数据库, PostgreSQL, 数据类型, 数据存储, 应用开发, 数据管理",
+  
+  "wordCount": "2660"
+}
+</script>
+
+
+
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js" as="script">
+
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/images/logo/small.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo/small.png">
+<link rel="icon" type="image/svg+xml" href="/images/logo/scalable.svg">
+<meta name="theme-color" content="#3B82F6">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2874982874195135"
+     crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js"></script>
+<script>
+  
+  (function() {
+    if (typeof mermaid !== 'undefined') {
+      
+      window.mermaid = mermaid;
+      
+      
+      const isDarkMode = document.documentElement.classList.contains('dark') || 
+                        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      
+      window.mermaid.initialize({
+        startOnLoad: true,  
+        theme: isDarkMode ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: {
+          curve: 'basis',
+          htmlLabels: true
+        },
+        sequence: {
+          mirrorActors: false,
+          wrap: true
+        },
+        themeVariables: {
+          primaryColor: '#3b82f6',
+          primaryTextColor: '#ffffff',
+          primaryBorderColor: isDarkMode ? '#60a5fa' : '#2563eb',
+          lineColor: isDarkMode ? '#94a3b8' : '#4b5563',
+          secondaryColor: isDarkMode ? '#1e293b' : '#f0f9ff',
+          tertiaryColor: isDarkMode ? '#334155' : '#f3f4f6'
+        }
+      });
+      
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          
+          if (typeof window.mermaid.init === 'function') {
+            window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+          }
+        } catch (e) {
+          
+        }
+      });
+    }
+  })();
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#3B82F6',
+                    'primary-light': '#60a5fa',
+                    'primary-dark': '#2563eb',
+                },
+                typography: (theme) => ({
+                    DEFAULT: {
+                        css: {
+                            color: theme('colors.gray.800'),
+                            a: {
+                                color: theme('colors.primary'),
+                                '&:hover': {
+                                    color: theme('colors.primary-dark'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.900'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.800'),
+                                color: theme('colors.gray.100'),
+                            },
+                            code: {
+                                color: theme('colors.primary'),
+                                backgroundColor: theme('colors.gray.100'),
+                                padding: '0.25rem',
+                                borderRadius: '0.25rem',
+                                fontWeight: '400',
+                            },
+                            'code::before': {
+                                content: '""',
+                            },
+                            'code::after': {
+                                content: '""',
+                            },
+                        },
+                    },
+                    dark: {
+                        css: {
+                            color: theme('colors.gray.200'),
+                            a: {
+                                color: theme('colors.primary-light'),
+                                '&:hover': {
+                                    color: theme('colors.primary'),
+                                },
+                            },
+                            'h2, h3, h4, h5, h6': {
+                                color: theme('colors.gray.100'),
+                            },
+                            pre: {
+                                backgroundColor: theme('colors.gray.900'),
+                            },
+                            code: {
+                                color: theme('colors.primary-light'),
+                                backgroundColor: theme('colors.gray.800'),
+                            },
+                        },
+                    },
+                }),
+            },
+        },
+    }
+</script>
+
+
+<script src="/js/iconify-icon.min.js"></script>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+
+<link rel="stylesheet" href="/css/code-highlight.css">
+<link rel="stylesheet" href="/css/markdown.css">
+
+
+<style type="text/tailwindcss">
     @layer components {
         body {
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -19,122 +283,2730 @@
             @apply bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white;
         }
     }
-</style><style>.mermaid{margin:2rem auto;text-align:center;overflow:visible;width:auto;max-width:100%;background-color:#f9fafb;padding:1.5rem .5rem;border-radius:.5rem;box-shadow:0 2px 4px rgba(0,0,0,5%);display:block}.dark .mermaid{background-color:#1e293b;box-shadow:0 2px 4px rgba(0,0,0,.15)}.mermaid svg{display:block !important;max-width:100%;width:auto !important;height:auto !important;font-size:14px;margin:0 auto}.mermaid .node rect,.mermaid .node circle,.mermaid .node ellipse,.mermaid .node polygon,.mermaid .node path{stroke-width:1px}.mermaid .edgePath .path{stroke-width:1.5px}.mermaid .edgeLabel{font-size:.85em;background-color:inherit !important}.mermaid .label text,.mermaid text.label{fill:#374151;font-weight:400}.dark .mermaid .label text,.dark .mermaid text.label{fill:#e5e7eb}@media(max-width:768px){.mermaid{max-width:98%;padding:.8rem .3rem;margin:1.2rem auto}.mermaid svg{font-size:12px}}</style></head><body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col"><div class="flex-grow flex flex-col"><header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700"><div class="container mx-auto px-4"><div class="flex justify-between items-center h-16"><div class="flex items-center"><a href=https://blog.cmdragon.cn/ class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300"><div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105"><img src=/images/logo/small.png alt="cmdragon's Blog Logo" class="h-full w-auto"></div><span class="group-hover:text-primary transition-colors duration-300">cmdragon's Blog</span></a></div><nav class="hidden md:flex space-x-1"><a href=/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=首页 tabindex=0><span class="relative z-10">首页</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/archives/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=归档 tabindex=0><span class="relative z-10">归档</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/categories/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=分类 tabindex=0><span class="relative z-10">分类</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/tags/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=标签 tabindex=0><span class="relative z-10">标签</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
-</a><a href=/friends/ class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label=友链 tabindex=0><span class="relative z-10">友链</span>
-<span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
-<span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span></a></nav><div class="flex items-center space-x-3"><button class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=搜索 tabindex=0 onclick=openSiteSearch()>
-<iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></button>
-<button id=theme-toggle class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=切换深色模式 tabindex=0>
-<iconify-icon icon=mdi:weather-sunny class=dark:hidden width=20 height=20></iconify-icon><iconify-icon icon=mdi:weather-night class="hidden dark:block" width=20 height=20></iconify-icon></button>
-<button id=mobile-menu-button class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary" aria-label=打开菜单 tabindex=0>
-<iconify-icon icon=mdi:menu width=20 height=20></iconify-icon></button></div></div><div id=mobile-menu class="md:hidden hidden pb-3"><div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner"><a href=/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=首页 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>首页</div></a><a href=/archives/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=归档 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>归档</div></a><a href=/categories/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=分类 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>分类</div></a><a href=/tags/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=标签 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>标签</div></a><a href=/friends/ class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600" aria-label=友链 tabindex=0><div class="flex items-center"><iconify-icon icon=mdi:chevron-right class=mr-2 width=18 height=18></iconify-icon>友链</div></a></div></div></div></header><script>document.getElementById("mobile-menu-button").addEventListener("click",function(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden")}),document.getElementById("theme-toggle").addEventListener("click",function(){document.documentElement.classList.contains("dark")?(document.documentElement.classList.remove("dark"),localStorage.setItem("color-theme","light")):(document.documentElement.classList.add("dark"),localStorage.setItem("color-theme","dark"))}),window.addEventListener("scroll",function(){const e=document.querySelector("header");window.scrollY>10?e.classList.add("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95"):e.classList.remove("shadow-lg","bg-white/95","backdrop-blur-sm","dark:bg-gray-800/95")})</script><main class="container mx-auto px-4 py-8 flex-grow"><div class="container mx-auto px-4 sm:px-6 relative"><div class="flex flex-col lg:flex-row lg:gap-8"><article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700"><nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label=面包屑导航><ol class="flex flex-wrap items-center" itemscope itemtype=https://schema.org/BreadcrumbList><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/ class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=首页><span itemprop=name>首页</span>
-</a><meta itemprop=position content="1"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><a href=https://blog.cmdragon.cn/posts class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop=item aria-label=Posts><span itemprop=name>Posts</span>
-</a><meta itemprop=position content="2"></li><li class=mx-2>/</li><li itemprop=itemListElement itemscope itemtype=https://schema.org/ListItem><span class="text-gray-800 dark:text-gray-200" itemprop=name title=日期和时间数据类型的深入探讨：理论与实践>日期和时间数据类型的深入探讨：理论与实践...</span>
-<meta itemprop=position content="3"></li></ol></nav><header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6"><h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">日期和时间数据类型的深入探讨：理论与实践</h1><div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3"><span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:calendar class=mr-1 width=16 height=16></iconify-icon>2025-01-03
-</span><span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:folder class=mr-1 width=16 height=16></iconify-icon><a href=/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91 class="hover:text-primary transition-colors">前端开发
-</a></span><span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full"><iconify-icon icon=mdi:clock-outline class=mr-1 width=16 height=16></iconify-icon>13 分钟阅读
-</span><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed target=_blank rel="noopener noreferrer" class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors" aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" tabindex=0><iconify-icon icon=simple-icons:creativecommons width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsbysa width=16 height=16 class=mr-1></iconify-icon><iconify-icon icon=simple-icons:creativecommonsnc width=16 height=16 class=mr-1></iconify-icon><span>BY-NC-SA 4.0</span></a></div></header><div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed"><img src="https://static.cmdragon.cn/blog/images/2025_01_03 13_20_09.png@blog" title="2025_01_03 13_20_09.png" alt="2025_01_03 13_20_09.png">
-<img src=https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg title=cmdragon_cn.png alt=cmdragon_cn.png><p>扫描<a href=https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg>二维码</a>关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code></p><p>日期和时间数据类型在数据库管理系统中扮演着重要角色，尤其是在数据分析、时间序列数据和事件追踪等领域。这些数据类型不仅可以准确表示时间信息，还能在信息检索、数据存储和计算功能上发挥重要作用。</p><h3 id=1-引言>1. 引言</h3><p>在现代数据库系统中，日期和时间数据类型是信息管理的核心元素。无论是用户注册时间、订单街道时间还是系统日志，时间信息对于分析和决策制定都至关重要。正确选择和使用日期与时间数据类型，不仅能够优化数据存储，还能提升查询效率。</p><h3 id=2-日期和时间类型的基本定义>2. 日期和时间类型的基本定义</h3><p>日期和时间类型用于表示具体的时间点、日期或时间段。它们支撑着多种业务逻辑，并确保数据的完整性和一致性。 PostgreSQL 提供了多种日期和时间类型，使得对时间的处理变得高效灵活。</p><h4 id=21-常用日期和时间类型>2.1 常用日期和时间类型</h4><p>在 PostgreSQL 中，主要的日期和时间类型包括：</p><ul><li><p><strong>DATE</strong>：用于表示日期（年、月、日），不包括时间信息。范围从公元前 4713 年到公元 5874897 年。</p></li><li><p><strong>TIME</strong>：用于表示一天中的时间，不包括日期信息。可以指定表示时间的精度（如秒数），范围从 00:00:00 到 24:00:00。</p></li><li><p><strong>TIMESTAMP</strong>：用于表示日期与时间的组合，包含时区信息或不包含时区。可以精确到纳秒。</p></li><li><p><strong>INTERVAL</strong>：用于表示两个时间点之间的时间量，可以表达年、月、天、小时、分钟和秒等单位。</p></li></ul><h4 id=22-表示时区的时间类型>2.2 表示时区的时间类型</h4><p>PostgreSQL 还提供了带时区的日期和时间类型，以支持全球化应用。例如，<code>TIMESTAMP WITH TIME ZONE</code>（通常简写为 <code>timestamptz</code>）允许存储带有时区偏移的时间信息。</p><h3 id=3-postgresql-中日期和时间类型的详细实现>3. PostgreSQL 中日期和时间类型的详细实现</h3><h4 id=31-date-类型>3.1 DATE 类型</h4><ul><li><p><strong>定义</strong>：<code>DATE</code> 类型只记录日期（年、月、日），适合存储不需要时间信息的场景，比如用户注册日期、假期等。</p></li><li><p><strong>用法</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>CREATE TABLE events (
+</style>
+
+
+<style>
+   
+  .mermaid {
+    margin: 2rem auto;
+    text-align: center;
+    overflow: visible;
+    width: auto;
+    max-width: 100%;
+    background-color: #f9fafb;
+    padding: 1.5rem 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: block;
+  }
+  
+  .dark .mermaid {
+    background-color: #1e293b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+   
+  .mermaid svg {
+    display: block !important;
+    max-width: 100%;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px;
+    margin: 0 auto;
+  }
+  
+   
+  .mermaid .node rect,
+  .mermaid .node circle,
+  .mermaid .node ellipse,
+  .mermaid .node polygon,
+  .mermaid .node path {
+    stroke-width: 1px;
+  }
+  
+  .mermaid .edgePath .path {
+    stroke-width: 1.5px;
+  }
+  
+  .mermaid .edgeLabel {
+    font-size: 0.85em;
+    background-color: inherit !important;
+  }
+  
+   
+  .mermaid .label text,
+  .mermaid text.label {
+    fill: #374151;
+    font-weight: normal;
+  }
+  
+  .dark .mermaid .label text,
+  .dark .mermaid text.label {
+    fill: #e5e7eb;
+  }
+  
+   
+  @media (max-width: 768px) {
+    .mermaid {
+      max-width: 98%;
+      padding: 0.8rem 0.3rem;
+      margin: 1.2rem auto;
+    }
+    
+    .mermaid svg {
+      font-size: 12px;
+    }
+  }
+</style> 
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col">
+    <div class="flex-grow flex flex-col">
+        <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-all duration-300 border-b border-gray-100 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            
+            <div class="flex items-center">
+                <a href="https://blog.cmdragon.cn/" class="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white group transition-all duration-300">
+                    <div class="h-9 w-9 flex items-center justify-center transition-all duration-300 transform group-hover:scale-105">
+                        <img src="/images/logo/small.png" alt="cmdragon&#39;s Blog Logo" class="h-full w-auto" />
+                    </div>
+                    <span class="group-hover:text-primary transition-colors duration-300">cmdragon&#39;s Blog</span>
+                </a>
+            </div>
+            
+            
+            <nav class="hidden md:flex space-x-1">
+                
+                
+                    <a href="/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="首页"
+                       tabindex="0">
+                        <span class="relative z-10">首页</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="归档"
+                       tabindex="0">
+                        <span class="relative z-10">归档</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="分类"
+                       tabindex="0">
+                        <span class="relative z-10">分类</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="标签"
+                       tabindex="0">
+                        <span class="relative z-10">标签</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden group text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                       aria-label="友链"
+                       tabindex="0">
+                        <span class="relative z-10">友链</span>
+                        
+                        <span class="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:h-full opacity-80 -z-0"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                        
+                    </a>
+                
+            </nav>
+            
+            
+            <div class="flex items-center space-x-3">
+                
+                <button 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="搜索"
+                    tabindex="0"
+                    onclick="openSiteSearch()">
+                    <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="theme-toggle" 
+                    class="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="切换深色模式"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:weather-sunny" class="dark:hidden" width="20" height="20"></iconify-icon>
+                    <iconify-icon icon="mdi:weather-night" class="hidden dark:block" width="20" height="20"></iconify-icon>
+                </button>
+                
+                
+                <button 
+                    id="mobile-menu-button" 
+                    class="md:hidden p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    aria-label="打开菜单"
+                    tabindex="0">
+                    <iconify-icon icon="mdi:menu" width="20" height="20"></iconify-icon>
+                </button>
+            </div>
+        </div>
+        
+        
+        <div id="mobile-menu" class="md:hidden hidden pb-3">
+            <div class="space-y-2 px-2 pt-2 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 mt-2 shadow-inner">
+                
+                    <a href="/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="首页"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            首页
+                        </div>
+                    </a>
+                
+                    <a href="/archives/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="归档"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            归档
+                        </div>
+                    </a>
+                
+                    <a href="/categories/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="分类"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            分类
+                        </div>
+                    </a>
+                
+                    <a href="/tags/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="标签"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            标签
+                        </div>
+                    </a>
+                
+                    <a href="/friends/" 
+                       class="block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                       aria-label="友链"
+                       tabindex="0">
+                        <div class="flex items-center">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2" width="18" height="18"></iconify-icon>
+                            友链
+                        </div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+    });
+    
+    
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        } else {
+            header.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-sm', 'dark:bg-gray-800/95');
+        }
+    });
+</script> 
+        
+        <main class="container mx-auto px-4 py-8 flex-grow">
+            
+<div class="container mx-auto px-4 sm:px-6 relative">
+    <div class="flex flex-col lg:flex-row lg:gap-8">
+        
+        <article class="w-full lg:w-3/4 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 lg:p-8 mb-8 border border-gray-100 dark:border-gray-700">
+            
+            <nav class="text-sm text-gray-600 dark:text-gray-400 mb-4" aria-label="面包屑导航">
+    <ol class="flex flex-wrap items-center" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="https://blog.cmdragon.cn/" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="首页">
+                <span itemprop="name">首页</span>
+            </a>
+            <meta itemprop="position" content="1" />
+        </li>
+        
+        
+        
+            
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="https://blog.cmdragon.cn/posts" class="hover:text-primary dark:hover:text-primary-light transition-colors" itemprop="item" aria-label="Posts">
+                        <span itemprop="name">Posts</span>
+                    </a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span class="text-gray-800 dark:text-gray-200" itemprop="name" title="日期和时间数据类型的深入探讨：理论与实践">日期和时间数据类型的深入探讨：理论与实践...</span>
+                    <meta itemprop="position" content="3" />
+                </li>
+            
+        
+    </ol>
+</nav> 
+            
+            <header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-6">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">日期和时间数据类型的深入探讨：理论与实践</h1>
+                
+                <div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-3">
+                    <span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:calendar" class="mr-1" width="16" height="16"></iconify-icon>
+                        2025-01-03
+                    </span>
+                    
+                    
+                        <span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full">
+                            <iconify-icon icon="mdi:folder" class="mr-1" width="16" height="16"></iconify-icon>
+                            
+                                
+                                <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91" class="hover:text-primary transition-colors">
+                                    前端开发
+                                </a>
+                            
+                        </span>
+                    
+                    
+                    
+                    <span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full">
+                        <iconify-icon icon="mdi:clock-outline" class="mr-1" width="16" height="16"></iconify-icon>
+                        13 分钟阅读
+                    </span>
+                    
+                    
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank" rel="noopener noreferrer" 
+                       class="flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1.5 rounded-full hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors"
+                       aria-label="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License" 
+                       tabindex="0">
+                        <iconify-icon icon="simple-icons:creativecommons" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsbysa" width="16" height="16" class="mr-1"></iconify-icon>
+                        <iconify-icon icon="simple-icons:creativecommonsnc" width="16" height="16" class="mr-1"></iconify-icon>
+                        <span>BY-NC-SA 4.0</span>
+                    </a>
+                </div>
+            </header>
+            
+            
+            <div class="article-content prose dark:prose-invert lg:prose-lg max-w-none mb-8 leading-relaxed">
+                <img src="https://static.cmdragon.cn/blog/images/2025_01_03 13_20_09.png@blog" title="2025_01_03 13_20_09.png" alt="2025_01_03 13_20_09.png"/>
+<img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
+<p>扫描<a href="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg">二维码</a>关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code></p>
+<p>日期和时间数据类型在数据库管理系统中扮演着重要角色，尤其是在数据分析、时间序列数据和事件追踪等领域。这些数据类型不仅可以准确表示时间信息，还能在信息检索、数据存储和计算功能上发挥重要作用。</p>
+<h3 id="1-引言">1. 引言</h3>
+<p>在现代数据库系统中，日期和时间数据类型是信息管理的核心元素。无论是用户注册时间、订单街道时间还是系统日志，时间信息对于分析和决策制定都至关重要。正确选择和使用日期与时间数据类型，不仅能够优化数据存储，还能提升查询效率。</p>
+<h3 id="2-日期和时间类型的基本定义">2. 日期和时间类型的基本定义</h3>
+<p>日期和时间类型用于表示具体的时间点、日期或时间段。它们支撑着多种业务逻辑，并确保数据的完整性和一致性。 PostgreSQL 提供了多种日期和时间类型，使得对时间的处理变得高效灵活。</p>
+<h4 id="21-常用日期和时间类型">2.1 常用日期和时间类型</h4>
+<p>在 PostgreSQL 中，主要的日期和时间类型包括：</p>
+<ul>
+<li>
+<p><strong>DATE</strong>：用于表示日期（年、月、日），不包括时间信息。范围从公元前 4713 年到公元 5874897 年。</p>
+</li>
+<li>
+<p><strong>TIME</strong>：用于表示一天中的时间，不包括日期信息。可以指定表示时间的精度（如秒数），范围从 00:00:00 到 24:00:00。</p>
+</li>
+<li>
+<p><strong>TIMESTAMP</strong>：用于表示日期与时间的组合，包含时区信息或不包含时区。可以精确到纳秒。</p>
+</li>
+<li>
+<p><strong>INTERVAL</strong>：用于表示两个时间点之间的时间量，可以表达年、月、天、小时、分钟和秒等单位。</p>
+</li>
+</ul>
+<h4 id="22-表示时区的时间类型">2.2 表示时区的时间类型</h4>
+<p>PostgreSQL 还提供了带时区的日期和时间类型，以支持全球化应用。例如，<code>TIMESTAMP WITH TIME ZONE</code>（通常简写为 <code>timestamptz</code>）允许存储带有时区偏移的时间信息。</p>
+<h3 id="3-postgresql-中日期和时间类型的详细实现">3. PostgreSQL 中日期和时间类型的详细实现</h3>
+<h4 id="31-date-类型">3.1 DATE 类型</h4>
+<ul>
+<li>
+<p><strong>定义</strong>：<code>DATE</code> 类型只记录日期（年、月、日），适合存储不需要时间信息的场景，比如用户注册日期、假期等。</p>
+</li>
+<li>
+<p><strong>用法</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">CREATE TABLE events (
     event_id SERIAL PRIMARY KEY,
     event_name VARCHAR(100),
     event_date DATE
-);</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li><li><p><strong>查询示例</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SELECT * FROM events WHERE event_date = &#39;2023-12-25&#39;;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li></ul><h4 id=32-time-类型>3.2 TIME 类型</h4><ul><li><p><strong>定义</strong>：<code>TIME</code> 类型记录的是一天中的时间，不包括日期。适用于时间段的计算，比如营业时间、课程时间等。</p></li><li><p><strong>用法</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>CREATE TABLE operating_hours (
+);</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+<li>
+<p><strong>查询示例</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SELECT * FROM events WHERE event_date = &#39;2023-12-25&#39;;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+</ul>
+<h4 id="32-time-类型">3.2 TIME 类型</h4>
+<ul>
+<li>
+<p><strong>定义</strong>：<code>TIME</code> 类型记录的是一天中的时间，不包括日期。适用于时间段的计算，比如营业时间、课程时间等。</p>
+</li>
+<li>
+<p><strong>用法</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">CREATE TABLE operating_hours (
     store_id SERIAL PRIMARY KEY,
     opening_time TIME,
     closing_time TIME
-);</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li><li><p><strong>查询示例</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SELECT * FROM operating_hours WHERE opening_time &lt; &#39;09:00:00&#39;;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li></ul><h4 id=33-timestamp-类型>3.3 TIMESTAMP 类型</h4><ul><li><p><strong>定义</strong>：<code>TIMESTAMP</code> 用于记录特定时间点，既可以包含时区信息，也可以不包含。适用于需要精确到秒或毫秒的场景，比如日志记录、交易时间等。</p></li><li><p><strong>用法</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>CREATE TABLE transactions (
+);</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+<li>
+<p><strong>查询示例</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SELECT * FROM operating_hours WHERE opening_time &lt; &#39;09:00:00&#39;;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+</ul>
+<h4 id="33-timestamp-类型">3.3 TIMESTAMP 类型</h4>
+<ul>
+<li>
+<p><strong>定义</strong>：<code>TIMESTAMP</code> 用于记录特定时间点，既可以包含时区信息，也可以不包含。适用于需要精确到秒或毫秒的场景，比如日志记录、交易时间等。</p>
+</li>
+<li>
+<p><strong>用法</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">CREATE TABLE transactions (
     transaction_id SERIAL PRIMARY KEY,
     amount DECIMAL(10, 2),
     transaction_time TIMESTAMP
-);</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li><li><p><strong>查询示例</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SELECT * FROM transactions WHERE transaction_time BETWEEN &#39;2023-01-01 00:00:00&#39; AND &#39;2023-01-31 23:59:59&#39;;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li></ul><h4 id=34-interval-类型>3.4 INTERVAL 类型</h4><ul><li><p><strong>定义</strong>：<code>INTERVAL</code> 类型用于表示时间间隔，例如两个时间点之间的差异，可以支持复杂的时间计算。</p></li><li><p><strong>用法</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SELECT CURRENT_TIMESTAMP &#43; INTERVAL &#39;1 hour&#39; AS future_time;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li><li><p><strong>查询示例</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SELECT event_id, event_name, event_date &#43; INTERVAL &#39;1 day&#39; AS next_day FROM events;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li></ul><h3 id=4-日期和时间的操作>4. 日期和时间的操作</h3><h4 id=41-日期和时间的算术运算>4.1 日期和时间的算术运算</h4><p>在 PostgreSQL 中，可以对日期和时间类型进行算术运算，进行增减、比较等操作。</p><ul><li><p><strong>相加和相减</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SELECT CURRENT_DATE &#43; INTERVAL &#39;5 days&#39;;  -- 当前日期加5天
-SELECT &#39;2023-12-25&#39;::DATE - &#39;2023-12-01&#39;::DATE AS day_diff;  -- 计算日期差</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li><li><p><strong>比较</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SELECT * FROM events WHERE event_date &gt; CURRENT_DATE;  -- 查找未来事件</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li></ul><h4 id=42-日期和时间的格式化>4.2 日期和时间的格式化</h4><p>通过使用 PostgreSQL 的 <code>TO_CHAR</code> 和 <code>TO_DATE</code> 函数，可以方便地格式化日期和时间。</p><ul><li><p><strong>格式化示例</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SELECT TO_CHAR(NOW(), &#39;YYYY-MM-DD HH24:MI:SS&#39;) AS formatted_time;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li><li><p><strong>解析示例</strong>：</p><div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SELECT TO_DATE(&#39;25-12-2023&#39;, &#39;DD-MM-YYYY&#39;) AS parsed_date;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li></ul><h3 id=5-时间和日期的最佳实践>5. 时间和日期的最佳实践</h3><h4 id=51-选择合适的数据类型>5.1 选择合适的数据类型</h4><p>在设计数据库时，应根据实际需求选择最合适的日期和时间类型。例如，如果不需要时区信息，可以使用 <code>TIMESTAMP</code> 而不是 <code>TIMESTAMP WITH TIME ZONE</code>，从而简化处理。</p><h4 id=52-全局时间标准>5.2 全局时间标准</h4><p>在跨国应用中，始终使用协调世界时（UTC）存储时间信息，然后在应用层进行时区转换，以避免混淆。</p><h4 id=53-使用间隔计算>5.3 使用间隔计算</h4><p>使用 <code>INTERVAL</code> 类型进行时间计算时，可以充分利用其灵活性，支持更复杂的业务逻辑，例如计算存储周期、生成动态报告等。</p><h3 id=6-常见问题及解决方案>6. 常见问题及解决方案</h3><h4 id=61-时区问题>6.1 时区问题</h4><p>在全球化应用中，时区的处理可能会导致误差。使用 <code>TIMESTAMP WITH TIME ZONE</code> 类型和适当的时区转换函数可以有效解决此类问题。</p><ul><li><strong>解决方案</strong>：<div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>SELECT CURRENT_TIMESTAMP AT TIME ZONE &#39;UTC&#39;;  -- 转换为 UTC 时间</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li></ul><h4 id=62-日期格式误差>6.2 日期格式误差</h4><p>用户输入和显示日期时的格式不一致，可能导致数据插入错误。建议在应用层进行有效的输入验证和格式处理。</p><ul><li><strong>解决方案</strong>：
-在应用中使用统一的日期格式，如 ISO 8601（YYYY-MM-DD），确保输入的一致性。</li></ul><h4 id=63-数据存储长度>6.3 数据存储长度</h4><p>使用不必要的长日期格式会占用多余的存储空间。合理设计数据类型，确保用足够而非过多的内存空间。</p><h3 id=7-数据库日期和时间的规范与标准>7. 数据库日期和时间的规范与标准</h3><p>在设计数据库时，符合行业标准和规范将极大提升系统的兼容性和可维护性。</p><h4 id=71-遵循-iso-8601>7.1 遵循 ISO 8601</h4><p>采用 ISO 8601 标准格式，确保日期和时间信息能够在不同系统间有效传输和解释。</p><h4 id=72-使用标准库>7.2 使用标准库</h4><p>大多数编程语言和框架都提供了处理日期和时间的标准库。始终使用这些库进行时间操作，避免自定义时间处理，降低出错风险。</p><h3 id=8-日期和时间在不同数据库中的比较>8. 日期和时间在不同数据库中的比较</h3><p>了解不同数据库系统对日期和时间数据类型的实现差异，有助于系统迁移或多数据库系统的协同工作。</p><ul><li><strong>MySQL</strong>：提供 <code>DATETIME</code> 和 <code>TIMESTAMP</code> ，但未明确分离时区类型。</li><li><strong>SQL Server</strong>：支持 <code>DATETIME</code>、<code>SMALLDATETIME</code>、<code>DATETIMEOFFSET</code> 以处理时区问题。</li></ul><h3 id=9-性能优化建议>9. 性能优化建议</h3><h4 id=91-使用索引>9.1 使用索引</h4><p>对常用日期和时间字段创建索引可以有效提高查询性能，特别是在需要频繁检索数据的情况下。</p><h4 id=92-日期范围查询>9.2 日期范围查询</h4><p>在大量数据的查询中，合理使用日期范围可以显著提高查询性能，避免全表扫描。</p><ul><li><strong>示例</strong>：<div class=highlight-wrapper><div class=highlight><pre class=chroma><code class=language- data-lang>EXPLAIN SELECT * FROM events WHERE event_date BETWEEN &#39;2023-01-01&#39; AND &#39;2023-12-31&#39;;</code></pre></div><div class=copy-code-button-container><span class=language-name></span>
-<button class=copy-code-button aria-label=复制代码 onclick=copyCodeToClipboard(this)>
-<svg class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7A2 2 0 005 7v10a2 2 0 002 2h10a2 2 0 002-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9A2 2 0 007 3v10a2 2 0 002 2h10a2 2 0 002-2V3a2 2 0 00-2-2zm0 12H9V3h10v10z"/></svg>
-<svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display:none"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34L7.42 9.1 6 10.5l3.25 3.25L18 7z"/></svg></button></div></div><script>function copyCodeToClipboard(e){const t=e.parentElement.parentElement.querySelector("pre"),n=t.textContent;navigator.clipboard.writeText(n).then(function(){const t=e.querySelector(".copy-icon"),n=e.querySelector(".check-icon");t.style.display="none",n.style.display="inline-block",setTimeout(function(){t.style.display="inline-block",n.style.display="none"},2e3)},function(){console.error("复制失败!")})}</script><style>.highlight-wrapper{position:relative;margin:1.5rem 0}.copy-code-button-container{position:absolute;top:5px;right:5px;display:flex;align-items:center;opacity:.7;transition:opacity .2s}.highlight-wrapper:hover .copy-code-button-container{opacity:1}.language-name{font-size:.8rem;color:#718096;margin-right:.5rem}.copy-code-button{background-color:transparent;border:none;color:#718096;cursor:pointer;padding:4px;border-radius:4px}.copy-code-button:hover{background-color:rgba(203,213,224,.2);color:#4a5568}.dark .language-name,.dark .copy-code-button{color:#a0aec0}.dark .copy-code-button:hover{background-color:rgba(160,174,192,.2);color:#e2e8f0}</style></li></ul><h3 id=10-结论>10. 结论</h3><p>日期和时间数据类型在数据库管理中占据着重要地位，正确使用可以帮助实现高效、准确的数据管理和存储。通过理解 PostgreSQL 中各种日期和时间类型的特性、使用场景以及最佳实践，开发者和数据库管理员能够更有效地设计和优化数据模型，为业务决策提供强有力的支持。在信息技术日益发展的大环境下，掌握这些数据类型的深入知识，将为数据库管理提供更深层次的理解和操作能力。</p><h3 id=参考文献>参考文献</h3><ol><li>PostgreSQL Documentation: <a href=https://www.postgresql.org/docs/current/datatype.html>PostgreSQL Data Types</a></li><li>日期与时间的高效处理 - Michael W. Lucas</li><li>深入理解 PostgreSQL - Bruce Momjian</li><li>SQL 权威指南（SQL: The Complete Reference） - James L. Groff & Paul N. Weinberg</li><li>数据库系统概念（Database System Concepts） - Abraham Silberschatz, Henry Korth, S. Sudarshan</li></ol><p>余下文章内容请点击跳转至 个人博客页面 或者 扫码关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code>，阅读完整的文章：</p><h2 id=往期文章归档>往期文章归档：</h2><ul><li><a href=https://blog.cmdragon.cn/posts/c7ab4c1e95ea/>数据库中的基本数据类型：整型、浮点型与字符型的探讨 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/b6023fb576cb/>表的创建与删除：从理论到实践的全面指南 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/368dea7b1401/>PostgreSQL 数据库连接 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/118103fa7e1b/>PostgreSQL 数据库的启动与停止管理 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/087f8fad6f6b/>PostgreSQL 初始化配置设置 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/ebcae8970bd1/>在不同操作系统上安装 PostgreSQL | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/fbc881562406/>PostgreSQL 的系统要求 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/460161ea1fb7/>PostgreSQL 的特点 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/461e7d030710/>ORM框架与数据库交互 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/62cc5ce768cb/>数据库与编程语言的连接 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/b43392b9088f/>数据库审计与监控 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/a93af3924801/>数据库高可用性与容灾 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/eb7202efbdae/>数据库性能优化 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/0f3edf9550ac/>备份与恢复策略 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/0fd4e9a4123a/>索引与性能优化 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/21e8e33b5a0c/>事务管理与锁机制 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/ef7711d5077d/>子查询与嵌套查询 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/cbc5ebea2633/>多表查询与连接 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/45016c6a3d2d/>查询与操作 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/1aff87ac2263/>数据类型与约束 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/541c699d86de/>数据库的基本操作 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/daf29831e102/>数据库设计原则与方法 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/dc1046549846/>数据库与数据库管理系统概述 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/d64fddbcad54/>Nuxt.js 应用中的 afterResponse 事件钩子 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/0c461d69ac0d/>Nuxt.js 应用中的 request 事件钩子 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/1bd4e4574b1a/>Nuxt.js 应用中的 error 事件钩子 | cmdragon&rsquo;s Blog</a></li><li><a href=https://blog.cmdragon.cn/posts/0bb0cade5fa2/>Nuxt.js 应用中的 close 事件钩子 | cmdragon&rsquo;s Blog</a></li><li></li></ul></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>标签</h3><div class="flex flex-wrap gap-2"><a href=/tags/%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 日期和时间" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>日期和时间
-</a><a href=/tags/%E6%95%B0%E6%8D%AE%E5%BA%93 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 数据库" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>数据库
-</a><a href=/tags/PostgreSQL class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: PostgreSQL" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>PostgreSQL
-</a><a href=/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 数据类型" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>数据类型
-</a><a href=/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 数据存储" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>数据存储
-</a><a href=/tags/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 应用开发" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>应用开发
-</a><a href=/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86 class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200" aria-label="标签: 数据管理" tabindex=0><iconify-icon icon=mdi:tag class=mr-1 inline></iconify-icon>数据管理</a></div></div><nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center"><iconify-icon icon=mdi:arrow-left class=mr-2 width=16 height=16></iconify-icon>上一篇
-</span><a href=https://blog.cmdragon.cn/posts/ed0f49e64ae98e09079c9f245aee2bf4/ class="font-medium text-primary hover:text-primary-dark block" aria-label="上一篇: 数据库中的基本数据类型：整型、浮点型与字符型的探讨" tabindex=0>数据库中的基本数据类型：整型、浮点型与字符型的探讨</a></div><div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300"><span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">下一篇<iconify-icon icon=mdi:arrow-right class=ml-2 width=16 height=16></iconify-icon>
-</span><a href=https://blog.cmdragon.cn/posts/df7c5c2cb46a70a8bd8eb41d25cbc407/ class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: 特殊数据类型的深度分析：JSON、数组和 HSTORE 的实用价值" tabindex=0>特殊数据类型的深度分析：JSON、数组和 HSTORE 的实用价值</a></div></nav><div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8"><h3 class="text-lg font-medium mb-4 flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:share-variant width=16 height=16></iconify-icon></div>分享</h3><div class="flex flex-wrap gap-3"><a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f9ae9cbc382beb8ce70dd434b0b04dfcc%2f&text=%e6%97%a5%e6%9c%9f%e5%92%8c%e6%97%b6%e9%97%b4%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%b7%b1%e5%85%a5%e6%8e%a2%e8%ae%a8%ef%bc%9a%e7%90%86%e8%ae%ba%e4%b8%8e%e5%ae%9e%e8%b7%b5" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Twitter" tabindex=0><iconify-icon icon=mdi:twitter width=20 height=20></iconify-icon></a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f9ae9cbc382beb8ce70dd434b0b04dfcc%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 Facebook" tabindex=0><iconify-icon icon=mdi:facebook width=20 height=20></iconify-icon></a><a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f9ae9cbc382beb8ce70dd434b0b04dfcc%2f&title=%e6%97%a5%e6%9c%9f%e5%92%8c%e6%97%b6%e9%97%b4%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%b7%b1%e5%85%a5%e6%8e%a2%e8%ae%a8%ef%bc%9a%e7%90%86%e8%ae%ba%e4%b8%8e%e5%ae%9e%e8%b7%b5" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label=分享到微博 tabindex=0><iconify-icon icon=mdi:sina-weibo width=20 height=20></iconify-icon></a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f9ae9cbc382beb8ce70dd434b0b04dfcc%2f" target=_blank rel="noopener noreferrer" class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300" aria-label="分享到 LinkedIn" tabindex=0><iconify-icon icon=mdi:linkedin width=20 height=20></iconify-icon></a></div></div></article><aside class="w-full lg:w-1/4"><button id=mobile-toc-toggle class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-<iconify-icon icon=mdi:table-of-contents width=24 height=24></iconify-icon></button><div id=toc-container class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
-fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
-lg:overflow-visible flex flex-col"><div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4"><h2 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:table-of-contents width=16 height=16></iconify-icon></div>目录</h2><div class="flex items-center"><button id=toc-toggle class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label=折叠目录>
-<iconify-icon id=toc-icon icon=mdi:chevron-up width=20 height=20></iconify-icon></button>
-<button id=toc-close class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div></div><div id=toc-content class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto"><nav id=TableOfContents><ul><li><ul><li><a href=#1-引言>1. 引言</a></li><li><a href=#2-日期和时间类型的基本定义>2. 日期和时间类型的基本定义</a><ul><li><a href=#21-常用日期和时间类型>2.1 常用日期和时间类型</a></li><li><a href=#22-表示时区的时间类型>2.2 表示时区的时间类型</a></li></ul></li><li><a href=#3-postgresql-中日期和时间类型的详细实现>3. PostgreSQL 中日期和时间类型的详细实现</a><ul><li><a href=#31-date-类型>3.1 DATE 类型</a></li><li><a href=#32-time-类型>3.2 TIME 类型</a></li><li><a href=#33-timestamp-类型>3.3 TIMESTAMP 类型</a></li><li><a href=#34-interval-类型>3.4 INTERVAL 类型</a></li></ul></li><li><a href=#4-日期和时间的操作>4. 日期和时间的操作</a><ul><li><a href=#41-日期和时间的算术运算>4.1 日期和时间的算术运算</a></li><li><a href=#42-日期和时间的格式化>4.2 日期和时间的格式化</a></li></ul></li><li><a href=#5-时间和日期的最佳实践>5. 时间和日期的最佳实践</a><ul><li><a href=#51-选择合适的数据类型>5.1 选择合适的数据类型</a></li><li><a href=#52-全局时间标准>5.2 全局时间标准</a></li><li><a href=#53-使用间隔计算>5.3 使用间隔计算</a></li></ul></li><li><a href=#6-常见问题及解决方案>6. 常见问题及解决方案</a><ul><li><a href=#61-时区问题>6.1 时区问题</a></li><li><a href=#62-日期格式误差>6.2 日期格式误差</a></li><li><a href=#63-数据存储长度>6.3 数据存储长度</a></li></ul></li><li><a href=#7-数据库日期和时间的规范与标准>7. 数据库日期和时间的规范与标准</a><ul><li><a href=#71-遵循-iso-8601>7.1 遵循 ISO 8601</a></li><li><a href=#72-使用标准库>7.2 使用标准库</a></li></ul></li><li><a href=#8-日期和时间在不同数据库中的比较>8. 日期和时间在不同数据库中的比较</a></li><li><a href=#9-性能优化建议>9. 性能优化建议</a><ul><li><a href=#91-使用索引>9.1 使用索引</a></li><li><a href=#92-日期范围查询>9.2 日期范围查询</a></li></ul></li><li><a href=#10-结论>10. 结论</a></li><li><a href=#参考文献>参考文献</a></li></ul></li><li><a href=#往期文章归档>往期文章归档：</a></li></ul></nav></div></div><div id=toc-overlay class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div></aside></div></div><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js></script><link rel=stylesheet href=/css/markdown.css><link rel=stylesheet href=/css/code-highlight.css><script src=/js/code-highlight.js></script><script src=/js/toc.js></script><script>document.addEventListener("DOMContentLoaded",function(){console.log("初始化代码高亮..."),window.hljs?(console.log("highlight.js 已加载"),document.querySelectorAll("pre code").forEach(function(e){console.log("应用高亮到代码块"),hljs.highlightElement(e)})):console.error("highlight.js 未加载!")})</script><style>#toc-content{max-height:none}@media(min-width:1024px){#toc-content{max-height:none;overflow:visible}#toc-container{max-height:calc(100vh - 120px);overflow-y:auto}nav#TableOfContents{overflow:visible}}@media(max-width:1023px){#toc-container{padding-bottom:env(safe-area-inset-bottom,20px);display:flex;flex-direction:column}#toc-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:20px}}</style></main><footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700"><div class="container mx-auto px-4"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:information width=16 height=16></iconify-icon></div>关于本站</h3><p class="text-sm text-gray-600 dark:text-gray-400 mb-4">cmdragon's Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。</p><div class="flex space-x-3"><a href=https://github.com/amd794 class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=GitHub tabindex=0 target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:github width=18 height=18></iconify-icon></a><button id=wechat-btn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=微信 tabindex=0>
-<iconify-icon icon=mdi:wechat width=18 height=18></iconify-icon></button>
-<a href=mailto:support@cmdragon.cn class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=Email tabindex=0><iconify-icon icon=mdi:email width=18 height=18></iconify-icon></a><a href=/index.xml class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label=RSS tabindex=0><iconify-icon icon=mdi:rss width=18 height=18></iconify-icon></a></div></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:link-variant width=16 height=16></iconify-icon></div>快速链接</h3><ul class=space-y-2><li><a href=https://movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>高清影视库</a></li><li><a href=https://comic.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>精选漫画阅读</a></li><li><a href=https://tools.cmdragon.cn/zh class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>实用在线工具</a></li><li><a href=https://hot-movie.cmdragon.cn/ class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target=_blank rel="noopener noreferrer"><iconify-icon icon=mdi:chevron-right class="mr-2 text-primary" width=16 height=16></iconify-icon>热映影视推荐</a></li></ul></div><div><h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2"><iconify-icon icon=mdi:tag-multiple width=16 height=16></iconify-icon></div>热门标签</h3><div class="flex flex-wrap gap-2"><a href=https://blog.cmdragon.cn/tags/FastAPI/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#FastAPI <span class="text-xs opacity-70">(85)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt <span class="text-xs opacity-70">(68)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#钩子 <span class="text-xs opacity-70">(62)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#性能优化 <span class="text-xs opacity-70">(47)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt.js/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt.js <span class="text-xs opacity-70">(43)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#生命周期 <span class="text-xs opacity-70">(38)</span>
-</a><a href=https://blog.cmdragon.cn/tags/Nuxt3/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#Nuxt3 <span class="text-xs opacity-70">(37)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#错误处理 <span class="text-xs opacity-70">(32)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#组件 <span class="text-xs opacity-70">(29)</span>
-</a><a href=https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/ class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">#数据库管理 <span class="text-xs opacity-70">(27)</span></a></div></div></div><div class="border-t border-gray-200 dark:border-gray-700 pt-6"><div class="flex flex-col md:flex-row justify-between items-center"><div class="text-center md:text-left mb-4 md:mb-0"><p class="text-sm text-gray-600 dark:text-gray-400">&copy; 2023 cmdragon's Blog. 保留所有权利.</p><p class="text-xs text-gray-500 dark:text-gray-500 mt-1">由 <a href=https://gohugo.io/ class="hover:text-primary transition-colors duration-300" target=_blank rel="noopener noreferrer">Hugo</a> 强力驱动</p></div><button id=back-to-top class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
-<iconify-icon icon=mdi:arrow-up class=mr-1 width=16 height=16></iconify-icon>返回顶部</button></div></div></div><div id=wechat-modal class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick='this.classList.add("hidden")'><div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick=event.stopPropagation()><button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick='document.getElementById("wechat-modal").classList.add("hidden")'>
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button><h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4><div class="flex justify-center"><img src=/images/wechat_qrcode.webp alt=微信二维码 class="w-64 h-64 object-contain"></div></div></div></footer><script>const backToTopButton=document.getElementById("back-to-top");window.addEventListener("scroll",function(){window.scrollY>300?(backToTopButton.classList.remove("opacity-0","invisible"),backToTopButton.classList.add("opacity-100","visible")):(backToTopButton.classList.add("opacity-0","invisible"),backToTopButton.classList.remove("opacity-100","visible"))}),backToTopButton.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})}),document.getElementById("wechat-btn").addEventListener("click",function(){document.getElementById("wechat-modal").classList.remove("hidden")}),document.getElementById("wechat-btn").addEventListener("keydown",function(e){(e.key==="Enter"||e.key===" ")&&(e.preventDefault(),document.getElementById("wechat-modal").classList.remove("hidden"))})</script></div><script>localStorage.getItem("color-theme")==="dark"||!("color-theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark")</script><script src=/js/code-highlight.js></script><script src=/js/advanced-render.js></script><div id=site-search-modal class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300"><div id=site-search-backdrop class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div><div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700"><div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700"><h3 class="text-lg font-medium flex items-center"><div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm"><iconify-icon icon=mdi:magnify width=16 height=16></iconify-icon></div><span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span></h3><button id=site-search-close class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-<iconify-icon icon=mdi:close width=20 height=20></iconify-icon></button></div><div class=p-6><form id=site-search-form action=/search/ method=get><div class=relative><div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md"><span class="pl-4 text-gray-400"><iconify-icon icon=mdi:magnify width=20 height=20></iconify-icon></span><input type=text id=site-search-input name=q placeholder=输入关键词搜索... class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200" aria-label=搜索内容 tabindex=0>
-<button type=submit class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center" aria-label=搜索 tabindex=0>
-<span class="mr-1 hidden sm:inline">搜索</span>
-<iconify-icon icon=mdi:arrow-right width=18 height=18></iconify-icon></button></div></div></form><div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start"><div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5"><iconify-icon icon=mdi:information width=16 height=16 class="text-blue-500 dark:text-blue-300"></iconify-icon></div><div><p class=mb-1>快捷键提示:</p><ul class=space-y-1><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
-<span>打开搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
-<span>关闭搜索</span></li><li class="flex items-center"><span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
-<span>提交搜索</span></li></ul></div></div><div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"><div class="flex flex-wrap gap-2"><a href=/tags/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:tag-multiple class=mr-1 width=16 height=16></iconify-icon>标签
-</a><a href=/categories/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:folder-multiple class=mr-1 width=16 height=16></iconify-icon>分类
-</a><a href=/archives/ class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center"><iconify-icon icon=mdi:archive class=mr-1 width=16 height=16></iconify-icon>归档</a></div></div></div></div></div><script>document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("site-search-modal"),t=e.querySelector('div[class*="rounded-xl"]'),s=document.getElementById("site-search-backdrop"),o=document.getElementById("site-search-close"),a=document.getElementById("site-search-form"),i=document.getElementById("site-search-input");window.openSiteSearch=function(){e.classList.remove("hidden"),document.body.classList.add("overflow-hidden"),setTimeout(()=>{e.classList.add("opacity-100"),t.classList.remove("scale-95","opacity-0"),t.classList.add("scale-100","opacity-100"),i.focus()},10)};function n(){e.classList.remove("opacity-100"),t.classList.remove("scale-100","opacity-100"),t.classList.add("scale-95","opacity-0"),setTimeout(()=>{e.classList.add("hidden"),document.body.classList.remove("overflow-hidden")},300)}s&&s.addEventListener("click",n),o&&o.addEventListener("click",n),document.addEventListener("keydown",t=>{t.key==="Escape"&&!e.classList.contains("hidden")&&n(),t.key==="/"&&e.classList.contains("hidden")&&document.activeElement.tagName!=="INPUT"&&(t.preventDefault(),openSiteSearch())}),t.addEventListener("click",e=>{e.stopPropagation()})})</script></body></html>
+);</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+<li>
+<p><strong>查询示例</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SELECT * FROM transactions WHERE transaction_time BETWEEN &#39;2023-01-01 00:00:00&#39; AND &#39;2023-01-31 23:59:59&#39;;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+</ul>
+<h4 id="34-interval-类型">3.4 INTERVAL 类型</h4>
+<ul>
+<li>
+<p><strong>定义</strong>：<code>INTERVAL</code> 类型用于表示时间间隔，例如两个时间点之间的差异，可以支持复杂的时间计算。</p>
+</li>
+<li>
+<p><strong>用法</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SELECT CURRENT_TIMESTAMP &#43; INTERVAL &#39;1 hour&#39; AS future_time;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+<li>
+<p><strong>查询示例</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SELECT event_id, event_name, event_date &#43; INTERVAL &#39;1 day&#39; AS next_day FROM events;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+</ul>
+<h3 id="4-日期和时间的操作">4. 日期和时间的操作</h3>
+<h4 id="41-日期和时间的算术运算">4.1 日期和时间的算术运算</h4>
+<p>在 PostgreSQL 中，可以对日期和时间类型进行算术运算，进行增减、比较等操作。</p>
+<ul>
+<li>
+<p><strong>相加和相减</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SELECT CURRENT_DATE &#43; INTERVAL &#39;5 days&#39;;  -- 当前日期加5天
+SELECT &#39;2023-12-25&#39;::DATE - &#39;2023-12-01&#39;::DATE AS day_diff;  -- 计算日期差</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+<li>
+<p><strong>比较</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SELECT * FROM events WHERE event_date &gt; CURRENT_DATE;  -- 查找未来事件</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+</ul>
+<h4 id="42-日期和时间的格式化">4.2 日期和时间的格式化</h4>
+<p>通过使用 PostgreSQL 的 <code>TO_CHAR</code> 和 <code>TO_DATE</code> 函数，可以方便地格式化日期和时间。</p>
+<ul>
+<li>
+<p><strong>格式化示例</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SELECT TO_CHAR(NOW(), &#39;YYYY-MM-DD HH24:MI:SS&#39;) AS formatted_time;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+<li>
+<p><strong>解析示例</strong>：</p>
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SELECT TO_DATE(&#39;25-12-2023&#39;, &#39;DD-MM-YYYY&#39;) AS parsed_date;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+</ul>
+<h3 id="5-时间和日期的最佳实践">5. 时间和日期的最佳实践</h3>
+<h4 id="51-选择合适的数据类型">5.1 选择合适的数据类型</h4>
+<p>在设计数据库时，应根据实际需求选择最合适的日期和时间类型。例如，如果不需要时区信息，可以使用 <code>TIMESTAMP</code> 而不是 <code>TIMESTAMP WITH TIME ZONE</code>，从而简化处理。</p>
+<h4 id="52-全局时间标准">5.2 全局时间标准</h4>
+<p>在跨国应用中，始终使用协调世界时（UTC）存储时间信息，然后在应用层进行时区转换，以避免混淆。</p>
+<h4 id="53-使用间隔计算">5.3 使用间隔计算</h4>
+<p>使用 <code>INTERVAL</code> 类型进行时间计算时，可以充分利用其灵活性，支持更复杂的业务逻辑，例如计算存储周期、生成动态报告等。</p>
+<h3 id="6-常见问题及解决方案">6. 常见问题及解决方案</h3>
+<h4 id="61-时区问题">6.1 时区问题</h4>
+<p>在全球化应用中，时区的处理可能会导致误差。使用 <code>TIMESTAMP WITH TIME ZONE</code> 类型和适当的时区转换函数可以有效解决此类问题。</p>
+<ul>
+<li><strong>解决方案</strong>：
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">SELECT CURRENT_TIMESTAMP AT TIME ZONE &#39;UTC&#39;;  -- 转换为 UTC 时间</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+</ul>
+<h4 id="62-日期格式误差">6.2 日期格式误差</h4>
+<p>用户输入和显示日期时的格式不一致，可能导致数据插入错误。建议在应用层进行有效的输入验证和格式处理。</p>
+<ul>
+<li><strong>解决方案</strong>：
+在应用中使用统一的日期格式，如 ISO 8601（YYYY-MM-DD），确保输入的一致性。</li>
+</ul>
+<h4 id="63-数据存储长度">6.3 数据存储长度</h4>
+<p>使用不必要的长日期格式会占用多余的存储空间。合理设计数据类型，确保用足够而非过多的内存空间。</p>
+<h3 id="7-数据库日期和时间的规范与标准">7. 数据库日期和时间的规范与标准</h3>
+<p>在设计数据库时，符合行业标准和规范将极大提升系统的兼容性和可维护性。</p>
+<h4 id="71-遵循-iso-8601">7.1 遵循 ISO 8601</h4>
+<p>采用 ISO 8601 标准格式，确保日期和时间信息能够在不同系统间有效传输和解释。</p>
+<h4 id="72-使用标准库">7.2 使用标准库</h4>
+<p>大多数编程语言和框架都提供了处理日期和时间的标准库。始终使用这些库进行时间操作，避免自定义时间处理，降低出错风险。</p>
+<h3 id="8-日期和时间在不同数据库中的比较">8. 日期和时间在不同数据库中的比较</h3>
+<p>了解不同数据库系统对日期和时间数据类型的实现差异，有助于系统迁移或多数据库系统的协同工作。</p>
+<ul>
+<li><strong>MySQL</strong>：提供 <code>DATETIME</code> 和 <code>TIMESTAMP</code> ，但未明确分离时区类型。</li>
+<li><strong>SQL Server</strong>：支持 <code>DATETIME</code>、<code>SMALLDATETIME</code>、<code>DATETIMEOFFSET</code> 以处理时区问题。</li>
+</ul>
+<h3 id="9-性能优化建议">9. 性能优化建议</h3>
+<h4 id="91-使用索引">9.1 使用索引</h4>
+<p>对常用日期和时间字段创建索引可以有效提高查询性能，特别是在需要频繁检索数据的情况下。</p>
+<h4 id="92-日期范围查询">9.2 日期范围查询</h4>
+<p>在大量数据的查询中，合理使用日期范围可以显著提高查询性能，避免全表扫描。</p>
+<ul>
+<li><strong>示例</strong>：
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  <div class="highlight-wrapper">
+    <div class="highlight">
+      <pre class="chroma"><code class="language-" data-lang="">EXPLAIN SELECT * FROM events WHERE event_date BETWEEN &#39;2023-01-01&#39; AND &#39;2023-12-31&#39;;</code></pre>
+    </div>
+
+    <div class="copy-code-button-container">
+      <span class="language-name"></span>
+      <button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/><path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;"><path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function copyCodeToClipboard(button) {
+      const pre = button.parentElement.parentElement.querySelector('pre');
+      const code = pre.textContent;
+      
+      navigator.clipboard.writeText(code).then(
+        function() {
+          
+          const copyIcon = button.querySelector('.copy-icon');
+          const checkIcon = button.querySelector('.check-icon');
+          
+          
+          copyIcon.style.display = 'none';
+          checkIcon.style.display = 'inline-block';
+          
+          
+          setTimeout(function() {
+            copyIcon.style.display = 'inline-block';
+            checkIcon.style.display = 'none';
+          }, 2000);
+        },
+        function() {
+          
+          console.error('复制失败!');
+        }
+      );
+    }
+  </script>
+  
+  <style>
+    .highlight-wrapper {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    
+    .copy-code-button-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .highlight-wrapper:hover .copy-code-button-container {
+      opacity: 1;
+    }
+    
+    .language-name {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-right: 0.5rem;
+    }
+    
+    .copy-code-button {
+      background-color: transparent;
+      border: none;
+      color: #718096;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    
+    .copy-code-button:hover {
+      background-color: rgba(203, 213, 224, 0.2);
+      color: #4a5568;
+    }
+    
+    .dark .language-name,
+    .dark .copy-code-button {
+      color: #a0aec0;
+    }
+    
+    .dark .copy-code-button:hover {
+      background-color: rgba(160, 174, 192, 0.2);
+      color: #e2e8f0;
+    }
+  </style>
+ </li>
+</ul>
+<h3 id="10-结论">10. 结论</h3>
+<p>日期和时间数据类型在数据库管理中占据着重要地位，正确使用可以帮助实现高效、准确的数据管理和存储。通过理解 PostgreSQL 中各种日期和时间类型的特性、使用场景以及最佳实践，开发者和数据库管理员能够更有效地设计和优化数据模型，为业务决策提供强有力的支持。在信息技术日益发展的大环境下，掌握这些数据类型的深入知识，将为数据库管理提供更深层次的理解和操作能力。</p>
+<h3 id="参考文献">参考文献</h3>
+<ol>
+<li>PostgreSQL Documentation: <a href="https://www.postgresql.org/docs/current/datatype.html">PostgreSQL Data Types</a></li>
+<li>日期与时间的高效处理 - Michael W. Lucas</li>
+<li>深入理解 PostgreSQL - Bruce Momjian</li>
+<li>SQL 权威指南（SQL: The Complete Reference） - James L. Groff &amp; Paul N. Weinberg</li>
+<li>数据库系统概念（Database System Concepts） - Abraham Silberschatz, Henry Korth, S. Sudarshan</li>
+</ol>
+<p>余下文章内容请点击跳转至 个人博客页面 或者 扫码关注或者微信搜一搜：<code>编程智域 前端至全栈交流与成长</code>，阅读完整的文章：</p>
+<h2 id="往期文章归档">往期文章归档：</h2>
+<ul>
+<li><a href="https://blog.cmdragon.cn/posts/c7ab4c1e95ea/">数据库中的基本数据类型：整型、浮点型与字符型的探讨 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/b6023fb576cb/">表的创建与删除：从理论到实践的全面指南 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/368dea7b1401/">PostgreSQL 数据库连接 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/118103fa7e1b/">PostgreSQL 数据库的启动与停止管理 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/087f8fad6f6b/">PostgreSQL 初始化配置设置 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/ebcae8970bd1/">在不同操作系统上安装 PostgreSQL | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/fbc881562406/">PostgreSQL 的系统要求 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/460161ea1fb7/">PostgreSQL 的特点 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/461e7d030710/">ORM框架与数据库交互 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/62cc5ce768cb/">数据库与编程语言的连接 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/b43392b9088f/">数据库审计与监控 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/a93af3924801/">数据库高可用性与容灾 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/eb7202efbdae/">数据库性能优化 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/0f3edf9550ac/">备份与恢复策略 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/0fd4e9a4123a/">索引与性能优化 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/21e8e33b5a0c/">事务管理与锁机制 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/ef7711d5077d/">子查询与嵌套查询 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/cbc5ebea2633/">多表查询与连接 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/45016c6a3d2d/">查询与操作 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/1aff87ac2263/">数据类型与约束 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/541c699d86de/">数据库的基本操作 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/daf29831e102/">数据库设计原则与方法 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/dc1046549846/">数据库与数据库管理系统概述 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/d64fddbcad54/">Nuxt.js 应用中的 afterResponse 事件钩子 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/0c461d69ac0d/">Nuxt.js 应用中的 request 事件钩子 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/1bd4e4574b1a/">Nuxt.js 应用中的 error 事件钩子 | cmdragon&rsquo;s Blog</a></li>
+<li><a href="https://blog.cmdragon.cn/posts/0bb0cade5fa2/">Nuxt.js 应用中的 close 事件钩子 | cmdragon&rsquo;s Blog</a></li>
+<li></li>
+</ul>
+
+            </div>
+            
+            
+            
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                    <h3 class="text-lg font-medium mb-4 flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                        </div>
+                        标签
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        
+                            <a href="/tags/%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 日期和时间"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>日期和时间
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 数据库"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>数据库
+                            </a>
+                        
+                            <a href="/tags/PostgreSQL" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: PostgreSQL"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>PostgreSQL
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 数据类型"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>数据类型
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 数据存储"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>数据存储
+                            </a>
+                        
+                            <a href="/tags/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 应用开发"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>应用开发
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86" 
+                            class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                            aria-label="标签: 数据管理"
+                            tabindex="0">
+                                <iconify-icon icon="mdi:tag" class="mr-1" inline></iconify-icon>数据管理
+                            </a>
+                        
+                    </div>
+                </div>
+            
+            
+            
+            <nav class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center">
+                            <iconify-icon icon="mdi:arrow-left" class="mr-2" width="16" height="16"></iconify-icon>上一篇
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/ed0f49e64ae98e09079c9f245aee2bf4/" class="font-medium text-primary hover:text-primary-dark block" aria-label="上一篇: 数据库中的基本数据类型：整型、浮点型与字符型的探讨" tabindex="0">
+                            数据库中的基本数据类型：整型、浮点型与字符型的探讨
+                        </a>
+                    </div>
+                
+                
+                
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl md:text-right transition-all hover:shadow-md duration-300">
+                        <span class="block text-sm text-gray-500 dark:text-gray-400 mb-2 flex items-center md:justify-end">
+                            下一篇<iconify-icon icon="mdi:arrow-right" class="ml-2" width="16" height="16"></iconify-icon>
+                        </span>
+                        <a href="https://blog.cmdragon.cn/posts/df7c5c2cb46a70a8bd8eb41d25cbc407/" class="font-medium text-primary hover:text-primary-dark block" aria-label="下一篇: 特殊数据类型的深度分析：JSON、数组和 HSTORE 的实用价值" tabindex="0">
+                            特殊数据类型的深度分析：JSON、数组和 HSTORE 的实用价值
+                        </a>
+                    </div>
+                
+            </nav>
+            
+            
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+                <h3 class="text-lg font-medium mb-4 flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:share-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    分享
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f9ae9cbc382beb8ce70dd434b0b04dfcc%2f&text=%e6%97%a5%e6%9c%9f%e5%92%8c%e6%97%b6%e9%97%b4%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%b7%b1%e5%85%a5%e6%8e%a2%e8%ae%a8%ef%bc%9a%e7%90%86%e8%ae%ba%e4%b8%8e%e5%ae%9e%e8%b7%b5" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1DA1F2] to-[#0c85d0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Twitter" tabindex="0">
+                        <iconify-icon icon="mdi:twitter" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f9ae9cbc382beb8ce70dd434b0b04dfcc%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#1877F2] to-[#0c5cce] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 Facebook" tabindex="0">
+                        <iconify-icon icon="mdi:facebook" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://service.weibo.com/share/share.php?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f9ae9cbc382beb8ce70dd434b0b04dfcc%2f&title=%e6%97%a5%e6%9c%9f%e5%92%8c%e6%97%b6%e9%97%b4%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%b7%b1%e5%85%a5%e6%8e%a2%e8%ae%a8%ef%bc%9a%e7%90%86%e8%ae%ba%e4%b8%8e%e5%ae%9e%e8%b7%b5" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#E6162D] to-[#c01325] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到微博" tabindex="0">
+                        <iconify-icon icon="mdi:sina-weibo" width="20" height="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fblog.cmdragon.cn%2fposts%2f9ae9cbc382beb8ce70dd434b0b04dfcc%2f" 
+                    target="_blank" rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-[#0A66C2] to-[#0850a0] text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300"
+                    aria-label="分享到 LinkedIn" tabindex="0">
+                        <iconify-icon icon="mdi:linkedin" width="20" height="20"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            
+        </article>
+        
+        
+        
+        <aside class="w-full lg:w-1/4">
+            
+            <button id="mobile-toc-toggle" class="z-50 fixed bottom-4 right-4 z-20 lg:hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <iconify-icon icon="mdi:table-of-contents" width="24" height="24"></iconify-icon>
+            </button>
+            
+            
+            <div id="toc-container" class="lg:sticky lg:top-24 bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 mb-8 transition-all duration-300 border border-gray-100 dark:border-gray-700
+                 fixed inset-y-0 right-0 w-72 z-40 transform translate-x-full lg:transform-none lg:relative lg:w-auto
+                 lg:overflow-visible flex flex-col">
+                <div class="toc-header flex justify-between items-center pb-3 border-b border-gray-100 dark:border-gray-700 lg:mb-4">
+                    <h2 class="text-lg font-medium flex items-center">
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                            <iconify-icon icon="mdi:table-of-contents" width="16" height="16"></iconify-icon>
+                        </div>
+                        目录
+                    </h2>
+                    <div class="flex items-center">
+                        <button id="toc-toggle" class="text-gray-500 hover:text-primary transition-colors p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full" aria-label="折叠目录">
+                            <iconify-icon id="toc-icon" icon="mdi:chevron-up" width="20" height="20"></iconify-icon>
+                        </button>
+                        
+                        <button id="toc-close" class="ml-1 lg:hidden text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                            <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                <div id="toc-content" class="toc text-sm text-gray-700 dark:text-gray-300 flex-grow overflow-y-auto">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-引言">1. 引言</a></li>
+        <li><a href="#2-日期和时间类型的基本定义">2. 日期和时间类型的基本定义</a>
+          <ul>
+            <li><a href="#21-常用日期和时间类型">2.1 常用日期和时间类型</a></li>
+            <li><a href="#22-表示时区的时间类型">2.2 表示时区的时间类型</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-postgresql-中日期和时间类型的详细实现">3. PostgreSQL 中日期和时间类型的详细实现</a>
+          <ul>
+            <li><a href="#31-date-类型">3.1 DATE 类型</a></li>
+            <li><a href="#32-time-类型">3.2 TIME 类型</a></li>
+            <li><a href="#33-timestamp-类型">3.3 TIMESTAMP 类型</a></li>
+            <li><a href="#34-interval-类型">3.4 INTERVAL 类型</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-日期和时间的操作">4. 日期和时间的操作</a>
+          <ul>
+            <li><a href="#41-日期和时间的算术运算">4.1 日期和时间的算术运算</a></li>
+            <li><a href="#42-日期和时间的格式化">4.2 日期和时间的格式化</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-时间和日期的最佳实践">5. 时间和日期的最佳实践</a>
+          <ul>
+            <li><a href="#51-选择合适的数据类型">5.1 选择合适的数据类型</a></li>
+            <li><a href="#52-全局时间标准">5.2 全局时间标准</a></li>
+            <li><a href="#53-使用间隔计算">5.3 使用间隔计算</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-常见问题及解决方案">6. 常见问题及解决方案</a>
+          <ul>
+            <li><a href="#61-时区问题">6.1 时区问题</a></li>
+            <li><a href="#62-日期格式误差">6.2 日期格式误差</a></li>
+            <li><a href="#63-数据存储长度">6.3 数据存储长度</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-数据库日期和时间的规范与标准">7. 数据库日期和时间的规范与标准</a>
+          <ul>
+            <li><a href="#71-遵循-iso-8601">7.1 遵循 ISO 8601</a></li>
+            <li><a href="#72-使用标准库">7.2 使用标准库</a></li>
+          </ul>
+        </li>
+        <li><a href="#8-日期和时间在不同数据库中的比较">8. 日期和时间在不同数据库中的比较</a></li>
+        <li><a href="#9-性能优化建议">9. 性能优化建议</a>
+          <ul>
+            <li><a href="#91-使用索引">9.1 使用索引</a></li>
+            <li><a href="#92-日期范围查询">9.2 日期范围查询</a></li>
+          </ul>
+        </li>
+        <li><a href="#10-结论">10. 结论</a></li>
+        <li><a href="#参考文献">参考文献</a></li>
+      </ul>
+    </li>
+    <li><a href="#往期文章归档">往期文章归档：</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+            
+            
+            <div id="toc-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden backdrop-blur-sm"></div>
+        </aside>
+        
+    </div>
+</div>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+
+<link rel="stylesheet" href="/css/markdown.css">
+<link rel="stylesheet" href="/css/code-highlight.css">
+<script src="/js/code-highlight.js"></script>
+
+<script src="/js/toc.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('初始化代码高亮...');
+    if (window.hljs) {
+      console.log('highlight.js 已加载');
+      document.querySelectorAll('pre code').forEach(function(block) {
+        console.log('应用高亮到代码块');
+        hljs.highlightElement(block);
+      });
+    } else {
+      console.error('highlight.js 未加载!');
+    }
+  });
+</script>
+
+
+<style>
+ 
+#toc-content {
+  max-height: none;
+}
+
+@media (min-width: 1024px) {
+  #toc-content {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  #toc-container {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+  
+  nav#TableOfContents {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1023px) {
+  #toc-container {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #toc-content {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+}
+</style>
+
+        </main>
+        
+        <footer class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner py-10 mt-12 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:information" width="16" height="16"></iconify-icon>
+                    </div>
+                    关于本站
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    cmdragon&#39;s Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。
+                </p>
+                <div class="flex space-x-3">
+                    
+                    <a href="https://github.com/amd794" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="GitHub" tabindex="0" target="_blank" rel="noopener noreferrer">
+                        <iconify-icon icon="mdi:github" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    
+                    <button id="wechat-btn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="微信" tabindex="0">
+                        <iconify-icon icon="mdi:wechat" width="18" height="18"></iconify-icon>
+                    </button>
+                    
+                    <a href="mailto:support@cmdragon.cn" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="Email" tabindex="0">
+                        <iconify-icon icon="mdi:email" width="18" height="18"></iconify-icon>
+                    </a>
+                    
+                    <a href="/index.xml" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 bg-gray-100 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600" aria-label="RSS" tabindex="0">
+                        <iconify-icon icon="mdi:rss" width="18" height="18"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:link-variant" width="16" height="16"></iconify-icon>
+                    </div>
+                    快速链接
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="https://movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            高清影视库
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://comic.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            精选漫画阅读
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://tools.cmdragon.cn/zh" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            实用在线工具
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://hot-movie.cmdragon.cn/" class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center" target="_blank" rel="noopener noreferrer">
+                            <iconify-icon icon="mdi:chevron-right" class="mr-2 text-primary" width="16" height="16"></iconify-icon>
+                            热映影视推荐
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div>
+                <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2">
+                        <iconify-icon icon="mdi:tag-multiple" width="16" height="16"></iconify-icon>
+                    </div>
+                    热门标签
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    
+                    <a href="https://blog.cmdragon.cn/tags/FastAPI/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #FastAPI <span class="text-xs opacity-70">(85)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt <span class="text-xs opacity-70">(68)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%92%A9%E5%AD%90/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #钩子 <span class="text-xs opacity-70">(62)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #性能优化 <span class="text-xs opacity-70">(47)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt.js/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt.js <span class="text-xs opacity-70">(43)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #生命周期 <span class="text-xs opacity-70">(38)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/Nuxt3/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #Nuxt3 <span class="text-xs opacity-70">(37)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #错误处理 <span class="text-xs opacity-70">(32)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E7%BB%84%E4%BB%B6/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #组件 <span class="text-xs opacity-70">(29)</span>
+                    </a>
+                    
+                    <a href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                        #数据库管理 <span class="text-xs opacity-70">(27)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        &copy; 2023 cmdragon&#39;s Blog. 保留所有权利.
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                        由 <a href="https://gohugo.io/" class="hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer">Hugo</a> 强力驱动
+                    </p>
+                </div>
+                
+                
+                <button id="back-to-top" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center text-sm font-medium">
+                    <iconify-icon icon="mdi:arrow-up" class="mr-1" width="16" height="16"></iconify-icon>
+                    返回顶部
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" onclick="this.classList.add('hidden')">
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-sm w-full relative" onclick="event.stopPropagation()">
+            <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick="document.getElementById('wechat-modal').classList.add('hidden')">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+            <h4 class="text-center font-medium text-gray-800 dark:text-gray-200 mb-4">扫码关注公众号</h4>
+            <div class="flex justify-center">
+                <img src="/images/wechat_qrcode.webp" alt="微信二维码" class="w-64 h-64 object-contain">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+    });
+    
+    
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('click', function() {
+        document.getElementById('wechat-modal').classList.remove('hidden');
+    });
+    
+    
+    document.getElementById('wechat-btn').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            document.getElementById('wechat-modal').classList.remove('hidden');
+        }
+    });
+</script> 
+    </div>
+    
+    
+    <script>
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    
+    <script src="/js/code-highlight.js"></script>
+    
+    
+    <script src="/js/advanced-render.js"></script>
+    
+    <div id="site-search-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    
+    <div id="site-search-backdrop" class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+    
+    
+    <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-xl max-w-lg w-full mx-4 z-10 transform transition-all duration-300 scale-95 opacity-0 border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-medium flex items-center">
+                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 rounded text-white mr-2 shadow-sm">
+                    <iconify-icon icon="mdi:magnify" width="16" height="16"></iconify-icon>
+                </div>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">站内搜索</span>
+            </h3>
+            <button id="site-search-close" class="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors duration-200 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <iconify-icon icon="mdi:close" width="20" height="20"></iconify-icon>
+            </button>
+        </div>
+        
+        <div class="p-6">
+            <form id="site-search-form" action="/search/" method="get">
+                <div class="relative">
+                    <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-all duration-300 shadow-sm hover:shadow-md">
+                        <span class="pl-4 text-gray-400">
+                            <iconify-icon icon="mdi:magnify" width="20" height="20"></iconify-icon>
+                        </span>
+                        <input 
+                            type="text" 
+                            id="site-search-input" 
+                            name="q" 
+                            placeholder="输入关键词搜索..."
+                            class="w-full px-3 py-3 border-none focus:outline-none bg-transparent text-gray-800 dark:text-gray-200"
+                            aria-label="搜索内容"
+                            tabindex="0"
+                        >
+                        <button 
+                            type="submit"
+                            class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3 hover:shadow-md transition-all duration-300 flex items-center"
+                            aria-label="搜索"
+                            tabindex="0">
+                            <span class="mr-1 hidden sm:inline">搜索</span>
+                            <iconify-icon icon="mdi:arrow-right" width="18" height="18"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="mt-6 text-sm text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30 flex items-start">
+                <div class="bg-blue-100 dark:bg-blue-800/50 p-1.5 rounded-full mr-3 mt-0.5">
+                    <iconify-icon icon="mdi:information" width="16" height="16" class="text-blue-500 dark:text-blue-300"></iconify-icon>
+                </div>
+                <div>
+                    <p class="mb-1">快捷键提示:</p>
+                    <ul class="space-y-1">
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">/</span>
+                            <span>打开搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Esc</span>
+                            <span>关闭搜索</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs font-mono mr-2">Enter</span>
+                            <span>提交搜索</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap gap-2">
+                    <a href="/tags/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:tag-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        标签
+                    </a>
+                    <a href="/categories/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:folder-multiple" class="mr-1" width="16" height="16"></iconify-icon>
+                        分类
+                    </a>
+                    <a href="/archives/" class="bg-gradient-to-r hover:bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md flex items-center">
+                        <iconify-icon icon="mdi:archive" class="mr-1" width="16" height="16"></iconify-icon>
+                        归档
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('site-search-modal');
+        const modalContent = modal.querySelector('div[class*="rounded-xl"]');
+        const backdrop = document.getElementById('site-search-backdrop');
+        const closeButton = document.getElementById('site-search-close');
+        const searchForm = document.getElementById('site-search-form');
+        const searchInput = document.getElementById('site-search-input');
+        
+        
+        window.openSiteSearch = function() {
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            
+            
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+                searchInput.focus();
+            }, 10);
+        };
+        
+        
+        function closeSiteSearch() {
+            
+            modal.classList.remove('opacity-100');
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        }
+        
+        
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        if (closeButton) {
+            closeButton.addEventListener('click', closeSiteSearch);
+        }
+        
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeSiteSearch();
+            }
+            
+            
+            if (e.key === '/' && modal.classList.contains('hidden') && document.activeElement.tagName !== 'INPUT') {
+                e.preventDefault();
+                openSiteSearch();
+            }
+        });
+        
+        
+        modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    });
+</script> 
+</body>
+</html> 

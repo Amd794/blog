@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hook on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/Hook/</link><description>Recent content in Hook on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 23 Jul 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/Hook/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 useRequestEvent Hook 访问请求事件</title><link>https://blog.cmdragon.cn/posts/7f6aeaffdd673a716b7f013f59aa69af/</link><pubDate>Tue, 23 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/7f6aeaffdd673a716b7f013f59aa69af/</guid><description>摘要：本文介绍Nuxt 3中useRequestEventHook的使用，可访问请求路径、方法和头部信息，适用于SSR环境下处理请求逻辑，如中间件、插件及API路由。仅服务器端生效，需注意安全性。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hook on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/Hook/</link>
+    <description>Recent content in Hook on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 23 Jul 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/Hook/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 useRequestEvent Hook 访问请求事件</title>
+      <link>https://blog.cmdragon.cn/posts/7f6aeaffdd673a716b7f013f59aa69af/</link>
+      <pubDate>Tue, 23 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/7f6aeaffdd673a716b7f013f59aa69af/</guid>
+      <description>摘要：本文介绍Nuxt 3中useRequestEventHook的使用，可访问请求路径、方法和头部信息，适用于SSR环境下处理请求逻辑，如中间件、插件及API路由。仅服务器端生效，需注意安全性。</description>
+    </item>
+  </channel>
+</rss>

@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>分布式数据库 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/</link><description>Recent content in 分布式数据库 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 15 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml"/><item><title>数据库扩展之道：分区、分片与大表优化实战</title><link>https://blog.cmdragon.cn/posts/ed72acd868f765d0ffbced2236b90190/</link><pubDate>Sat, 15 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/ed72acd868f765d0ffbced2236b90190/</guid><description>随着数据量的爆炸式增长，传统单机数据库的性能和存储能力逐渐成为瓶颈。数据库扩展的核心技术——分区（Partitioning）与分片（Sharding），并结合大表管理优化策略，提供从理论到实践的完整解决方案。通过实际案例（如 MySQL 分区实现、MongoDB 分片配置）和性能对比，读者将掌握如何通过分区与分片提升数据库吞吐量、降低延迟，并学会高效管理超大规模数据表</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>分布式数据库 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <description>Recent content in 分布式数据库 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 15 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据库扩展之道：分区、分片与大表优化实战</title>
+      <link>https://blog.cmdragon.cn/posts/ed72acd868f765d0ffbced2236b90190/</link>
+      <pubDate>Sat, 15 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/ed72acd868f765d0ffbced2236b90190/</guid>
+      <description>随着数据量的爆炸式增长，传统单机数据库的性能和存储能力逐渐成为瓶颈。数据库扩展的核心技术——分区（Partitioning）与分片（Sharding），并结合大表管理优化策略，提供从理论到实践的完整解决方案。通过实际案例（如 MySQL 分区实现、MongoDB 分片配置）和性能对比，读者将掌握如何通过分区与分片提升数据库吞吐量、降低延迟，并学会高效管理超大规模数据表</description>
+    </item>
+  </channel>
+</rss>

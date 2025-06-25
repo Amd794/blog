@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SQL注入 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/SQL%E6%B3%A8%E5%85%A5/</link><description>Recent content in SQL注入 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 12 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/SQL%E6%B3%A8%E5%85%A5/index.xml" rel="self" type="application/rss+xml"/><item><title>存储过程与触发器：提高数据库性能与安全性的利器</title><link>https://blog.cmdragon.cn/posts/712adcfc99736718e1182040d70fd36b/</link><pubDate>Wed, 12 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/712adcfc99736718e1182040d70fd36b/</guid><description>在现代数据库管理中，存储过程和触发器是两种强大的工具，能够极大提升操作效率和数据完整性。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL注入 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/SQL%E6%B3%A8%E5%85%A5/</link>
+    <description>Recent content in SQL注入 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/SQL%E6%B3%A8%E5%85%A5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>存储过程与触发器：提高数据库性能与安全性的利器</title>
+      <link>https://blog.cmdragon.cn/posts/712adcfc99736718e1182040d70fd36b/</link>
+      <pubDate>Wed, 12 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/712adcfc99736718e1182040d70fd36b/</guid>
+      <description>在现代数据库管理中，存储过程和触发器是两种强大的工具，能够极大提升操作效率和数据完整性。</description>
+    </item>
+  </channel>
+</rss>

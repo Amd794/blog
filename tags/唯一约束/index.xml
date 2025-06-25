@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>唯一约束 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%94%AF%E4%B8%80%E7%BA%A6%E6%9D%9F/</link><description>Recent content in 唯一约束 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 19 Jan 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%94%AF%E4%B8%80%E7%BA%A6%E6%9D%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>深入理解唯一约束：确保数据完整性的关键因素</title><link>https://blog.cmdragon.cn/posts/573e556ece0cb56c6d637ae77d5365c0/</link><pubDate>Sun, 19 Jan 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/573e556ece0cb56c6d637ae77d5365c0/</guid><description>在关系数据库中，唯一约束是一种重要的数据库约束，用于确保表中某一列或多列的值是唯一的，从而防止重复数据的出现。唯一约束不仅提高了数据的完整性和一致性，还在一定程度上影响了数据库的设计和性能。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>唯一约束 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%94%AF%E4%B8%80%E7%BA%A6%E6%9D%9F/</link>
+    <description>Recent content in 唯一约束 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 19 Jan 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%94%AF%E4%B8%80%E7%BA%A6%E6%9D%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入理解唯一约束：确保数据完整性的关键因素</title>
+      <link>https://blog.cmdragon.cn/posts/573e556ece0cb56c6d637ae77d5365c0/</link>
+      <pubDate>Sun, 19 Jan 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/573e556ece0cb56c6d637ae77d5365c0/</guid>
+      <description>在关系数据库中，唯一约束是一种重要的数据库约束，用于确保表中某一列或多列的值是唯一的，从而防止重复数据的出现。唯一约束不仅提高了数据的完整性和一致性，还在一定程度上影响了数据库的设计和性能。</description>
+    </item>
+  </channel>
+</rss>

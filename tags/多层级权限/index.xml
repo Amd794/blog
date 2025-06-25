@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>多层级权限 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%A4%9A%E5%B1%82%E7%BA%A7%E6%9D%83%E9%99%90/</link><description>Recent content in 多层级权限 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 04 Jun 2025 21:17:50 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%9A%E5%B1%82%E7%BA%A7%E6%9D%83%E9%99%90/index.xml" rel="self" type="application/rss+xml"/><item><title>FastAPI权限迷宫：RBAC与多层级依赖的魔法通关秘籍</title><link>https://blog.cmdragon.cn/posts/ee5486714707d4835d4a774696dca30a/</link><pubDate>Wed, 04 Jun 2025 21:17:50 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/ee5486714707d4835d4a774696dca30a/</guid><description>FastAPI权限管理系统通过RBAC（基于角色的访问控制）实现用户与权限的解耦，核心要素包括用户、角色、权限和访问策略。系统使用OAuth2PasswordBearer进行认证，并通过依赖项工厂函数实现权限检查。权限依赖项支持多层级组合，允许组合多个权限检查或创建组合验证函数。常见报错包括HTTP 403 Forbidden和HTTP 401 Unauthorized，建议通过中间件和单元测试进行预防和验证。开发环境配置简单，使用FastAPI、Pydantic和Uvicorn即可快速搭建系统。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>多层级权限 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%A4%9A%E5%B1%82%E7%BA%A7%E6%9D%83%E9%99%90/</link>
+    <description>Recent content in 多层级权限 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 04 Jun 2025 21:17:50 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%A4%9A%E5%B1%82%E7%BA%A7%E6%9D%83%E9%99%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastAPI权限迷宫：RBAC与多层级依赖的魔法通关秘籍</title>
+      <link>https://blog.cmdragon.cn/posts/ee5486714707d4835d4a774696dca30a/</link>
+      <pubDate>Wed, 04 Jun 2025 21:17:50 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/ee5486714707d4835d4a774696dca30a/</guid>
+      <description>FastAPI权限管理系统通过RBAC（基于角色的访问控制）实现用户与权限的解耦，核心要素包括用户、角色、权限和访问策略。系统使用OAuth2PasswordBearer进行认证，并通过依赖项工厂函数实现权限检查。权限依赖项支持多层级组合，允许组合多个权限检查或创建组合验证函数。常见报错包括HTTP 403 Forbidden和HTTP 401 Unauthorized，建议通过中间件和单元测试进行预防和验证。开发环境配置简单，使用FastAPI、Pydantic和Uvicorn即可快速搭建系统。</description>
+    </item>
+  </channel>
+</rss>

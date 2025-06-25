@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>共享 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%85%B1%E4%BA%AB/</link><description>Recent content in 共享 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 22 Jul 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%85%B1%E4%BA%AB/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 useNuxtData 进行高效的数据获取与管理</title><link>https://blog.cmdragon.cn/posts/5097e3f618f180282a847588006a51d8/</link><pubDate>Mon, 22 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/5097e3f618f180282a847588006a51d8/</guid><description>深入讲解了Nuxt 3中useNuxtData组合函数的应用，演示了如何通过此函数访问缓存数据，实现组件间数据共享，以及如何在数据更新时利用缓存提高用户体验。文章提供了具体的用法示例，包括数据获取、访问缓存数据和数据更新的场景。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>共享 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%85%B1%E4%BA%AB/</link>
+    <description>Recent content in 共享 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 22 Jul 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%85%B1%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 useNuxtData 进行高效的数据获取与管理</title>
+      <link>https://blog.cmdragon.cn/posts/5097e3f618f180282a847588006a51d8/</link>
+      <pubDate>Mon, 22 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/5097e3f618f180282a847588006a51d8/</guid>
+      <description>深入讲解了Nuxt 3中useNuxtData组合函数的应用，演示了如何通过此函数访问缓存数据，实现组件间数据共享，以及如何在数据更新时利用缓存提高用户体验。文章提供了具体的用法示例，包括数据获取、访问缓存数据和数据更新的场景。</description>
+    </item>
+  </channel>
+</rss>

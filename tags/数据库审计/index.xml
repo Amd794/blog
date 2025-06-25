@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据库审计 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1/</link><description>Recent content in 数据库审计 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 18 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1/index.xml" rel="self" type="application/rss+xml"/><item><title>数据库审计与智能监控：从日志分析到异常检测</title><link>https://blog.cmdragon.cn/posts/9c2a135562a18261d70cc5637df435e5/</link><pubDate>Tue, 18 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/9c2a135562a18261d70cc5637df435e5/</guid><description>数据库审计与监控是安全运营中心（SOC）的核心能力。数据库审计策略设计、性能瓶颈定位、异常行为检测三大关键领域，通过Oracle统一审计、MySQL企业版审计插件、PostgreSQL pg_stat_statements等30+实战案例，展示如何构建全维度监控体系。</description></item><item><title>数据库审计与监控</title><link>https://blog.cmdragon.cn/posts/0dbe53ca415995914ef7c59e7ca6e79a/</link><pubDate>Fri, 20 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/0dbe53ca415995914ef7c59e7ca6e79a/</guid><description>数据库审计与监控是确保数据库安全性和性能的关键环节。通过实施有效的审计策略，可以追踪用户活动，监控数据访问与修改，从而及时发现潜在的安全威胁和性能瓶颈。探讨数据库审计的基本概念、审计策略和监控工具，帮助读者了解如何实施数据库的有效审计与监控。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据库审计 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1/</link>
+    <description>Recent content in 数据库审计 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 18 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A1%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据库审计与智能监控：从日志分析到异常检测</title>
+      <link>https://blog.cmdragon.cn/posts/9c2a135562a18261d70cc5637df435e5/</link>
+      <pubDate>Tue, 18 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/9c2a135562a18261d70cc5637df435e5/</guid>
+      <description>数据库审计与监控是安全运营中心（SOC）的核心能力。数据库审计策略设计、性能瓶颈定位、异常行为检测三大关键领域，通过Oracle统一审计、MySQL企业版审计插件、PostgreSQL pg_stat_statements等30+实战案例，展示如何构建全维度监控体系。</description>
+    </item>
+    <item>
+      <title>数据库审计与监控</title>
+      <link>https://blog.cmdragon.cn/posts/0dbe53ca415995914ef7c59e7ca6e79a/</link>
+      <pubDate>Fri, 20 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/0dbe53ca415995914ef7c59e7ca6e79a/</guid>
+      <description>数据库审计与监控是确保数据库安全性和性能的关键环节。通过实施有效的审计策略，可以追踪用户活动，监控数据访问与修改，从而及时发现潜在的安全威胁和性能瓶颈。探讨数据库审计的基本概念、审计策略和监控工具，帮助读者了解如何实施数据库的有效审计与监控。</description>
+    </item>
+  </channel>
+</rss>

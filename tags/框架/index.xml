@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>框架 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%A1%86%E6%9E%B6/</link><description>Recent content in 框架 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 16 Sep 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt Kit 中的上下文处理</title><link>https://blog.cmdragon.cn/posts/0c616d045fcf8bf6026e64847e449417/</link><pubDate>Mon, 16 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/0c616d045fcf8bf6026e64847e449417/</guid><description>Nuxt Kit 提供的上下文处理工具，尤其是 useNuxt 和 tryUseNuxt，为模块化开发提供了极大的便利。通过这些函数，开发者可以方便地访问 Nuxt 实例，从而更好地管理应用配置。</description></item><item><title>使用 useLazyFetch 进行异步数据获取</title><link>https://blog.cmdragon.cn/posts/382133fd6ac27845d845a7fa96e5ba43/</link><pubDate>Sat, 20 Jul 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/382133fd6ac27845d845a7fa96e5ba43/</guid><description>摘要：“使用 useLazyFetch 进行异步数据获取”介绍了在Nuxt开发中利用useLazyFetch进行异步数据加载的方法，强调其立即触发导航特性，与useFetch相似的使用方式，以及如何处理数据状态和错误，通过示例展示如何在模板中根据数据加载状态显示不同内容。</description></item><item><title>Vue微前端架构与Qiankun实践理论指南</title><link>https://blog.cmdragon.cn/posts/85413b9cd655f3440b957120c918e610/</link><pubDate>Sat, 15 Jun 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/85413b9cd655f3440b957120c918e610/</guid><description>这篇文章介绍了微前端架构概念，聚焦于如何在Vue.js项目中应用Qiankun框架实现模块化和组件化，以达到高效开发和维护的目的。讨论了Qiankun的原理、如何设置主应用与子应用的通信，以及如何解决跨域问题和优化集成过程，从而实现前端应用的灵活扩展与组织。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>框架 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%A1%86%E6%9E%B6/</link>
+    <description>Recent content in 框架 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 16 Sep 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt Kit 中的上下文处理</title>
+      <link>https://blog.cmdragon.cn/posts/0c616d045fcf8bf6026e64847e449417/</link>
+      <pubDate>Mon, 16 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/0c616d045fcf8bf6026e64847e449417/</guid>
+      <description>Nuxt Kit 提供的上下文处理工具，尤其是 useNuxt 和 tryUseNuxt，为模块化开发提供了极大的便利。通过这些函数，开发者可以方便地访问 Nuxt 实例，从而更好地管理应用配置。</description>
+    </item>
+    <item>
+      <title>使用 useLazyFetch 进行异步数据获取</title>
+      <link>https://blog.cmdragon.cn/posts/382133fd6ac27845d845a7fa96e5ba43/</link>
+      <pubDate>Sat, 20 Jul 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/382133fd6ac27845d845a7fa96e5ba43/</guid>
+      <description>摘要：“使用 useLazyFetch 进行异步数据获取”介绍了在Nuxt开发中利用useLazyFetch进行异步数据加载的方法，强调其立即触发导航特性，与useFetch相似的使用方式，以及如何处理数据状态和错误，通过示例展示如何在模板中根据数据加载状态显示不同内容。</description>
+    </item>
+    <item>
+      <title>Vue微前端架构与Qiankun实践理论指南</title>
+      <link>https://blog.cmdragon.cn/posts/85413b9cd655f3440b957120c918e610/</link>
+      <pubDate>Sat, 15 Jun 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/85413b9cd655f3440b957120c918e610/</guid>
+      <description>这篇文章介绍了微前端架构概念，聚焦于如何在Vue.js项目中应用Qiankun框架实现模块化和组件化，以达到高效开发和维护的目的。讨论了Qiankun的原理、如何设置主应用与子应用的通信，以及如何解决跨域问题和优化集成过程，从而实现前端应用的灵活扩展与组织。</description>
+    </item>
+  </channel>
+</rss>

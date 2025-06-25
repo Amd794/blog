@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>安装指南 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</link><description>Recent content in 安装指南 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 26 Dec 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/index.xml" rel="self" type="application/rss+xml"/><item><title>在不同操作系统上安装 PostgreSQL</title><link>https://blog.cmdragon.cn/posts/fa06acfda3deefb94725714fe93e6ecb/</link><pubDate>Thu, 26 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/fa06acfda3deefb94725714fe93e6ecb/</guid><description>PostgreSQL 是当今最受欢迎的开源关系数据库管理系统之一，由于其强大的功能和灵活性，广泛应用于不同的行业和应用场景。在开始使用 PostgreSQL 之前，用户需要了解如何在不同的操作系统（如 Linux、Windows 和 macOS）上正确安装。每种操作系统都有其独特的安装步骤和注意事项，因此掌握这些细节对于顺利搭建数据库环境至关重要。</description></item><item><title>PostgreSQL 的系统要求</title><link>https://blog.cmdragon.cn/posts/470bb6899affac77deeb5f9a73fa47b3/</link><pubDate>Wed, 25 Dec 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/470bb6899affac77deeb5f9a73fa47b3/</guid><description>PostgreSQL 是一款功能强大的开源关系型数据库，广泛应用于企业应用、数据分析和互联网服务中。为了在不同的硬件和软件环境中顺利运行，PostgreSQL 对系统的要求也各有不同。了解 PostgreSQL 的系统要求对于成功部署和维护数据库至关重要。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>安装指南 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</link>
+    <description>Recent content in 安装指南 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 26 Dec 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在不同操作系统上安装 PostgreSQL</title>
+      <link>https://blog.cmdragon.cn/posts/fa06acfda3deefb94725714fe93e6ecb/</link>
+      <pubDate>Thu, 26 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/fa06acfda3deefb94725714fe93e6ecb/</guid>
+      <description>PostgreSQL 是当今最受欢迎的开源关系数据库管理系统之一，由于其强大的功能和灵活性，广泛应用于不同的行业和应用场景。在开始使用 PostgreSQL 之前，用户需要了解如何在不同的操作系统（如 Linux、Windows 和 macOS）上正确安装。每种操作系统都有其独特的安装步骤和注意事项，因此掌握这些细节对于顺利搭建数据库环境至关重要。</description>
+    </item>
+    <item>
+      <title>PostgreSQL 的系统要求</title>
+      <link>https://blog.cmdragon.cn/posts/470bb6899affac77deeb5f9a73fa47b3/</link>
+      <pubDate>Wed, 25 Dec 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/470bb6899affac77deeb5f9a73fa47b3/</guid>
+      <description>PostgreSQL 是一款功能强大的开源关系型数据库，广泛应用于企业应用、数据分析和互联网服务中。为了在不同的硬件和软件环境中顺利运行，PostgreSQL 对系统的要求也各有不同。了解 PostgreSQL 的系统要求对于成功部署和维护数据库至关重要。</description>
+    </item>
+  </channel>
+</rss>

@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>唯一性校验 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%94%AF%E4%B8%80%E6%80%A7%E6%A0%A1%E9%AA%8C/</link><description>Recent content in 唯一性校验 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 02 Apr 2025 00:47:55 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%94%AF%E4%B8%80%E6%80%A7%E6%A0%A1%E9%AA%8C/index.xml" rel="self" type="application/rss+xml"/><item><title>FastAPI中Pydantic异步分布式唯一性校验</title><link>https://blog.cmdragon.cn/posts/e92a3da8b4e4beaf5a14ef4c79489b42/</link><pubDate>Wed, 02 Apr 2025 00:47:55 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/e92a3da8b4e4beaf5a14ef4c79489b42/</guid><description>FastAPI开发中，异步分布式唯一性校验通过异步IO、分布式锁和二级缓存技术解决传统同步校验的并发冲突、性能瓶颈和响应延迟问题。手机和邮箱的唯一性校验通过Pydantic模型定义、异步校验服务层和路由层集成实现。多级缓存策略结合本地缓存、Redis和数据库，确保数据一致性。Redis分布式锁防止并发冲突，速率限制中间件防止恶意请求。常见报错包括锁超时和非法手机号，需调整锁超时时间和净化输入。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>唯一性校验 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%94%AF%E4%B8%80%E6%80%A7%E6%A0%A1%E9%AA%8C/</link>
+    <description>Recent content in 唯一性校验 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 02 Apr 2025 00:47:55 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%94%AF%E4%B8%80%E6%80%A7%E6%A0%A1%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastAPI中Pydantic异步分布式唯一性校验</title>
+      <link>https://blog.cmdragon.cn/posts/e92a3da8b4e4beaf5a14ef4c79489b42/</link>
+      <pubDate>Wed, 02 Apr 2025 00:47:55 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/e92a3da8b4e4beaf5a14ef4c79489b42/</guid>
+      <description>FastAPI开发中，异步分布式唯一性校验通过异步IO、分布式锁和二级缓存技术解决传统同步校验的并发冲突、性能瓶颈和响应延迟问题。手机和邮箱的唯一性校验通过Pydantic模型定义、异步校验服务层和路由层集成实现。多级缓存策略结合本地缓存、Redis和数据库，确保数据一致性。Redis分布式锁防止并发冲突，速率限制中间件防止恶意请求。常见报错包括锁超时和非法手机号，需调整锁超时时间和净化输入。</description>
+    </item>
+  </channel>
+</rss>

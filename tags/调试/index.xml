@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>调试 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E8%B0%83%E8%AF%95/</link><description>Recent content in 调试 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 28 Nov 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E8%B0%83%E8%AF%95/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 dev：ssr-logs 事件钩子</title><link>https://blog.cmdragon.cn/posts/ef86af3b9be34b11d75fa32951b147bd/</link><pubDate>Thu, 28 Nov 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/ef86af3b9be34b11d75fa32951b147bd/</guid><description>dev:ssr-logs 是一个用在服务器端渲染（SSR）中，用于输出日志的事件钩子。这个钩子会在请求周期结束时被调用，产生的参数包括日志路径与日志内容。这对于调试和监控服务器端的行为非常有用，特别是在开发环境下。</description></item><item><title>探索 Nuxt Devtools：功能全面指南</title><link>https://blog.cmdragon.cn/posts/ba266042f1b1b5d48140c44161ea0421/</link><pubDate>Tue, 03 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/ba266042f1b1b5d48140c44161ea0421/</guid><description>摘要：本文介绍了Nuxt Devtools的功能和使用方法，包括自动安装、手动安装和各项主要功能，如页面、组件、构建分析等。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>调试 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E8%B0%83%E8%AF%95/</link>
+    <description>Recent content in 调试 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 28 Nov 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E8%B0%83%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 dev：ssr-logs 事件钩子</title>
+      <link>https://blog.cmdragon.cn/posts/ef86af3b9be34b11d75fa32951b147bd/</link>
+      <pubDate>Thu, 28 Nov 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/ef86af3b9be34b11d75fa32951b147bd/</guid>
+      <description>dev:ssr-logs 是一个用在服务器端渲染（SSR）中，用于输出日志的事件钩子。这个钩子会在请求周期结束时被调用，产生的参数包括日志路径与日志内容。这对于调试和监控服务器端的行为非常有用，特别是在开发环境下。</description>
+    </item>
+    <item>
+      <title>探索 Nuxt Devtools：功能全面指南</title>
+      <link>https://blog.cmdragon.cn/posts/ba266042f1b1b5d48140c44161ea0421/</link>
+      <pubDate>Tue, 03 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/ba266042f1b1b5d48140c44161ea0421/</guid>
+      <description>摘要：本文介绍了Nuxt Devtools的功能和使用方法，包括自动安装、手动安装和各项主要功能，如页面、组件、构建分析等。</description>
+    </item>
+  </channel>
+</rss>

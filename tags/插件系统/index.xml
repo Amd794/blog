@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>插件系统 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link><description>Recent content in 插件系统 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 26 Sep 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>深入理解 Nuxt 中的 app created 钩子</title><link>https://blog.cmdragon.cn/posts/1e03ef2ae917ee8f6e9c9e63cdb6174d/</link><pubDate>Thu, 26 Sep 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/1e03ef2ae917ee8f6e9c9e63cdb6174d/</guid><description>摘要：本文深入介绍了 Nuxt.js 中的 app:created 钩子，包括其触发时机、用途及使用方法。通过创建 Nuxt 项目、编写插件实现钩子、注册全局组件和配置，展示了在应用初始化阶段执行相关逻辑的实践过程。文中还提供了步骤说明和示例代码，帮助开发者理解如何在项目中有效利用此钩子进行全局设置。</description></item><item><title>Vue CLI 4与项目构建实战指南</title><link>https://blog.cmdragon.cn/posts/1bc94247adf6eba156f12ce9810503fa/</link><pubDate>Sun, 09 Jun 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/1bc94247adf6eba156f12ce9810503fa/</guid><description>这篇文章介绍了如何使用Vue CLI优化项目构建配置，提高开发效率，涉及配置管理、项目部署策略、插件系统定制以及Webpack和TypeScript的深度集成技巧。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>插件系统 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
+    <description>Recent content in 插件系统 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 26 Sep 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入理解 Nuxt 中的 app created 钩子</title>
+      <link>https://blog.cmdragon.cn/posts/1e03ef2ae917ee8f6e9c9e63cdb6174d/</link>
+      <pubDate>Thu, 26 Sep 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/1e03ef2ae917ee8f6e9c9e63cdb6174d/</guid>
+      <description>摘要：本文深入介绍了 Nuxt.js 中的 app:created 钩子，包括其触发时机、用途及使用方法。通过创建 Nuxt 项目、编写插件实现钩子、注册全局组件和配置，展示了在应用初始化阶段执行相关逻辑的实践过程。文中还提供了步骤说明和示例代码，帮助开发者理解如何在项目中有效利用此钩子进行全局设置。</description>
+    </item>
+    <item>
+      <title>Vue CLI 4与项目构建实战指南</title>
+      <link>https://blog.cmdragon.cn/posts/1bc94247adf6eba156f12ce9810503fa/</link>
+      <pubDate>Sun, 09 Jun 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/1bc94247adf6eba156f12ce9810503fa/</guid>
+      <description>这篇文章介绍了如何使用Vue CLI优化项目构建配置，提高开发效率，涉及配置管理、项目部署策略、插件系统定制以及Webpack和TypeScript的深度集成技巧。</description>
+    </item>
+  </channel>
+</rss>

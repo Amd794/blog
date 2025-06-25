@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VFS on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/VFS/</link><description>Recent content in VFS on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 19 Oct 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/VFS/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt.js 应用中的 app：templatesGenerated 事件钩子详解</title><link>https://blog.cmdragon.cn/posts/3c565b88d4290c513e7c55ef934ec509/</link><pubDate>Sat, 19 Oct 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/3c565b88d4290c513e7c55ef934ec509/</guid><description>app:templatesGenerated 是 Nuxt.js 的一个生命周期钩子，在模板编译到虚拟文件系统（Virtual File System, VFS）之后被调用。这个钩子允许开发者在生成的模板文件准备好之后进行进一步的处理或自定义。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VFS on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/VFS/</link>
+    <description>Recent content in VFS on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 19 Oct 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/VFS/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuxt.js 应用中的 app：templatesGenerated 事件钩子详解</title>
+      <link>https://blog.cmdragon.cn/posts/3c565b88d4290c513e7c55ef934ec509/</link>
+      <pubDate>Sat, 19 Oct 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/3c565b88d4290c513e7c55ef934ec509/</guid>
+      <description>app:templatesGenerated 是 Nuxt.js 的一个生命周期钩子，在模板编译到虚拟文件系统（Virtual File System, VFS）之后被调用。这个钩子允许开发者在生成的模板文件准备好之后进行进一步的处理或自定义。</description>
+    </item>
+  </channel>
+</rss>

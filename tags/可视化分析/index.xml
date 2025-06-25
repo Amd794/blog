@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>可视化分析 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/</link><description>Recent content in 可视化分析 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 11 Apr 2025 15:00:50 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml"/><item><title>FastAPI依赖注入系统及调试技巧</title><link>https://blog.cmdragon.cn/posts/a00b68c25cfc537b46f9b263b1655fd0/</link><pubDate>Fri, 11 Apr 2025 15:00:50 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/a00b68c25cfc537b46f9b263b1655fd0/</guid><description>FastAPI的依赖注入系统采用树状结构管理依赖关系，自动解析并执行依赖项。复杂依赖关系可能导致循环依赖、性能问题、逻辑错误和调试困难。使用FastAPI内置调试接口和pydeps工具可生成依赖图，帮助可视化调试。通过重构代码打破循环依赖，使用lru_cache缓存实例，可解决常见报错如DependencyCycleError和DependencyNotInstantiableError。保持依赖树层级不超过5层，定期检查依赖结构，编写单元测试，使用类型提示，可预防问题。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>可视化分析 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/</link>
+    <description>Recent content in 可视化分析 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 11 Apr 2025 15:00:50 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastAPI依赖注入系统及调试技巧</title>
+      <link>https://blog.cmdragon.cn/posts/a00b68c25cfc537b46f9b263b1655fd0/</link>
+      <pubDate>Fri, 11 Apr 2025 15:00:50 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/a00b68c25cfc537b46f9b263b1655fd0/</guid>
+      <description>FastAPI的依赖注入系统采用树状结构管理依赖关系，自动解析并执行依赖项。复杂依赖关系可能导致循环依赖、性能问题、逻辑错误和调试困难。使用FastAPI内置调试接口和pydeps工具可生成依赖图，帮助可视化调试。通过重构代码打破循环依赖，使用lru_cache缓存实例，可解决常见报错如DependencyCycleError和DependencyNotInstantiableError。保持依赖树层级不超过5层，定期检查依赖结构，编写单元测试，使用类型提示，可预防问题。</description>
+    </item>
+  </channel>
+</rss>

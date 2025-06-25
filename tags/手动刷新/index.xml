@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>手动刷新 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%89%8B%E5%8A%A8%E5%88%B7%E6%96%B0/</link><description>Recent content in 手动刷新 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 21 Aug 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%89%8B%E5%8A%A8%E5%88%B7%E6%96%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 refreshNuxtData 刷新 Nuxt应用 中的数据</title><link>https://blog.cmdragon.cn/posts/1d66580f8a7e8510b9f9af6272aecc2e/</link><pubDate>Wed, 21 Aug 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/1d66580f8a7e8510b9f9af6272aecc2e/</guid><description>refreshNuxtData 是 Nuxt 3 中一个非常有用的函数，能够帮助你在数据更新后及时刷新页面。通过了解如何刷新所有数据和刷新特定数据，你可以更灵活地控制数据更新的时机和方式。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>手动刷新 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%89%8B%E5%8A%A8%E5%88%B7%E6%96%B0/</link>
+    <description>Recent content in 手动刷新 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 21 Aug 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%89%8B%E5%8A%A8%E5%88%B7%E6%96%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 refreshNuxtData 刷新 Nuxt应用 中的数据</title>
+      <link>https://blog.cmdragon.cn/posts/1d66580f8a7e8510b9f9af6272aecc2e/</link>
+      <pubDate>Wed, 21 Aug 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/1d66580f8a7e8510b9f9af6272aecc2e/</guid>
+      <description>refreshNuxtData 是 Nuxt 3 中一个非常有用的函数，能够帮助你在数据更新后及时刷新页面。通过了解如何刷新所有数据和刷新特定数据，你可以更灵活地控制数据更新的时机和方式。</description>
+    </item>
+  </channel>
+</rss>

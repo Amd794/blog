@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pydantic根校验器 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/Pydantic%E6%A0%B9%E6%A0%A1%E9%AA%8C%E5%99%A8/</link><description>Recent content in Pydantic根校验器 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 24 Mar 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/Pydantic%E6%A0%B9%E6%A0%A1%E9%AA%8C%E5%99%A8/index.xml" rel="self" type="application/rss+xml"/><item><title>Pydantic根校验器：构建跨字段验证系统</title><link>https://blog.cmdragon.cn/posts/3c17dfcf84fdc8190e40286d114cebb7/</link><pubDate>Mon, 24 Mar 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/3c17dfcf84fdc8190e40286d114cebb7/</guid><description>Pydantic根校验器支持预处理(pre)与后处理(post)模式，可访问全量字段数据并修改值字典。多字段关联验证实现业务规则检查，如航班时间顺序与保险策略联动。分阶段验证流程通过pre校验器拆分复杂校验步骤。企业级应用包含分布式事务余额验证及动态策略加载，集成外部服务与策略模式。递归校验器处理树状结构数据查重，异步校验实现网络资源可用性检测。校验顺序控制采用skip_on_failure确保阶段隔离，缓存机制优化高频校验性能。错误处理需关注字段存在性检查与异步资源管理，推荐使用pre校验器拆分循环依赖，遵循&amp;quot;单一出口&amp;quot;原则构建模块化验证管道。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pydantic根校验器 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/Pydantic%E6%A0%B9%E6%A0%A1%E9%AA%8C%E5%99%A8/</link>
+    <description>Recent content in Pydantic根校验器 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 24 Mar 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/Pydantic%E6%A0%B9%E6%A0%A1%E9%AA%8C%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pydantic根校验器：构建跨字段验证系统</title>
+      <link>https://blog.cmdragon.cn/posts/3c17dfcf84fdc8190e40286d114cebb7/</link>
+      <pubDate>Mon, 24 Mar 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/3c17dfcf84fdc8190e40286d114cebb7/</guid>
+      <description>Pydantic根校验器支持预处理(pre)与后处理(post)模式，可访问全量字段数据并修改值字典。多字段关联验证实现业务规则检查，如航班时间顺序与保险策略联动。分阶段验证流程通过pre校验器拆分复杂校验步骤。企业级应用包含分布式事务余额验证及动态策略加载，集成外部服务与策略模式。递归校验器处理树状结构数据查重，异步校验实现网络资源可用性检测。校验顺序控制采用skip_on_failure确保阶段隔离，缓存机制优化高频校验性能。错误处理需关注字段存在性检查与异步资源管理，推荐使用pre校验器拆分循环依赖，遵循&amp;quot;单一出口&amp;quot;原则构建模块化验证管道。</description>
+    </item>
+  </channel>
+</rss>

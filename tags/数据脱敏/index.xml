@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据脱敏 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F/</link><description>Recent content in 数据脱敏 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 16 Feb 2025 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>数据库安全实战：访问控制与行级权限管理</title><link>https://blog.cmdragon.cn/posts/a49721363d1cea8f5fac980120f52242/</link><pubDate>Sun, 16 Feb 2025 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/a49721363d1cea8f5fac980120f52242/</guid><description>在数据泄露事件频发的今天，数据库访问控制是保护企业核心资产的最后一道防线。数据库安全体系的三大核心组件——用户角色管理、权限授权机制和行列级安全控制，通过PostgreSQL行级安全策略、Oracle VPD实战、MySQL加密列等20+生产级案例，揭示如何构建细粒度访问控制体系。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据脱敏 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F/</link>
+    <description>Recent content in 数据脱敏 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 16 Feb 2025 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据库安全实战：访问控制与行级权限管理</title>
+      <link>https://blog.cmdragon.cn/posts/a49721363d1cea8f5fac980120f52242/</link>
+      <pubDate>Sun, 16 Feb 2025 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/a49721363d1cea8f5fac980120f52242/</guid>
+      <description>在数据泄露事件频发的今天，数据库访问控制是保护企业核心资产的最后一道防线。数据库安全体系的三大核心组件——用户角色管理、权限授权机制和行列级安全控制，通过PostgreSQL行级安全策略、Oracle VPD实战、MySQL加密列等20+生产级案例，揭示如何构建细粒度访问控制体系。</description>
+    </item>
+  </channel>
+</rss>

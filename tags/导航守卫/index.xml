@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>导航守卫 on cmdragon's Blog</title><link>https://blog.cmdragon.cn/tags/%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/</link><description>Recent content in 导航守卫 on cmdragon's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 07 Jun 2024 00:18:53 +0800</lastBuildDate><atom:link href="https://blog.cmdragon.cn/tags/%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/index.xml" rel="self" type="application/rss+xml"/><item><title>Vue Router 4与路由管理实战</title><link>https://blog.cmdragon.cn/posts/9864ca7da0f35e47de9787f07fc29d2e/</link><pubDate>Fri, 07 Jun 2024 00:18:53 +0800</pubDate><guid>https://blog.cmdragon.cn/posts/9864ca7da0f35e47de9787f07fc29d2e/</guid><description>这篇文章介绍了如何在Vue.js应用中利用Vue Router实现单页面应用的路由管理，包括配置路由、导航守卫的使用、路由懒加载以优化性能以及动态路由的实现方法，旨在提升用户体验和应用加载效率</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>导航守卫 on cmdragon&#39;s Blog</title>
+    <link>https://blog.cmdragon.cn/tags/%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/</link>
+    <description>Recent content in 导航守卫 on cmdragon&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 07 Jun 2024 00:18:53 +0800</lastBuildDate>
+    <atom:link href="https://blog.cmdragon.cn/tags/%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue Router 4与路由管理实战</title>
+      <link>https://blog.cmdragon.cn/posts/9864ca7da0f35e47de9787f07fc29d2e/</link>
+      <pubDate>Fri, 07 Jun 2024 00:18:53 +0800</pubDate>
+      <guid>https://blog.cmdragon.cn/posts/9864ca7da0f35e47de9787f07fc29d2e/</guid>
+      <description>这篇文章介绍了如何在Vue.js应用中利用Vue Router实现单页面应用的路由管理，包括配置路由、导航守卫的使用、路由懒加载以优化性能以及动态路由的实现方法，旨在提升用户体验和应用加载效率</description>
+    </item>
+  </channel>
+</rss>
