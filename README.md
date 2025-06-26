@@ -67,10 +67,6 @@ tags: ["标签1", "标签2"]
 
 编辑 `hugo.toml` 文件以更改站点配置。
 
-### 修改样式
-
-本站点使用CDN加载TailwindCSS。如需自定义样式，可以编辑 `layouts/_default/baseof.html` 中的TailwindCSS配置。
-
 ## 部署
 
 构建站点后，`public` 目录中的内容可以部署到任何静态网站托管服务，如GitHub Pages、Netlify、Vercel等。

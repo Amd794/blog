@@ -2,7 +2,6 @@
 /public/
 /node_modules/
 build.bat
-package-lock.json
 /resources/_gen/
 /assets/jsconfig.json
 hugo_stats.json
