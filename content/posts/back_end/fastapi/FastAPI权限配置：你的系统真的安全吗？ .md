@@ -1,4 +1,4 @@
-----
+---
 url: /posts/96b6ede65030daa4613ab92da1d739a6/
 title: FastAPI权限配置：你的系统真的安全吗？
 date: 2025-06-26T07:35:35+08:00
@@ -20,7 +20,7 @@ tags:
   - 依赖注入
   - 安全配置
 
-----
+---
 
 <img src="https://static.shutu.cn/shutu/jpeg/open03/2025/06/26/5986e6302ed543fc62741841d4103304.jpeg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
