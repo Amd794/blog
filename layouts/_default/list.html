@@ -15,23 +15,23 @@
             <article class="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
                 <div class="p-6">
                     <h2 class="text-2xl font-bold mb-3">
-                        <a href="{{ .Permalink }}" class="text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors duration-200 hover:underline decoration-blue-500 decoration-2 underline-offset-2">
+                        <a href="{{ .Permalink }}" class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 hover:underline decoration-blue-500 decoration-2 underline-offset-2">
                             {{ .Title }}
                         </a>
                     </h2>
                     
-                    <div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 mb-4 gap-3">
-                        <span class="flex items-center bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full">
+                    <div class="flex flex-wrap items-center text-sm text-gray-600 dark:text-gray-300 mb-4 gap-3">
+                        <span class="flex items-center bg-gray-200 dark:bg-gray-700 px-3 py-1.5 rounded-full">
                             <iconify-icon icon="mdi:calendar" class="mr-1" width="16" height="16"></iconify-icon>
                             {{ .Date.Format "2006-01-02" }}
                         </span>
                         
                         {{ with .Params.categories }}
-                            <span class="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1.5 rounded-full">
+                            <span class="flex items-center bg-blue-200 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1.5 rounded-full">
                                 <iconify-icon icon="mdi:folder" class="mr-1" width="16" height="16"></iconify-icon>
                                 {{ range $index, $category := . }}
                                     {{ if $index }}, {{ end }}
-                                    <a href="{{ "/categories/" | relLangURL }}{{ $category | urlize }}" class="hover:text-primary transition-colors">
+                                    <a href="{{ "/categories/" | relLangURL }}{{ $category | urlize }}" class="hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
                                         {{ $category }}
                                     </a>
                                 {{ end }}
@@ -39,7 +39,7 @@
                         {{ end }}
                         
                         <!-- 添加阅读时间估计 -->
-                        <span class="flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-full">
+                        <span class="flex items-center bg-purple-200 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1.5 rounded-full">
                             <iconify-icon icon="mdi:clock-outline" class="mr-1" width="16" height="16"></iconify-icon>
                             {{ math.Round (div (countwords .Content) 200.0) }} 分钟阅读
                         </span>
@@ -55,17 +55,17 @@
                     {{ end }}
                     
                     {{ with .Summary }}
-                        <div class="text-gray-700 dark:text-gray-300 mb-4 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-600">
+                        <div class="text-gray-700 dark:text-gray-200 mb-4 bg-gray-50 dark:bg-gray-700 p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-600">
                             {{ . | safeHTML }}
                         </div>
                     {{ else }}
-                        <div class="text-gray-700 dark:text-gray-300 mb-4 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-600">
+                        <div class="text-gray-700 dark:text-gray-200 mb-4 bg-gray-50 dark:bg-gray-700 p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-600">
                             {{ .Content | truncate 280 }}
                         </div>
                     {{ end }}
                     
                     <div class="flex flex-wrap justify-between items-center gap-4">
-                        <a href="{{ .Permalink }}" class="inline-flex items-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300 transform hover:translate-y-[-2px]">
+                        <a href="{{ .Permalink }}" class="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300 transform hover:translate-y-[-2px]">
                             阅读更多
                             <iconify-icon icon="mdi:arrow-right" class="ml-1" width="16" height="16"></iconify-icon>
                         </a>
@@ -75,13 +75,13 @@
                         <div class="flex flex-wrap gap-2">
                             {{ range first 3 . }}
                                 <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" 
-                                class="text-xs px-2 py-1 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white transition-colors duration-200">
+                                class="text-xs px-2 py-1 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-blue-600 hover:text-white transition-colors duration-200">
                                     #{{ . }}
                                 </a>
                             {{ end }}
                             
                             {{ if gt (len .) 3 }}
-                                <span class="text-xs px-2 py-1 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                                <span class="text-xs px-2 py-1 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
                                     +{{ sub (len .) 3 }}
                                 </span>
                             {{ end }}
@@ -108,28 +108,28 @@
         {{ if or .Paginator.HasPrev .Paginator.HasNext }}
             <nav class="flex justify-between items-center">
                 {{ if .Paginator.HasPrev }}
-                    <a href="{{ .Paginator.Prev.URL }}" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300 flex items-center">
+                    <a href="{{ .Paginator.Prev.URL }}" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300 flex items-center">
                         <iconify-icon icon="mdi:chevron-left" class="mr-1" width="20" height="20"></iconify-icon>
                         上一页
                     </a>
                 {{ else }}
-                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed">
+                    <span class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-4 py-2 rounded-lg cursor-not-allowed">
                         <iconify-icon icon="mdi:chevron-left" class="mr-1" width="20" height="20"></iconify-icon>
                         上一页
                     </span>
                 {{ end }}
                 
-                <span class="text-gray-700 dark:text-gray-300">
+                <span class="text-gray-700 dark:text-gray-200">
                     {{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}
                 </span>
                 
                 {{ if .Paginator.HasNext }}
-                    <a href="{{ .Paginator.Next.URL }}" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300 flex items-center">
+                    <a href="{{ .Paginator.Next.URL }}" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300 flex items-center">
                         下一页
                         <iconify-icon icon="mdi:chevron-right" class="ml-1" width="20" height="20"></iconify-icon>
                     </a>
                 {{ else }}
-                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed">
+                    <span class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-4 py-2 rounded-lg cursor-not-allowed">
                         下一页
                         <iconify-icon icon="mdi:chevron-right" class="ml-1" width="20" height="20"></iconify-icon>
                     </span>

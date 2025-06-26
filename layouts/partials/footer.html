@@ -79,7 +79,7 @@
                 </h3>
                 <div class="flex flex-wrap gap-2">
                     {{ range first 10 (sort .Site.Taxonomies.tags "Count" "desc") }}
-                    <a href="{{ .Page.Permalink }}" class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+                    <a href="{{ .Page.Permalink }}" class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full hover:bg-blue-700 hover:text-white transition-colors duration-300">
                         #{{ .Page.Title }} <span class="text-xs opacity-70">({{ .Count }})</span>
                     </a>
                     {{ end }}

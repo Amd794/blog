@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#3B82F6',
-        'primary-light': '#60a5fa',
-        'primary-dark': '#2563eb',
+        primary: '#3182CE',
+        'primary-light': '#4299E1',
+        'primary-dark': '#2B6CB0',
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -48,9 +48,9 @@ module.exports = {
           css: {
             color: theme('colors.gray.200'),
             a: {
-              color: theme('colors.primary-light'),
+              color: theme('colors.blue.400'),
               '&:hover': {
-                color: theme('colors.primary'),
+                color: theme('colors.blue.300'),
               },
             },
             'h2, h3, h4, h5, h6': {
@@ -60,7 +60,7 @@ module.exports = {
               backgroundColor: theme('colors.gray.900'),
             },
             code: {
-              color: theme('colors.primary-light'),
+              color: theme('colors.blue.400'),
               backgroundColor: theme('colors.gray.800'),
             },
           },

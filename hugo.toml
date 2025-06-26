@@ -4,7 +4,6 @@ hasCJKLanguage = true
 enableRobotsTXT = true
 disablePathToLower = true
 enableEmoji = true
-relativeURLs = true
 
 # SEO相关配置
 [sitemap]
@@ -36,7 +35,6 @@ relativeURLs = true
   description = "cmdragon's Blog 是一个专注于编程和技术分享的个性化网站，旨在为编程爱好者、学习者和从业者提供全面的前端开发、后端开发以及全栈开发学习资源。"
   mainSections = ["posts"]
   
-  # SEO优化配置
   [params.seo]
     # 默认图像(用于社交媒体分享)
     defaultImage = "/images/logo/social-card.png"

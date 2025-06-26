@@ -1,0 +1,60 @@
+<!-- 用户信息模块 -->
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-8 border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-lg">
+    <div class="flex flex-col items-center text-center">
+        <!-- 头像 -->
+        <div class="relative w-24 h-24 mb-4">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 animate-pulse opacity-50"></div>
+            <img src="https://cdn-cn.cmdragon.cn/zgWJtoTRjORAbYoTiSm5O.jpg" alt="作者头像" class="rounded-full object-cover w-24 h-24 relative z-10 border-2 border-white dark:border-gray-700">
+        </div>
+        
+        <!-- 作者名称 -->
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">cmdragon</h2>
+        
+        <!-- 一言语录 -->
+        <div class="my-3 text-gray-600 dark:text-gray-300 text-sm italic relative">
+            <iconify-icon icon="mdi:format-quote-open" class="absolute -top-2 -left-2 text-blue-300 dark:text-blue-700 opacity-50" width="16" height="16"></iconify-icon>
+            <span id="hitokoto" class="px-2">正在加载今日语录...</span>
+            <iconify-icon icon="mdi:format-quote-close" class="absolute -bottom-2 -right-2 text-blue-300 dark:text-blue-700 opacity-50" width="16" height="16"></iconify-icon>
+        </div>
+        
+        <!-- 分隔线 -->
+        <div class="w-full h-px bg-gray-200 dark:bg-gray-700 my-4"></div>
+        
+        <!-- 微信公众号二维码 -->
+        <div class="flex flex-col items-center">
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3 flex items-center">
+                <iconify-icon icon="mdi:wechat" class="mr-1 text-green-600" width="16" height="16"></iconify-icon>
+                关注我的公众号
+            </p>
+            <div class="p-2 bg-white rounded-lg shadow-sm">
+                <img src="/images/cmdragon_cn.png" alt="微信公众号二维码" class="w-32 h-32 object-cover">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 生成唯一ID，防止多个一言组件在同一页面冲突
+    const hitokotoId = 'hitokoto-' + Math.random().toString(36).substr(2, 9);
+    document.currentScript.previousElementSibling.querySelector('#hitokoto').id = hitokotoId;
+    
+    // 从一言API获取语录
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchHitokoto(hitokotoId);
+    });
+    
+    function fetchHitokoto(elementId) {
+        const hitokotoElement = document.getElementById(elementId);
+        if (!hitokotoElement) return;
+        
+        fetch('https://v1.hitokoto.cn/?c=i&c=d&encode=text')
+            .then(response => response.text())
+            .then(data => {
+                hitokotoElement.textContent = data;
+            })
+            .catch(error => {
+                console.error('获取一言API数据失败:', error);
+                hitokotoElement.textContent = '人生如逆旅，我亦是行人。';
+            });
+    }
+</script> 

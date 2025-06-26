@@ -18,7 +18,7 @@ pre {
 pre::before {
   content: "";
   display: block;
-  height: 30px;
+  height: 40px;
   width: 100%;
   background: #1e2127;
   border-bottom: 1px solid #3e4451;
@@ -33,7 +33,7 @@ pre::before {
 pre::after {
   content: "";
   position: absolute;
-  top: 10px;
+  top: 14px;
   left: 15px;
   width: 12px;
   height: 12px;
@@ -47,38 +47,42 @@ pre::after {
 .article-content pre code,
 pre code {
   display: block;
-  padding: 40px 16px 16px;
+  padding: 50px 16px 16px;
   overflow-x: auto;
   font-family: "JetBrains Mono", "Fira Code", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.9rem;
   line-height: 1.6;
   tab-size: 2;
   -moz-tab-size: 2;
-  color: #abb2bf;
+  color: #d4d8e1;
 }
 
 /* 代码语言显示和复制按钮的共同容器 */
 .code-actions-container {
   position: absolute;
-  top: 5px;
+  top: 8px;
   right: 10px;
   z-index: 20;
   display: flex;
   align-items: center;
-  gap: 5px; /* 控制两个元素之间的间距 */
+  gap: 12px;
 }
 
 /* 语言标签 - 现在使用独立元素而非伪元素 */
 .code-lang-label {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: #abb2bf;
+  color: #ffffff;
   background: #3e4451;
-  padding: 4px 8px;
+  padding: 5px 10px;
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.025em;
   height: fit-content;
+  min-width: 48px;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* 隐藏旧的伪元素语言标签 */
@@ -89,24 +93,32 @@ pre[data-lang]::before {
 
 /* 复制按钮 */
 .code-copy-btn {
-  padding: 4px 8px !important;
+  margin-right: 10px;
+  padding: 5px 10px !important;
   background: #3e4451 !important;
   border: none !important;
   border-radius: 4px !important;
-  color: #abb2bf !important;
-  font-size: 0.7rem !important;
+  color: #ffffff !important;
+  font-size: 0.8rem !important;
   cursor: pointer !important;
-  transition: background-color 0.2s ease !important;
+  transition: all 0.2s ease !important;
   height: fit-content;
+  min-width: 48px;
+  min-height: 30px;
+  font-weight: 500 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 .code-copy-btn:hover {
   background: #4b5363 !important;
   color: #fff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
 }
 
 .code-copy-btn:active {
-  transform: scale(0.95) !important;
+  transform: scale(0.97) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* 内联代码 */
@@ -114,8 +126,8 @@ pre[data-lang]::before {
 :not(pre) > code {
   font-family: "JetBrains Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.875em;
-  background-color: #f3f4f6;
-  color: #3b82f6;
+  background-color: #e5e7eb;
+  color: #1e40af;
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
   white-space: nowrap;
@@ -124,7 +136,7 @@ pre[data-lang]::before {
 .dark .article-content :not(pre) > code,
 .dark :not(pre) > code {
   background-color: #21252b;
-  color: #3b82f6;
+  color: #61afef;
 }
 
 /* 代码块内的滚动条 */
@@ -178,7 +190,7 @@ pre code.hljs {
 .token.keyword,
 .language-python .token.def,
 .language-python .def {
-  color: #c678dd !important;
+  color: #d490e2 !important;
 }
 
 /* 字符串 */
@@ -188,7 +200,21 @@ pre code.hljs {
 .token.string,
 .token.char,
 .token.attr-value {
-  color: #98c379 !important;
+  color: #c2f292 !important;
+}
+
+/* 字符串插值/模板文本 */
+.hljs-subst,
+.hljs-template-tag,
+.token.interpolation,
+.token.template-punctuation {
+  color: #ffeb95 !important;
+}
+
+/* 字符串内引用符号 */
+.hljs-string .hljs-quote,
+.token.string .token.punctuation {
+  color: #c2f292 !important;
 }
 
 /* 数字 */
@@ -196,7 +222,7 @@ pre code.hljs {
 .hljs-literal,
 .token.number,
 .token.constant {
-  color: #d19a66 !important;
+  color: #f0a76b !important;
 }
 
 /* 注释 */
@@ -206,7 +232,7 @@ pre code.hljs {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #5c6370 !important;
+  color: #b6bdcf !important;
   font-style: italic !important;
 }
 
@@ -214,7 +240,7 @@ pre code.hljs {
 .hljs-variable,
 .hljs-template-variable,
 .token.variable {
-  color: #e06c75 !important;
+  color: #ef8195 !important;
 }
 
 /* 函数名 */
@@ -224,7 +250,7 @@ pre code.hljs {
 .token.function,
 .language-python .async,
 .language-python .await {
-  color: #61afef !important;
+  color: #74baff !important;
 }
 
 /* 类名 */
@@ -232,20 +258,20 @@ pre code.hljs {
 .hljs-type,
 .token.class-name,
 .language-python .class {
-  color: #e5c07b !important;
+  color: #ffe68d !important;
 }
 
 /* 标签名 */
 .hljs-tag,
 .hljs-name,
 .token.tag {
-  color: #e06c75 !important;
+  color: #ef8195 !important;
 }
 
 /* 属性 */
 .hljs-attribute,
 .token.attr-name {
-  color: #98c379 !important;
+  color: #addc8d !important;
 }
 
 /* 符号、运算符 */
@@ -260,24 +286,24 @@ pre code.hljs {
 .language-python .not,
 .language-python .in,
 .language-python .raise {
-  color: #56b6c2 !important;
+  color: #6ad0dd !important;
 }
 
 /* Python特定高亮 */
 .language-python .self,
 .language-python .cls {
-  color: #e06c75 !important;
+  color: #ef8195 !important;
   font-style: italic !important;
 }
 
 .language-python .return {
-  color: #c678dd !important;
+  color: #d490e2 !important;
   font-weight: bold !important;
 }
 
 .language-python .import,
 .language-python .from {
-  color: #c678dd !important;
+  color: #d490e2 !important;
 }
 
 /* 确保Python代码高亮 */
@@ -286,11 +312,11 @@ pre code.hljs {
 }
 
 .language-python .def {
-  color: #c678dd !important;
+  color: #d490e2 !important;
 }
 
 .language-python .params {
-  color: #e06c75 !important;
+  color: #ef8195 !important;
 }
 
 /* 突出高亮的行 */
@@ -338,7 +364,7 @@ pre.hover-line .line:hover {
 .code-block-title {
   font-family: "JetBrains Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.8rem;
-  color: #abb2bf;
+  color: #d4d8e1;
   background-color: #21252b;
   border-radius: 0.5rem 0.5rem 0 0;
   padding: 0.5rem 1rem;
@@ -366,7 +392,7 @@ pre.hover-line .line:hover {
 .code-group .tab {
   padding: 0.5rem 1rem;
   font-size: 0.8rem;
-  color: #abb2bf;
+  color: #d4d8e1;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -375,7 +401,7 @@ pre.hover-line .line:hover {
 
 .code-group .tab.active {
   background-color: #282c34;
-  color: #61afef;
+  color: #74baff;
   font-weight: 600;
 }
 
@@ -399,12 +425,12 @@ pre.hover-line .line:hover {
 
 .dark .article-content pre code,
 .dark pre code {
-  color: #abb2bf;
+  color: #d4d8e1;
 }
 
 .dark .code-copy-btn {
   background: #3e4451 !important;
-  color: #abb2bf !important;
+  color: #ffffff !important;
 }
 
 .dark .code-copy-btn:hover {
@@ -417,21 +443,21 @@ pre.hover-line .line:hover {
 .language-sh .hljs-variable,
 .bash .hljs-variable,
 .sh .hljs-variable {
-  color: #e06c75 !important;
+  color: #ef8195 !important;
 }
 
 .language-bash .hljs-built_in,
 .language-sh .hljs-built_in,
 .bash .hljs-built_in,
 .sh .hljs-built_in {
-  color: #56b6c2 !important;
+  color: #6ad0dd !important;
 }
 
 .language-bash .hljs-keyword,
 .language-sh .hljs-keyword,
 .bash .hljs-keyword,
 .sh .hljs-keyword {
-  color: #c678dd !important;
+  color: #d490e2 !important;
 }
 
 /* 对命令行前缀的特殊处理 */
@@ -439,14 +465,14 @@ pre.hover-line .line:hover {
 .language-sh .hljs-meta,
 .bash .hljs-meta,
 .sh .hljs-meta {
-  color: #98c379 !important;
+  color: #addc8d !important;
 }
 
 /* 补充其他语言的高亮 */
 .hljs-comment,
 .bash .hljs-comment,
 .sh .hljs-comment {
-  color: #5c6370 !important;
+  color: #b6bdcf !important;
   font-style: italic !important;
 }
 
@@ -457,5 +483,96 @@ pre.hover-line .line:hover {
 .sh .hljs-title,
 .bash .hljs-name,
 .sh .hljs-name {
-  color: #61afef !important;
+  color: #74baff !important;
+}
+
+/* 移动设备适配 */
+@media (max-width: 640px) {
+  .code-actions-container {
+    top: 6px;
+    right: 6px;
+    gap: 8px;
+  }
+  
+  .code-lang-label,
+  .code-copy-btn {
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+    min-height: 34px;
+  }
+  
+  /* 顶部代码块标题栏在移动设备上稍微加高 */
+  .article-content pre::before,
+  pre::before {
+    height: 44px;
+  }
+  
+  /* 代码内容区域顶部内边距相应调整 */
+  .article-content pre code,
+  pre code {
+    padding-top: 54px;
+  }
+}
+
+/* 错误和警告高亮 */
+.hljs-deletion,
+.hljs-name,
+.token.deleted {
+  color: #ff8a9e !important;
+}
+
+/* 为Python的f-string提供特殊处理 */
+.language-python .f-string,
+.language-python .formatted-string {
+  color: #ffeb95 !important;
+}
+
+/* 错误消息和异常处理相关的关键字 */
+.language-python .raise,
+.language-python .except,
+.language-python .finally,
+.language-python .try,
+.language-python .catch,
+.hljs-keyword.hljs-exception {
+  color: #ff8a9e !important; /* 使用更明显的红色 */
+  font-weight: bold !important;
+}
+
+/* HTTP状态码等常量 */
+.language-python .status_code,
+.language-python .http_status,
+.language-python .HTTP_ {
+  color: #ffda9e !important; /* 较亮的黄色 */
+}
+
+/* 特别处理f-string引号内的内容 */
+.language-python .hljs-string:has(.hljs-subst),
+.language-python .hljs-string .hljs-subst {
+  color: #ffeb95 !important; /* 确保f-string内部表达式有足够的对比度 */
+}
+
+/* 改善模板语法对比度 - JavaScript、Vue、React等中的模板/插值语法 */
+.language-javascript .hljs-template-variable,
+.language-typescript .hljs-template-variable,
+.language-jsx .hljs-template-variable,
+.language-tsx .hljs-template-variable,
+.language-vue .hljs-template-variable,
+.hljs-template-variable {
+  color: #ffeb95 !important; /* 与Python f-string保持一致 */
+}
+
+/* 改善功能性注释 - TODO, FIXME, NOTE等 */
+.hljs-comment.hljs-special,
+.hljs-comment.special,
+.hljs-comment.important,
+.hljs-doctag {
+  color: #f9f18d !important; /* 使用更明亮的黄色以突出显示重要注释 */
+  font-weight: bold !important;
+}
+
+/* 确保Python中的f-string格式字符串内的特殊字符(如花括号)有足够对比度 */
+.language-python .hljs-subst,
+span.hljs-subst {
+  color: #ffeb95 !important;
+  font-weight: 500 !important;
 } 
