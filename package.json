@@ -1,0 +1,18 @@
+{
+  "name": "cmdragon-blog",
+  "version": "1.0.0",
+  "description": "CMDragon's Blog",
+  "scripts": {
+    "dev": "hugo server",
+    "build": "npm run build:css && hugo",
+    "build:css": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/tailwind.min.css --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.10"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.4.16"
+  }
+} 

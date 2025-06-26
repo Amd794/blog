@@ -192,76 +192,8 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
 
-<!-- TailwindCSS CDN -->
-<script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<script>
-    tailwind.config = {
-        darkMode: 'class',
-        theme: {
-            extend: {
-                colors: {
-                    primary: '#3B82F6',
-                    'primary-light': '#60a5fa',
-                    'primary-dark': '#2563eb',
-                },
-                typography: (theme) => ({
-                    DEFAULT: {
-                        css: {
-                            color: theme('colors.gray.800'),
-                            a: {
-                                color: theme('colors.primary'),
-                                '&:hover': {
-                                    color: theme('colors.primary-dark'),
-                                },
-                            },
-                            'h2, h3, h4, h5, h6': {
-                                color: theme('colors.gray.900'),
-                            },
-                            pre: {
-                                backgroundColor: theme('colors.gray.800'),
-                                color: theme('colors.gray.100'),
-                            },
-                            code: {
-                                color: theme('colors.primary'),
-                                backgroundColor: theme('colors.gray.100'),
-                                padding: '0.25rem',
-                                borderRadius: '0.25rem',
-                                fontWeight: '400',
-                            },
-                            'code::before': {
-                                content: '""',
-                            },
-                            'code::after': {
-                                content: '""',
-                            },
-                        },
-                    },
-                    dark: {
-                        css: {
-                            color: theme('colors.gray.200'),
-                            a: {
-                                color: theme('colors.primary-light'),
-                                '&:hover': {
-                                    color: theme('colors.primary'),
-                                },
-                            },
-                            'h2, h3, h4, h5, h6': {
-                                color: theme('colors.gray.100'),
-                            },
-                            pre: {
-                                backgroundColor: theme('colors.gray.900'),
-                            },
-                            code: {
-                                color: theme('colors.primary-light'),
-                                backgroundColor: theme('colors.gray.800'),
-                            },
-                        },
-                    },
-                }),
-            },
-        },
-    }
-</script>
+<!-- 使用预编译的TailwindCSS -->
+<link rel="stylesheet" href="/css/tailwind.min.css">
 
 <!-- Iconify CDN -->
 <script src="/js/iconify-icon.min.js"></script>
@@ -272,30 +204,6 @@
 <!-- 样式表 -->
 <link rel="stylesheet" href="/css/code-highlight.css">
 <link rel="stylesheet" href="/css/markdown.css">
-
-<!-- 自定义样式 -->
-<style type="text/tailwindcss">
-    @layer components {
-        body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        }
-        code, pre {
-            font-family: 'JetBrains Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-        }
-        .prose {
-            @apply max-w-none;
-        }
-        .nav-link {
-            @apply px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200;
-        }
-        .nav-link:hover {
-            @apply bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white;
-        }
-        .nav-link-active {
-            @apply bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white;
-        }
-    }
-</style>
 
 <!-- Mermaid样式 -->
 <style>
