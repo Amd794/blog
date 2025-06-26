@@ -92,10 +92,11 @@
                 <!-- 版权信息 -->
                 <div class="text-center md:text-left mb-4 md:mb-0">
                     <p class="text-sm text-gray-600 dark:text-gray-400">
-                        &copy; 2023 {{ .Site.Title }}. 保留所有权利.
+                        &copy; {{ with .Site.Params.copyRightYear }}{{ . }}{{ else }}{{ now.Format "2006" }}{{ end }} {{ .Site.Title }}. 保留所有权利.
                     </p>
                     <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                        由 <a href="https://gohugo.io/" class="hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer">Hugo</a> 强力驱动
+                        由 <a href="https://gohugo.io/" class="hover:text-primary transition-colors duration-300" target="_blank" rel="noopener noreferrer">Hugo</a> 强力驱动 | 
+                        <a href="{{ .Site.Params.licenseURL | default "/license/" }}" class="hover:text-primary transition-colors duration-300" aria-label="Apache 2.0 许可证" tabindex="0">{{ .Site.Params.license | default "Apache License 2.0" }}</a>
                     </p>
                 </div>
                 

@@ -237,13 +237,22 @@
   margin-bottom: 1.5rem;
   border-collapse: separate;
   border-spacing: 0;
-  border-radius: 0.75rem;
   overflow: hidden;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .article-content thead {
-  background: linear-gradient(to right, #1e40af, #4f46e5);
+  background-color: #2563eb;
+  background-color: #dbeafe;
+  color: #1e40af;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .article-content thead {
+  background-color: #1e40af;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .article-content th {
@@ -274,13 +283,6 @@
   background-color: #283141;
 }
 
-.article-content table tr:hover {
-  background-color: #f0f7ff;
-}
-
-.dark .article-content table tr:hover {
-  background-color: rgba(59, 130, 246, 0.1);
-}
 
 /* 水平线 */
 .article-content hr {
