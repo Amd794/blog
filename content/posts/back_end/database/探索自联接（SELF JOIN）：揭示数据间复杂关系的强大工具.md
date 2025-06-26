@@ -21,7 +21,7 @@ tags:
   - SQL优化
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2025_01_11 00_26_54.png@blog" title="2025_01_11 00_26_54.png" alt="2025_01_11 00_26_54.png"/>
+<img src="/images/2025_01_11 00_26_54.png" title="2025_01_11 00_26_54.png" alt="2025_01_11 00_26_54.png"/>
 
 <img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
@@ -183,31 +183,31 @@ LEFT JOIN employees e2 ON e1.manager_id = e2.id;
 
 ## 往期文章归档：
 
-- [深入剖析数据删除操作：DELETE 语句的使用与管理实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/dee02a2f5aaf/)
-- [数据插入操作的深度分析：INSERT 语句使用及实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0dc2dad5d4ac/)
-- [特殊数据类型的深度分析：JSON、数组和 HSTORE 的实用价值 | cmdragon's Blog](https://blog.cmdragon.cn/posts/8bedc4dce31a/)
-- [日期和时间数据类型的深入探讨：理论与实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a9db60979174/)
-- [数据库中的基本数据类型：整型、浮点型与字符型的探讨 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c7ab4c1e95ea/)
-- [表的创建与删除：从理论到实践的全面指南 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b6023fb576cb/)
-- [PostgreSQL 数据库连接 | cmdragon's Blog](https://blog.cmdragon.cn/posts/368dea7b1401/)
-- [PostgreSQL 数据库的启动与停止管理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/118103fa7e1b/)
-- [PostgreSQL 初始化配置设置 | cmdragon's Blog](https://blog.cmdragon.cn/posts/087f8fad6f6b/)
-- [在不同操作系统上安装 PostgreSQL | cmdragon's Blog](https://blog.cmdragon.cn/posts/ebcae8970bd1/)
-- [PostgreSQL 的系统要求 | cmdragon's Blog](https://blog.cmdragon.cn/posts/fbc881562406/)
-- [PostgreSQL 的特点 | cmdragon's Blog](https://blog.cmdragon.cn/posts/460161ea1fb7/)
-- [ORM框架与数据库交互 | cmdragon's Blog](https://blog.cmdragon.cn/posts/461e7d030710/)
-- [数据库与编程语言的连接 | cmdragon's Blog](https://blog.cmdragon.cn/posts/62cc5ce768cb/)
-- [数据库审计与监控 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b43392b9088f/)
-- [数据库高可用性与容灾 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a93af3924801/)
-- [数据库性能优化 | cmdragon's Blog](https://blog.cmdragon.cn/posts/eb7202efbdae/)
-- [备份与恢复策略 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0f3edf9550ac/)
-- [索引与性能优化 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0fd4e9a4123a/)
-- [事务管理与锁机制 | cmdragon's Blog](https://blog.cmdragon.cn/posts/21e8e33b5a0c/)
-- [子查询与嵌套查询 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ef7711d5077d/)
-- [多表查询与连接 | cmdragon's Blog](https://blog.cmdragon.cn/posts/cbc5ebea2633/)
-- [查询与操作 | cmdragon's Blog](https://blog.cmdragon.cn/posts/45016c6a3d2d/)
-- [数据类型与约束 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1aff87ac2263/)
-- [数据库的基本操作 | cmdragon's Blog](https://blog.cmdragon.cn/posts/541c699d86de/)
-- [数据库设计原则与方法 | cmdragon's Blog](https://blog.cmdragon.cn/posts/daf29831e102/)
+- [深入剖析数据删除操作：DELETE 语句的使用与管理实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/fd1bf23b143700283938ed27444d87de/)
+- [数据插入操作的深度分析：INSERT 语句使用及实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5d109d3a35a537bbf4da5b2319658c54/)
+- [特殊数据类型的深度分析：JSON、数组和 HSTORE 的实用价值 | cmdragon's Blog](https://blog.cmdragon.cn/posts/df7c5c2cb46a70a8bd8eb41d25cbc407/)
+- [日期和时间数据类型的深入探讨：理论与实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/9ae9cbc382beb8ce70dd434b0b04dfcc/)
+- [数据库中的基本数据类型：整型、浮点型与字符型的探讨 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ed0f49e64ae98e09079c9f245aee2bf4/)
+- [表的创建与删除：从理论到实践的全面指南 | cmdragon's Blog](https://blog.cmdragon.cn/posts/d201cfe2863e484d3905e6f3dcd5cb7e/)
+- [PostgreSQL 数据库连接 | cmdragon's Blog](https://blog.cmdragon.cn/posts/31a3db063f079d9dbd107913907c2d7a/)
+- [PostgreSQL 数据库的启动与停止管理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/588bce1e1f6001c731aeffecfca6e2bc/)
+- [PostgreSQL 初始化配置设置 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a1bc69c557daefb565b048c1ea26aa4f/)
+- [在不同操作系统上安装 PostgreSQL | cmdragon's Blog](https://blog.cmdragon.cn/posts/fa06acfda3deefb94725714fe93e6ecb/)
+- [PostgreSQL 的系统要求 | cmdragon's Blog](https://blog.cmdragon.cn/posts/470bb6899affac77deeb5f9a73fa47b3/)
+- [PostgreSQL 的特点 | cmdragon's Blog](https://blog.cmdragon.cn/posts/85f705fff8b5d3b6de86201182505997/)
+- [ORM框架与数据库交互 | cmdragon's Blog](https://blog.cmdragon.cn/posts/4748dacd8cb1ebab02a32f43d1d026f6/)
+- [数据库与编程语言的连接 | cmdragon's Blog](https://blog.cmdragon.cn/posts/3583d4a61f90f952097bd2b1f63cacff/)
+- [数据库审计与监控 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0dbe53ca415995914ef7c59e7ca6e79a/)
+- [数据库高可用性与容灾 | cmdragon's Blog](https://blog.cmdragon.cn/posts/9b112ce59562391d4d1715085047b32c/)
+- [数据库性能优化 | cmdragon's Blog](https://blog.cmdragon.cn/posts/d988cbeacdae71a7e16e34c4db5bd1ff/)
+- [备份与恢复策略 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a22fcaa0314ca7b176601d9cdba5a82a/)
+- [索引与性能优化 | cmdragon's Blog](https://blog.cmdragon.cn/posts/13b7f4e1c2f9ab927929f3931a8ee9b7/)
+- [事务管理与锁机制 | cmdragon's Blog](https://blog.cmdragon.cn/posts/6881aed7e5aa53915d50985da8f2fcda/)
+- [子查询与嵌套查询 | cmdragon's Blog](https://blog.cmdragon.cn/posts/bcd3e0ebc574b81d52115c1ed465430e/)
+- [多表查询与连接 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c519449fd08619f38f836ac7e9d21a61/)
+- [查询与操作 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b60d658ecf76bd9c3f3d3a7b5a158e73/)
+- [数据类型与约束 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a35131ef884098e57ab3d003271122ae/)
+- [数据库的基本操作 | cmdragon's Blog](https://blog.cmdragon.cn/posts/52871e67360d4f6882d13086749f02dc/)
+- [数据库设计原则与方法 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0857c93758c59bc14ebc46611d81358f/)
 -
 

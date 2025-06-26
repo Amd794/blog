@@ -13,7 +13,7 @@ tags:
 - bcrypt
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 16_33_45.png@blog" title="2024_02_03 16_33_45.png" alt="2024_02_03 16_33_45.png"/>
+<img src="/images/2024_02_03 16_33_45.png" title="2024_02_03 16_33_45.png" alt="2024_02_03 16_33_45.png"/>
 
 ## 一、引言
 

@@ -10,7 +10,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/image-20240419204802719.png@blog" title="image-20240419204802719.png" alt="image-20240419204802719.png"/>
+<img src="/images/image-20240419204802719.png" title="image-20240419204802719.png" alt="image-20240419204802719.png"/>
 
 
 当面临元素横向滚动时子元素被裁切的问题，同时要求子元素保持居中显示，可通过以下优化措施进行解决：

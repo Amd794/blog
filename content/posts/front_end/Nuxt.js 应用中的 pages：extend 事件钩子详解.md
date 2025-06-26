@@ -21,7 +21,7 @@ tags:
    - 导航
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_10_25 13_35_54.png@blog" title="2024_10_25 13_35_54.png" alt="2024_10_25 13_35_54.png"/>
+<img src="/images/2024_10_25 13_35_54.png" title="2024_10_25 13_35_54.png" alt="2024_10_25 13_35_54.png"/>
 
 
 <img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
@@ -137,36 +137,36 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 ## 往期文章归档：
 
-- [Nuxt.js 应用中的 builder：watch 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/fa5b7db36d2d/)
-- [Nuxt.js 应用中的 builder：generateApp 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/adc96aee3b3c/)
-- [Nuxt.js 应用中的 build：manifest 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/523de9001247/)用。
-- [Nuxt.js 应用中的 build：done 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/41dece9c782c/)
-- [Nuxt.js 应用中的 build：before 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/eb2bd3bbfab8/)
-- [Nuxt.js 应用中的 app：templatesGenerated 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b76b5d553a8b/)
-- [Nuxt.js 应用中的 app：templates 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ace6c53275c4/)
-- [Nuxt.js 应用中的 app：resolve 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/9ea12f07cc2a/)
-- [Nuxt.js 应用中的 modules：done 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/397fbad66fab/)
-- [Nuxt.js 应用中的 modules：before 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5b5669bca701/)
-- [Nuxt.js 应用中的 restart 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/25888bf37a0f/)
-- [Nuxt.js 应用中的 close 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ec1665a791a5/)
-- [Nuxt.js 应用中的 ready 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/37d771762c8f/)
-- [Nuxt.js 应用中的 kit：compatibility 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/52224e8e71ec/)
-- [Nuxt.js 应用中的 page：transition：finish 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/80acaed2b809/)
-- [Nuxt.js 应用中的 page：finish 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/2e422732f13a/)
-- [Nuxt.js 应用中的 page：start 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/9876204f1a7b/)
-- [Nuxt.js 应用中的 link：prefetch 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/3821d8f8b93e/)
-- [Nuxt.js 应用中的 app：suspense：resolve 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/aca9f9d7692b/)
-- [Nuxt.js 应用中的 app：mounted 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a07f12bddf8c/)
-- [Nuxt.js 应用中的 app：beforeMount 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/bbdca1e3d9a5/)
-- [Nuxt.js 应用中的 app：redirected 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c83b294c7a07/)
-- [Nuxt.js 应用中的 app：rendered 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/26479872ffdc/)
-- [应用中的错误处理概述 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5c9b317a962a/)
-- [理解 Vue 的 setup 应用程序钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/405db1302a23/)
-- [深入理解 Nuxt.js 中的 app：data：refresh 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/6f0c4f34bc45/)
-- [深入理解 Nuxt.js 中的 app：error：cleared 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/732d62232fb8/)
-- [深入理解 Nuxt.js 中的 app：error 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/cb83a085e7a4/)
-- [深入理解 Nuxt 中的 app created 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/188ad06ef45a/)
-- [Nuxt Kit 实用工具的使用示例 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a66da411afd2/)
-- [使用 Nuxt Kit 的构建器 API 来扩展配置 | cmdragon's Blog](https://blog.cmdragon.cn/posts/f6e87c3cf111/)
+- [Nuxt.js 应用中的 builder：watch 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/4cfe5f35f1a903646731a6c05a54d1dc/)
+- [Nuxt.js 应用中的 builder：generateApp 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1191139984bd4df519af6d16a616949e/)
+- [Nuxt.js 应用中的 build：manifest 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/d69fdaae50601566d6f15c4e837c7cf3/)用。
+- [Nuxt.js 应用中的 build：done 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/7b79085749b7f156ed36cf16fca42310/)
+- [Nuxt.js 应用中的 build：before 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/81e5857d6d3ff5e375f0f6734e25daac/)
+- [Nuxt.js 应用中的 app：templatesGenerated 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/3c565b88d4290c513e7c55ef934ec509/)
+- [Nuxt.js 应用中的 app：templates 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/628fd1621bd298e33c2182dc18d36ea8/)
+- [Nuxt.js 应用中的 app：resolve 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/dd9f1dcc573a828d78d2dc657b7d5c56/)
+- [Nuxt.js 应用中的 modules：done 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/6427994cfc82edf8e740eb2b3edcead4/)
+- [Nuxt.js 应用中的 modules：before 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/62721fbcf90812e7cb4f8192dad8c51b/)
+- [Nuxt.js 应用中的 restart 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b9f8b670ae04035bbe73a4e4e0ef26f1/)
+- [Nuxt.js 应用中的 close 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/e16f122a2b0ff1157b75ce6cc609f9f1/)
+- [Nuxt.js 应用中的 ready 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/bf27341c381e447f9e64e2d4e9b36db4/)
+- [Nuxt.js 应用中的 kit：compatibility 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5892994c55ef47a9af4acfc446d8e923/)
+- [Nuxt.js 应用中的 page：transition：finish 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b19fb081d695b4867066656e73740093/)
+- [Nuxt.js 应用中的 page：finish 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/d86a35cfb808722da2a6383da93c4a16/)
+- [Nuxt.js 应用中的 page：start 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/818748d467c0a22bfb87002939acb642/)
+- [Nuxt.js 应用中的 link：prefetch 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c9630bf715f84414f544802edae0e77a/)
+- [Nuxt.js 应用中的 app：suspense：resolve 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/54de24a29ea32b400bc29f8b0b6a46b1/)
+- [Nuxt.js 应用中的 app：mounted 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0655a1f20f3c7d66e6b41c961df3103e/)
+- [Nuxt.js 应用中的 app：beforeMount 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a84be8813f0e28c0d673fcfc005a023e/)
+- [Nuxt.js 应用中的 app：redirected 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0a403b28ba9828265f24d658ed1d54d5/)
+- [Nuxt.js 应用中的 app：rendered 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ff851c9049725c29ffd402e2d1f008e2/)
+- [应用中的错误处理概述 | cmdragon's Blog](https://blog.cmdragon.cn/posts/10c446738808a151ce640ad92307cece/)
+- [理解 Vue 的 setup 应用程序钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/6ed51fb844f1329c26155ff2a6ea4cd2/)
+- [深入理解 Nuxt.js 中的 app：data：refresh 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/64d5872b7beb55312b9d4537c9366d2b/)
+- [深入理解 Nuxt.js 中的 app：error：cleared 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b77d43b884a1b04d68230c5963b5e15a/)
+- [深入理解 Nuxt.js 中的 app：error 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/cb374534e888fe4a800e013eda896737/)
+- [深入理解 Nuxt 中的 app created 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1e03ef2ae917ee8f6e9c9e63cdb6174d/)
+- [Nuxt Kit 实用工具的使用示例 | cmdragon's Blog](https://blog.cmdragon.cn/posts/da99cebfd9827341b9b542b233ed4a09/)
+- [使用 Nuxt Kit 的构建器 API 来扩展配置 | cmdragon's Blog](https://blog.cmdragon.cn/posts/bdeb7bbd58b884c871d4a545bab57769/)
 -
 

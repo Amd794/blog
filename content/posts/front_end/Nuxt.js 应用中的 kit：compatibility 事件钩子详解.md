@@ -22,7 +22,7 @@ tags:
   - 应用
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_10_11 12_07_06.png@blog" title="2024_10_11 12_07_06.png" alt="2024_10_11 12_07_06.png"/>
+<img src="/images/2024_10_11 12_07_06.png" title="2024_10_11 12_07_06.png" alt="2024_10_11 12_07_06.png"/>
 
 <img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
@@ -158,34 +158,34 @@ export default defineNuxtPlugin({
 
 ## 往期文章归档：
 
-- [Nuxt.js 应用中的 page：transition：finish 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/80acaed2b809/)
-- [Nuxt.js 应用中的 page：finish 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/2e422732f13a/)
-- [Nuxt.js 应用中的 page：start 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/9876204f1a7b/)
-- [Nuxt.js 应用中的 link：prefetch 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/3821d8f8b93e/)
-- [Nuxt.js 应用中的 app：suspense：resolve 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/aca9f9d7692b/)
-- [Nuxt.js 应用中的 app：mounted 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a07f12bddf8c/)
-- [Nuxt.js 应用中的 app：beforeMount 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/bbdca1e3d9a5/)
-- [Nuxt.js 应用中的 app：redirected 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c83b294c7a07/)
-- [Nuxt.js 应用中的 app：rendered 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/26479872ffdc/)
-- [应用中的错误处理概述 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5c9b317a962a/)
-- [理解 Vue 的 setup 应用程序钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/405db1302a23/)
-- [深入理解 Nuxt.js 中的 app：data：refresh 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/6f0c4f34bc45/)
-- [深入理解 Nuxt.js 中的 app：error：cleared 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/732d62232fb8/)
-- [深入理解 Nuxt.js 中的 app：error 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/cb83a085e7a4/)
-- [深入理解 Nuxt 中的 app created 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/188ad06ef45a/)
-- [Nuxt Kit 实用工具的使用示例 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a66da411afd2/)
-- [使用 Nuxt Kit 的构建器 API 来扩展配置 | cmdragon's Blog](https://blog.cmdragon.cn/posts/f6e87c3cf111/)
-- [Nuxt Kit 使用日志记录工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/37ad5a680e7d/)
-- [Nuxt Kit API ：路径解析工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/441492dbf6ae/)
-- [Nuxt Kit中的 Nitro 处理程序 | cmdragon's Blog](https://blog.cmdragon.cn/posts/2bd1fe409aca/)
-- [Nuxt Kit 中的模板处理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/4cf144d7b562/)
-- [Nuxt Kit 中的插件：创建与使用 | cmdragon's Blog](https://blog.cmdragon.cn/posts/080baafc9cf0/)
-- [Nuxt Kit 中的布局管理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1c99e3fc4fb0/)
-- [Nuxt Kit 中的页面和路由管理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/85c68e006ffc/)
-- [Nuxt Kit 中的上下文处理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/83b074b7a330/)
-- [Nuxt Kit 组件管理：注册与自动导入 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1097e357ea9a/)
-- [Nuxt Kit 自动导入功能：高效管理你的模块和组合式函数 | cmdragon's Blog](https://blog.cmdragon.cn/posts/54548c5422db/)
-- [使用 Nuxt Kit 检查模块与 Nuxt 版本兼容性 | cmdragon's Blog](https://blog.cmdragon.cn/posts/7739f2e3f502/)
+- [Nuxt.js 应用中的 page：transition：finish 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b19fb081d695b4867066656e73740093/)
+- [Nuxt.js 应用中的 page：finish 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/d86a35cfb808722da2a6383da93c4a16/)
+- [Nuxt.js 应用中的 page：start 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/818748d467c0a22bfb87002939acb642/)
+- [Nuxt.js 应用中的 link：prefetch 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c9630bf715f84414f544802edae0e77a/)
+- [Nuxt.js 应用中的 app：suspense：resolve 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/54de24a29ea32b400bc29f8b0b6a46b1/)
+- [Nuxt.js 应用中的 app：mounted 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0655a1f20f3c7d66e6b41c961df3103e/)
+- [Nuxt.js 应用中的 app：beforeMount 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a84be8813f0e28c0d673fcfc005a023e/)
+- [Nuxt.js 应用中的 app：redirected 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0a403b28ba9828265f24d658ed1d54d5/)
+- [Nuxt.js 应用中的 app：rendered 钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ff851c9049725c29ffd402e2d1f008e2/)
+- [应用中的错误处理概述 | cmdragon's Blog](https://blog.cmdragon.cn/posts/10c446738808a151ce640ad92307cece/)
+- [理解 Vue 的 setup 应用程序钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/6ed51fb844f1329c26155ff2a6ea4cd2/)
+- [深入理解 Nuxt.js 中的 app：data：refresh 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/64d5872b7beb55312b9d4537c9366d2b/)
+- [深入理解 Nuxt.js 中的 app：error：cleared 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b77d43b884a1b04d68230c5963b5e15a/)
+- [深入理解 Nuxt.js 中的 app：error 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/cb374534e888fe4a800e013eda896737/)
+- [深入理解 Nuxt 中的 app created 钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1e03ef2ae917ee8f6e9c9e63cdb6174d/)
+- [Nuxt Kit 实用工具的使用示例 | cmdragon's Blog](https://blog.cmdragon.cn/posts/da99cebfd9827341b9b542b233ed4a09/)
+- [使用 Nuxt Kit 的构建器 API 来扩展配置 | cmdragon's Blog](https://blog.cmdragon.cn/posts/bdeb7bbd58b884c871d4a545bab57769/)
+- [Nuxt Kit 使用日志记录工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/fab35b7214614128957a0da96b8705ed/)
+- [Nuxt Kit API ：路径解析工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/68b1b6f9d726f331612d5dcf9dc96914/)
+- [Nuxt Kit中的 Nitro 处理程序 | cmdragon's Blog](https://blog.cmdragon.cn/posts/d192f328c97955dd3e3ed3f1cb0c54fa/)
+- [Nuxt Kit 中的模板处理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/65413519c80ce2a292bf056178a0d195/)
+- [Nuxt Kit 中的插件：创建与使用 | cmdragon's Blog](https://blog.cmdragon.cn/posts/cb753641cae33519dd339d523c5afa32/)
+- [Nuxt Kit 中的布局管理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b4ffad87d300777dc9674a9251b6dc1e/)
+- [Nuxt Kit 中的页面和路由管理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ca15f62138ac0f090f2b9c215756b50a/)
+- [Nuxt Kit 中的上下文处理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a1f6b30121d27466cf8fd474dd962eda/)
+- [Nuxt Kit 组件管理：注册与自动导入 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c5f0133bf1d896616b703a00c560fb9b/)
+- [Nuxt Kit 自动导入功能：高效管理你的模块和组合式函数 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5640663d513476298fbd449f82a67e09/)
+- [使用 Nuxt Kit 检查模块与 Nuxt 版本兼容性 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b80a57c1b7ed8f18b9d72567e3bc9d71/)
 -
 
 

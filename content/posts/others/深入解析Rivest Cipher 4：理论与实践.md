@@ -13,7 +13,7 @@ tags:
   - 应用实践
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_17 20_34_39.png@blog" title="2024_04_17 20_34_39.png" alt="2024_04_17 20_34_39.png"/>
+<img src="/images/2024_04_17 20_34_39.png" title="2024_04_17 20_34_39.png" alt="2024_04_17 20_34_39.png"/>
 
 ## **第一章：引言**
 

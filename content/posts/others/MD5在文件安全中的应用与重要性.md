@@ -13,7 +13,7 @@ tags:
 - 加密技术
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 16_31_34.png@blog" title="2024_02_03 16_31_34.png" alt="2024_02_03 16_31_34.png"/>
+<img src="/images/2024_02_03 16_31_34.png" title="2024_02_03 16_31_34.png" alt="2024_02_03 16_31_34.png"/>
 
 ## 一、MD5简介
 

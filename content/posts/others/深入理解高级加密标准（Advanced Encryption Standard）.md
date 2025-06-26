@@ -13,7 +13,7 @@ tags:
   - 案例分析
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_23 20_24_08.png@blog" title="2024_04_23 20_24_08.png" alt="2024_04_23 20_24_08.png"/>
+<img src="/images/2024_04_23 20_24_08.png" title="2024_04_23 20_24_08.png" alt="2024_04_23 20_24_08.png"/>
 
 ### 第一章：AES概述
 

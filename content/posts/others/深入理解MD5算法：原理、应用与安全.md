@@ -13,7 +13,7 @@ tags:
   - 密码学
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_11 20_58_47.png@blog" title="2024_04_11 20_58_47.png" alt="2024_04_11 20_58_47.png"/>
+<img src="/images/2024_04_11 20_58_47.png" title="2024_04_11 20_58_47.png" alt="2024_04_11 20_58_47.png"/>
 
 ## **第一章：引言**
 

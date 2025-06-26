@@ -13,7 +13,7 @@ tags:
 - 实例解析
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 18_03_00.png@blog" title="2024_02_03 18_03_00.png" alt="2024_02_03 18_03_00.png"/>
+<img src="/images/2024_02_03 18_03_00.png" title="2024_02_03 18_03_00.png" alt="2024_02_03 18_03_00.png"/>
 
 ## 一、简介
 

@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_03_26 17_07_47.png@blog" title="2024_03_26 17_07_47.png" alt="2024_03_26 17_07_47.png"/>
+<img src="/images/2024_03_26 17_07_47.png" title="2024_03_26 17_07_47.png" alt="2024_03_26 17_07_47.png"/>
 
 #### 1. UUID起源与原理
 

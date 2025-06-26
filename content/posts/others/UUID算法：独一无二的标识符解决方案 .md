@@ -13,7 +13,7 @@ tags:
 - 标识符生成
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_10 21_02_30.png@blog" title="2024_02_10 21_02_30.png" alt="2024_02_10 21_02_30.png"/>
+<img src="/images/2024_02_10 21_02_30.png" title="2024_02_10 21_02_30.png" alt="2024_02_10 21_02_30.png"/>
 
 ## 引言
 

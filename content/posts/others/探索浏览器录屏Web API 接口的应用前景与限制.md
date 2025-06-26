@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_03_02 15_38_23.png@blog" title="2024_03_02 15_38_23.png" alt="2024_03_02 15_38_23.png"/>
+<img src="/images/2024_03_02 15_38_23.png" title="2024_03_02 15_38_23.png" alt="2024_03_02 15_38_23.png"/>
 
 ## 一、浏览器录屏Web API 接口的优点：
 

@@ -21,7 +21,7 @@ tags:
   - 安全
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_11_30 14_51_28.png@blog" title="2024_11_30 14_51_28.png" alt="2024_11_30 14_51_28.png"/>
+<img src="/images/2024_11_30 14_51_28.png" title="2024_11_30 14_51_28.png" alt="2024_11_30 14_51_28.png"/>
 
 <img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
@@ -188,35 +188,35 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 ## 往期文章归档：
 
-- [Nuxt.js 应用中的 render：response 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/3ce5250cec36/)
-- [Nuxt.js 应用中的 dev：ssr-logs 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1b63f35eebe8/)
-- [Nuxt.js 应用中的 webpack：progress 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/533d23bcbe61/)
-- [Nuxt.js 应用中的 webpack：done 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/3e8fa49cbd4b/)
-- [Nuxt.js 应用中的 webpack：error 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0fb47ad58e14/)
-- [Nuxt.js 应用中的 webpack：change 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/43a57e843f48/)
-- [Nuxt.js 应用中的 webpack：compiled 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0b6ec5ce3d59/)
-- [Nuxt.js 应用中的 webpack：compile 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/7336c7f0809e/)
-- [Nuxt.js 应用中的 webpack：configResolved事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/afe62aeeaf6f/)
-- [Nuxt.js 应用中的 vite：compiled 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/973541933f38/)
-- [Nuxt.js 应用中的 vite：serverCreated 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ab7710befd8e/)
-- [Nuxt.js 应用中的 vite：configResolved 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1266785cead8/)
-- [Nuxt.js 应用中的 vite：extendConfig 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/e1ea2c9a1566/)
-- [Nuxt.js 应用中的 schema：written 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/11121d82a55c/)
-- [Nuxt.js 应用中的 schema：beforeWrite 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/14f648e6cb9f/)
-- [Nuxt.js 应用中的 schema：resolved 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c343331f3f06/)
-- [Nuxt.js 应用中的 vite：extendConfig 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5ea147f7e6ee/)
-- [Nuxt.js 应用中的 vite：extend 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/76f8905ddea2/)
-- [Nuxt.js 应用中的 schema：extend事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/271e7f413d3a/)
-- [Nuxt.js 应用中的 listen 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/bfdfe1fbb4cc/)
-- [Nuxt.js 应用中的 prepare：types 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a893a1ffa34a/)
-- [Nuxt.js 应用中的 build：error 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/6ea046edf756/)
-- [Nuxt.js 应用中的 prerender：routes 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/925363b7ba91/)
-- [Nuxt.js 应用中的 nitro：build：public-assets 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/e3ab63fec9ce/)
-- [Nuxt.js 应用中的 nitro：build：before 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1c70713c402c/)
-- [Nuxt.js 应用中的 nitro：init 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/8122bb43e5c6/)
-- [Nuxt.js 应用中的 nitro：config 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/61ef115005d4/)
-- [Nuxt.js 应用中的 components：extend 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/f1df4f41c9a9/)
-- [Nuxt.js 应用中的 components：dirs 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0f896139298c/)
-- [Nuxt.js 应用中的 imports：dirs 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ddb970c3c508/)
+- [Nuxt.js 应用中的 render：response 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b12508be9c4fb6b8f0499948ecd68ad9/)
+- [Nuxt.js 应用中的 dev：ssr-logs 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ef86af3b9be34b11d75fa32951b147bd/)
+- [Nuxt.js 应用中的 webpack：progress 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/47b46cd0c184932afc8428cccb2e3bc8/)
+- [Nuxt.js 应用中的 webpack：done 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/4d17f3c1bc0c28b6f117688edab9cd9a/)
+- [Nuxt.js 应用中的 webpack：error 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/8de760bec83aa6eedb15a70959e37ac5/)
+- [Nuxt.js 应用中的 webpack：change 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/871f2adb90d3346f48ea362ee434cee3/)
+- [Nuxt.js 应用中的 webpack：compiled 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/077a6b701325cff54c081bf5946d5477/)
+- [Nuxt.js 应用中的 webpack：compile 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/375bd210d2c7634b026886f4fd5e7ff0/)
+- [Nuxt.js 应用中的 webpack：configResolved事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c9d5ec8a241258b72058270c7c4a22e5/)
+- [Nuxt.js 应用中的 vite：compiled 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/6dd7282f615a7b4b910a0e0fe71c9882/)
+- [Nuxt.js 应用中的 vite：serverCreated 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/29cac3fa837d4b767f01a77d6adc60e1/)
+- [Nuxt.js 应用中的 vite：configResolved 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/2d9f94579481d38e0e9a7569cdfc31cb/)
+- [Nuxt.js 应用中的 vite：extendConfig 事件钩子 | cmdragon's Blog](https://blog.cmdragon.cn/posts/6bbb5474e945ea9d9a79c6cfcb6ec585/)
+- [Nuxt.js 应用中的 schema：written 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/bbc449caa5e31f1084aed152323c2758/)
+- [Nuxt.js 应用中的 schema：beforeWrite 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/9303f1529d95797ca3241f21e2fbc34d/)
+- [Nuxt.js 应用中的 schema：resolved 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0a60978d2ce7bbcd5b86f9de0e5c99e2/)
+- [Nuxt.js 应用中的 vite：extendConfig 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/7f2f4ee1ef433b4a19daa99da7bd9f07/)
+- [Nuxt.js 应用中的 vite：extend 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/cdba81aa5bb32dcc233a8bd29adee923/)
+- [Nuxt.js 应用中的 schema：extend事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b1d6a0b2258a699dc8415d298eecab45/)
+- [Nuxt.js 应用中的 listen 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/59f320ae722d9803c0c4eb42ccb295b2/)
+- [Nuxt.js 应用中的 prepare：types 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/68419c6dd94db64cbb46673ab19a5146/)
+- [Nuxt.js 应用中的 build：error 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/4a5e09829cf63001943fc481d69e01e0/)
+- [Nuxt.js 应用中的 prerender：routes 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/7a11deaf9e3d140fd18d7ad3cde4b9d7/)
+- [Nuxt.js 应用中的 nitro：build：public-assets 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/271508b42bc005f41e4fa31830a84e83/)
+- [Nuxt.js 应用中的 nitro：build：before 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a2820600faa85b49967d91cb7617c284/)
+- [Nuxt.js 应用中的 nitro：init 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a8d7636d5643bafcee2bcc1767dcfa3b/)
+- [Nuxt.js 应用中的 nitro：config 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/927aa434dc4886c8c357c9000e072b19/)
+- [Nuxt.js 应用中的 components：extend 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/1189b069abd2cfe9869abbbb4f7f340b/)
+- [Nuxt.js 应用中的 components：dirs 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/06467028093d81da701fced5b84150cb/)
+- [Nuxt.js 应用中的 imports：dirs 事件钩子详解 | cmdragon's Blog](https://blog.cmdragon.cn/posts/d59459d9a47584d99ecdca9732024835/)
 -
 

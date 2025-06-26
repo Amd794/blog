@@ -13,7 +13,7 @@ tags:
 - 消息完整性
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 16_25_47.png@blog" title="2024_02_03 16_25_47.png" alt="2024_02_03 16_25_47.png"/>
+<img src="/images/2024_02_03 16_25_47.png" title="2024_02_03 16_25_47.png" alt="2024_02_03 16_25_47.png"/>
 
 ## 一、引言
 

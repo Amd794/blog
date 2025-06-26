@@ -13,7 +13,7 @@ tags:
 - 易实现与通用性
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 18_41_16.png@blog" title="2024_02_03 18_41_16.png" alt="2024_02_03 18_41_16.png"/>
+<img src="/images/2024_02_03 18_41_16.png" title="2024_02_03 18_41_16.png" alt="2024_02_03 18_41_16.png"/>
 
 ## 一、引言
 

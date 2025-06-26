@@ -13,7 +13,7 @@ tags:
 - 抗量子计算
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 17_12_48.png@blog" title="2024_02_03 17_12_48.png" alt="2024_02_03 17_12_48.png"/>
+<img src="/images/2024_02_03 17_12_48.png" title="2024_02_03 17_12_48.png" alt="2024_02_03 17_12_48.png"/>
 
 ## 一、引言
 

@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_03_13 18_15_43.png@blog" title="2024_03_13 18_15_43.png" alt="2024_03_13 18_15_43.png"/>
+<img src="/images/2024_03_13 18_15_43.png" title="2024_03_13 18_15_43.png" alt="2024_03_13 18_15_43.png"/>
 
 ### Rabbit算法起源：
 

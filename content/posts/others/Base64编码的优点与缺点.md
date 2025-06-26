@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_16 14_08_24.png@blog" title="2024_02_16 14_08_24.png" alt="2024_02_16 14_08_24.png"/>
+<img src="/images/2024_02_16 14_08_24.png" title="2024_02_16 14_08_24.png" alt="2024_02_16 14_08_24.png"/>
 
 > Base64编码是一种将二进制数据转换为可打印ASCII字符的编码方式。它被广泛应用于数据传输和存储，以提升数据的可读性、可传输性和安全性。
 

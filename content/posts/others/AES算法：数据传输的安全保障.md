@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 19_11_52.png@blog" title="2024_02_03 19_11_52.png" alt="2024_02_03 19_11_52.png"/>
+<img src="/images/2024_02_03 19_11_52.png" title="2024_02_03 19_11_52.png" alt="2024_02_03 19_11_52.png"/>
 
 
 > 在当今数字化时代，数据安全成为了一个非常重要的问题。随着互联网的普及和信息技术的发展，我们需要一种可靠的加密算法来保护我们的敏感数据。Advanced Encryption Standard（AES）算法应运而生。本文将介绍AES算法的优缺点、解决了什么问题以及在哪些方面可以应用。

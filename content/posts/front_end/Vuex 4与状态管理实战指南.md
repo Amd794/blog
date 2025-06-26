@@ -22,7 +22,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_06_06 21_12_22.png@blog" title="2024_06_06 21_12_22.png" alt="2024_06_06 21_12_22.png"/>
+<img src="/images/2024_06_06 21_12_22.png" title="2024_06_06 21_12_22.png" alt="2024_06_06 21_12_22.png"/>
 
 ## **第一部分 Vuex基础**
 

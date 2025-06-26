@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_03_16 16_52_07.png@blog" title="2024_03_16 16_52_07.png" alt="2024_03_16 16_52_07.png"/>
+<img src="/images/2024_03_16 16_52_07.png" title="2024_03_16 16_52_07.png" alt="2024_03_16 16_52_07.png"/>
 
 ### HMAC算法起源：
 

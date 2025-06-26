@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_03_17 02_17_06.png@blog" title="2024_03_17 02_17_06.png" alt="2024_03_17 02_17_06.png"/>
+<img src="/images/2024_03_17 02_17_06.png" title="2024_03_17 02_17_06.png" alt="2024_03_17 02_17_06.png"/>
 
 ### DES算法起源：
 

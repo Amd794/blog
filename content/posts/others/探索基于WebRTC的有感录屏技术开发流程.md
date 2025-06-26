@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_07 18_27_56.png@blog" title="2024_04_07 18_27_56.png" alt="2024_04_07 18_27_56.png"/>
+<img src="/images/2024_04_07 18_27_56.png" title="2024_04_07 18_27_56.png" alt="2024_04_07 18_27_56.png"/>
 
 ## 第一章：技术原理
 

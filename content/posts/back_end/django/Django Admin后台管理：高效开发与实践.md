@@ -19,7 +19,7 @@ tags:
 
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_05_08 14_27_23.png@blog" title="2024_05_08 14_27_23.png" alt="2024_05_08 14_27_23.png"/>
+<img src="/images/2024_05_08 14_27_23.png" title="2024_05_08 14_27_23.png" alt="2024_05_08 14_27_23.png"/>
 
 ## **第1章：Django Admin基础**
 

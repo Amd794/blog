@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 17_50_27.png@blog" title="2024_02_03 17_50_27.png" alt="2024_02_03 17_50_27.png"/>
+<img src="/images/2024_02_03 17_50_27.png" title="2024_02_03 17_50_27.png" alt="2024_02_03 17_50_27.png"/>
 
 ## 一、概述
 

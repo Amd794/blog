@@ -13,7 +13,7 @@ tags:
   - 应用趋势
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_03_15 20_09_56.png@blog" title="2024_03_15 20_09_56.png" alt="2024_03_15 20_09_56.png"/>
+<img src="/images/2024_03_15 20_09_56.png" title="2024_03_15 20_09_56.png" alt="2024_03_15 20_09_56.png"/>
 
 ### MD5算法起源：
 

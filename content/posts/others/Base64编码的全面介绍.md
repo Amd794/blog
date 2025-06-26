@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_03_31 18_56_39.png@blog" title="2024_03_31 18_56_39.png" alt="2024_03_31 18_56_39.png"/>
+<img src="/images/2024_03_31 18_56_39.png" title="2024_03_31 18_56_39.png" alt="2024_03_31 18_56_39.png"/>
 
 #### 1. Base64的定义和作用
 

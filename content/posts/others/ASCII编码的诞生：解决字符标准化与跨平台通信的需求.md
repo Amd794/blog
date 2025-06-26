@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_17 14_26_29.png@blog" title="2024_02_17 14_26_29.png" alt="2024_02_17 14_26_29.png"/>
+<img src="/images/2024_02_17 14_26_29.png" title="2024_02_17 14_26_29.png" alt="2024_02_17 14_26_29.png"/>
 
 > 在计算机的发展过程中，字符的表示和传输一直是一个重要的问题。为了实现字符的标准化和跨平台通信，ASCII（American Standard
 > Code for Information Interchange）编码应运而生。

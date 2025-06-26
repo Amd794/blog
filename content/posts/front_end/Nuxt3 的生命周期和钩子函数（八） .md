@@ -21,7 +21,7 @@ tags:
   - 数据写入
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_07_02 15_18_34.png@blog" title="2024_07_02 15_18_34.png" alt="2024_07_02 15_18_34.png"/>
+<img src="/images/2024_07_02 15_18_34.png" title="2024_07_02 15_18_34.png" alt="2024_07_02 15_18_34.png"/>
 
 <img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 

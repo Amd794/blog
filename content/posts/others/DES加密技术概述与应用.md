@@ -13,7 +13,7 @@ tags:
 - 密钥管理
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 16_17_09.png@blog" title="2024_02_03 16_17_09.png" alt="2024_02_03 16_17_09.png"/>
+<img src="/images/2024_02_03 16_17_09.png" title="2024_02_03 16_17_09.png" alt="2024_02_03 16_17_09.png"/>
 
 
 

@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_01 20_07_25.png@blog" title="2024_04_01 20_07_25.png" alt="2024_04_01 20_07_25.png"/>
+<img src="/images/2024_04_01 20_07_25.png" title="2024_04_01 20_07_25.png" alt="2024_04_01 20_07_25.png"/>
 
 #### 1. ASCII编码的定义和历史
 

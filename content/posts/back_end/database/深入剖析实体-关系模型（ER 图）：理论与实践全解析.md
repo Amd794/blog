@@ -21,7 +21,7 @@ tags:
   - 数据抽象
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2025_02_08 16_23_17.png@blog" title="2025_02_08 16_23_17.png" alt="2025_02_08 16_23_17.png"/>
+<img src="/images/2025_02_08 16_23_17.png" title="2025_02_08 16_23_17.png" alt="2025_02_08 16_23_17.png"/>
 
 <img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
@@ -198,35 +198,35 @@ ER 图在数据库设计过程中的价值不可忽视，以下是其主要优�
 
 ## 往期文章归档：
 
-- [数据库范式详解：从第一范式到第五范式 | cmdragon's Blog](https://blog.cmdragon.cn/posts/05264e28f9f8/)
-- [PostgreSQL：数据库迁移与版本控制 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a58cca68755e/)
-- [Node.js 与 PostgreSQL 集成：深入 pg 模块的应用与实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/d5b4e82e959a/)
-- [Python 与 PostgreSQL 集成：深入 psycopg2 的应用与实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/9aae8e2f1414/)
-- [应用中的 PostgreSQL项目案例 | cmdragon's Blog](https://blog.cmdragon.cn/posts/287f56043db8/)
-- [数据库安全管理中的权限控制：保护数据资产的关键措施 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5995b8f15678/)
-- [数据库安全管理中的用户和角色管理：打造安全高效的数据环境 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c0cd4cbaa201/)
-- [数据库查询优化：提升性能的关键实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/3ab8c2f85479/)
-- [数据库物理备份：保障数据完整性和业务连续性的关键策略 | cmdragon's Blog](https://blog.cmdragon.cn/posts/7e3da86fa38b/)
-- [PostgreSQL 数据备份与恢复：掌握 pg_dump 和 pg_restore 的最佳实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/2190f85925ce/)
-- [索引的性能影响：优化数据库查询与存储的关键 | cmdragon's Blog](https://blog.cmdragon.cn/posts/076f666ba145/)
-- [深入探讨数据库索引类型：B-tree、Hash、GIN与GiST的对比与应用 | cmdragon's Blog](https://blog.cmdragon.cn/posts/7f7df47953c4/)
-- [深入探讨触发器的创建与应用：数据库自动化管理的强大工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5765e6b13d4e/)
-- [深入探讨存储过程的创建与应用：提高数据库管理效率的关键工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/98a999d55ec8/)
-- [深入探讨视图更新：提升数据库灵活性的关键技术 | cmdragon's Blog](https://blog.cmdragon.cn/posts/6e90926327b9/)
-- [深入理解视图的创建与删除：数据库管理中的高级功能 | cmdragon's Blog](https://blog.cmdragon.cn/posts/9b26b52722c6/)
-- [深入理解检查约束：确保数据质量的重要工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/16ef025755f4/)
-- [深入理解第一范式（1NF）：数据库设计中的基础与实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/2502f62a9269/)
-- [深度剖析 GROUP BY 和 HAVING 子句：优化 SQL 查询的利器 | cmdragon's Blog](https://blog.cmdragon.cn/posts/f25d0953b788/)
-- [深入探讨聚合函数（COUNT, SUM, AVG, MAX, MIN）：分析和总结数据的新视野 | cmdragon's Blog](https://blog.cmdragon.cn/posts/3b32add59228/)
-- [深入解析子查询（SUBQUERY）：增强 SQL 查询灵活性的强大工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/bd54a350919b/)
-- [探索自联接（SELF JOIN）：揭示数据间复杂关系的强大工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c8c1e1e771c8/)
-- [深入剖析数据删除操作：DELETE 语句的使用与管理实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/dee02a2f5aaf/)
-- [数据插入操作的深度分析：INSERT 语句使用及实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0dc2dad5d4ac/)
-- [特殊数据类型的深度分析：JSON、数组和 HSTORE 的实用价值 | cmdragon's Blog](https://blog.cmdragon.cn/posts/8bedc4dce31a/)
-- [日期和时间数据类型的深入探讨：理论与实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/a9db60979174/)
-- [数据库中的基本数据类型：整型、浮点型与字符型的探讨 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c7ab4c1e95ea/)
-- [表的创建与删除：从理论到实践的全面指南 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b6023fb576cb/)
-- [PostgreSQL 数据库的启动与停止管理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/118103fa7e1b/)
+- [数据库范式详解：从第一范式到第五范式 | cmdragon's Blog](https://blog.cmdragon.cn/posts/2b268e76c15d9640a08fed80fccfc562/)
+- [PostgreSQL：数据库迁移与版本控制 | cmdragon's Blog](https://blog.cmdragon.cn/posts/649f515b93a6caee9dc38f1249e9216e/)
+- [Node.js 与 PostgreSQL 集成：深入 pg 模块的应用与实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/4798cc064cc3585a3819636b3c23271b/)
+- [Python 与 PostgreSQL 集成：深入 psycopg2 的应用与实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/e533225633ac9f276b7771c03e1ba5e0/)
+- [应用中的 PostgreSQL项目案例 | cmdragon's Blog](https://blog.cmdragon.cn/posts/415ac1ac3cb9593b00d398c26b40c768/)
+- [数据库安全管理中的权限控制：保护数据资产的关键措施 | cmdragon's Blog](https://blog.cmdragon.cn/posts/42a3ec4c7e9cdded4e3c4db24fb4dad8/)
+- [数据库安全管理中的用户和角色管理：打造安全高效的数据环境 | cmdragon's Blog](https://blog.cmdragon.cn/posts/92d56b1325c898ad3efc89cb2b42d84d/)
+- [数据库查询优化：提升性能的关键实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/b87998b03d2638a19ecf589691b6f0ae/)
+- [数据库物理备份：保障数据完整性和业务连续性的关键策略 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5399d4194db9a94b2649763cb81284de/)
+- [PostgreSQL 数据备份与恢复：掌握 pg_dump 和 pg_restore 的最佳实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/8a8458533590f193798bc31bfbcb0944/)
+- [索引的性能影响：优化数据库查询与存储的关键 | cmdragon's Blog](https://blog.cmdragon.cn/posts/29b4baf97a92b0c02393f258124ca713/)
+- [深入探讨数据库索引类型：B-tree、Hash、GIN与GiST的对比与应用 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0095ca05c7ea7fbeec5f3a9990bd5264/)
+- [深入探讨触发器的创建与应用：数据库自动化管理的强大工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5ea59ab7a93ecbdb4baea9dec29a6010/)
+- [深入探讨存储过程的创建与应用：提高数据库管理效率的关键工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/570cd68087f5895415ab3f94980ecc84/)
+- [深入探讨视图更新：提升数据库灵活性的关键技术 | cmdragon's Blog](https://blog.cmdragon.cn/posts/625cecdc44e4c4e7b520ddb3012635d1/)
+- [深入理解视图的创建与删除：数据库管理中的高级功能 | cmdragon's Blog](https://blog.cmdragon.cn/posts/c5b46d10b7686bbe57b20cd9e181c56b/)
+- [深入理解检查约束：确保数据质量的重要工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/309f74bd85c733fb7a2cd79990d7af9b/)
+- [深入理解第一范式（1NF）：数据库设计中的基础与实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/0ba4cbf2dd926750d5421e9d415ecc88/)
+- [深度剖析 GROUP BY 和 HAVING 子句：优化 SQL 查询的利器 | cmdragon's Blog](https://blog.cmdragon.cn/posts/45ed09822a8220aa480f67c0e3225a7e/)
+- [深入探讨聚合函数（COUNT, SUM, AVG, MAX, MIN）：分析和总结数据的新视野 | cmdragon's Blog](https://blog.cmdragon.cn/posts/27d8b24508379d4e5d4ae97873aa9397/)
+- [深入解析子查询（SUBQUERY）：增强 SQL 查询灵活性的强大工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/3fb3175a31a273d40bef042297f877ad/)
+- [探索自联接（SELF JOIN）：揭示数据间复杂关系的强大工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/f152dfcce73ed63594e329a1fb42c278/)
+- [深入剖析数据删除操作：DELETE 语句的使用与管理实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/fd1bf23b143700283938ed27444d87de/)
+- [数据插入操作的深度分析：INSERT 语句使用及实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/5d109d3a35a537bbf4da5b2319658c54/)
+- [特殊数据类型的深度分析：JSON、数组和 HSTORE 的实用价值 | cmdragon's Blog](https://blog.cmdragon.cn/posts/df7c5c2cb46a70a8bd8eb41d25cbc407/)
+- [日期和时间数据类型的深入探讨：理论与实践 | cmdragon's Blog](https://blog.cmdragon.cn/posts/9ae9cbc382beb8ce70dd434b0b04dfcc/)
+- [数据库中的基本数据类型：整型、浮点型与字符型的探讨 | cmdragon's Blog](https://blog.cmdragon.cn/posts/ed0f49e64ae98e09079c9f245aee2bf4/)
+- [表的创建与删除：从理论到实践的全面指南 | cmdragon's Blog](https://blog.cmdragon.cn/posts/d201cfe2863e484d3905e6f3dcd5cb7e/)
+- [PostgreSQL 数据库的启动与停止管理 | cmdragon's Blog](https://blog.cmdragon.cn/posts/588bce1e1f6001c731aeffecfca6e2bc/)
 -
 
 

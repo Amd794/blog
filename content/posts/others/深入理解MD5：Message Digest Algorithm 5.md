@@ -13,7 +13,7 @@ tags:
   - 替代算法
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_04_21 18_12_41.png@blog" title="2024_04_21 18_12_41.png" alt="2024_04_21 18_12_41.png"/>
+<img src="/images/2024_04_21 18_12_41.png" title="2024_04_21 18_12_41.png" alt="2024_04_21 18_12_41.png"/>
 
 ### 导论
 

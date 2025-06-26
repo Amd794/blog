@@ -5,7 +5,7 @@ build.bat
 /resources/_gen/
 /assets/jsconfig.json
 hugo_stats.json
-add_url_md5.py
+/scripts/
 
 # Hugo的缓存目录
 /.hugo_build.lock

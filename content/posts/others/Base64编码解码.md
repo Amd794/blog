@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 16_07_44.png@blog" title="2024_02_03 16_07_44.png" alt="2024_02_03 16_07_44.png"/>
+<img src="/images/2024_02_03 16_07_44.png" title="2024_02_03 16_07_44.png" alt="2024_02_03 16_07_44.png"/>
 
 ## 一、Base64编码技术简介
 

@@ -14,7 +14,7 @@ tags:
 ---
 
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 18_33_34.png@blog" title="2024_02_03 18_33_34.png" alt="2024_02_03 18_33_34.png"/>
+<img src="/images/2024_02_03 18_33_34.png" title="2024_02_03 18_33_34.png" alt="2024_02_03 18_33_34.png"/>
 
 > 摘要：本文详细介绍了PBKDF2（Password-Based Key Derivation Function 2）加密技术，包括其原理、算法流程和实际应用，旨在帮助读者更好地理解这一重要的加密方法。
 

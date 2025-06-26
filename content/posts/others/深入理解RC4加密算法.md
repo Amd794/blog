@@ -13,7 +13,7 @@ tags:
 - 应用实践
 ---
 
-<img src="https://static.cmdragon.cn/blog/images/2024_02_03 18_47_09.png@blog" title="2024_02_03 18_47_09.png" alt="2024_02_03 18_47_09.png"/>
+<img src="/images/2024_02_03 18_47_09.png" title="2024_02_03 18_47_09.png" alt="2024_02_03 18_47_09.png"/>
 
 > RC4（Rivest Cipher 4）是一种广泛应用的加密算法，由Ronald L. Rivest于1987年发明。它是一种流密码（stream cipher）算法，适用于对网络通信中的数据进行加密保护。
 
