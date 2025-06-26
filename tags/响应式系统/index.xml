@@ -22,14 +22,6 @@
  &lt;div class="highlight">
  &lt;pre class="chroma">&lt;code class="language-" data-lang="">npx nuxi@latest init &amp;lt;project-name&amp;gt;&lt;/code>&lt;/pre>
  &lt;/div>
-
- &lt;div class="copy-code-button-container">
- &lt;span class="language-name">&lt;/span>
- &lt;button class="copy-code-button" aria-label="复制代码" onclick="copyCodeToClipboard(this)">
- &lt;svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" width="24" height="24" viewBox="0 0 24 24">&lt;path fill="currentColor" d="M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2H9V5z"/>&lt;path fill="currentColor" d="M17 1H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H9V3h10v10z"/>&lt;/svg>
- &lt;svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="24" height="24" viewBox="0 0 24 24" style="display: none;">&lt;path fill="currentColor" d="M18 7l-1.41-1.41-6.34 6.34-2.83-2.83L6 10.5l3.25 3.25L18 7z"/>&lt;/svg>
- &lt;/button>
- &lt;/div>
  &lt;/div>
 
  &lt;script>
@@ -111,7 +103,7 @@
  color: #e2e8f0;
  }
  &lt;/style>
- &lt;p>在这个过程中，你可以选择服务器框架、UI框架等。按照提示完成项目的基本配置。&lt;/p></description></item><item><title>Vue 3入门指南</title><link>/posts/ab6d0d2bfb031bcf85fa63e9706be9e3/</link><pubDate>Thu, 23 May 2024 19:37:34 +0800</pubDate><guid>/posts/ab6d0d2bfb031bcf85fa63e9706be9e3/</guid><description>&lt;img src="../../images/2024_05_23 19_46_00.png" title="2024_05_23 19_46_00.png" alt="2024_05_23 19_46_00.png"/>
+ &lt;p>在这个过程中，你可以选择服务器框架、UI框架等。按照提示完成项目的基本配置。&lt;/p></description></item><item><title>Vue 3入门指南</title><link>/posts/ab6d0d2bfb031bcf85fa63e9706be9e3/</link><pubDate>Thu, 23 May 2024 19:37:34 +0800</pubDate><guid>/posts/ab6d0d2bfb031bcf85fa63e9706be9e3/</guid><description>&lt;img src="/images/2024_05_23 19_46_00.png" title="2024_05_23 19_46_00.png" alt="2024_05_23 19_46_00.png"/>
 &lt;h2 id="第1章vue-3简介">&lt;strong>第1章：Vue 3简介&lt;/strong>&lt;/h2>
 &lt;h3 id="11-vuejs的历史与发展">&lt;strong>1.1 Vue.js的历史与发展&lt;/strong>&lt;/h3>
 &lt;p>Vue.js由前谷歌工程师尤雨溪（Evan
