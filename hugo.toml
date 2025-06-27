@@ -43,11 +43,11 @@ enableEmoji = true
     # 默认图像(用于社交媒体分享)
     defaultImage = "/images/logo/social-card.png"
     # Twitter用户名(不含@)
-    twitterHandle = "cmdragon"  # 如果有推特账号请填写
+    twitterHandle = "cmdragon_cn"  # 如果有推特账号请填写
     
   # 社交链接
   [params.social]
-    github = "https://github.com/amd794"
+    github = "https://github.com/cmdragon"
     email = "support@cmdragon.cn"
     
   # 评论系统
