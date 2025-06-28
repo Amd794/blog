@@ -9,8 +9,7 @@ summary:
    - CMDragon Tools 是一个综合型数字工具平台，集成了开发、设计、办公、安全等领域的专业工具，致力于通过一站式在线解决方案，彻底消除多软件切换的繁琐体验。它不仅是工具集合，更是效率革命的智能引擎！
 
 categories:
-   - 后端开发
-   - FastAPI
+   - tweets
 
 tags:
    - 工具
@@ -82,12 +81,3 @@ tags:
 **访问官网** 👇  
 **[https/tools.cmdragon.cn/](https/tools.cmdragon.cn/)**  
 > “让工具回归本质——您只需专注创造，杂事交给我们”
-
-
-```mermaid
-flowchart TD
-    A[开始] --> B[处理]
-    B --> C[结束]
-```
-
-6666
