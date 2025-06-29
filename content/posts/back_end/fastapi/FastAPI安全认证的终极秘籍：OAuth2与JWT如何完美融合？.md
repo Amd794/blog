@@ -36,8 +36,6 @@ tags:
 
 ## 一、OAuth2协议核心模式解析
 
-![OAuth2授权流程图](https://via.placeholder.com/600x400?text=OAuth2+Workflow)
-
 ### 1.1 授权码模式（Authorization Code）
 
 适用场景：Web应用间的安全授权（如Google登录）

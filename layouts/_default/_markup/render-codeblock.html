@@ -18,7 +18,10 @@
        (hasPrefix $trimmedContent "classDiagram") 
        (hasPrefix $trimmedContent "stateDiagram") 
        (hasPrefix $trimmedContent "pie") 
-       (hasPrefix $trimmedContent "journey") }}
+       (hasPrefix $trimmedContent "journey")
+       (hasPrefix $trimmedContent "erDiagram")
+       (hasPrefix $trimmedContent "mindmap")
+       (hasPrefix $trimmedContent "timeline") }}
     {{ $isMermaid = true }}
     {{ if not $language }}
       {{ $language = "mermaid" }}
@@ -44,6 +47,12 @@
     {{ $mermaidType = "pie" }}
   {{ else if hasPrefix $trimmedContent "journey" }}
     {{ $mermaidType = "journey" }}
+  {{ else if hasPrefix $trimmedContent "erDiagram" }}
+    {{ $mermaidType = "er" }}
+  {{ else if hasPrefix $trimmedContent "mindmap" }}
+    {{ $mermaidType = "mindmap" }}
+  {{ else if hasPrefix $trimmedContent "timeline" }}
+    {{ $mermaidType = "timeline" }}
   {{ end }}
   
   <div class="mermaid-container">
