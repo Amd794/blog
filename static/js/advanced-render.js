@@ -230,7 +230,10 @@ function processMermaidCodeBlocks() {
             content.startsWith('classDiagram') ||
             content.startsWith('stateDiagram') ||
             content.startsWith('pie') ||
-            content.startsWith('journey')
+            content.startsWith('journey') ||
+            content.startsWith('erDiagram') ||
+            content.startsWith('mindmap') ||
+            content.startsWith('timeline')
         ) {
             const pre = el.parentElement;
             if (pre && !pre.parentElement.classList.contains('mermaid')) {

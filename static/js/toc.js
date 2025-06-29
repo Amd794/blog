@@ -1,6 +1,6 @@
 /**
  * 增强型目录功能
- * 实现目录显示/隐藏切换、滚动定位和移动端适配
+ * 实现目录滚动到顶部/底部切换、滚动定位和移动端适配
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -13,9 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const tocClose = document.getElementById('toc-close');
   const tocOverlay = document.getElementById('toc-overlay');
   const tocHeader = document.querySelector('.toc-header');
+  const articleContent = document.querySelector('.article-content');
   
   // 如果没有找到目录容器，说明当前页面没有目录，直接返回
-  if (!tocContainer) {
+  if (!tocContainer || !articleContent) {
     return;
   }
   
@@ -61,51 +62,47 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 保存目录状态到本地存储的函数
-  function saveTocState(isVisible) {
-    localStorage.setItem('tocState', isVisible ? 'visible' : 'hidden');
+  // 判断是否在页面顶部附近
+  function isNearTop() {
+    return window.scrollY < 300;
   }
   
-  // 从本地存储中获取目录状态
-  function getTocState() {
-    return localStorage.getItem('tocState') || 'visible';
-  }
-  
-  // 显示目录内容
-  function showTocContent() {
-    tocContent.style.display = 'block';
-    tocIcon.setAttribute('icon', 'mdi:chevron-up');
-    saveTocState(true);
-  }
-  
-  // 隐藏目录内容
-  function hideTocContent() {
-    tocContent.style.display = 'none';
-    tocIcon.setAttribute('icon', 'mdi:chevron-down');
-    saveTocState(false);
-  }
-  
-  // 初始化目录状态
-  function initTocState() {
-    const tocState = getTocState();
-    
-    if (tocState === 'hidden') {
-      hideTocContent();
+  // 更新滚动按钮状态
+  function updateScrollButtonState() {
+    if (isNearTop()) {
+      // 在顶部，显示向下箭头
+      tocIcon.setAttribute('icon', 'mdi:arrow-down');
+      tocToggle.setAttribute('aria-label', '滚动到底部');
     } else {
-      showTocContent();
+      // 不在顶部，显示向上箭头
+      tocIcon.setAttribute('icon', 'mdi:arrow-up');
+      tocToggle.setAttribute('aria-label', '滚动到顶部');
     }
   }
   
-  // 初始化目录状态
-  initTocState();
+  // 滚动到顶部或底部
+  function scrollToTopOrBottom() {
+    if (isNearTop()) {
+      // 当前在顶部，滚动到底部
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+    } else {
+      // 当前不在顶部，滚动到顶部
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
   
-  // 切换目录显示/隐藏
+  // 初始化滚动按钮状态
+  updateScrollButtonState();
+  
+  // 切换滚动到顶部/底部
   tocToggle.addEventListener('click', function() {
-    if (tocContent.style.display === 'none') {
-      showTocContent();
-    } else {
-      hideTocContent();
-    }
+    scrollToTopOrBottom();
   });
   
   // 移动端打开目录
@@ -114,11 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
       tocContainer.classList.remove('translate-x-full');
       tocOverlay.classList.remove('hidden');
       document.body.classList.add('overflow-hidden');
-      
-      // 在移动端打开目录时，如果目录内容是隐藏的，则自动显示
-      if (tocContent.style.display === 'none') {
-        showTocContent();
-      }
       
       // 重置目录滚动位置到顶部
       tocContent.scrollTop = 0;
@@ -168,11 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // 根据滚动位置更新目录高亮
   function updateTocHighlight() {
-    // 如果目录被隐藏，不执行更新
-    if (tocContent.style.display === 'none') {
-      return;
-    }
-    
     // 获取当前滚动位置
     const scrollPosition = window.scrollY;
     
@@ -213,6 +200,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     }
+    
+    // 更新滚动按钮状态
+    updateScrollButtonState();
   }
   
   // 为目录中的链接添加点击事件处理程序
@@ -305,40 +295,4 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   updateSafeAreaInsets();
-  
-  // 处理URL中的哈希
-  function handleUrlHash() {
-    const hash = window.location.hash;
-    if (hash && hash.length > 1) {
-      const targetId = hash.substring(1);
-      const targetElement = document.getElementById(targetId);
-      
-      if (targetElement) {
-        // 等待页面布局稳定
-        setTimeout(() => {
-          const targetPosition = targetElement.offsetTop - 100;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-          
-          // 手动更新目录高亮
-          const activeLink = headingMap[targetId];
-          if (activeLink) {
-            tocLinks.forEach(l => l.classList.remove('active'));
-            activeLink.classList.add('active');
-          }
-        }, 300);
-      }
-    }
-  }
-  
-  // 初始化时处理URL哈希
-  handleUrlHash();
-  
-  // 在页面加载完成后初始化高亮
-  window.addEventListener('load', function() {
-    updateHeadingPositions();
-    updateTocHighlight();
-  });
 }); 
