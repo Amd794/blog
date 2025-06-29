@@ -17,17 +17,76 @@ const searchConfig = {
  * 简单的字符串匹配搜索函数
  * @param {string} text - 要搜索的文本
  * @param {string} query - 搜索查询
- * @returns {boolean} - 是否匹配
+ * @returns {Object} - 匹配信息，包括是否匹配和匹配位置
  */
 function simpleMatch(text, query) {
-  if (!text || !query) return false;
+  if (!text || !query) return { matched: false };
   
   // 转换为小写并去除空格以进行不区分大小写的搜索
   const textLower = text.toLowerCase();
   const queryLower = query.toLowerCase();
   
   // 检查是否包含查询字符串
-  return textLower.includes(queryLower);
+  const index = textLower.indexOf(queryLower);
+  if (index !== -1) {
+    return {
+      matched: true,
+      index: index,
+      length: query.length
+    };
+  }
+  
+  return { matched: false };
+}
+
+/**
+ * 高亮文本中的关键词
+ * @param {string} text - 原始文本
+ * @param {string} query - 搜索关键词
+ * @returns {string} - 高亮后的HTML
+ */
+function highlightKeyword(text, query) {
+  if (!text || !query || query.trim() === '') return text;
+  
+  const match = simpleMatch(text, query);
+  if (!match.matched) return text;
+  
+  // 提取匹配前、匹配部分和匹配后的文本
+  const before = text.substring(0, match.index);
+  const matched = text.substring(match.index, match.index + match.length);
+  const after = text.substring(match.index + match.length);
+  
+  // 构建高亮HTML，使用更高对比度的颜色组合
+  return `${before}<span class="bg-yellow-200 text-gray-900 dark:bg-amber-500 dark:text-gray-900 font-medium px-0.5 rounded">${matched}</span>${after}`;
+}
+
+/**
+ * 创建带有上下文的摘要，并高亮关键词
+ * @param {string} content - 完整内容
+ * @param {string} query - 搜索关键词
+ * @returns {string} - 带有高亮关键词的摘要HTML
+ */
+function createHighlightedExcerpt(content, query) {
+  if (!content || !query) return '';
+  
+  const match = simpleMatch(content, query);
+  if (!match.matched) {
+    // 如果没有匹配，返回前150个字符
+    return content.length > 150 ? content.substring(0, 150) + '...' : content;
+  }
+  
+  // 计算摘要的起始和结束位置，确保关键词在摘要中间
+  let start = Math.max(0, match.index - 60);
+  let end = Math.min(content.length, match.index + match.length + 60);
+  
+  // 如果摘要不是从内容开头开始，添加省略号
+  let excerpt = (start > 0 ? '...' : '') + content.substring(start, end);
+  
+  // 如果摘要不是在内容末尾结束，添加省略号
+  if (end < content.length) excerpt += '...';
+  
+  // 高亮关键词
+  return highlightKeyword(excerpt, query);
 }
 
 /**
@@ -228,15 +287,33 @@ function performSearch(query) {
     const summaryMatch = simpleMatch(item.summary, query);
     
     // 设置匹配分数（用于排序）
-    if (titleMatch) {
+    if (titleMatch.matched) {
       item.score = 3; // 标题匹配分数最高
-    } else if (summaryMatch) {
-      item.score = 2; // 摘要匹配次之
-    } else if (contentMatch) {
-      item.score = 1; // 内容匹配分数最低
+      item.titleHighlighted = highlightKeyword(item.title, query);
+    } else {
+      item.titleHighlighted = item.title;
     }
     
-    return titleMatch || contentMatch || summaryMatch;
+    if (summaryMatch.matched) {
+      item.score = item.score || 2; // 摘要匹配次之
+      item.summaryHighlighted = highlightKeyword(item.summary, query);
+    } else {
+      item.summaryHighlighted = item.summary;
+    }
+    
+    if (contentMatch.matched) {
+      item.score = item.score || 1; // 内容匹配分数最低
+      // 创建带有上下文的高亮摘要
+      item.contentHighlighted = createHighlightedExcerpt(item.content, query);
+    } else {
+      item.contentHighlighted = item.content && item.content.length > 150 ? 
+        item.content.substring(0, 150) + '...' : item.content;
+    }
+    
+    // 保存查询词，用于后续处理
+    item.searchQuery = query;
+    
+    return titleMatch.matched || contentMatch.matched || summaryMatch.matched;
   });
   
   // 按分数排序
@@ -290,24 +367,22 @@ function renderResults(results) {
         </div>
       ` : "";
       
-      // 格式化摘要，限制长度
-      let summary = item.summary || item.content || "";
-      if (summary.length > 150) {
-        summary = summary.substring(0, 150) + "...";
-      }
+      // 使用高亮的标题和内容
+      const title = item.titleHighlighted || item.title;
+      const content = item.contentHighlighted || item.summaryHighlighted || item.summary || item.content || "";
       
       // 构建结果项 HTML
       resultElement.innerHTML = `
-        <h3 class="text-xl font-bold mb-2">
+        <h2 class="text-xl font-bold mb-2">
           <a href="${item.permalink}" class="text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors duration-200">
-            ${item.title}
+            ${title}
           </a>
-        </h3>
+        </h2>
         ${dateDisplay}
-        <div class="text-gray-700 dark:text-gray-300 mb-4">
-          ${summary}
+        <div class="text-gray-700 dark:text-gray-300 mb-4 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-600">
+          ${content}
         </div>
-        <a href="${item.permalink}" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors duration-200">
+        <a href="${item.permalink}" class="inline-flex items-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all duration-300">
           阅读全文
           <iconify-icon icon="mdi:arrow-right" class="ml-1" width="16" height="16"></iconify-icon>
         </a>
