@@ -27,20 +27,20 @@ tags:
 <img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)
+关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
-
- 
-- 用虚拟环境打造**纯净开发空间**的3种方法  
-- 只需5行代码实现**智能API端点**  
-- 自动生成媲美大厂的**交互式API文档**  
-- 解决新手必踩的**9大坑点**（含依赖冲突/端口占用等）  
+- 用虚拟环境打造**纯净开发空间**的3种方法
+- 只需5行代码实现**智能API端点**
+- 自动生成媲美大厂的**交互式API文档**
+- 解决新手必踩的**9大坑点**（含依赖冲突/端口占用等）
 
 ---
 
+#### 第一章：开发环境搭建
 
-#### 第一章：开发环境搭建  
-**1.1 虚拟环境全方案对比**  
+**1.1 虚拟环境全方案对比**
+
 ```bash
 # 方案1：venv（Python原生）
 python -m venv fastapi-env
@@ -57,13 +57,14 @@ cd myapi
 poetry add fastapi uvicorn
 ```
 
-**1.2 依赖管理黄金法则**  
+**1.2 依赖管理黄金法则**
+
 ```toml
 # pyproject.toml 示例（使用poetry）
 [tool.poetry.dependencies]
 python = "^3.8"
 fastapi = "^0.115.10"
-uvicorn = {extras = ["standard"], version = "^0.23.0"}
+uvicorn = { extras = ["standard"], version = "^0.23.0" }
 
 # 安装命令
 poetry install  # 自动解析依赖
@@ -71,8 +72,10 @@ poetry install  # 自动解析依赖
 
 ---
 
-#### 第二章：第一个智能API  
-**2.1 最小化API代码**  
+#### 第二章：第一个智能API
+
+**2.1 最小化API代码**
+
 ```python
 # main.py
 from fastapi import FastAPI
@@ -83,18 +86,20 @@ app = FastAPI(
     version="0.1.0"
 )
 
+
 @app.get("/weather/{city}")
 async def get_weather(city: str, days: int = 7):
     return {
         "city": city,
         "forecast": [
-            {"day": i+1, "temp": 25+i} 
+            {"day": i + 1, "temp": 25 + i}
             for i in range(days)
         ]
     }
 ```
 
-**2.2 运行与测试**  
+**2.2 运行与测试**
+
 ```bash
 # 开发模式（热重载）
 uvicorn main:app --reload
@@ -105,12 +110,14 @@ gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
 
 ---
 
-#### 第三章：自动文档生成  
+#### 第三章：自动文档生成
+
 **3.1 Swagger UI访问**  
 访问 `http://localhost:8000/docs` 你将看到：  
 [Swagger UI界面](https://example.com/swagger-demo.png)
 
-**3.2 文档增强技巧**  
+**3.2 文档增强技巧**
+
 ```python
 @app.get(
     "/weather/{city}",
@@ -124,8 +131,10 @@ async def get_weather(...):
 
 ---
 
-#### 第四章：课后实战工坊  
-**任务1：扩展健康检查接口**  
+#### 第四章：课后实战工坊
+
+**任务1：扩展健康检查接口**
+
 ```python
 # 要求：
 # 1. 访问 /health 返回服务器状态
@@ -134,31 +143,34 @@ async def get_weather(...):
 
 @app.get("/health")
 async def health_check():
-    # 你的代码
+# 你的代码
 ```
 
-**任务2：防御恶意参数攻击**  
+**任务2：防御恶意参数攻击**
+
 ```python
 # 危险代码
 @app.get("/user/{user_id}")
 async def get_user(user_id: str):
     query = f"SELECT * FROM users WHERE id = {user_id}"
-    
+
 # 任务：使用类型提示+参数化查询改写
 ```
 
 ---
 
-### 常见错误解决方案  
-| 错误现象 | 原因 | 解决方案 |
-|----------|------|----------|
-| `ImportError: cannot import name 'FastAPI'` | 未安装FastAPI | `pip install fastapi` |
-| `Address already in use` | 端口被占用 | 更换端口：`uvicorn main:app --port 8001` |
-| 422 Validation Error | 参数类型错误 | 检查路径参数和查询参数类型 |
+### 常见错误解决方案
+
+| 错误现象                                        | 原因         | 解决方案                                |
+|---------------------------------------------|------------|-------------------------------------|
+| `ImportError: cannot import name 'FastAPI'` | 未安装FastAPI | `pip install fastapi`               |
+| `Address already in use`                    | 端口被占用      | 更换端口：`uvicorn main:app --port 8001` |
+| 422 Validation Error                        | 参数类型错误     | 检查路径参数和查询参数类型                       |
 
 ---
 
-### 结语  
+### 结语
+
 现在运行 `uvicorn main:app --reload` 即刻开启你的API开发之旅！记得访问自动文档页面，这是FastAPI送给开发者的最佳礼物 🎁
 
 ---
@@ -204,3 +216,46 @@ async def get_user(user_id: str):
 - [深入探讨视图更新：提升数据库灵活性的关键技术 | cmdragon's Blog](https://blog.cmdragon.cn/posts/625cecdc44e4c4e7b520ddb3012635d1/)
 -
 
+## 免费好用的热门在线工具
+
+- [CMDragon 在线工具 - 高级AI工具箱与开发者套件 | 免费好用的在线工具](https://tools.cmdragon.cn/zh)
+- [应用商店 - 发现1000+提升效率与开发的AI工具和实用程序 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps?category=trending)
+- [CMDragon 更新日志 - 最新更新、功能与改进 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/changelog)
+- [支持我们 - 成为赞助者 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/sponsor)
+- [AI文本生成图像 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/text-to-image-ai)
+- [临时邮箱 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/temp-email)
+- [二维码解析器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/qrcode-parser)
+- [文本转思维导图 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/text-to-mindmap)
+- [正则表达式可视化工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/regex-visualizer)
+- [文件隐写工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/steganography-tool)
+- [IPTV 频道探索器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/iptv-explorer)
+- [快传 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/snapdrop)
+- [随机抽奖工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/lucky-draw)
+- [动漫场景查找器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/anime-scene-finder)
+- [时间工具箱 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/time-toolkit)
+- [网速测试 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/speed-test)
+- [AI 智能抠图工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/background-remover)
+- [背景替换工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/background-replacer)
+- [艺术二维码生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/artistic-qrcode)
+- [Open Graph 元标签生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/open-graph-generator)
+- [图像对比工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/image-comparison)
+- [图片压缩专业版 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/image-compressor)
+- [密码生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/password-generator)
+- [SVG优化器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/svg-optimizer)
+- [调色板生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/color-palette)
+- [在线节拍器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/online-metronome)
+- [IP归属地查询 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/ip-geolocation)
+- [CSS网格布局生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/css-grid-layout)
+- [邮箱验证工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/email-validator)
+- [书法练习字帖 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/calligraphy-practice)
+- [金融计算器套件 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/finance-calculator-suite)
+- [中国亲戚关系计算器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/chinese-kinship-calculator)
+- [Protocol Buffer 工具箱 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/protobuf-toolkit)
+- [IP归属地查询 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/ip-geolocation)
+- [图片无损放大 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/image-upscaler)
+- [文本比较工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/text-compare)
+- [IP批量查询工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/ip-batch-lookup)
+- [域名查询工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/domain-finder)
+- [DNS工具箱 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/dns-toolkit)
+- [网站图标生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/favicon-generator)
+- [XML Sitemap](https://tools.cmdragon.cn/sitemap_index.xml)
