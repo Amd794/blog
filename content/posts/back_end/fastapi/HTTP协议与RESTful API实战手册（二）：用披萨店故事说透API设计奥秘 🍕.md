@@ -26,30 +26,30 @@ tags:
 <img src="https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg" title="cmdragon_cn.png" alt="cmdragon_cn.png"/>
 
 
-扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
+扫描[二维码](https://api2.cmdragon.cn/upload/cmder/20250304_012821924.jpg)
+关注或者微信搜一搜：`编程智域 前端至全栈交流与成长`
 
+📦 本系列第二篇通过**披萨店创业**的完整案例，手把手教你：
 
-📦 本系列第二篇通过**披萨店创业**的完整案例，手把手教你：  
-- 用外卖订单理解HTTP协议细节  
-- 5个RESTful设计常见误区与修正方案  
-- 从零搭建支持**用户/订单/库存管理**的完整API  
-- 错误排查工具箱（含11种常见问题速查表）  
+- 用外卖订单理解HTTP协议细节
+- 5个RESTful设计常见误区与修正方案
+- 从零搭建支持**用户/订单/库存管理**的完整API
+- 错误排查工具箱（含11种常见问题速查表）
 
 ---
 
-
-
-#### 第一章：HTTP协议就像披萨外卖（场景化学习）  
+#### 第一章：HTTP协议就像披萨外卖（场景化学习）
 
 **1.1 订单生命周期对照表**  
-| 外卖步骤         | HTTP对应概念        | 示例                 |  
+| 外卖步骤 | HTTP对应概念 | 示例 |  
 |------------------|--------------------|----------------------|  
-| 顾客下单         | POST请求           | `POST /orders`       |  
-| 打印小票         | Header元数据       | `Content-Type: application/json` |  
-| 后厨制作         | 服务器处理逻辑      | 数据库写入操作       |  
-| 外卖异常通知     | 4xx/5xx状态码      | `404 披萨缺货`       |  
+| 顾客下单 | POST请求 | `POST /orders`       |  
+| 打印小票 | Header元数据 | `Content-Type: application/json` |  
+| 后厨制作 | 服务器处理逻辑 | 数据库写入操作 |  
+| 外卖异常通知 | 4xx/5xx状态码 | `404 披萨缺货`       |
 
-**1.2 必知必会的5个状态码**  
+**1.2 必知必会的5个状态码**
+
 ```python
 @app.post("/orders")
 async def create_order():
@@ -62,52 +62,68 @@ async def create_order():
 
 ---
 
-#### 第二章：RESTful设计七大黄金法则  
-**2.1 错误 vs 正确设计对比**  
+#### 第二章：RESTful设计七大黄金法则
+
+**2.1 错误 vs 正确设计对比**
+
 ```python
 # 错误：动词导向 ❌
 @app.post("/getUserOrders")
 def get_orders(): ...
+
 
 # 正确：名词导向 ✅  
 @app.get("/users/{user_id}/orders")
 def get_orders(user_id: int): ...
 ```
 
-**2.2 超媒体API实战（HATEOAS）**  
+**2.2 超媒体API实战（HATEOAS）**
+
 ```json
 // 订单创建响应
 {
   "id": 1001,
   "status": "烤制中",
   "_links": {
-    "self": {"href": "/orders/1001", "method": "GET"},
-    "cancel": {"href": "/orders/1001", "method": "DELETE"}
+    "self": {
+      "href": "/orders/1001",
+      "method": "GET"
+    },
+    "cancel": {
+      "href": "/orders/1001",
+      "method": "DELETE"
+    }
   }
 }
 ```
 
 ---
 
-#### 第三章：从零搭建披萨店API 🧑🍳  
-**3.1 完整API架构**  
+#### 第三章：从零搭建披萨店API 🧑🍳
+
+**3.1 完整API架构**
+
 ```python
 from fastapi import FastAPI
 from pydantic import BaseModel
 
 app = FastAPI()
 
+
 class Pizza(BaseModel):
     name: str
     price: float
     size: Literal["S", "M", "L"]
 
+
 # 菜单管理
 @app.get("/pizzas")
 async def list_pizzas(): ...
 
+
 @app.post("/pizzas")
 async def create_pizza(pizza: Pizza): ...
+
 
 # 订单系统
 @app.post("/orders")
@@ -120,27 +136,32 @@ async def create_order(pizza_ids: list[int]): ...
 
 ---
 
-#### 第四章：错误处理大师课  
-**4.1 422错误全场景复现**  
+#### 第四章：错误处理大师课
+
+**4.1 422错误全场景复现**
+
 ```python
 # 案例：忘记必填参数
 @app.post("/pizzas")
 async def create_pizza(pizza: Pizza):
-    # 如果客户端未传price字段...
-    
+
+
+# 如果客户端未传price字段...
+
 # 客户端收到响应：
 {
-  "detail": [
-    {
-      "loc": ["body", "price"],
-      "msg": "field required",
-      "type": "value_error.missing"
-    }
-  ]
+    "detail": [
+        {
+            "loc": ["body", "price"],
+            "msg": "field required",
+            "type": "value_error.missing"
+        }
+    ]
 }
 ```
 
-**4.2 错误排查流程图**  
+**4.2 错误排查流程图**
+
 ```mermaid
 graph TD
 A[收到4xx错误] --> B{错误类型}
@@ -152,24 +173,29 @@ B -->|422| F[查看返回的校验详情]
 
 ---
 
-#### 第五章：安全加固与性能优化  
-**5.1 防御披萨注入攻击**  
+#### 第五章：安全加固与性能优化
+
+**5.1 防御披萨注入攻击**
+
 ```python
 # 危险写法 ❌
 def get_order(raw_id: str):
     query = f"SELECT * FROM orders WHERE id = {raw_id}"
-    
+
+
 # 安全写法 ✅  
 def get_order_safe(order_id: int):
     query = "SELECT * FROM orders WHERE id = :id"
     params = {"id": order_id}
 ```
 
-**5.2 缓存优化实战**  
+**5.2 缓存优化实战**
+
 ```python
 from fastapi import Request
 from fastapi_cache import FastAPICache
 from fastapi_cache.decorator import cache
+
 
 @app.get("/pizzas/{pizza_id}")
 @cache(expire=60)  # 缓存60秒
@@ -179,8 +205,10 @@ async def get_pizza(pizza_id: int):
 
 ---
 
-### 课后实战工坊  
-**任务1：扩展配送功能**  
+### 课后实战工坊
+
+**任务1：扩展配送功能**
+
 ```python
 # 你的挑战：
 @app.get("/orders/{order_id}/tracking")
@@ -189,7 +217,8 @@ async def get_delivery_status(order_id: int):
     pass
 ```
 
-**任务2：设计促销系统**  
+**任务2：设计促销系统**
+
 ```python
 # 需求：
 # - 创建促销活动（POST /promotions）
@@ -199,7 +228,8 @@ async def get_delivery_status(order_id: int):
 
 ---
 
-### 结语  
+### 结语
+
 您已完成从API新手到合格开发者的蜕变。现在，用 `python -m uvicorn main:app --reload` 启动您的披萨店API帝国吧！ 🚀
 
 ---
@@ -246,5 +276,46 @@ async def get_delivery_status(order_id: int):
 - [深入理解检查约束：确保数据质量的重要工具 | cmdragon's Blog](https://blog.cmdragon.cn/posts/309f74bd85c733fb7a2cd79990d7af9b/)
 -
 
+## 免费好用的热门在线工具
 
-
+- [CMDragon 在线工具 - 高级AI工具箱与开发者套件 | 免费好用的在线工具](https://tools.cmdragon.cn/zh)
+- [应用商店 - 发现1000+提升效率与开发的AI工具和实用程序 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps?category=trending)
+- [CMDragon 更新日志 - 最新更新、功能与改进 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/changelog)
+- [支持我们 - 成为赞助者 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/sponsor)
+- [AI文本生成图像 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/text-to-image-ai)
+- [临时邮箱 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/temp-email)
+- [二维码解析器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/qrcode-parser)
+- [文本转思维导图 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/text-to-mindmap)
+- [正则表达式可视化工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/regex-visualizer)
+- [文件隐写工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/steganography-tool)
+- [IPTV 频道探索器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/iptv-explorer)
+- [快传 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/snapdrop)
+- [随机抽奖工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/lucky-draw)
+- [动漫场景查找器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/anime-scene-finder)
+- [时间工具箱 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/time-toolkit)
+- [网速测试 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/speed-test)
+- [AI 智能抠图工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/background-remover)
+- [背景替换工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/background-replacer)
+- [艺术二维码生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/artistic-qrcode)
+- [Open Graph 元标签生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/open-graph-generator)
+- [图像对比工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/image-comparison)
+- [图片压缩专业版 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/image-compressor)
+- [密码生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/password-generator)
+- [SVG优化器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/svg-optimizer)
+- [调色板生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/color-palette)
+- [在线节拍器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/online-metronome)
+- [IP归属地查询 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/ip-geolocation)
+- [CSS网格布局生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/css-grid-layout)
+- [邮箱验证工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/email-validator)
+- [书法练习字帖 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/calligraphy-practice)
+- [金融计算器套件 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/finance-calculator-suite)
+- [中国亲戚关系计算器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/chinese-kinship-calculator)
+- [Protocol Buffer 工具箱 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/protobuf-toolkit)
+- [IP归属地查询 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/ip-geolocation)
+- [图片无损放大 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/image-upscaler)
+- [文本比较工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/text-compare)
+- [IP批量查询工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/ip-batch-lookup)
+- [域名查询工具 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/domain-finder)
+- [DNS工具箱 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/dns-toolkit)
+- [网站图标生成器 - 应用商店 | 免费好用的在线工具](https://tools.cmdragon.cn/zh/apps/favicon-generator)
+- [XML Sitemap](https://tools.cmdragon.cn/sitemap_index.xml)
