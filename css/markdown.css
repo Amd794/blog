@@ -477,6 +477,7 @@
   color: #1e40af;
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
+  white-space: pre-wrap;
 }
 
 .dark .article-content code:not([class*="language-"]) {
