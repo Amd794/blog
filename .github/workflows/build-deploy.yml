@@ -50,7 +50,7 @@ jobs:
       - name: Build TailwindCSS
         run: |
           echo "正在构建TailwindCSS..."
-          npx tailwindcss -i ./static/css/tailwind.css -o ./static/css/tailwind.min.css --minify
+          npm run build:css
           echo "TailwindCSS构建完成"
           ls -la static/css/
       
@@ -72,7 +72,7 @@ jobs:
           if [ ! -f public/css/tailwind.min.css ]; then
             echo "警告：TailwindCSS编译后文件未在public目录中找到"
             mkdir -p public/css
-            cp static/css/tailwind.min.css public/css/
+            cp assets/css/tailwind.min.css public/css/
           fi
       
       # 部署到public分支
