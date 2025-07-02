@@ -25,10 +25,12 @@
     </script>
     
     <!-- 代码高亮脚本 -->
-    <script src="/js/code-highlight.js"></script>
+    {{ $codeHighlightJS := resources.Get "js/code-highlight.js" | resources.Minify | resources.Fingerprint "sha512" }}
+    <script src="{{ $codeHighlightJS.RelPermalink }}" integrity="{{ $codeHighlightJS.Data.Integrity }}"></script>
     
     <!-- 高级渲染脚本（Mermaid和KaTeX） -->
-    <script src="/js/advanced-render.js"></script>
+    {{ $advancedRenderJS := resources.Get "js/advanced-render.js" | resources.Minify | resources.Fingerprint "sha512" }}
+    <script src="{{ $advancedRenderJS.RelPermalink }}" integrity="{{ $advancedRenderJS.Data.Integrity }}"></script>
     
     {{ partial "site-search.html" . }}
 </body>

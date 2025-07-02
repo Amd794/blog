@@ -192,14 +192,26 @@
 <!-- 添加bash语言支持 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
 <!-- 自定义样式和脚本 -->
-<link rel="stylesheet" href="/css/markdown.css">
-<link rel="stylesheet" href="/css/code-highlight.css">
-<link rel="stylesheet" href="/css/image-viewer.css">
-<script src="/js/code-highlight.js"></script>
+{{ $markdownCSS := resources.Get "css/markdown.css" | resources.Minify | resources.Fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $markdownCSS.RelPermalink }}" integrity="{{ $markdownCSS.Data.Integrity }}">
+
+{{ $codeHighlightCSS := resources.Get "css/code-highlight.css" | resources.Minify | resources.Fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $codeHighlightCSS.RelPermalink }}" integrity="{{ $codeHighlightCSS.Data.Integrity }}">
+
+{{ $imageViewerCSS := resources.Get "css/image-viewer.css" | resources.Minify | resources.Fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $imageViewerCSS.RelPermalink }}" integrity="{{ $imageViewerCSS.Data.Integrity }}">
+
+{{ $codeHighlightJS := resources.Get "js/code-highlight.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script src="{{ $codeHighlightJS.RelPermalink }}" integrity="{{ $codeHighlightJS.Data.Integrity }}"></script>
+
 <!-- 目录增强功能 -->
-<script src="/js/toc.js"></script>
+{{ $tocJS := resources.Get "js/toc.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script src="{{ $tocJS.RelPermalink }}" integrity="{{ $tocJS.Data.Integrity }}"></script>
+
 <!-- 图片查看器 -->
-<script src="/js/image-viewer.js"></script>
+{{ $imageViewerJS := resources.Get "js/image-viewer.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script src="{{ $imageViewerJS.RelPermalink }}" integrity="{{ $imageViewerJS.Data.Integrity }}"></script>
+
 <!-- 初始化高亮 -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {

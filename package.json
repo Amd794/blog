@@ -4,8 +4,8 @@
   "description": "CMDragon's Blog",
   "scripts": {
     "dev": "npm run build:css && hugo server",
-    "build": "npm run build:css && hugo",
-    "build:css": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/tailwind.min.css --minify"
+    "build": "npm run build:css && hugo --gc --minify",
+    "build:css": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/tailwind.min.css --minify"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10"

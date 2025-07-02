@@ -65,7 +65,7 @@ jobs:
       - name: Build with Hugo
         run: |
           echo "正在构建Hugo站点..."
-          hugo --minify
+          hugo --gc --minify
           echo "Hugo站点构建完成"
           ls -la public/css/
           # 确保tailwind.min.css已被复制到public目录
