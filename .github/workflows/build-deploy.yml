@@ -52,7 +52,7 @@ jobs:
           echo "正在构建TailwindCSS..."
           npm run build:css
           echo "TailwindCSS构建完成"
-          ls -la static/css/
+          ls -la assets/css/
       
       # 设置Hugo环境
       - name: Setup Hugo
