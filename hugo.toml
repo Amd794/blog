@@ -14,7 +14,7 @@ enableEmoji = true
 
 # 分页配置
 [pagination]
-  pagerSize = 5
+  pagerSize = 6
 
 # 输出格式配置
 [outputs]

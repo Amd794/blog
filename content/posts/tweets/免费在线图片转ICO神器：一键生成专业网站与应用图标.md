@@ -2,8 +2,9 @@
 url: /posts/8d8b7f6e5a4c3b2a1f0e9d8c7b6a5d4f3/
 title: 免费在线图片转ICO神器：一键生成专业网站与应用图标
 date: 2025-06-28T08:37:03+08:00
-lastmod: 2025-06-28T08:37:03+08:00
+lastmod: 2025-07-02T08:37:03+08:00
 author: cmdragon
+cover: /images/xw_20250702202054.png
 
 summary: 无需安装软件！通过浏览器即可将PNG/JPG等图片转换为多尺寸ICO图标，完美适配网站favicon和Windows应用程序，支持透明背景与批量尺寸生成。
 
@@ -19,6 +20,8 @@ tags:
   - 免费工具
   - 设计资源
 ---
+
+![xw_20250702202054.png](/images/xw_20250702202054.png)
 
 在数字时代，一个精致的图标往往决定着用户对网站或应用的第一印象。无论是浏览器标签页上那个小小的favicon，还是桌面应用程序的启动图标，ICO格式始终是Windows系统的黄金标准。今天，我要向您推荐一款革命性的在线工具——
 **图片转ICO工具**（[立即体验](https://tools.cmdragon.cn/zh/apps/image-to-ico)），它彻底解决了传统图标转换的痛点！

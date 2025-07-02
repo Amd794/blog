@@ -2,8 +2,9 @@
 url: /posts/6a9c8b7e4d5f3b2a1c0d9e8f7/
 title: 一键优化SVG文件 - CMDragon SVG优化器使用指南
 date: 2025-06-30T08:37:03+08:00
-lastmod: 2025-06-30T08:37:03+08:00
+lastmod: 2025-07-02T08:37:03+08:00
 author: cmdragon
+cover: /images/xw_20250702195036.png
 
 summary:
    本文详细介绍CMDragon平台提供的免费SVG优化工具，解析其六大核心功能与操作指南，帮助开发者轻松实现矢量图形文件瘦身与性能提升。
@@ -23,6 +24,8 @@ tags:
 - 网页设计
 
 ---
+
+![xw_20250702195036.png](/images/xw_20250702195036.png)
 
 ## 为什么需要SVG优化器？
 
