@@ -190,8 +190,8 @@
     </template>
 </div>
 
-<!-- 直接加载搜索脚本 -->
-<script src="/js/search.js"></script>
+{{ $searchJS := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
 
 <!-- 添加高亮样式 -->
 <style>

@@ -2,8 +2,9 @@
 url: /posts/6f4b866edf8d9b4d0d4b8b4d5d6b8b4d/
 title: 免费在线手绘风白板工具Excalidraw - 极简绘图新体验
 date: 2025-06-30T08:37:03+08:00
-lastmod: 2025-06-30T08:37:03+08:00
+lastmod: 2025-07-02T08:37:03+08:00
 author: cmdragon
+cover: /images/xw_20250702202159.png
 
 summary:
   Excalidraw是一款开源的在线手绘风格白板工具，支持多人协作、多种导出格式和丰富的绘图元素。本文将详细介绍其核心功能和使用场景，帮助您提高创作效率。
@@ -23,6 +24,8 @@ tags:
   - 视觉笔记
 
 ---
+
+![Excalidraw](/images/xw_20250702202159.png)
 
 ## Excalidraw - 极简手绘风格的在线白板
 

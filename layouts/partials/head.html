@@ -193,17 +193,22 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
 
 <!-- 使用预编译的TailwindCSS -->
-<link rel="stylesheet" href="/css/tailwind.min.css">
+{{ $tailwindCSS := resources.Get "css/tailwind.min.css" | resources.Minify | resources.Fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $tailwindCSS.RelPermalink }}" integrity="{{ $tailwindCSS.Data.Integrity }}">
 
 <!-- Iconify CDN -->
-<script src="/js/iconify-icon.min.js"></script>
+{{ $iconifyJS := resources.Get "js/iconify-icon.min.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script src="{{ $iconifyJS.RelPermalink }}" integrity="{{ $iconifyJS.Data.Integrity }}"></script>
 
 <!-- 优化字体 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 
 <!-- 样式表 -->
-<link rel="stylesheet" href="/css/code-highlight.css">
-<link rel="stylesheet" href="/css/markdown.css">
+{{ $codeHighlightCSS := resources.Get "css/code-highlight.css" | resources.Minify | resources.Fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $codeHighlightCSS.RelPermalink }}" integrity="{{ $codeHighlightCSS.Data.Integrity }}">
+
+{{ $markdownCSS := resources.Get "css/markdown.css" | resources.Minify | resources.Fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $markdownCSS.RelPermalink }}" integrity="{{ $markdownCSS.Data.Integrity }}">
 
 <!-- Mermaid样式 -->
 <style>

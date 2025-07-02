@@ -2,8 +2,9 @@
 url: /posts/8f1b7e3c1a9d4e2f7b6c5a8d3f0e9c2b/
 title: 高效写作必备！CMDragon Markdown编辑器深度评测
 date: 2025-06-30T08:37:03+08:00
-lastmod: 2025-06-30T08:37:03+08:00
+lastmod: 2025-07-02T08:37:03+08:00
 author: cmdragon
+cover: /images/xw_20250702204630.png
 
 summary:
   深度解析CMDragon推出的专业Markdown在线编辑器，零门槛实现沉浸式写作体验。支持实时预览、主题定制、导出多格式等核心功能，是技术写作与内容创作的高效工具。
@@ -20,6 +21,8 @@ tags:
   - 内容创作
   - CMDragon
 ---
+
+![CMDragon Markdown编辑器](/images/xw_20250702204630.png)
 
 ## 为什么选择在线Markdown编辑器？
 
