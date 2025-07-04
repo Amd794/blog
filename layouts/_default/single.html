@@ -138,6 +138,9 @@
                 </div>
             </div>
             
+            <!-- 赞赏功能 -->
+            {{ partial "donate.html" . }}
+            
             <!-- 评论系统 -->
             {{ if eq .Site.Params.comments.enable true }}
             {{ partial "comments.html" . }}

@@ -1,0 +1,109 @@
+<!-- 赞赏功能 -->
+<div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-8">
+    <h2 class="text-lg font-medium mb-4 flex items-center">
+        <div class="bg-gradient-to-br from-yellow-500 to-red-600 p-1.5 rounded text-white mr-2">
+            <iconify-icon icon="mdi:hand-coin" width="16" height="16"></iconify-icon>
+        </div>
+        赞赏支持
+    </h2>
+    <div class="text-center">
+        <p class="text-gray-700 dark:text-gray-300 mb-4">如果我的文章对您有所帮助，欢迎赞赏支持</p>
+        
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <!-- 支付宝收款码 -->
+            <div class="donation-item">
+                <button class="donate-button alipay-btn bg-[#0066b3] text-white px-5 py-2 rounded-lg hover:bg-[#00518f] transition-colors mb-3 flex items-center justify-center w-full" 
+                   aria-label="打开支付宝收款码" 
+                   type="button"
+                   tabindex="0">
+                    <iconify-icon icon="mdi:alipay" class="mr-2" width="20" height="20"></iconify-icon>
+                    支付宝
+                </button>
+                <div class="donate-qrcode alipay-qrcode hidden">
+                    <div class="bg-white p-3 rounded-lg shadow-lg">
+                        <img src="/images/alipay.webp" alt="支付宝收款码" class="w-48 h-48 object-cover" />
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 微信收款码 -->
+            <div class="donation-item">
+                <button class="donate-button wechat-btn bg-green-800 text-white px-5 py-2 rounded-lg hover:bg-green-900 transition-colors mb-3 flex items-center justify-center w-full" 
+                   aria-label="打开微信收款码" 
+                   type="button"
+                   tabindex="0">
+                    <iconify-icon icon="mdi:wechat" class="mr-2" width="20" height="20"></iconify-icon>
+                    微信
+                </button>
+                <div class="donate-qrcode wechat-qrcode hidden">
+                    <div class="bg-white p-3 rounded-lg shadow-lg">
+                        <img src="/images/wechat_pay.webp" alt="微信收款码" class="w-48 h-48 object-cover" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.donation-item {
+    position: relative;
+    display: inline-block;
+}
+.donate-qrcode {
+    width: 200px;
+    position: absolute;
+    top: -260px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取所有赞赏按钮和二维码
+    const alipayBtn = document.querySelector('.alipay-btn');
+    const wechatBtn = document.querySelector('.wechat-btn');
+    const alipayQrcode = document.querySelector('.alipay-qrcode');
+    const wechatQrcode = document.querySelector('.wechat-qrcode');
+    
+    // 添加点击事件
+    alipayBtn.addEventListener('click', function() {
+        alipayQrcode.classList.toggle('hidden');
+        wechatQrcode.classList.add('hidden');
+    });
+    
+    wechatBtn.addEventListener('click', function() {
+        wechatQrcode.classList.toggle('hidden');
+        alipayQrcode.classList.add('hidden');
+    });
+    
+    // 按键事件支持
+    alipayBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            alipayQrcode.classList.toggle('hidden');
+            wechatQrcode.classList.add('hidden');
+        }
+    });
+    
+    wechatBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            wechatQrcode.classList.toggle('hidden');
+            alipayQrcode.classList.add('hidden');
+        }
+    });
+    
+    // 点击其他地方关闭二维码
+    document.addEventListener('click', function(e) {
+        if (!alipayBtn.contains(e.target) && !alipayQrcode.contains(e.target)) {
+            alipayQrcode.classList.add('hidden');
+        }
+        if (!wechatBtn.contains(e.target) && !wechatQrcode.contains(e.target)) {
+            wechatQrcode.classList.add('hidden');
+        }
+    });
+});
+</script>
