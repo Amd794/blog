@@ -24,7 +24,7 @@
 <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-{{ with .Params.image }}
+{{ with .Params.cover }}
 <meta property="og:image" content="{{ . | absURL }}">
 {{ else }}
 <meta property="og:image" content="{{ "/images/logo/social-card.png" | absURL }}">
@@ -51,7 +51,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}">
 <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
-{{ with .Params.image }}
+{{ with .Params.cover }}
 <meta name="twitter:image" content="{{ . | absURL }}">
 {{ else }}
 <meta name="twitter:image" content="{{ "/images/logo/social-card.png" | absURL }}">
@@ -74,7 +74,7 @@
     "name": "{{ .Site.Params.author }}"
   },
   "description": "{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary | plainify }}{{ end }}",
-  {{ with .Params.image }}
+  {{ with .Params.cover }}
   "image": "{{ . | absURL }}",
   {{ else }}
   "image": "{{ "/images/logo/social-card.png" | absURL }}",
