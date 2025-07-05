@@ -46,8 +46,29 @@ tags:
 | 数据格式     | 基于文本（支持二进制分帧）   | 原生支持二进制帧和文本帧  |
 | 服务端推送能力  | 依赖长轮询/SSE实现     | 原生支持服务端主动推送   |
 
-![协议对比流程图](https://via.placeholder.com/600x300?text=HTTP+vs+WebSocket+Communication+Flow)
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
 
+    Client->>Server: HTTP Request
+    Server-->>Client: HTTP Response
+
+    Note over Client,Server: Traditional HTTP (Request/Response Model)
+
+    Client->>Server: WebSocket Handshake Request
+    Server-->>Client: WebSocket Handshake Response
+    Client->Server: WebSocket Connection Established
+
+    loop Continuous Communication
+        Client-->>Server: Send Data
+        Server-->>Client: Receive Data
+        Server-->>Client: Send Data
+        Client-->>Server: Receive Data
+    end
+
+    Note over Client,Server: WebSockets (Full-Duplex Communication)
+```
 > **类比理解**：HTTP协议如同收发纸质信件（每次通信需重新建立连接），WebSocket则像是电话通话（建立连接后可随时双向对话）
 
 ## 1.2 FastAPI的WebSocket原生支持
@@ -164,6 +185,7 @@ async def notification_endpoint(websocket: WebSocket, user_id: str):
 ## 课后Quiz
 
 **Q1：WebSocket连接建立过程中，客户端首先发送的特殊HTTP Header是什么？**
+
 A) Upgrade: websocket  
 B) Connection: keep-alive  
 C) Accept: text/websocket  
